@@ -1,0 +1,63 @@
+.tocify {
+    background-color: #f8f9fa;
+    width: 350px;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.tocify-item {
+    display: block;
+    margin-left: 10px;
+    line-height: 1.5;
+}
+
+.tocify-item a {
+    color: #333;
+    font-weight: normal;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.tocify-item a:hover,
+.tocify-item a:active,
+.tocify-item a:focus {
+    color: #ffffff;
+    background-color: #0056b3;
+    border-radius: 4px;
+}
+
+.tocify-header {
+    font-size: 1em;
+    margin-top: 10px;
+    font-weight: normal;
+    color: #333;
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 370px;
+    padding: 20px;
+    max-width: calc(100% - 370px);
+}
+
+/* Justificación y espacio entre párrafos */
+p {
+    text-align: justify;
+    margin-bottom: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 20px !important;   
+    color: #0056b3 !important;    
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}

@@ -1,0 +1,15 @@
+---
+title: "Conclusiones"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    code_download: true
+    theme: lumen
+    number_sections: true
+    css: styles.css
+bibliography: "biblio.bib"
+# csl: apa.csl.txt   
+---

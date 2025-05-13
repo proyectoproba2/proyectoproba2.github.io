@@ -1,0 +1,24 @@
+name: "my-website"
+output_dir: "."
+navbar:
+  title: " 🌍📈 Esperanza de Vida y Factores Clave"
+  left:
+    - text: "Contexto y estadística descriptiva"
+      icon: fa-home
+      href: index.html
+    - text: "Estadística inferencial"
+      icon: fa-gear
+      href: about.html
+    - text: "Conclusiones"
+      icon: fa-check
+      href: conclusiones.html
+output:
+  html_document:
+    theme: yeti
+    highlight: tango
+    toc: true                
+    toc_float: false          
+    toc_depth: 4             
+    css: styles.css          
+    include:
+      ##after_body: footer.html

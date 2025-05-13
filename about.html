@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Más allá de la descripción: un enfoque inferencial sobre la longevidad</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> 🌍📈 Esperanza de Vida y Factores Clave</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Contexto y estadística descriptiva
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-gear"></span>
+     
+    Estadística inferencial
+  </a>
+</li>
+<li>
+  <a href="conclusiones.html">
+    <span class="fa fa-check"></span>
+     
+    Conclusiones
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Más allá de la descripción: un enfoque
+inferencial sobre la longevidad</h1>
+
+</div>
+
+
+<div
+id="intervalo-de-confianza-para-una-sola-muestra-para-la-expectativa-de-vida-en-2015"
+class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Intervalo de confianza
+para una sola muestra para la expectativa de vida en 2015</h1>
+<p>En estudios de salud pública, calcular el promedio muestral de la
+esperanza de vida resulta útil, pero no suficiente para hacer
+inferencias sólidas. Estimar un intervalo de confianza del 95% para la
+media de la esperanza de vida en 2015 permite no solo conocer ese valor
+central, sino también establecer un rango de valores plausibles en el
+que probablemente se encuentra la media poblacional real. Con la muestra
+seleccionada de 50 países, este enfoque resulta especialmente relevante,
+ya que incorpora la incertidumbre muestral y refuerza la validez y
+generalización de los resultados.</p>
+<p>Sin embargo, antes de aplicar el método clásico para calcular un
+intervalo de confianza para la media, es importante comprobar si la
+población de la que procede la muestra se distribuye de forma
+aproximadamente normal, pues este supuesto garantiza que el intervalo
+será estadísticamente válido, especialmente en muestras pequeñas. En
+este caso, al contar con una muestra de tamaño 50, se considera
+suficientemente grande para que, según el Teorema Central del Límite, la
+distribución muestral de la media tienda a ser normal, incluso si los
+datos originales no lo son perfectamente. Aun así, realizar una prueba
+de normalidad sobre los datos es una práctica recomendable para
+confirmar que no existen desviaciones graves que invaliden el
+modelo.</p>
+<div id="prueba-de-normalidad-de-shapiro-wilk" class="section level2"
+number="1.1">
+<h2><span class="header-section-number">1.1</span> Prueba de normalidad
+de Shapiro-Wilk</h2>
+<div id="formulación-de-hipótesis" class="section level3"
+number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> 1. Formulación de
+hipótesis</h3>
+<p>Hipótesis nula (𝐻₀):La población sigue una distribución normal.</p>
+<p>Hipótesis alternativa (𝐻₁) :La población no sigue una distribución
+normal.</p>
+</div>
+<div id="formulación-de-hipótesis-1" class="section level3"
+number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> 2. Formulación de
+hipótesis</h3>
+<p>Nivel de significación: α = 0.05</p>
+</div>
+<div id="estadístico-de-prueba" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> 3. Estadístico de
+prueba</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>datos_2015 <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>vida_2015 <span class="ot">&lt;-</span> datos_2015<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>normalidad <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(vida_2015)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>normalidad </span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  vida_2015
+## W = 0.96443, p-value = 0.0001332</code></pre>
+</div>
+<div id="comparación-e-interpretación" class="section level3"
+number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> 4. Comparación e
+interpretación</h3>
+<p><span class="math display">\[
+p = 0,0001332 &lt; \alpha = 0.05
+\]</span> Dado que el p-valor es menor que el nivel de significación (α
+= 0.05), se rechaza la hipótesis nula (H₀).</p>
+</div>
+<div id="conclusión" class="section level3" number="1.1.5">
+<h3><span class="header-section-number">1.1.5</span> 5. Conclusión</h3>
+<p>Existe evidencia estadísticamente significativa para afirmar que los
+datos de esperanza de vida en 2015 no siguen una distribución normal, ya
+que el p-valor obtenido (0.0001332) es menor que el nivel de
+significación (α = 0.05). Sin embargo, dado que el tamaño de la muestra
+es n = 50 ≥ 30, se puede invocar el Teorema Central del Límite, el cual
+establece que, para muestras lo suficientemente grandes, la distribución
+muestral de la media tiende a la normalidad, independientemente de la
+forma de la población original.</p>
+</div>
+</div>
+<div id="intervalo-de-confianza-del-95-de-una-muestra"
+class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Intervalo de
+confianza del 95% de una muestra</h2>
+<p>En este análisis se ha seleccionado la variable cuantitativa Life
+expectancy (esperanza de vida) correspondiente al año 2015, tomando una
+muestra de 50 países del total disponible en la base de datos. El
+objetivo es estimar, con un nivel de confianza del 95%, el valor medio
+poblacional de la esperanza de vida en ese año. Cabe mencionar, que al
+tratarse de una muestra y no conocerse la desviación estándar
+poblacional, se empleará la desviación típica muestral como estimador,
+por lo que se recurrirá al uso de la distribución t de Student.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Extraer la variable de interés desde la muestra</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>vida_muestra <span class="ot">&lt;-</span> muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Calcular tamaño, media, desviación y error estándar</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(vida_muestra)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(vida_muestra)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>desv <span class="ot">&lt;-</span> <span class="fu">sd</span>(vida_muestra)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>error <span class="ot">&lt;-</span> desv <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co"># Valor t crítico (nivel de confianza 95%)</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co"># Calcular intervalo</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>li <span class="ot">&lt;-</span> media <span class="sc">-</span> t <span class="sc">*</span> error</span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>ls <span class="ot">&lt;-</span> media <span class="sc">+</span> t <span class="sc">*</span> error</span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co"># Mostrar resultados de forma sencilla</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Intervalo de confianza del 95% para la media:</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Intervalo de confianza del 95% para la media:</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;[%.2f, %.2f]</span><span class="sc">\n</span><span class="st">&quot;</span>, li, ls))</span></code></pre></div>
+<pre><code>## [69.46, 74.01]</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Media: %.2f | Error estándar: %.2f | t crítico: %.3f</span><span class="sc">\n</span><span class="st">&quot;</span>, media, error, t))</span></code></pre></div>
+<pre><code>## Media: 71.73 | Error estándar: 1.13 | t crítico: 2.010</code></pre>
+<p>Con base en los resultados obtenidos, se ha estimado un intervalo de
+confianza del 95% para la media poblacional de la esperanza de vida en
+el año 2015, que se encuentra entre 69,46 y 74,01 años. Es decir: 69,46
+&lt; μ &lt; 74,01 Esto indica que, con un 95% de confianza, se puede
+afirmar que la esperanza de vida media global en 2015 se sitúa dentro de
+ese rango. La estimación refleja una medida central de longevidad para
+ese año y ofrece un valor de referencia útil para interpretar la
+situación general de salud a nivel mundial en ese periodo.</p>
+</div>
+</div>
+<div
+id="intervalo-de-confianza-para-dos-muestras-con-respecto-a-la-variable-expectativa-de-vida"
+class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Intervalo de confianza
+para dos muestras con respecto a la variable expectativa de vida</h1>
+<p>En este apartado se pretende comparar la media de la esperanza de
+vida entre dos grupos de países clasificados según su estatus de
+desarrollo: Developed y Developing. Esta variable, clave en los estudios
+de salud pública y calidad de vida, puede reflejar importantes
+desigualdades estructurales a nivel global. El objetivo es construir un
+intervalo de confianza del 95% para la diferencia de medias de la
+esperanza de vida entre ambos grupos en el año 2015, y con ello estimar
+en qué medida la condición de desarrollo está asociada a una mayor o
+menor longevidad media. Sin embargo, antes de realizar el análisis, es
+necesario verificar si se cumplen los supuestos estadísticos que
+justifican el uso de métodos paramétricos:</p>
+<ol style="list-style-type: decimal">
+<li><p>La normalidad de los datos dentro de cada grupo.</p></li>
+<li><p>La igualdad o desigualdad de varianzas entre las dos
+poblaciones.</p></li>
+</ol>
+<div id="prueba-de-normalidad-para-paises-en-desarrollo-y-desarrollados"
+class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Prueba de normalidad
+para paises en desarrollo y desarrollados</h2>
+<div id="formulación-de-hipótesis-2" class="section level3"
+number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> 1. Formulación de
+hipótesis</h3>
+<p>Hipótesis nula (𝐻₀):La población sigue una distribución normal.</p>
+<p>Hipótesis alternativa (𝐻₁) :La población no sigue una distribución
+normal.</p>
+</div>
+<div id="formulación-de-hipótesis-3" class="section level3"
+number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> 2. Formulación de
+hipótesis</h3>
+<p>Nivel de significación: α = 0.05</p>
+</div>
+<div id="estadístico-de-prueba-1" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> 3. Estadístico de
+prueba</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>datos_2015 <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>grupo1 <span class="ot">&lt;-</span> datos_2015 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Status <span class="sc">==</span> <span class="st">&quot;Developed&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>grupo2 <span class="ot">&lt;-</span> datos_2015 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Status <span class="sc">==</span> <span class="st">&quot;Developing&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(<span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="fu">shapiro.test</span>(grupo1)  <span class="co"># Developed</span></span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  grupo1
+## W = 0.93567, p-value = 0.05648</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(grupo2)  <span class="co"># Developing</span></span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  grupo2
+## W = 0.95859, p-value = 0.0001726</code></pre>
+</div>
+<div id="comparación-e-interpretación-1" class="section level3"
+number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> 4. Comparación e
+interpretación</h3>
+<ul>
+<li><p>Grupo 1 - Developed: p = 0.05648 &gt; α = 0.05 → No se rechaza
+H₀: se asume normalidad.</p></li>
+<li><p>Grupo 2 - Developing: p = 0.0001726 &lt; α = 0.05 → Se rechaza
+H₀: no se puede asumir normalidad.</p></li>
+</ul>
+</div>
+<div id="conclusión-1" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> 5. Conclusión</h3>
+<p>Tras aplicar la prueba de normalidad de Shapiro-Wilk a los dos grupos
+definidos por el estatus de desarrollo, se obtuvieron resultados
+diferenciados. En el grupo de países desarrollados (Developed), el valor
+p fue de 0.05648, superior al nivel de significación α = 0.05, por lo
+que no se rechaza la hipótesis nula de normalidad, lo cual indica que
+los datos de esperanza de vida en este grupo pueden considerarse
+normalmente distribuidos.</p>
+<p>En cambio, para el grupo de países en desarrollo (Developing), el
+valor p fue de 0.0001726, inferior a α = 0.05, lo que lleva a rechazar
+la hipótesis nula. Por tanto, se concluye que los datos de esperanza de
+vida en este grupo no se distribuyen normalmente.Sin embargo, conforme
+al resultado del chunck posterior, aunque la prueba de Shapiro-Wilk
+indicó que la variable ‘Life expectancy’ en el grupo de países en
+desarrollo (Developing) no sigue una distribución normal (p = 0.0001726
+&lt; 0.05),el tamaño muestral de este grupo es de 39 observaciones, por
+lo que con base al Teorema Central del Límite, se considera razonable
+asumir que la distribución de la media muestral se aproxima a una
+normal.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>n_developing_muestra <span class="ot">&lt;-</span> muestra_final <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="fu">filter</span>(Status <span class="sc">==</span> <span class="st">&quot;Developing&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Tamaño de la muestra para países en desarrollo (dentro de la muestra):&quot;</span>, n_developing_muestra, <span class="st">&quot;observaciones</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Tamaño de la muestra para países en desarrollo (dentro de la muestra): 39 observaciones</code></pre>
+</div>
+</div>
+<div id="diferencia-de-varianzas" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Diferencia de
+varianzas</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">var.test</span>(grupo1, grupo2)</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  grupo1 and grupo2
+## F = 0.21299, num df = 31, denom df = 150, p-value = 4.531e-06
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.1286495 0.3902998
+## sample estimates:
+## ratio of variances 
+##          0.2129877</code></pre>
+<p>Intervalo de confianza del 95% para el cociente de varianzas:</p>
+<pre><code>       0,1286 &lt; σ²_Developed / σ²_Developing &lt; 0,3903
+       </code></pre>
+<p>Como el valor 1 no se encuentra dentro del intervalo de confianza, se
+rechaza la hipótesis nula de igualdad de varianzas.Por tanto, se
+concluye que las varianzas de ambos grupos son significativamente
+diferentes,y se debe aplicar el t-test con varianzas desiguales.</p>
+</div>
+<div id="intervalo-de-confianza-del-95-de-dos-muestras"
+class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Intervalo de
+confianza del 95% de dos muestras</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Filtrar datos del año 2015</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>datos_2015 <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="co"># Extraer la variable para cada grupo</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>grupo_desarrollado <span class="ot">&lt;-</span> datos_2015 <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  <span class="fu">filter</span>(Status <span class="sc">==</span> <span class="st">&quot;Developed&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a>grupo_desarrollo <span class="ot">&lt;-</span> datos_2015 <span class="sc">%&gt;%</span></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>  <span class="fu">filter</span>(Status <span class="sc">==</span> <span class="st">&quot;Developing&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co"># Prueba t con varianzas desiguales</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>resultado_ic <span class="ot">&lt;-</span> <span class="fu">t.test</span>(grupo_desarrollado, grupo_desarrollo,</span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a>                       <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>                       <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a>                       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co"># Extraer intervalo y diferencia</span></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a>lim_inf <span class="ot">&lt;-</span> resultado_ic<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a>lim_sup <span class="ot">&lt;-</span> resultado_ic<span class="sc">$</span>conf.int[<span class="dv">2</span>]</span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a>diferencia_media <span class="ot">&lt;-</span> resultado_ic<span class="sc">$</span>estimate[<span class="dv">1</span>] <span class="sc">-</span> resultado_ic<span class="sc">$</span>estimate[<span class="dv">2</span>]</span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Intervalo de confianza del 95% para la diferencia de medias:</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Intervalo de confianza del 95% para la diferencia de medias:</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;           %.2f &lt; μ_Developed - μ_Developing &lt; %.2f</span><span class="sc">\n\n</span><span class="st">&quot;</span>, lim_inf, lim_sup))</span></code></pre></div>
+<pre><code>##            9.31 &lt; μ_Developed - μ_Developing &lt; 12.73</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Diferencia media estimada: %.2f años</span><span class="sc">\n</span><span class="st">&quot;</span>, diferencia_media))</span></code></pre></div>
+<pre><code>## Diferencia media estimada: 11.02 años</code></pre>
+<p>El análisis del intervalo de confianza del 95% para la diferencia de
+medias entre los países desarrollados y en desarrollo muestra una
+diferencia significativa en la esperanza de vida. El intervalo calculado
+entre 9,31 y 12,73 años indica que, con un alto nivel de certeza, los
+países desarrollados presentan una esperanza de vida considerablemente
+superior respecto a los países en desarrollo.</p>
+<p>En concreto, la diferencia media estimada es de 11,02 años, lo que
+significa que, en promedio, las personas que viven en países
+desarrollados pueden esperar vivir más de una década más que quienes
+residen en países en desarrollo. Este dato no solo es estadísticamente
+significativo, sino que también tiene una gran relevancia práctica y
+social, ya que refleja profundas diferencias estructurales en términos
+de calidad de vida, acceso a recursos sanitarios, condiciones
+ambientales, educación y estabilidad económica.</p>
+<p>El hecho de que el intervalo no contenga el valor cero confirma que
+la diferencia no es producto del azar. Por tanto, podemos afirmar con
+evidencia estadística que el estatus de desarrollo está claramente
+asociado a una mayor longevidad. En los países desarrollados, la
+esperanza de vida tiende a ser más alta gracias a sistemas de salud más
+robustos, mejores condiciones de vida y mayor prevención de
+enfermedades, entre otros factores. Por el contrario, en muchos países
+en desarrollo persisten desafíos estructurales que limitan el acceso a
+servicios esenciales, lo que se traduce en una menor esperanza de
+vida.</p>
+</div>
+</div>
+<div id="recomendaciones-ante-no-normalidad-de-la-población"
+class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Recomendaciones ante no
+normalidad de la población</h1>
+<p>Cuando los datos no cumplen el supuesto de normalidad, como ocurrió
+en algunos casos del presente análisis, es fundamental considerar
+alternativas metodológicas que se adapten mejor a la estructura real de
+la información. Una de las primeras opciones es el uso de pruebas no
+paramétricas, que permiten realizar comparaciones o contrastes sin
+asumir que los datos siguen una distribución normal. Estas pruebas son
+especialmente útiles con muestras pequeñas o cuando existen valores
+atípicos. Por ejemplo, la prueba de Mann–Whitney U permite comparar dos
+grupos independientes sin necesidad de suponer normalidad ni igualdad de
+varianzas, siendo apropiada para variables como la esperanza de vida
+según el nivel de desarrollo. La prueba de Kolmogorov–Smirnov, por su
+parte, permite comparar dos distribuciones completas o evaluar el ajuste
+a una distribución teórica, mientras que la prueba de Friedman se
+utiliza en contextos de medidas repetidas o comparaciones entre más de
+dos condiciones dentro del mismo grupo <span class="citation">(Siegel
+and Castellan 1988; Conover 1999)</span>.</p>
+<p>Otra estrategia es aplicar transformaciones a los datos con el fin de
+reducir la asimetría y mejorar el ajuste a la normalidad. La
+transformación logarítmica es especialmente útil para variables sesgadas
+a la derecha, como ingresos o gasto en salud. La raíz cuadrada puede
+utilizarse con datos de conteo o tasas, ayudando a estabilizar la
+varianza. Además, la transformación Box–Cox representa una alternativa
+más flexible, ya que estima automáticamente el tipo de transformación
+más adecuada para acercar la distribución a la normalidad, incluso
+cuando no es evidente qué método aplicar <span class="citation">(Box and
+Cox 1964; Osborne 2010)</span>.</p>
+<p>Además de estas opciones, existen enfoques robustos y empíricos que
+no dependen de supuestos fuertes sobre la distribución de los datos. Uno
+de los más destacados es el método bootstrap, que permite estimar
+intervalos de confianza generando múltiples muestras con reemplazo a
+partir de la muestra original. A partir de esas re-muestras se calcula
+empíricamente la distribución del estadístico de interés (media,
+mediana, etc.), sin requerir normalidad. Esto lo convierte en una
+herramienta versátil y poderosa, especialmente en contextos con alta
+variabilidad o estructura desconocida <span class="citation">(Efron and
+Tibshirani 1993)</span>. En el caso de modelos de regresión, también
+pueden emplearse modelos robustos, como la regresión M o la regresión
+cuantílica, los cuales toleran mejor la presencia de valores atípicos y
+errores no normales que la regresión lineal clásica <span
+class="citation">(Huber and Ronchetti 2009)</span>.</p>
+</div>
+<div
+id="modelo-de-regresión-lineal-múltiple-efecto-conjunto-de-variables-seleccionadas"
+class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Modelo de regresión
+lineal múltiple: efecto conjunto de variables seleccionadas</h1>
+<div
+id="identificación-de-la-variable-dependiente-y-de-las-independientes"
+class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Identificación de la
+variable dependiente y de las independientes</h2>
+<p>En el presente modelo de regresión lineal múltiple, se busca explicar
+la esperanza de vida (Life expectancy) durante el 2015, a partir de un
+conjunto de factores estructurales previamente seleccionados por su
+relevancia teórica y empírica. Por tanto, las variables del modelo se
+clasifican de la siguiente manera:</p>
+<p>Variable dependiente (respuesta):</p>
+<ul>
+<li><strong>Life expectancy:</strong> representa el número promedio de
+años que una persona puede esperar vivir desde su nacimiento, bajo
+condiciones de mortalidad actuales. Es una variable cuantitativa
+continua, medida en años. Se considera dependiente porque su valor se ve
+influido por el comportamiento de las demás variables del modelo.</li>
+</ul>
+<p>Variables independientes (predictoras):</p>
+<ul>
+<li><p><strong>HIV/AIDS:</strong> porcentaje de la población adulta
+infectada con VIH, configurandose como una dimensión crítica de salud
+pública.</p></li>
+<li><p><strong>Income composition of resources:</strong> índice entre 0
+y 1 que refleja la equidad y composición de los ingresos
+disponibles.</p></li>
+<li><p><strong>Adult Mortality:</strong> número de muertes por cada mil
+habitantes entre los 15 y 60 años, representando el riesgo estructural
+de muerte en edad adulta.</p></li>
+</ul>
+<p>Estas variables se consideran independientes o predictoras porque su
+función en el modelo es explicar o predecir el comportamiento de la
+variable dependiente. No dependen del valor de la esperanza de vida,
+sino que actúan como insumos cuya combinación permite estimar y
+comprender las variaciones en dicha variable. Además, fueron
+seleccionadas por su capacidad para capturar dimensiones clave del
+desarrollo humano: salud, equidad económica y condiciones de vida.</p>
+</div>
+<div id="ajuste-del-modelo-de-regresión-lineal" class="section level2"
+number="4.2">
+<h2><span class="header-section-number">4.2</span> Ajuste del modelo de
+regresión lineal</h2>
+<p>Una vez identificadas las variables que conforman el modelo, se
+procede a realizar el ajuste mediante una regresión lineal múltiple, el
+cual estima los coeficientes que cuantifican el efecto de cada variable
+independiente sobre la esperanza de vida, manteniendo constantes las
+demás. A partir del modelo ajustado se podrán interpretar la magnitud,
+dirección y significancia estadística de cada relación. A continuación,
+se muestra el código utilizado para realizar dicho ajuste:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># Modelo de regresión lineal múltiple</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span> <span class="sc">~</span> <span class="st">`</span><span class="at">HIV/AIDS</span><span class="st">`</span> <span class="sc">+</span> </span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>               <span class="st">`</span><span class="at">Income composition of resources</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">Adult Mortality</span><span class="st">`</span> , </span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>             <span class="at">data =</span> muestra_final)</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = `Life expectancy` ~ `HIV/AIDS` + `Income composition of resources` + 
+##     `Adult Mortality`, data = muestra_final)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.9406 -1.6848 -0.2575  1.3678  7.9027 
+## 
+## Coefficients:
+##                                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                       50.954836   2.501658  20.368  &lt; 2e-16 ***
+## `HIV/AIDS`                        -1.564881   0.391649  -3.996 0.000231 ***
+## `Income composition of resources` 34.787011   2.974823  11.694 2.23e-15 ***
+## `Adult Mortality`                 -0.015244   0.005211  -2.926 0.005325 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.674 on 46 degrees of freedom
+## Multiple R-squared:  0.8949, Adjusted R-squared:  0.8881 
+## F-statistic: 130.6 on 3 and 46 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>A partir de la salida del modelo de regresión lineal ajustado en R,
+obtenemos la siguiente ecuación de la recta ajustada:</p>
+<p><span class="math display">\[\widehat{\text{Life expectancy}} = 50.95
+- 1.56 \times \text{HIV/AIDS} + 34.78 \times \text{Income composition of
+resources} - 0.015 \times \text{Adult Mortality}\]</span></p>
+<p>En donde:</p>
+<p><span class="math inline">\(\beta_0\)</span> Intercepto (50.95):
+Representa la esperanza de vida estimada cuando todas las variables
+independientes son iguales a cero. Aunque este escenario es hipotético
+(por ejemplo, 0 en prevalencia de VIH, sin ingresos y sin mortalidad
+adulta), el intercepto es esencial para ajustar el modelo y sirve como
+base en la predicción de la esperanza de vida.</p>
+<p><span class="math inline">\(\beta_1\)</span> HIV/AIDS (-1.56): Por
+cada punto porcentual adicional en la prevalencia de VIH/SIDA en la
+población adulta (de 15 a 49 años), se estima que la esperanza de vida
+disminuye en promedio 1.56 años, manteniendo constantes las demás
+variables. Este resultado refleja cómo la presencia de enfermedades
+infecciosas impacta negativamente la longevidad de una población.</p>
+<p><span class="math inline">\(\beta_2\)</span> Income composition of
+resources (34.79): Por cada unidad adicional en el índice de composición
+del ingreso (que va de 0 a 1), la esperanza de vida aumenta en promedio
+34.79 años. Este coeficiente indica que un mejor acceso a recursos
+económicos está estrechamente relacionado con mejores condiciones de
+salud y, por tanto, con una mayor esperanza de vida.</p>
+<p><span class="math inline">\(\beta_3\)</span> Adult Mortality
+(-0.0152): Por cada muerte adicional por cada mil adultos entre 15 y 60
+años, la esperanza de vida se reduce en promedio 0.015 años. Aunque el
+valor es pequeño, su efecto acumulado puede ser significativo en
+contextos de alta mortalidad adulta, reflejando ambientes con menor
+bienestar y mayor vulnerabilidad social.</p>
+</div>
+<div id="coeficiente-de-determinación" class="section level2"
+number="4.3">
+<h2><span class="header-section-number">4.3</span> Coeficiente de
+determinación</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># Extraer el R^2 ajustado desde el modelo</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>r2_ajustado <span class="ot">&lt;-</span> <span class="fu">summary</span>(modelo)<span class="sc">$</span>adj.r.squared</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;El coeficiente de determinación ajustado (R² ajustado) del modelo es:&quot;</span>, <span class="fu">round</span>(r2_ajustado, <span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## El coeficiente de determinación ajustado (R² ajustado) del modelo es: 0.8881</code></pre>
+<p>El coeficiente de determinación ajustado (<span
+class="math inline">\(R^2\)</span> ajustado) del modelo es 0.8881, lo
+que indica que aproximadamente el 88.81% de la variabilidad en la
+esperanza de vida entre los países analizados puede explicarse de forma
+conjunta por las variables HIV/AIDS, Income composition of resources y
+Adult Mortality. Este valor refleja un excelente nivel de ajuste,
+especialmente considerando que se trabajó con datos correspondientes
+exclusivamente al año 2015, y que el modelo fue construido a partir de
+solo tres variables predictoras seleccionadas de forma deliberada. El
+11.19% restante de variabilidad no explicada puede deberse a otros
+factores no incluidos en el modelo, como el acceso efectivo a servicios
+de salud, la infraestructura hospitalaria, la calidad ambiental,
+factores demográficos, políticas sociales o diferencias culturales entre
+países. Esto sugiere que, si bien el modelo propuesto logra capturar
+gran parte del comportamiento de la esperanza de vida, aún existen otros
+determinantes que podrían incorporarse en estudios posteriores para
+enriquecer la explicación del fenómeno desde una perspectiva más amplia
+y multicausal.</p>
+</div>
+<div id="coeficiente-de-correlación" class="section level2"
+number="4.4">
+<h2><span class="header-section-number">4.4</span> Coeficiente de
+correlación</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Calcular coeficientes de correlación de Pearson entre Life expectancy y cada variable explicativa</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>cor_pearson_hiv <span class="ot">&lt;-</span> <span class="fu">cor</span>(muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>, muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">HIV/AIDS</span><span class="st">`</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>cor_pearson_income <span class="ot">&lt;-</span> <span class="fu">cor</span>(muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>, muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Income composition of resources</span><span class="st">`</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>cor_pearson_mortality <span class="ot">&lt;-</span> <span class="fu">cor</span>(muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>, muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Adult Mortality</span><span class="st">`</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Correlación Life expectancy ~ HIV/AIDS:&quot;</span>, <span class="fu">round</span>(cor_pearson_hiv, <span class="dv">4</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Correlación Life expectancy ~ HIV/AIDS: -0.6613</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Correlación Life expectancy ~ Income composition of resources:&quot;</span>, <span class="fu">round</span>(cor_pearson_income, <span class="dv">4</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Correlación Life expectancy ~ Income composition of resources: 0.8972</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Correlación Life expectancy ~ Adult Mortality:&quot;</span>, <span class="fu">round</span>(cor_pearson_mortality, <span class="dv">4</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Correlación Life expectancy ~ Adult Mortality: -0.6792</code></pre>
+<p>La correlación entre Life expectancy y HIV/AIDS es de -0.6613, lo
+cual representa una relación negativa de magnitud moderada a fuerte.
+Esto indica que, a medida que aumenta la prevalencia de VIH/SIDA en la
+población adulta, la esperanza de vida tiende a disminuir. Aunque no se
+trata de una asociación perfecta, sí muestra una tendencia clara que
+respalda la inclusión de esta variable como un factor relevante dentro
+del modelo explicativo.</p>
+<p>En el caso de Income composition of resources, la correlación con la
+esperanza de vida es de 0.8972, lo que representa una asociación
+positiva muy fuerte. Este resultado sugiere que los países con mayor
+acceso y equidad en los recursos económicos suelen tener una mayor
+esperanza de vida. Esto refuerza la idea de que el entorno
+socioeconómico juega un papel determinante en las condiciones de salud y
+longevidad de la población.</p>
+<p>Por su parte, Adult Mortality presenta una correlación de -0.6792 con
+la esperanza de vida, lo cual evidencia una relación negativa
+moderadamente fuerte. En contextos donde la mortalidad adulta es más
+elevada, la esperanza de vida tiende a reducirse notablemente, ya que
+las muertes en edades productivas afectan directamente el promedio de
+años de vida esperados al nacer. Este patrón justifica la inclusión de
+esta variable en el análisis y aporta información importante sobre el
+contexto de salud de los países.</p>
+</div>
+<div id="anova-y-prueba-global-de-significancia" class="section level2"
+number="4.5">
+<h2><span class="header-section-number">4.5</span> ANOVA y prueba global
+de significancia</h2>
+<p>El análisis de varianza (ANOVA) aplicado a modelos de regresión
+permite evaluar si el conjunto de variables independientes tiene un
+efecto significativo sobre la variable dependiente. Esta prueba divide
+la variabilidad total de los datos en dos componentes: la variabilidad
+<strong>explicada por el modelo</strong> (regresión) y la <strong>no
+explicada</strong> (error o residuos). La prueba F compara estas dos
+fuentes de variación mediante una razón de medias cuadráticas, si el
+resultado es significativo, se concluye que el modelo general tiene
+capacidad explicativa. A continuación, se presenta el código y los
+resultados del ANOVA para nuestro modelo de regresión:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">anova</span>(modelo)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: Life expectancy
+##                                   Df  Sum Sq Mean Sq  F value    Pr(&gt;F)    
+## `HIV/AIDS`                         1 1368.59 1368.59 191.4644 &lt; 2.2e-16 ***
+## `Income composition of resources`  1 1370.97 1370.97 191.7969 &lt; 2.2e-16 ***
+## `Adult Mortality`                  1   61.18   61.18   8.5587  0.005325 ** 
+## Residuals                         46  328.81    7.15                       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>El anterior modelo, se puede compectar mejor de la siguinte
+forma:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>sct <span class="ot">&lt;-</span> <span class="fu">sum</span>((muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span> <span class="sc">-</span> <span class="fu">mean</span>(muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>scr <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">fitted</span>(modelo) <span class="sc">-</span> <span class="fu">mean</span>(muestra_final<span class="sc">$</span><span class="st">`</span><span class="at">Life expectancy</span><span class="st">`</span>))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>sce <span class="ot">&lt;-</span> sct <span class="sc">-</span> scr</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a>df_reg <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(modelo)) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a>df_error <span class="ot">&lt;-</span> <span class="fu">nrow</span>(muestra_final) <span class="sc">-</span> df_reg <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a>df_total <span class="ot">&lt;-</span> <span class="fu">nrow</span>(muestra_final) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a>mcr <span class="ot">&lt;-</span> scr <span class="sc">/</span> df_reg</span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a>mce <span class="ot">&lt;-</span> sce <span class="sc">/</span> df_error</span>
+<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a>f_value <span class="ot">&lt;-</span> mcr <span class="sc">/</span> mce</span>
+<span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(f_value, df_reg, df_error)</span>
+<span id="cb36-14"><a href="#cb36-14" tabindex="-1"></a>p_value_formatted <span class="ot">&lt;-</span> <span class="fu">format</span>(p_value, <span class="at">scientific =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">10</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" tabindex="-1"></a>resultados_anova <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb36-17"><a href="#cb36-17" tabindex="-1"></a>  <span class="at">Fuente =</span> <span class="fu">c</span>(<span class="st">&quot;Regresión (Modelo)&quot;</span>, <span class="st">&quot;Error (Residuos)&quot;</span>, <span class="st">&quot;Total&quot;</span>),</span>
+<span id="cb36-18"><a href="#cb36-18" tabindex="-1"></a>  <span class="at">SCR =</span> <span class="fu">c</span>(scr, sce, sct),</span>
+<span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a>  <span class="at">GL =</span> <span class="fu">c</span>(df_reg, df_error, df_total),</span>
+<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a>  <span class="at">MCR =</span> <span class="fu">c</span>(mcr, mce, <span class="cn">NA</span>),</span>
+<span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a>  <span class="at">F_value =</span> <span class="fu">c</span>(f_value, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb36-22"><a href="#cb36-22" tabindex="-1"></a>  <span class="at">P_valor =</span> <span class="fu">c</span>(p_value_formatted, <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" tabindex="-1"></a>)</span>
+<span id="cb36-24"><a href="#cb36-24" tabindex="-1"></a></span>
+<span id="cb36-25"><a href="#cb36-25" tabindex="-1"></a><span class="fu">colnames</span>(resultados_anova) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb36-26"><a href="#cb36-26" tabindex="-1"></a>  <span class="st">&quot;Fuente&quot;</span>,</span>
+<span id="cb36-27"><a href="#cb36-27" tabindex="-1"></a>  <span class="st">&quot;Suma de Cuadrados&quot;</span>,</span>
+<span id="cb36-28"><a href="#cb36-28" tabindex="-1"></a>  <span class="st">&quot;Grados de Libertad&quot;</span>,</span>
+<span id="cb36-29"><a href="#cb36-29" tabindex="-1"></a>  <span class="st">&quot;Media Cuadrática&quot;</span>,</span>
+<span id="cb36-30"><a href="#cb36-30" tabindex="-1"></a>  <span class="st">&quot;Valor F&quot;</span>,</span>
+<span id="cb36-31"><a href="#cb36-31" tabindex="-1"></a>  <span class="st">&quot;P-Valor&quot;</span></span>
+<span id="cb36-32"><a href="#cb36-32" tabindex="-1"></a>)</span>
+<span id="cb36-33"><a href="#cb36-33" tabindex="-1"></a></span>
+<span id="cb36-34"><a href="#cb36-34" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb36-35"><a href="#cb36-35" tabindex="-1"></a></span>
+<span id="cb36-36"><a href="#cb36-36" tabindex="-1"></a>resultados_anova <span class="sc">%&gt;%</span></span>
+<span id="cb36-37"><a href="#cb36-37" tabindex="-1"></a>  <span class="fu">kbl</span>(</span>
+<span id="cb36-38"><a href="#cb36-38" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;html&quot;</span>,</span>
+<span id="cb36-39"><a href="#cb36-39" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Resultados del ANOVA para el Modelo de Regresión&quot;</span>,</span>
+<span id="cb36-40"><a href="#cb36-40" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb36-41"><a href="#cb36-41" tabindex="-1"></a>    <span class="at">digits =</span> <span class="dv">3</span></span>
+<span id="cb36-42"><a href="#cb36-42" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb36-43"><a href="#cb36-43" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb36-44"><a href="#cb36-44" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;responsive&quot;</span>, <span class="st">&quot;condensed&quot;</span>),</span>
+<span id="cb36-45"><a href="#cb36-45" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb36-46"><a href="#cb36-46" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">&quot;center&quot;</span></span>
+<span id="cb36-47"><a href="#cb36-47" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb36-48"><a href="#cb36-48" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-49"><a href="#cb36-49" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">background =</span> <span class="st">&quot;#DBDBDB&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-50"><a href="#cb36-50" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">background =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-responsive table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Resultados del ANOVA para el Modelo de Regresión
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;background-color: rgba(219, 219, 219, 255) !important;">
+Fuente
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(219, 219, 219, 255) !important;">
+Suma de Cuadrados
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(219, 219, 219, 255) !important;">
+Grados de Libertad
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(219, 219, 219, 255) !important;">
+Media Cuadrática
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(219, 219, 219, 255) !important;">
+Valor F
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(219, 219, 219, 255) !important;">
+P-Valor
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;background-color: white !important;">
+Regresión (Modelo)
+</td>
+<td style="text-align:center;background-color: white !important;">
+2800.743
+</td>
+<td style="text-align:center;background-color: white !important;">
+3
+</td>
+<td style="text-align:center;background-color: white !important;">
+933.581
+</td>
+<td style="text-align:center;background-color: white !important;">
+130.607
+</td>
+<td style="text-align:center;background-color: white !important;">
+0e+00
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;background-color: white !important;">
+Error (Residuos)
+</td>
+<td style="text-align:center;background-color: white !important;">
+328.810
+</td>
+<td style="text-align:center;background-color: white !important;">
+46
+</td>
+<td style="text-align:center;background-color: white !important;">
+7.148
+</td>
+<td style="text-align:center;background-color: white !important;">
+NA
+</td>
+<td style="text-align:center;background-color: white !important;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+Total
+</td>
+<td style="text-align:center;">
+3129.552
+</td>
+<td style="text-align:center;">
+49
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>Como se observa, la suma de cuadrados de la regresión (SCR =
+2800.743) representa una porción muy significativa de la suma total de
+cuadrados (SCT = 3129.552), lo que indica que el modelo explica la mayor
+parte de la variabilidad en la variable dependiente Life expectancy. El
+valor F obtenido es 130.607, con un p-valor prácticamente igual a cero
+(0e+00), lo cual indica que el modelo en su conjunto es altamente
+significativo desde el punto de vista estadístico. En otras palabras,
+hay evidencia suficiente para afirmar que al menos una de las variables
+independientes (HIV/AIDS, Income composition of resources o Adult
+Mortality) tiene un efecto significativo sobre la esperanza de vida.
+Para sustentar esta conclusión se plantea la siguiente prueba de
+hipótesis global basada en el estadístico F:</p>
+<p><strong>1. Formulación de la hipótesis nula y
+alternativa</strong></p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: Ninguna de las
+variables independientes tiene un efecto significativo sobre la variable
+dependiente (es decir, todos los coeficientes de las variables
+explicativas son iguales a cero).</p>
+<p><span class="math inline">\(H_0: \beta_1 = \beta_2 = \beta_3 =
+\beta_4 = 0\)</span></p></li>
+<li><p><span class="math inline">\(H_1\)</span>: Al menos uno de los
+coeficientes de las variables independientes es diferente de cero.</p>
+<p><span class="math inline">\(H_1:\)</span> Al menos un <span
+class="math inline">\(\beta_i \neq 0\)</span></p></li>
+</ul>
+<p><strong>2. Nivel de significancia</strong></p>
+<p>El <strong>nivel de significancia</strong> (<span
+class="math inline">\(\alpha\)</span>) es el umbral que utilizamos para
+decidir si podemos rechazar la <strong>hipótesis nula</strong>. En este
+caso, hemos establecido el nivel de significancia en <span
+class="math inline">\(\alpha = 0.05\)</span>, lo que significa que si el
+<strong>p-valor</strong> calculado es menor que 0.05, rechazamos la
+hipótesis nula y concluimos que al menos una de las variables
+independientes tiene un efecto significativo sobre la <strong>esperanza
+de vida</strong>.</p>
+<p><strong>3. Estadístico de prueba</strong></p>
+<p>Para esto tenemos en cuenta lo siguiente:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="co"># Resultado ANOVA a partir del modelo</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>anova_resultado <span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="co"># Obtener las sumas de cuadrados</span></span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>scr <span class="ot">&lt;-</span> <span class="fu">sum</span>(anova_resultado<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])  <span class="co"># Suma de Cuadrados de la Regresión </span></span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>sce <span class="ot">&lt;-</span> anova_resultado<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">4</span>]         <span class="co"># Suma de Cuadrados del Error</span></span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a><span class="co"># Obtener los grados de libertad</span></span>
+<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a>df_reg <span class="ot">&lt;-</span> <span class="fu">sum</span>(anova_resultado<span class="sc">$</span>Df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span>
+<span id="cb37-10"><a href="#cb37-10" tabindex="-1"></a>df_error <span class="ot">&lt;-</span> anova_resultado<span class="sc">$</span>Df[<span class="dv">4</span>]</span>
+<span id="cb37-11"><a href="#cb37-11" tabindex="-1"></a></span>
+<span id="cb37-12"><a href="#cb37-12" tabindex="-1"></a><span class="co"># Calcular valor F</span></span>
+<span id="cb37-13"><a href="#cb37-13" tabindex="-1"></a>valor_F <span class="ot">&lt;-</span> (scr <span class="sc">/</span> df_reg) <span class="sc">/</span> (sce <span class="sc">/</span> df_error)</span>
+<span id="cb37-14"><a href="#cb37-14" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;El valor F calculado es:&quot;</span>, <span class="fu">round</span>(valor_F, <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## El valor F calculado es: 130.61</code></pre>
+<p><strong>4. Criterio de decisión</strong></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># Calcular el valor p asociado al valor F</span></span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(valor_F, df_reg, df_error)</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;El valor p asociado al valor F calculado es:&quot;</span>, <span class="fu">format</span>(p_value, <span class="at">scientific =</span> <span class="cn">TRUE</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## El valor p asociado al valor F calculado es: 0e+00</code></pre>
+<p><strong>5. Interpretación y conclusión </strong></p>
+<p>El valor <em>p</em> obtenido a partir del estadístico
+<strong>F</strong> representa la probabilidad de observar una
+variabilidad tan alta explicada por el modelo si la hipótesis nula fuera
+cierta, es decir, si ninguna de las variables predictoras tuviera un
+efecto significativo sobre la variable dependiente. En este caso, el
+valor <em>p</em> calculado es <strong>0e+00</strong>, lo que en términos
+prácticos significa que es <strong>extremadamente cercano a
+cero</strong> y mucho menor que cualquier nivel de significancia usual,
+como <span class="math inline">\(\\alpha = 0.05\)</span>. Este resultado
+indica que la probabilidad de que el ajuste observado en el modelo haya
+ocurrido por azar es prácticamente nula. Por lo tanto, <strong>se
+rechaza la hipótesis nula</strong> y se concluye que <strong>al menos
+una de las variables explicativas</strong> (<em>HIV/AIDS</em>,
+<em>Income composition of resources</em> o <em>Adult Mortality</em>)
+tiene un <strong>efecto estadísticamente significativo</strong> sobre la
+<strong>esperanza de vida</strong>. Esto valida que el modelo general
+propuesto tiene una capacidad real para explicar el comportamiento de la
+variable dependiente y que las relaciones observadas entre las variables
+no son producto del azar.</p>
+</div>
+<div id="pruebas-de-significancia-individuales" class="section level2"
+number="4.6">
+<h2><span class="header-section-number">4.6</span> Pruebas de
+significancia individuales</h2>
+<p>A diferencia de la prueba global, que evalúa el impacto conjunto de
+todas las variables, en esta sección analizamos cada variable
+independiente por separado. Para cada una, comparamos el valor p con el
+nivel de significancia (𝛼= 0.05 para determinar si rechazamos la
+hipótesis nula y concluimos que la variable tiene un impacto
+significativo sobre la <strong>expectativa de vida</strong>.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>summary_resultado <span class="ot">&lt;-</span> <span class="fu">summary</span>(modelo)</span>
+<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a>coeficientes <span class="ot">&lt;-</span> summary_resultado<span class="sc">$</span>coefficients</span>
+<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;HIV/AIDS&quot;</span>, <span class="st">&quot;Income composition of resources&quot;</span>, <span class="st">&quot;Adult Mortality&quot;</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" tabindex="-1"></a>hipotesis_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-8"><a href="#cb41-8" tabindex="-1"></a>  <span class="at">Variable =</span> variables,</span>
+<span id="cb41-9"><a href="#cb41-9" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hipótesis nula</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;$H_0: </span><span class="sc">\\</span><span class="st">beta_1 = 0$&quot;</span>, <span class="st">&quot;$H_0: </span><span class="sc">\\</span><span class="st">beta_2 = 0$&quot;</span>, <span class="st">&quot;$H_0: </span><span class="sc">\\</span><span class="st">beta_3 = 0$&quot;</span>),</span>
+<span id="cb41-10"><a href="#cb41-10" tabindex="-1"></a>  <span class="st">`</span><span class="at">Hipótesis alternativa</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;$H_1: </span><span class="sc">\\</span><span class="st">beta_1 </span><span class="sc">\\</span><span class="st">neq 0$&quot;</span>, <span class="st">&quot;$H_1: </span><span class="sc">\\</span><span class="st">beta_2 </span><span class="sc">\\</span><span class="st">neq 0$&quot;</span>, <span class="st">&quot;$H_1: </span><span class="sc">\\</span><span class="st">beta_3 </span><span class="sc">\\</span><span class="st">neq 0$&quot;</span>),</span>
+<span id="cb41-11"><a href="#cb41-11" tabindex="-1"></a>  <span class="st">`</span><span class="at">Nivel de significancia</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">rep</span>(<span class="st">&quot;0.05&quot;</span>, <span class="dv">3</span>),</span>
+<span id="cb41-12"><a href="#cb41-12" tabindex="-1"></a>  <span class="st">`</span><span class="at">Valor t</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(coeficientes[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">3</span>], <span class="dv">3</span>),</span>
+<span id="cb41-13"><a href="#cb41-13" tabindex="-1"></a>  <span class="at">gl =</span> <span class="fu">rep</span>(summary_resultado<span class="sc">$</span>df[<span class="dv">2</span>], <span class="dv">3</span>),</span>
+<span id="cb41-14"><a href="#cb41-14" tabindex="-1"></a>  <span class="st">`</span><span class="at">Valor p</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">format</span>(coeficientes[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">4</span>], <span class="at">scientific =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">3</span>),</span>
+<span id="cb41-15"><a href="#cb41-15" tabindex="-1"></a>  Comparación <span class="ot">=</span> <span class="fu">ifelse</span>(coeficientes[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">4</span>] <span class="sc">&lt;</span> alpha, <span class="st">&quot;Valor p &lt; α&quot;</span>, <span class="st">&quot;Valor p &gt; α&quot;</span>),</span>
+<span id="cb41-16"><a href="#cb41-16" tabindex="-1"></a>  Decisión <span class="ot">=</span> <span class="fu">ifelse</span>(coeficientes[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">4</span>] <span class="sc">&lt;</span> alpha, <span class="st">&quot;Rechazamos $H_0$&quot;</span>, <span class="st">&quot;No rechazamos $H_0$&quot;</span>)</span>
+<span id="cb41-17"><a href="#cb41-17" tabindex="-1"></a>)</span>
+<span id="cb41-18"><a href="#cb41-18" tabindex="-1"></a></span>
+<span id="cb41-19"><a href="#cb41-19" tabindex="-1"></a><span class="co"># Cambiar los nombres visibles de las columnas para la tabla</span></span>
+<span id="cb41-20"><a href="#cb41-20" tabindex="-1"></a><span class="fu">colnames</span>(hipotesis_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb41-21"><a href="#cb41-21" tabindex="-1"></a>  <span class="st">&quot;Variable&quot;</span>,</span>
+<span id="cb41-22"><a href="#cb41-22" tabindex="-1"></a>  <span class="st">&quot;Hipótesis nula&quot;</span>,</span>
+<span id="cb41-23"><a href="#cb41-23" tabindex="-1"></a>  <span class="st">&quot;Hipótesis alternativa&quot;</span>,</span>
+<span id="cb41-24"><a href="#cb41-24" tabindex="-1"></a>  <span class="st">&quot;Nivel de significancia&quot;</span>,</span>
+<span id="cb41-25"><a href="#cb41-25" tabindex="-1"></a>  <span class="st">&quot;Valor t&quot;</span>,</span>
+<span id="cb41-26"><a href="#cb41-26" tabindex="-1"></a>  <span class="st">&quot;gl&quot;</span>,</span>
+<span id="cb41-27"><a href="#cb41-27" tabindex="-1"></a>  <span class="st">&quot;Valor p&quot;</span>,</span>
+<span id="cb41-28"><a href="#cb41-28" tabindex="-1"></a>  <span class="st">&quot;Comparación&quot;</span>,</span>
+<span id="cb41-29"><a href="#cb41-29" tabindex="-1"></a>  <span class="st">&quot;Decisión&quot;</span></span>
+<span id="cb41-30"><a href="#cb41-30" tabindex="-1"></a>)</span>
+<span id="cb41-31"><a href="#cb41-31" tabindex="-1"></a></span>
+<span id="cb41-32"><a href="#cb41-32" tabindex="-1"></a>hipotesis_table <span class="sc">%&gt;%</span></span>
+<span id="cb41-33"><a href="#cb41-33" tabindex="-1"></a>  <span class="fu">kbl</span>(</span>
+<span id="cb41-34"><a href="#cb41-34" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&quot;html&quot;</span>,</span>
+<span id="cb41-35"><a href="#cb41-35" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Prueba de Hipótesis para las Variables Independientes del Modelo&quot;</span>,</span>
+<span id="cb41-36"><a href="#cb41-36" tabindex="-1"></a>    <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb41-37"><a href="#cb41-37" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb41-38"><a href="#cb41-38" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb41-39"><a href="#cb41-39" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb41-40"><a href="#cb41-40" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb41-41"><a href="#cb41-41" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>, <span class="st">&quot;bordered&quot;</span>),</span>
+<span id="cb41-42"><a href="#cb41-42" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb41-43"><a href="#cb41-43" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">&quot;center&quot;</span>,</span>
+<span id="cb41-44"><a href="#cb41-44" tabindex="-1"></a>    <span class="at">font_size =</span> <span class="dv">13</span></span>
+<span id="cb41-45"><a href="#cb41-45" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb41-46"><a href="#cb41-46" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">background =</span> <span class="st">&quot;#e0e0e0&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 13px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Prueba de Hipótesis para las Variables Independientes del Modelo
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Variable
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Hipótesis nula
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Hipótesis alternativa
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Nivel de significancia
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Valor t
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+gl
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Valor p
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Comparación
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Decisión
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+HIV/AIDS
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_0: \beta_1 = 0\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_1: \beta_1 \neq 0\)</span>
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+-3.996
+</td>
+<td style="text-align:center;">
+46
+</td>
+<td style="text-align:center;">
+2.31e-04
+</td>
+<td style="text-align:center;">
+Valor p &lt; α
+</td>
+<td style="text-align:center;">
+Rechazamos <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Income composition of resources
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_0: \beta_2 = 0\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_1: \beta_2 \neq 0\)</span>
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+11.694
+</td>
+<td style="text-align:center;">
+46
+</td>
+<td style="text-align:center;">
+2.23e-15
+</td>
+<td style="text-align:center;">
+Valor p &lt; α
+</td>
+<td style="text-align:center;">
+Rechazamos <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Adult Mortality
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_0: \beta_3 = 0\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_1: \beta_3 \neq 0\)</span>
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+-2.926
+</td>
+<td style="text-align:center;">
+46
+</td>
+<td style="text-align:center;">
+5.33e-03
+</td>
+<td style="text-align:center;">
+Valor p &lt; α
+</td>
+<td style="text-align:center;">
+Rechazamos <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Los resultados de la prueba de hipótesis individual para cada
+coeficiente de regresión permiten evaluar si cada variable explicativa
+tiene un efecto estadísticamente significativo sobre la variable
+dependiente Life expectancy. Para cada predictor, se plantea una
+hipótesis nula que afirma que su coeficiente es igual a cero (<span
+class="math inline">\(H_0: \beta_i = 0\)</span>), frente a una hipótesis
+alternativa que sostiene que es diferente de cero (<span
+class="math inline">\(H_1: \beta_i \ne 0\)</span>). El criterio de
+decisión se basa en comparar el valor p con un nivel de significancia
+<span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>Para la variable HIV/AIDS, el valor t es -3.996 y el valor p es
+2.31e-04, claramente menor a 0.05. Esto indica que el coeficiente es
+significativamente distinto de cero, por lo tanto, se rechaza la
+hipótesis nula. Se concluye que HIV/AIDS tiene un efecto
+estadísticamente significativo sobre la esperanza de vida, y la relación
+negativa del coeficiente confirma que a mayor prevalencia de VIH/SIDA,
+menor esperanza de vida.</p>
+<p>En el caso de Income composition of resources, el valor t es 11.694 y
+el valor p es 2.23e-15, un valor extremadamente bajo que refuerza su
+significancia estadística. Al ser mucho menor que 0.05, se rechaza
+también la hipótesis nula, lo cual confirma que esta variable tiene un
+efecto muy significativo sobre la esperanza de vida. Además, el signo
+positivo del coeficiente refuerza su interpretación como un factor que
+contribuye al aumento de la longevidad.</p>
+<p>Por su parte, Adult Mortality presenta un valor t de -2.926 y un
+valor p de 0.005325, también menor al umbral de 0.05. Esto lleva a
+rechazar la hipótesis nula y concluir que la mortalidad adulta tiene un
+efecto significativo sobre la esperanza de vida. Su coeficiente negativo
+indica que un aumento en la mortalidad adulta se asocia con una
+disminución en la esperanza de vida.</p>
+<p>En conjunto, estos resultados indican que todas las variables
+predictoras incluidas en el modelo son estadísticamente significativas
+de forma individual. Esto respalda su inclusión en el análisis y
+refuerza la validez del modelo propuesto con datos del año 2015.</p>
+</div>
+<div id="supuestos-del-modelo-de-regresión-lineal"
+class="section level2 tabset" number="4.7">
+<h2 class="tabset"><span class="header-section-number">4.7</span>
+Supuestos del modelo de regresión lineal</h2>
+<div id="linealidad" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Linealidad</h3>
+<p>Este supuesto establece que la relación entre cada variable
+independiente y la variable dependiente sea lineal, es decir, que ante
+cambios en cada variable independiente, la variable dependiente también
+cambie. Para la comprobación del cumplimiento de este supuesto, se
+procederá a emplear una gráfica de valores ajustados vs residuos y
+pruebas de hipótesis de Pearson para verificar la asociación lineal
+entre cada variable independiente y la pendiente.</p>
+<div id="gráfica-de-valores-ajustados-vs-residuos"
+class="section level4" number="4.7.1.1">
+<h4><span class="header-section-number">4.7.1.1</span> Gráfica de
+valores ajustados vs residuos</h4>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>fitted.values, modelo<span class="sc">$</span>residuals,</span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Residuos vs Valores Ajustados&quot;</span>,</span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valores Ajustados&quot;</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Residuos&quot;</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="about_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Como se observa, los residuos se distribuyen de forma relativamente
+aleatoria alrededor de la línea horizontal en cero, sin formar curvas ni
+estructuras definidas, lo que indica que la relación entre las variables
+independientes y la esperanza de vida es aproximadamente lineal. No se
+observa un patrón en forma de U o de campana que sugiera una relación no
+lineal, lo cual respalda que el modelo esté correctamente especificado
+en términos de forma funcional.</p>
+</div>
+<div id="prueba-de-hipótesis-de-pearson" class="section level4"
+number="4.7.1.2">
+<h4><span class="header-section-number">4.7.1.2</span> Prueba de
+hipótesis de Pearson</h4>
+<p>Se procederá a evaluar la existencia de una relación lineal entre
+cada variable independiente y la esperanza de vida mediante la prueba de
+correlación de Pearson:</p>
+<p><strong>1. Formulación de hipótesis</strong></p>
+<ul>
+<li><p><strong>(<span class="math inline">\(H_0\)</span>):</strong>
+<span class="math inline">\(\rho = 0\)</span><br />
+No existe asociación lineal entre la variable independiente y la
+variable dependiente.</p></li>
+<li><p><strong>(<span class="math inline">\(H_1\)</span>):</strong>
+<span class="math inline">\(\rho \neq 0\)</span><br />
+Existe asociación lineal entre la variable independiente y la variable
+dependiente.</p></li>
+</ul>
+<p><strong>2. Nivel de significancia</strong></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>3. Estadístico de prueba y valor_p</strong></p>
+<table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 13px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Prueba de Hipótesis para la Correlación de Pearson entre cada Variable
+Independiente y Life Expectancy
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Variable
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Hipótesis nula
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Hipótesis alternativa
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Nivel de significancia
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Valor t
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+gl
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Valor p
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Comparación
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(224, 224, 224, 255) !important;">
+Decisión
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+HIV/AIDS
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_0: \rho = 0\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_1: \rho \neq 0\)</span>
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+-36.236
+</td>
+<td style="text-align:center;">
+2926
+</td>
+<td style="text-align:center;">
+7.67e-238
+</td>
+<td style="text-align:center;">
+Valor p &lt; α
+</td>
+<td style="text-align:center;">
+Rechazamos <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Income composition of resources
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_0: \rho = 0\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_1: \rho \neq 0\)</span>
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+55.325
+</td>
+<td style="text-align:center;">
+2926
+</td>
+<td style="text-align:center;">
+0.00e+00
+</td>
+<td style="text-align:center;">
+Valor p &lt; α
+</td>
+<td style="text-align:center;">
+Rechazamos <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Adult Mortality
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_0: \rho = 0\)</span>
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(H_1: \rho \neq 0\)</span>
+</td>
+<td style="text-align:center;">
+0.05
+</td>
+<td style="text-align:center;">
+-52.485
+</td>
+<td style="text-align:center;">
+2926
+</td>
+<td style="text-align:center;">
+0.00e+00
+</td>
+<td style="text-align:center;">
+Valor p &lt; α
+</td>
+<td style="text-align:center;">
+Rechazamos <span class="math inline">\(H_0\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. Interpretación y conclusión</strong></p>
+<p>Los resultados de la prueba de correlación de Pearson muestran que
+existe <strong>una asociación lineal significativa</strong> entre cada
+una de las variables independientes analizadas (<em>HIV/AIDS</em>,
+<em>Income composition of resources</em> y <em>Adult Mortality</em>) y
+la variable dependiente <em>Life expectancy</em>. En todos los casos,
+los valores <span class="math inline">\(p\)</span> son extremadamente
+bajos y menores al nivel de significancia establecido de <span
+class="math inline">\(\alpha = 0.05\)</span> por lo que se
+<strong>rechaza la hipótesis nula</strong> de que no existe correlación
+lineal entre las variables.En consecuencia, se concluye que todas las
+variables predictoras del modelo tienen una relación lineal
+estadísticamente significativa con la esperanza de vida, lo que
+justifica su inclusión en el análisis de regresión realizado para el año
+2015 y refuerza su relevancia como factores explicativos del
+fenómeno.</p>
+</div>
+</div>
+<div id="normalidad" class="section level3" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Normalidad</h3>
+<p>Para validar el modelo de regresión lineal múltiple, es necesario
+comprobar que los residuos se distribuyen de forma aproximadamente
+normal. Este supuesto garantiza la validez de las inferencias
+estadísticas, como los intervalos de confianza y las pruebas de
+hipótesis aplicadas a los coeficientes. Para evaluar esta condición, se
+emplearán herramientas gráficas como el gráfico Q-Q (quantile-quantile
+plot) y una prueba estadística formal como lo es Shapiro Wilk, dado que
+estamos trabajando con una muestra igual a 50 observaciones.</p>
+<div id="gráfico-q-q-plot" class="section level4" number="4.7.2.1">
+<h4><span class="header-section-number">4.7.2.1</span> Gráfico Q-Q
+Plot</h4>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">resid</span>(modelo), </span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">&quot;Gráfico Q-Q de los Residuos&quot;</span>,</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>, </span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">resid</span>(modelo), </span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="about_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>En el gráfico Q-Q, la mayoría de los puntos se alinean bastante bien
+con la línea diagonal, lo que indica que los residuos del modelo siguen
+una distribución aproximadamente normal, especialmente en el rango
+central de los datos. Esta alineación es una buena señal, ya que
+respalda el cumplimiento del supuesto de normalidad en los errores. Sin
+embargo, se aprecian algunas desviaciones leves en las colas, donde los
+residuos más extremos se alejan ligeramente de la línea teórica. Esto
+podría deberse a la presencia de valores atípicos o a ligeras
+desviaciones respecto a la normalidad en los extremos. Para complementar
+esta evaluación visual, se aplicará la prueba de normalidad de
+Shapiro-Wilk con el fin de verificar de forma estadística si los
+residuos pueden considerarse normalmente distribuidos.</p>
+</div>
+<div id="shapiro-wilk" class="section level4" number="4.7.2.2">
+<h4><span class="header-section-number">4.7.2.2</span> Shapiro Wilk</h4>
+<p>Para verificar el cumplimiento del supuesto de normalidad de los
+errores del modelo de regresión, se aplicará la prueba de
+<strong>Shapiro-Wilk</strong>:</p>
+<p><strong>1. Formulación de hipótesis</strong></p>
+<ul>
+<li><p>Hipótesis nula (<span class="math inline">\(H_0\)</span>): Los
+residuos del modelo siguen una distribución normal.</p></li>
+<li><p>Hipótesis alternativa (<span class="math inline">\(H_1\)</span>):
+Los residuos del modelo no siguen una distribución normal.</p></li>
+</ul>
+<p><strong>2. Nivel de significancia</strong></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>3. Estadístico de prueba y valor_p</strong></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>residuos <span class="ot">&lt;-</span> <span class="fu">residuals</span>(modelo)</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a><span class="co"># Aplicar la prueba de Shapiro-Wilk</span></span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a><span class="fu">shapiro.test</span>(residuos)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuos
+## W = 0.97237, p-value = 0.2883</code></pre>
+<p><strong>4. Comparación e interpretación</strong></p>
+<p><span class="math display">\[
+p = 0.2883 &gt; \alpha = 0.05
+\]</span> El resultado de la prueba arroja un p-valor de 0.2883, el cual
+es mayor que el nivel de significación establecido (α = 0.05). Por
+tanto, no se rechaza la hipótesis nula (H₀), lo que indica que no hay
+evidencia suficiente para afirmar que los datos se desvían
+significativamente del supuesto planteado.</p>
+<p><strong>5. Conclusión</strong></p>
+<p>Si se establece un <strong>nivel de significancia de <span
+class="math inline">\(\alpha = 0.05\)</span></strong>, el resultado de
+la <strong>prueba de normalidad de Shapiro-Wilk</strong> aplicada a los
+residuos del modelo arroja un estadístico <span class="math inline">\(W
+= 0.9724\)</span> y un <strong>valor p = 0.2883</strong>. Dado que el
+valor p es <strong>mayor al nivel de significancia</strong>, <strong>no
+se rechaza la hipótesis nula</strong>, lo que indica que <strong>no hay
+evidencia estadística suficiente para afirmar que los residuos se
+desvían de una distribución normal</strong>. Este hallazgo es coherente
+con el gráfico Q-Q, donde los puntos siguen de forma razonable la línea
+diagonal. En conjunto, estos resultados sugieren que <strong>el supuesto
+de normalidad de los errores se cumple</strong>, respaldando la validez
+del modelo en este aspecto.</p>
+</div>
+</div>
+<div id="multicolinealidad" class="section level3" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span>
+Multicolinealidad</h3>
+<p>La multicolinealidad se presenta cuando algunas variables
+independientes del modelo están fuertemente relacionadas entre sí, lo
+que puede afectar la interpretación de los coeficientes y reducir la
+precisión de las estimaciones. Para verificar si existe este problema,
+se analizará la matriz de correlación entre las variables:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>variables_indep <span class="ot">&lt;-</span> datos[, <span class="fu">c</span>(<span class="st">&quot;HIV/AIDS&quot;</span>, <span class="st">&quot;Income composition of resources&quot;</span>, <span class="st">&quot;Adult Mortality&quot;</span>)]</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>correlaciones <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(variables_indep, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>), <span class="dv">3</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>correlaciones <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Matriz de Correlación entre las Variables&quot;</span>, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>), </span>
+<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb46-9"><a href="#cb46-9" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">&quot;center&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Matriz de Correlación entre las Variables
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+HIV/AIDS
+</th>
+<th style="text-align:center;">
+Income composition of resources
+</th>
+<th style="text-align:center;">
+Adult Mortality
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+HIV/AIDS
+</td>
+<td style="text-align:center;">
+1.000
+</td>
+<td style="text-align:center;">
+-0.249
+</td>
+<td style="text-align:center;">
+0.529
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Income composition of resources
+</td>
+<td style="text-align:center;">
+-0.249
+</td>
+<td style="text-align:center;">
+1.000
+</td>
+<td style="text-align:center;">
+-0.458
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adult Mortality
+</td>
+<td style="text-align:center;">
+0.529
+</td>
+<td style="text-align:center;">
+-0.458
+</td>
+<td style="text-align:center;">
+1.000
+</td>
+</tr>
+</tbody>
+</table>
+<p>La matriz de correlación evidencia que no existe una relación lineal
+fuerte entre las variables independientes, ya que todos los coeficientes
+se encuentran por debajo del umbral de ±0.7, lo cual descarta la
+presencia de multicolinealidad severa. La correlación entre
+<em>HIV/AIDS</em> e <em>Income composition of resources</em> es de
+-0.249, indicando una asociación débil y negativa. Entre
+<em>HIV/AIDS</em> y <em>Adult Mortality</em> se observa una relación
+moderada y positiva con un coeficiente de 0.529, mientras que <em>Income
+composition of resources</em> y <em>Adult Mortality</em> presentan una
+relación moderada y negativa de -0.458. Estas asociaciones, aunque
+presentes, no son lo suficientemente altas como para comprometer la
+independencia entre los predictores. Por tanto, puede asumirse que cada
+variable aporta valor único al modelo y sus efectos pueden interpretarse
+de manera confiable.</p>
+</div>
+<div id="autocorrelación-de-los-residuos" class="section level3"
+number="4.7.4">
+<h3><span class="header-section-number">4.7.4</span> Autocorrelación de
+los residuos</h3>
+<p>En los modelos de regresión lineal, uno de los supuestos
+fundamentales es que los residuos sean independientes entre sí. La
+autocorrelación ocurre cuando los errores están correlacionados, es
+decir, cuando el valor de un residuo depende del anterior. Este fenómeno
+puede generar estimaciones ineficientes y valores p poco confiables.
+Para evaluar este supuesto, se utiliza la prueba de Durbin-Watson:</p>
+<p><strong>1. Formulación de hipótesis</strong></p>
+<ul>
+<li><p><strong>Hipótesis nula (<span
+class="math inline">\(H_0\)</span>)</strong>: <span
+class="math inline">\(\rho = 0\)</span><br />
+No existe autocorrelación en los residuos del modelo.</p></li>
+<li><p><strong>Hipótesis alternativa (<span
+class="math inline">\(H_1\)</span>)</strong>: <span
+class="math inline">\(\rho \neq 0\)</span><br />
+Existe autocorrelación en los residuos del modelo.</p></li>
+</ul>
+<p><strong>2. Nivel de significancia</strong></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>3. Estadístico de prueba y valor_p</strong></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a><span class="co"># Prueba de Durbin-Watson al modelo</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
+<pre><code>## 
+##  Durbin-Watson test
+## 
+## data:  modelo
+## DW = 2.2727, p-value = 0.8361
+## alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+<p><strong>4. Comparación e interpretación</strong></p>
+<p><span class="math display">\[
+p = 0.8361 &gt; \alpha = 0.05
+\]</span> El resultado de la prueba arroja un p-valor de 0.8361, el cual
+es mayor que el nivel de significación establecido (α = 0.05). Por
+tanto, no se rechaza la hipótesis nula (H₀), lo que indica que no hay
+evidencia suficiente para afirmar que los datos se desvían
+significativamente del supuesto planteado.</p>
+<p><strong>5. Conclusión</strong></p>
+<p>El estadístico <strong>Durbin-Watson</strong> fue
+<strong>2.2727</strong> con un <strong>valor p = 0.8361</strong>. Como
+el valor p es mayor que el nivel de significancia <span
+class="math inline">\(\alpha = 0.05\)</span>, <strong>no se rechaza la
+hipótesis nula</strong>, lo que indica que <strong>no hay evidencia de
+autocorrelación positiva</strong> en los residuos. Además, el valor de
+DW está dentro del rango aceptable (entre 1.5 y 2.5), por lo que se
+considera que <strong>los errores del modelo son
+independientes</strong>. Esto es apropiado en este caso, ya que los
+datos provienen de distintos países en un solo año, y no se espera una
+relación temporal entre las observaciones.</p>
+</div>
+<div id="homocedasticidad" class="section level3" number="4.7.5">
+<h3><span class="header-section-number">4.7.5</span>
+Homocedasticidad</h3>
+<p>En un modelo de regresión, los errores deberían mantenerse con una
+dispersión similar en todos los niveles de los valores ajustados. Si
+esto no ocurre, se habla de heterocedasticidad, lo que puede afectar la
+confiabilidad del modelo. Por eso es importante verificar este supuesto
+con gráficos y pruebas como la de Breusch-Pagan:</p>
+<div id="gráfica-de-valores-ajustados-vs-residuos-1"
+class="section level4" number="4.7.5.1">
+<h4><span class="header-section-number">4.7.5.1</span> Gráfica de
+valores ajustados vs residuos**</h4>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>fitted.values, modelo<span class="sc">$</span>residuals,</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Residuos vs Valores Ajustados&quot;</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valores Ajustados&quot;</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Residuos&quot;</span>,</span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="about_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>En el gráfico no se observa una forma definida ni un patrón evidente
+en la dispersión de los residuos. Los puntos parecen distribuidos de
+manera irregular alrededor de la línea cero y la variación se mantiene
+más o menos constante en todo el rango de los valores ajustados, por lo
+que visualmente se podría aceptar que el modelo cumple con el supuesto
+de homocedasticidad.</p>
+</div>
+<div id="breusch-pagan" class="section level4" number="4.7.5.2">
+<h4><span class="header-section-number">4.7.5.2</span>
+Breusch-Pagan</h4>
+<p><strong>1. Formulación de hipótesis</strong></p>
+<ul>
+<li><p><strong>Hipótesis nula (<span
+class="math inline">\(H_0\)</span>)</strong>: Hay homocedasticidad<br />
+La varianza de los residuos del modelo es constante.</p></li>
+<li><p><strong>Hipótesis alternativa (<span
+class="math inline">\(H_1\)</span>)</strong>: Hay
+heterocedasticidad<br />
+La varianza de los residuos del modelo no es constante.</p></li>
+</ul>
+<p><strong>2. Nivel de significancia</strong></p>
+<p><span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>3. Estadístico de prueba y valor_p</strong></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="co"># Test de Breusch-Pagan</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="fu">bptest</span>(modelo)</span></code></pre></div>
+<pre><code>## 
+##  studentized Breusch-Pagan test
+## 
+## data:  modelo
+## BP = 5.0066, df = 3, p-value = 0.1713</code></pre>
+<p><strong>4. Comparación e interpretación</strong></p>
+<p><span class="math display">\[
+p = 0.8361 &gt; \alpha = 0.05
+\]</span></p>
+<p>El resultado de la prueba arroja un p-valor de 0.8361, el cual es
+mayor que el nivel de significación establecido (α = 0.05). Por tanto,
+no se rechaza la hipótesis nula (H₀), lo que indica que no hay evidencia
+suficiente para afirmar que los datos se desvían significativamente del
+supuesto planteado.</p>
+<p><strong>5. Conclusión</strong></p>
+<p>Al aplicar la prueba de Breusch-Pagan para evaluar la
+homocedasticidad de los residuos del modelo, se obtuvo un estadístico
+<span class="math inline">\(BP = 5.0066\)</span> con 3 grados de
+libertad y un valor p de 0.1713.Al tener un nivel de significancia de
+<span class="math inline">\(\alpha = 0.05\)</span>, este valor p es
+mayor al umbral, por lo tanto, no se rechaza la hipótesis nula de
+homocedasticidad. Esto indica que no hay evidencia estadística
+suficiente para afirmar que la varianza de los residuos no es constante,
+lo cual sugiere que el supuesto de homocedasticidad se cumple en el
+modelo, aportando mayor confianza en la validez de las inferencias
+realizadas.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="bibliografía" class="section level1 unnumbered">
+<h1 class="unnumbered">Bibliografía</h1>
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
+<div id="ref-box1964" class="csl-entry">
+Box, George E. P., and D. R. Cox. 1964. <span>“An Analysis of
+Transformations.”</span> <em>Journal of the Royal Statistical Society:
+Series B</em> 26 (2): 211–43.
+</div>
+<div id="ref-conover1999" class="csl-entry">
+Conover, W. J. 1999. <em>Practical Nonparametric Statistics</em>. Wiley.
+</div>
+<div id="ref-efron1993" class="csl-entry">
+Efron, Bradley, and Robert J. Tibshirani. 1993. <em>An Introduction to
+the Bootstrap</em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-huber2009" class="csl-entry">
+Huber, Peter J., and Elvezio M. Ronchetti. 2009. <em>Robust
+Statistics</em>. Wiley.
+</div>
+<div id="ref-osborne2010" class="csl-entry">
+Osborne, Jason W. 2010. <span>“Improving Your Data Transformations:
+Applying the Box-Cox Transformation.”</span> <em>Practical Assessment,
+Research, and Evaluation</em> 15 (12).
+</div>
+<div id="ref-siegel1988" class="csl-entry">
+Siegel, Sidney, and N. John Castellan. 1988. <em>Nonparametric
+Statistics for the Behavioral Sciences</em>. McGraw-Hill.
+</div>
+</div>
+</div>
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIk3DoXMgYWxsw6EgZGUgbGEgZGVzY3JpcGNpw7NuOiB1biBlbmZvcXVlIGluZmVyZW5jaWFsIHNvYnJlIGxhIGxvbmdldmlkYWQiDQpvdXRwdXQ6DQogIGh0bWxfZG9jdW1lbnQ6DQogICAgdG9jOiB0cnVlDQogICAgdG9jX2Zsb2F0Og0KICAgICAgY29sbGFwc2VkOiB0cnVlDQogICAgICBzbW9vdGhfc2Nyb2xsOiB0cnVlDQogICAgY29kZV9kb3dubG9hZDogdHJ1ZQ0KICAgIHRoZW1lOiBsdW1lbg0KICAgIG51bWJlcl9zZWN0aW9uczogdHJ1ZQ0KICAgIGNzczogc3R5bGVzLmNzcw0KYmlibGlvZ3JhcGh5OiAiYmlibGlvLmJpYiINCiMgY3NsOiBhcGEuY3NsLnR4dCAgDQotLS0NCg0KIyBJbnRlcnZhbG8gZGUgY29uZmlhbnphIHBhcmEgdW5hIHNvbGEgbXVlc3RyYSBwYXJhIGxhIGV4cGVjdGF0aXZhIGRlIHZpZGEgZW4gMjAxNQ0KDQpFbiBlc3R1ZGlvcyBkZSBzYWx1ZCBww7pibGljYSwgY2FsY3VsYXIgZWwgcHJvbWVkaW8gbXVlc3RyYWwgZGUgbGEgZXNwZXJhbnphIGRlIHZpZGEgcmVzdWx0YSDDunRpbCwgcGVybyBubyBzdWZpY2llbnRlIHBhcmEgaGFjZXIgaW5mZXJlbmNpYXMgc8OzbGlkYXMuIEVzdGltYXIgdW4gaW50ZXJ2YWxvIGRlIGNvbmZpYW56YSBkZWwgOTUlIHBhcmEgbGEgbWVkaWEgZGUgbGEgZXNwZXJhbnphIGRlIHZpZGEgZW4gMjAxNSBwZXJtaXRlIG5vIHNvbG8gY29ub2NlciBlc2UgdmFsb3IgY2VudHJhbCwgc2lubyB0YW1iacOpbiBlc3RhYmxlY2VyIHVuIHJhbmdvIGRlIHZhbG9yZXMgcGxhdXNpYmxlcyBlbiBlbCBxdWUgcHJvYmFibGVtZW50ZSBzZSBlbmN1ZW50cmEgbGEgbWVkaWEgcG9ibGFjaW9uYWwgcmVhbC4gQ29uIGxhIG11ZXN0cmEgc2VsZWNjaW9uYWRhIGRlIDUwIHBhw61zZXMsIGVzdGUgZW5mb3F1ZSByZXN1bHRhIGVzcGVjaWFsbWVudGUgcmVsZXZhbnRlLCB5YSBxdWUgaW5jb3Jwb3JhIGxhIGluY2VydGlkdW1icmUgbXVlc3RyYWwgeSByZWZ1ZXJ6YSBsYSB2YWxpZGV6IHkgZ2VuZXJhbGl6YWNpw7NuIGRlIGxvcyByZXN1bHRhZG9zLg0KDQpTaW4gZW1iYXJnbywgYW50ZXMgZGUgYXBsaWNhciBlbCBtw6l0b2RvIGNsw6FzaWNvIHBhcmEgY2FsY3VsYXIgdW4gaW50ZXJ2YWxvIGRlIGNvbmZpYW56YSBwYXJhIGxhIG1lZGlhLCBlcyBpbXBvcnRhbnRlIGNvbXByb2JhciBzaSBsYSBwb2JsYWNpw7NuIGRlIGxhIHF1ZSBwcm9jZWRlIGxhIG11ZXN0cmEgc2UgZGlzdHJpYnV5ZSBkZSBmb3JtYSBhcHJveGltYWRhbWVudGUgbm9ybWFsLCBwdWVzIGVzdGUgc3VwdWVzdG8gZ2FyYW50aXphIHF1ZSBlbCBpbnRlcnZhbG8gc2Vyw6EgZXN0YWTDrXN0aWNhbWVudGUgdsOhbGlkbywgZXNwZWNpYWxtZW50ZSBlbiBtdWVzdHJhcyBwZXF1ZcOxYXMuIEVuIGVzdGUgY2FzbywgYWwgY29udGFyIGNvbiB1bmEgbXVlc3RyYSBkZSB0YW1hw7FvIDUwLCBzZSBjb25zaWRlcmEgc3VmaWNpZW50ZW1lbnRlIGdyYW5kZSBwYXJhIHF1ZSwgc2Vnw7puIGVsIFRlb3JlbWEgQ2VudHJhbCBkZWwgTMOtbWl0ZSwgbGEgZGlzdHJpYnVjacOzbiBtdWVzdHJhbCBkZSBsYSBtZWRpYSB0aWVuZGEgYSBzZXIgbm9ybWFsLCBpbmNsdXNvIHNpIGxvcyBkYXRvcyBvcmlnaW5hbGVzIG5vIGxvIHNvbiBwZXJmZWN0YW1lbnRlLiBBdW4gYXPDrSwgcmVhbGl6YXIgdW5hIHBydWViYSBkZSBub3JtYWxpZGFkIHNvYnJlIGxvcyBkYXRvcyBlcyB1bmEgcHLDoWN0aWNhIHJlY29tZW5kYWJsZSBwYXJhIGNvbmZpcm1hciBxdWUgbm8gZXhpc3RlbiBkZXN2aWFjaW9uZXMgZ3JhdmVzIHF1ZSBpbnZhbGlkZW4gZWwgbW9kZWxvLg0KDQojIyBQcnVlYmEgZGUgbm9ybWFsaWRhZCBkZSBTaGFwaXJvLVdpbGsNCg0KIyMjIDEuIEZvcm11bGFjacOzbiBkZSBoaXDDs3Rlc2lzDQoNCkhpcMOzdGVzaXMgbnVsYSAo8J2Qu+KCgCk6TGEgcG9ibGFjacOzbiBzaWd1ZSB1bmEgZGlzdHJpYnVjacOzbiBub3JtYWwuDQoNCkhpcMOzdGVzaXMgYWx0ZXJuYXRpdmEgKPCdkLvigoEpIDpMYSBwb2JsYWNpw7NuIG5vIHNpZ3VlIHVuYSBkaXN0cmlidWNpw7NuIG5vcm1hbC4NCg0KIyMjIDIuIEZvcm11bGFjacOzbiBkZSBoaXDDs3Rlc2lzDQoNCk5pdmVsIGRlIHNpZ25pZmljYWNpw7NuOiDOsSA9IDAuMDUNCg0KIyMjIDMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmENCg0KYGBge3J9DQoNCmRhdG9zXzIwMTUgPC0gZGF0b3NfbGltcGlvcyAlPiUgZmlsdGVyKFllYXIgPT0gMjAxNSkNCg0KdmlkYV8yMDE1IDwtIGRhdG9zXzIwMTUkYExpZmUgZXhwZWN0YW5jeWANCg0Kbm9ybWFsaWRhZCA8LSBzaGFwaXJvLnRlc3QodmlkYV8yMDE1KQ0Kbm9ybWFsaWRhZCANCg0KYGBgDQoNCiMjIyA0LiBDb21wYXJhY2nDs24gZSBpbnRlcnByZXRhY2nDs24NCg0KJCQNCnAgPSAwLDAwMDEzMzIgPCBcYWxwaGEgPSAwLjA1IA0KJCQNCkRhZG8gcXVlIGVsIHAtdmFsb3IgZXMgbWVub3IgcXVlIGVsIG5pdmVsIGRlIHNpZ25pZmljYWNpw7NuICjOsSA9IDAuMDUpLCBzZSByZWNoYXphIGxhIGhpcMOzdGVzaXMgbnVsYSAoSOKCgCkuDQoNCiMjIyA1LiBDb25jbHVzacOzbiANCg0KRXhpc3RlIGV2aWRlbmNpYSBlc3RhZMOtc3RpY2FtZW50ZSBzaWduaWZpY2F0aXZhIHBhcmEgYWZpcm1hciBxdWUgbG9zIGRhdG9zIGRlIGVzcGVyYW56YSBkZSB2aWRhIGVuIDIwMTUgbm8gc2lndWVuIHVuYSBkaXN0cmlidWNpw7NuIG5vcm1hbCwgeWEgcXVlIGVsIHAtdmFsb3Igb2J0ZW5pZG8gKDAuMDAwMTMzMikgZXMgbWVub3IgcXVlIGVsIG5pdmVsIGRlIHNpZ25pZmljYWNpw7NuICjOsSA9IDAuMDUpLiBTaW4gZW1iYXJnbywgZGFkbyBxdWUgZWwgdGFtYcOxbyBkZSBsYSBtdWVzdHJhIGVzIG4gPSA1MCDiiaUgMzAsIHNlIHB1ZWRlIGludm9jYXIgZWwgVGVvcmVtYSBDZW50cmFsIGRlbCBMw61taXRlLCBlbCBjdWFsIGVzdGFibGVjZSBxdWUsIHBhcmEgbXVlc3RyYXMgbG8gc3VmaWNpZW50ZW1lbnRlIGdyYW5kZXMsIGxhIGRpc3RyaWJ1Y2nDs24gbXVlc3RyYWwgZGUgbGEgbWVkaWEgdGllbmRlIGEgbGEgbm9ybWFsaWRhZCwgaW5kZXBlbmRpZW50ZW1lbnRlIGRlIGxhIGZvcm1hIGRlIGxhIHBvYmxhY2nDs24gb3JpZ2luYWwuDQoNCg0KIyMgSW50ZXJ2YWxvIGRlIGNvbmZpYW56YSBkZWwgOTUlIGRlIHVuYSBtdWVzdHJhIA0KDQpFbiBlc3RlIGFuw6FsaXNpcyBzZSBoYSBzZWxlY2Npb25hZG8gbGEgdmFyaWFibGUgY3VhbnRpdGF0aXZhIExpZmUgZXhwZWN0YW5jeSAoZXNwZXJhbnphIGRlIHZpZGEpIGNvcnJlc3BvbmRpZW50ZSBhbCBhw7FvIDIwMTUsIHRvbWFuZG8gdW5hIG11ZXN0cmEgZGUgNTAgcGHDrXNlcyBkZWwgdG90YWwgZGlzcG9uaWJsZSBlbiBsYSBiYXNlIGRlIGRhdG9zLiBFbCBvYmpldGl2byBlcyBlc3RpbWFyLCBjb24gdW4gbml2ZWwgZGUgY29uZmlhbnphIGRlbCA5NSUsIGVsIHZhbG9yIG1lZGlvIHBvYmxhY2lvbmFsIGRlIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVuIGVzZSBhw7FvLiBDYWJlIG1lbmNpb25hciwgcXVlIGFsIHRyYXRhcnNlIGRlIHVuYSBtdWVzdHJhIHkgbm8gY29ub2NlcnNlIGxhIGRlc3ZpYWNpw7NuIGVzdMOhbmRhciBwb2JsYWNpb25hbCwgc2UgZW1wbGVhcsOhIGxhIGRlc3ZpYWNpw7NuIHTDrXBpY2EgbXVlc3RyYWwgY29tbyBlc3RpbWFkb3IsIHBvciBsbyBxdWUgc2UgcmVjdXJyaXLDoSBhbCB1c28gZGUgbGEgZGlzdHJpYnVjacOzbiB0IGRlIFN0dWRlbnQuDQoNCmBgYHtyfQ0KIyBFeHRyYWVyIGxhIHZhcmlhYmxlIGRlIGludGVyw6lzIGRlc2RlIGxhIG11ZXN0cmENCnZpZGFfbXVlc3RyYSA8LSBtdWVzdHJhX2ZpbmFsJGBMaWZlIGV4cGVjdGFuY3lgDQoNCiMgQ2FsY3VsYXIgdGFtYcOxbywgbWVkaWEsIGRlc3ZpYWNpw7NuIHkgZXJyb3IgZXN0w6FuZGFyDQpuIDwtIGxlbmd0aCh2aWRhX211ZXN0cmEpDQptZWRpYSA8LSBtZWFuKHZpZGFfbXVlc3RyYSkNCmRlc3YgPC0gc2QodmlkYV9tdWVzdHJhKQ0KZXJyb3IgPC0gZGVzdiAvIHNxcnQobikNCg0KIyBWYWxvciB0IGNyw610aWNvIChuaXZlbCBkZSBjb25maWFuemEgOTUlKQ0KdCA8LSBxdCgwLjk3NSwgZGYgPSBuIC0gMSkNCg0KIyBDYWxjdWxhciBpbnRlcnZhbG8NCmxpIDwtIG1lZGlhIC0gdCAqIGVycm9yDQpscyA8LSBtZWRpYSArIHQgKiBlcnJvcg0KDQojIE1vc3RyYXIgcmVzdWx0YWRvcyBkZSBmb3JtYSBzZW5jaWxsYQ0KY2F0KCJJbnRlcnZhbG8gZGUgY29uZmlhbnphIGRlbCA5NSUgcGFyYSBsYSBtZWRpYTpcbiIpDQpjYXQoc3ByaW50ZigiWyUuMmYsICUuMmZdXG4iLCBsaSwgbHMpKQ0KY2F0KHNwcmludGYoIk1lZGlhOiAlLjJmIHwgRXJyb3IgZXN0w6FuZGFyOiAlLjJmIHwgdCBjcsOtdGljbzogJS4zZlxuIiwgbWVkaWEsIGVycm9yLCB0KSkNCmBgYA0KDQpDb24gYmFzZSBlbiBsb3MgcmVzdWx0YWRvcyBvYnRlbmlkb3MsIHNlIGhhIGVzdGltYWRvIHVuIGludGVydmFsbyBkZSBjb25maWFuemEgZGVsIDk1JSBwYXJhIGxhIG1lZGlhIHBvYmxhY2lvbmFsIGRlIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVuIGVsIGHDsW8gMjAxNSwgcXVlIHNlIGVuY3VlbnRyYSBlbnRyZSA2OSw0NiB5IDc0LDAxIGHDsW9zLiBFcyBkZWNpcjogNjksNDYgPCDOvCA8IDc0LDAxIEVzdG8gaW5kaWNhIHF1ZSwgY29uIHVuIDk1JSBkZSBjb25maWFuemEsIHNlIHB1ZWRlIGFmaXJtYXIgcXVlIGxhIGVzcGVyYW56YSBkZSB2aWRhIG1lZGlhIGdsb2JhbCBlbiAyMDE1IHNlIHNpdMO6YSBkZW50cm8gZGUgZXNlIHJhbmdvLiBMYSBlc3RpbWFjacOzbiByZWZsZWphIHVuYSBtZWRpZGEgY2VudHJhbCBkZSBsb25nZXZpZGFkIHBhcmEgZXNlIGHDsW8geSBvZnJlY2UgdW4gdmFsb3IgZGUgcmVmZXJlbmNpYSDDunRpbCBwYXJhIGludGVycHJldGFyIGxhIHNpdHVhY2nDs24gZ2VuZXJhbCBkZSBzYWx1ZCBhIG5pdmVsIG11bmRpYWwgZW4gZXNlIHBlcmlvZG8uDQoNCiMgSW50ZXJ2YWxvIGRlIGNvbmZpYW56YSBwYXJhIGRvcyBtdWVzdHJhcyBjb24gcmVzcGVjdG8gYSBsYSB2YXJpYWJsZSBleHBlY3RhdGl2YSBkZSB2aWRhDQoNCkVuIGVzdGUgYXBhcnRhZG8gc2UgcHJldGVuZGUgY29tcGFyYXIgbGEgbWVkaWEgZGUgbGEgZXNwZXJhbnphIGRlIHZpZGEgZW50cmUgZG9zIGdydXBvcyBkZSBwYcOtc2VzIGNsYXNpZmljYWRvcyBzZWfDum4gc3UgZXN0YXR1cyBkZSBkZXNhcnJvbGxvOiBEZXZlbG9wZWQgeSBEZXZlbG9waW5nLiBFc3RhIHZhcmlhYmxlLCBjbGF2ZSBlbiBsb3MgZXN0dWRpb3MgZGUgc2FsdWQgcMO6YmxpY2EgeSBjYWxpZGFkIGRlIHZpZGEsIHB1ZWRlIHJlZmxlamFyIGltcG9ydGFudGVzIGRlc2lndWFsZGFkZXMgZXN0cnVjdHVyYWxlcyBhIG5pdmVsIGdsb2JhbC4gRWwgb2JqZXRpdm8gZXMgY29uc3RydWlyIHVuIGludGVydmFsbyBkZSBjb25maWFuemEgZGVsIDk1JSBwYXJhIGxhIGRpZmVyZW5jaWEgZGUgbWVkaWFzIGRlIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVudHJlIGFtYm9zIGdydXBvcyBlbiBlbCBhw7FvIDIwMTUsIHkgY29uIGVsbG8gZXN0aW1hciBlbiBxdcOpIG1lZGlkYSBsYSBjb25kaWNpw7NuIGRlIGRlc2Fycm9sbG8gZXN0w6EgYXNvY2lhZGEgYSB1bmEgbWF5b3IgbyBtZW5vciBsb25nZXZpZGFkIG1lZGlhLiBTaW4gZW1iYXJnbywgYW50ZXMgZGUgcmVhbGl6YXIgZWwgYW7DoWxpc2lzLCBlcyBuZWNlc2FyaW8gdmVyaWZpY2FyIHNpIHNlIGN1bXBsZW4gbG9zIHN1cHVlc3RvcyBlc3RhZMOtc3RpY29zIHF1ZSBqdXN0aWZpY2FuIGVsIHVzbyBkZSBtw6l0b2RvcyBwYXJhbcOpdHJpY29zOg0KDQoxLiBMYSBub3JtYWxpZGFkIGRlIGxvcyBkYXRvcyBkZW50cm8gZGUgY2FkYSBncnVwby4NCg0KMi4gTGEgaWd1YWxkYWQgbyBkZXNpZ3VhbGRhZCBkZSB2YXJpYW56YXMgZW50cmUgbGFzIGRvcyBwb2JsYWNpb25lcy4NCg0KIyMgUHJ1ZWJhIGRlIG5vcm1hbGlkYWQgcGFyYSBwYWlzZXMgZW4gZGVzYXJyb2xsbyB5IGRlc2Fycm9sbGFkb3MNCg0KIyMjIDEuIEZvcm11bGFjacOzbiBkZSBoaXDDs3Rlc2lzDQoNCkhpcMOzdGVzaXMgbnVsYSAo8J2Qu+KCgCk6TGEgcG9ibGFjacOzbiBzaWd1ZSB1bmEgZGlzdHJpYnVjacOzbiBub3JtYWwuDQoNCkhpcMOzdGVzaXMgYWx0ZXJuYXRpdmEgKPCdkLvigoEpIDpMYSBwb2JsYWNpw7NuIG5vIHNpZ3VlIHVuYSBkaXN0cmlidWNpw7NuIG5vcm1hbC4NCg0KIyMjIDIuIEZvcm11bGFjacOzbiBkZSBoaXDDs3Rlc2lzDQoNCk5pdmVsIGRlIHNpZ25pZmljYWNpw7NuOiDOsSA9IDAuMDUNCg0KIyMjIDMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmENCg0KYGBge3J9DQpkYXRvc18yMDE1IDwtIGRhdG9zX2xpbXBpb3MgJT4lIA0KICBmaWx0ZXIoWWVhciA9PSAyMDE1KQ0KDQpncnVwbzEgPC0gZGF0b3NfMjAxNSAlPiUgZmlsdGVyKFN0YXR1cyA9PSAiRGV2ZWxvcGVkIikgJT4lIHB1bGwoYExpZmUgZXhwZWN0YW5jeWApDQpncnVwbzIgPC0gZGF0b3NfMjAxNSAlPiUgZmlsdGVyKFN0YXR1cyA9PSAiRGV2ZWxvcGluZyIpICU+JSBwdWxsKGBMaWZlIGV4cGVjdGFuY3lgKQ0KDQpzaGFwaXJvLnRlc3QoZ3J1cG8xKSAgIyBEZXZlbG9wZWQNCnNoYXBpcm8udGVzdChncnVwbzIpICAjIERldmVsb3BpbmcNCmBgYA0KDQojIyMgNC4gQ29tcGFyYWNpw7NuIGUgaW50ZXJwcmV0YWNpw7NuDQoNCi0gR3J1cG8gMSAtIERldmVsb3BlZDoNCnAgPSAwLjA1NjQ4ID4gzrEgPSAwLjA1IOKGkiBObyBzZSByZWNoYXphIEjigoA6IHNlIGFzdW1lIG5vcm1hbGlkYWQuDQoNCi0gR3J1cG8gMiAtIERldmVsb3Bpbmc6DQpwID0gMC4wMDAxNzI2IDwgzrEgPSAwLjA1IOKGkiBTZSByZWNoYXphIEjigoA6IG5vIHNlIHB1ZWRlIGFzdW1pciBub3JtYWxpZGFkLg0KDQojIyMgNS4gQ29uY2x1c2nDs24NCg0KVHJhcyBhcGxpY2FyIGxhIHBydWViYSBkZSBub3JtYWxpZGFkIGRlIFNoYXBpcm8tV2lsayBhIGxvcyBkb3MgZ3J1cG9zIGRlZmluaWRvcyBwb3IgZWwgZXN0YXR1cyBkZSBkZXNhcnJvbGxvLCBzZSBvYnR1dmllcm9uIHJlc3VsdGFkb3MgZGlmZXJlbmNpYWRvcy4NCkVuIGVsIGdydXBvIGRlIHBhw61zZXMgZGVzYXJyb2xsYWRvcyAoRGV2ZWxvcGVkKSwgZWwgdmFsb3IgcCBmdWUgZGUgMC4wNTY0OCwgc3VwZXJpb3IgYWwgbml2ZWwgZGUgc2lnbmlmaWNhY2nDs24gzrEgPSAwLjA1LCBwb3IgbG8gcXVlIG5vIHNlIHJlY2hhemEgbGEgaGlww7N0ZXNpcyBudWxhIGRlIG5vcm1hbGlkYWQsIGxvIGN1YWwgaW5kaWNhIHF1ZSBsb3MgZGF0b3MgZGUgZXNwZXJhbnphIGRlIHZpZGEgZW4gZXN0ZSBncnVwbyBwdWVkZW4gY29uc2lkZXJhcnNlIG5vcm1hbG1lbnRlIGRpc3RyaWJ1aWRvcy4NCg0KRW4gY2FtYmlvLCBwYXJhIGVsIGdydXBvIGRlIHBhw61zZXMgZW4gZGVzYXJyb2xsbyAoRGV2ZWxvcGluZyksIGVsIHZhbG9yIHAgZnVlIGRlIDAuMDAwMTcyNiwgaW5mZXJpb3IgYSDOsSA9IDAuMDUsIGxvIHF1ZSBsbGV2YSBhIHJlY2hhemFyIGxhIGhpcMOzdGVzaXMgbnVsYS4gUG9yIHRhbnRvLCBzZSBjb25jbHV5ZSBxdWUgbG9zIGRhdG9zIGRlIGVzcGVyYW56YSBkZSB2aWRhIGVuIGVzdGUgZ3J1cG8gbm8gc2UgZGlzdHJpYnV5ZW4gbm9ybWFsbWVudGUuU2luIGVtYmFyZ28sIGNvbmZvcm1lIGFsIHJlc3VsdGFkbyBkZWwgY2h1bmNrIHBvc3RlcmlvciwgYXVucXVlIGxhIHBydWViYSBkZSBTaGFwaXJvLVdpbGsgaW5kaWPDsyBxdWUgbGEgdmFyaWFibGUgJ0xpZmUgZXhwZWN0YW5jeScgZW4gZWwgZ3J1cG8gZGUgcGHDrXNlcyBlbiBkZXNhcnJvbGxvIChEZXZlbG9waW5nKSBubyBzaWd1ZSB1bmEgZGlzdHJpYnVjacOzbiBub3JtYWwgKHAgPSAwLjAwMDE3MjYgPCAwLjA1KSxlbCB0YW1hw7FvIG11ZXN0cmFsIGRlIGVzdGUgZ3J1cG8gZXMgZGUgMzkgb2JzZXJ2YWNpb25lcywgcG9yIGxvIHF1ZSBjb24gYmFzZSBhbCBUZW9yZW1hIENlbnRyYWwgZGVsIEzDrW1pdGUsIHNlIGNvbnNpZGVyYSByYXpvbmFibGUgYXN1bWlyIHF1ZSBsYSBkaXN0cmlidWNpw7NuIGRlIGxhIG1lZGlhIG11ZXN0cmFsIHNlIGFwcm94aW1hIGEgdW5hIG5vcm1hbC4gIA0KDQpgYGB7cn0NCm5fZGV2ZWxvcGluZ19tdWVzdHJhIDwtIG11ZXN0cmFfZmluYWwgJT4lDQogIGZpbHRlcihTdGF0dXMgPT0gIkRldmVsb3BpbmciKSAlPiUNCiAgbnJvdygpDQoNCmNhdCgiVGFtYcOxbyBkZSBsYSBtdWVzdHJhIHBhcmEgcGHDrXNlcyBlbiBkZXNhcnJvbGxvIChkZW50cm8gZGUgbGEgbXVlc3RyYSk6Iiwgbl9kZXZlbG9waW5nX211ZXN0cmEsICJvYnNlcnZhY2lvbmVzXG4iKQ0KYGBgDQoNCiMjIERpZmVyZW5jaWEgZGUgdmFyaWFuemFzIA0KDQpgYGB7cn0NCnZhci50ZXN0KGdydXBvMSwgZ3J1cG8yKQ0KYGBgDQoNCkludGVydmFsbyBkZSBjb25maWFuemEgZGVsIDk1JSBwYXJhIGVsIGNvY2llbnRlIGRlIHZhcmlhbnphczoNCg0KICAgICAgICAgICAwLDEyODYgPCDPg8KyX0RldmVsb3BlZCAvIM+DwrJfRGV2ZWxvcGluZyA8IDAsMzkwMw0KICAgICAgICAgICANCkNvbW8gZWwgdmFsb3IgMSBubyBzZSBlbmN1ZW50cmEgZGVudHJvIGRlbCBpbnRlcnZhbG8gZGUgY29uZmlhbnphLCBzZSByZWNoYXphIGxhIGhpcMOzdGVzaXMgbnVsYSBkZSBpZ3VhbGRhZCBkZSB2YXJpYW56YXMuUG9yIHRhbnRvLCBzZSBjb25jbHV5ZSBxdWUgbGFzIHZhcmlhbnphcyBkZSBhbWJvcyBncnVwb3Mgc29uIHNpZ25pZmljYXRpdmFtZW50ZSBkaWZlcmVudGVzLHkgc2UgZGViZSBhcGxpY2FyIGVsIHQtdGVzdCBjb24gdmFyaWFuemFzIGRlc2lndWFsZXMuDQoNCiMjIEludGVydmFsbyBkZSBjb25maWFuemEgZGVsIDk1JSBkZSBkb3MgbXVlc3RyYXMgDQoNCmBgYHtyfQ0KIyBGaWx0cmFyIGRhdG9zIGRlbCBhw7FvIDIwMTUNCmRhdG9zXzIwMTUgPC0gZGF0b3NfbGltcGlvcyAlPiUNCiAgZmlsdGVyKFllYXIgPT0gMjAxNSkNCg0KIyBFeHRyYWVyIGxhIHZhcmlhYmxlIHBhcmEgY2FkYSBncnVwbw0KZ3J1cG9fZGVzYXJyb2xsYWRvIDwtIGRhdG9zXzIwMTUgJT4lDQogIGZpbHRlcihTdGF0dXMgPT0gIkRldmVsb3BlZCIpICU+JQ0KICBwdWxsKGBMaWZlIGV4cGVjdGFuY3lgKQ0KDQpncnVwb19kZXNhcnJvbGxvIDwtIGRhdG9zXzIwMTUgJT4lDQogIGZpbHRlcihTdGF0dXMgPT0gIkRldmVsb3BpbmciKSAlPiUNCiAgcHVsbChgTGlmZSBleHBlY3RhbmN5YCkNCiMgUHJ1ZWJhIHQgY29uIHZhcmlhbnphcyBkZXNpZ3VhbGVzDQpyZXN1bHRhZG9faWMgPC0gdC50ZXN0KGdydXBvX2Rlc2Fycm9sbGFkbywgZ3J1cG9fZGVzYXJyb2xsbywNCiAgICAgICAgICAgICAgICAgICAgICAgYWx0ZXJuYXRpdmUgPSAidHdvLnNpZGVkIiwNCiAgICAgICAgICAgICAgICAgICAgICAgdmFyLmVxdWFsID0gRkFMU0UsDQogICAgICAgICAgICAgICAgICAgICAgIGNvbmYubGV2ZWwgPSAwLjk1KQ0KIyBFeHRyYWVyIGludGVydmFsbyB5IGRpZmVyZW5jaWENCmxpbV9pbmYgPC0gcmVzdWx0YWRvX2ljJGNvbmYuaW50WzFdDQpsaW1fc3VwIDwtIHJlc3VsdGFkb19pYyRjb25mLmludFsyXQ0KZGlmZXJlbmNpYV9tZWRpYSA8LSByZXN1bHRhZG9faWMkZXN0aW1hdGVbMV0gLSByZXN1bHRhZG9faWMkZXN0aW1hdGVbMl0NCg0KY2F0KCJJbnRlcnZhbG8gZGUgY29uZmlhbnphIGRlbCA5NSUgcGFyYSBsYSBkaWZlcmVuY2lhIGRlIG1lZGlhczpcbiIpDQpjYXQoc3ByaW50ZigiICAgICAgICAgICAlLjJmIDwgzrxfRGV2ZWxvcGVkIC0gzrxfRGV2ZWxvcGluZyA8ICUuMmZcblxuIiwgbGltX2luZiwgbGltX3N1cCkpDQpjYXQoc3ByaW50ZigiRGlmZXJlbmNpYSBtZWRpYSBlc3RpbWFkYTogJS4yZiBhw7Fvc1xuIiwgZGlmZXJlbmNpYV9tZWRpYSkpDQpgYGANCg0KRWwgYW7DoWxpc2lzIGRlbCBpbnRlcnZhbG8gZGUgY29uZmlhbnphIGRlbCA5NSUgcGFyYSBsYSBkaWZlcmVuY2lhIGRlIG1lZGlhcyBlbnRyZSBsb3MgcGHDrXNlcyBkZXNhcnJvbGxhZG9zIHkgZW4gZGVzYXJyb2xsbyBtdWVzdHJhIHVuYSBkaWZlcmVuY2lhIHNpZ25pZmljYXRpdmEgZW4gbGEgZXNwZXJhbnphIGRlIHZpZGEuIEVsIGludGVydmFsbyBjYWxjdWxhZG8gZW50cmUgOSwzMSB5IDEyLDczIGHDsW9zIGluZGljYSBxdWUsIGNvbiB1biBhbHRvIG5pdmVsIGRlIGNlcnRlemEsIGxvcyBwYcOtc2VzIGRlc2Fycm9sbGFkb3MgcHJlc2VudGFuIHVuYSBlc3BlcmFuemEgZGUgdmlkYSBjb25zaWRlcmFibGVtZW50ZSBzdXBlcmlvciByZXNwZWN0byBhIGxvcyBwYcOtc2VzIGVuIGRlc2Fycm9sbG8uDQoNCkVuIGNvbmNyZXRvLCBsYSBkaWZlcmVuY2lhIG1lZGlhIGVzdGltYWRhIGVzIGRlIDExLDAyIGHDsW9zLCBsbyBxdWUgc2lnbmlmaWNhIHF1ZSwgZW4gcHJvbWVkaW8sIGxhcyBwZXJzb25hcyBxdWUgdml2ZW4gZW4gcGHDrXNlcyBkZXNhcnJvbGxhZG9zIHB1ZWRlbiBlc3BlcmFyIHZpdmlyIG3DoXMgZGUgdW5hIGTDqWNhZGEgbcOhcyBxdWUgcXVpZW5lcyByZXNpZGVuIGVuIHBhw61zZXMgZW4gZGVzYXJyb2xsby4gRXN0ZSBkYXRvIG5vIHNvbG8gZXMgZXN0YWTDrXN0aWNhbWVudGUgc2lnbmlmaWNhdGl2bywgc2lubyBxdWUgdGFtYmnDqW4gdGllbmUgdW5hIGdyYW4gcmVsZXZhbmNpYSBwcsOhY3RpY2EgeSBzb2NpYWwsIHlhIHF1ZSByZWZsZWphIHByb2Z1bmRhcyBkaWZlcmVuY2lhcyBlc3RydWN0dXJhbGVzIGVuIHTDqXJtaW5vcyBkZSBjYWxpZGFkIGRlIHZpZGEsIGFjY2VzbyBhIHJlY3Vyc29zIHNhbml0YXJpb3MsIGNvbmRpY2lvbmVzIGFtYmllbnRhbGVzLCBlZHVjYWNpw7NuIHkgZXN0YWJpbGlkYWQgZWNvbsOzbWljYS4NCg0KRWwgaGVjaG8gZGUgcXVlIGVsIGludGVydmFsbyBubyBjb250ZW5nYSBlbCB2YWxvciBjZXJvIGNvbmZpcm1hIHF1ZSBsYSBkaWZlcmVuY2lhIG5vIGVzIHByb2R1Y3RvIGRlbCBhemFyLiBQb3IgdGFudG8sIHBvZGVtb3MgYWZpcm1hciBjb24gZXZpZGVuY2lhIGVzdGFkw61zdGljYSBxdWUgZWwgZXN0YXR1cyBkZSBkZXNhcnJvbGxvIGVzdMOhIGNsYXJhbWVudGUgYXNvY2lhZG8gYSB1bmEgbWF5b3IgbG9uZ2V2aWRhZC4gRW4gbG9zIHBhw61zZXMgZGVzYXJyb2xsYWRvcywgbGEgZXNwZXJhbnphIGRlIHZpZGEgdGllbmRlIGEgc2VyIG3DoXMgYWx0YSBncmFjaWFzIGEgc2lzdGVtYXMgZGUgc2FsdWQgbcOhcyByb2J1c3RvcywgbWVqb3JlcyBjb25kaWNpb25lcyBkZSB2aWRhIHkgbWF5b3IgcHJldmVuY2nDs24gZGUgZW5mZXJtZWRhZGVzLCBlbnRyZSBvdHJvcyBmYWN0b3Jlcy4gUG9yIGVsIGNvbnRyYXJpbywgZW4gbXVjaG9zIHBhw61zZXMgZW4gZGVzYXJyb2xsbyBwZXJzaXN0ZW4gZGVzYWbDrW9zIGVzdHJ1Y3R1cmFsZXMgcXVlIGxpbWl0YW4gZWwgYWNjZXNvIGEgc2VydmljaW9zIGVzZW5jaWFsZXMsIGxvIHF1ZSBzZSB0cmFkdWNlIGVuIHVuYSBtZW5vciBlc3BlcmFuemEgZGUgdmlkYS4NCg0KIyBSZWNvbWVuZGFjaW9uZXMgYW50ZSBubyBub3JtYWxpZGFkIGRlIGxhIHBvYmxhY2nDs24gDQoNCkN1YW5kbyBsb3MgZGF0b3Mgbm8gY3VtcGxlbiBlbCBzdXB1ZXN0byBkZSBub3JtYWxpZGFkLCBjb21vIG9jdXJyacOzIGVuIGFsZ3Vub3MgY2Fzb3MgZGVsIHByZXNlbnRlIGFuw6FsaXNpcywgZXMgZnVuZGFtZW50YWwgY29uc2lkZXJhciBhbHRlcm5hdGl2YXMgbWV0b2RvbMOzZ2ljYXMgcXVlIHNlIGFkYXB0ZW4gbWVqb3IgYSBsYSBlc3RydWN0dXJhIHJlYWwgZGUgbGEgaW5mb3JtYWNpw7NuLiBVbmEgZGUgbGFzIHByaW1lcmFzIG9wY2lvbmVzIGVzIGVsIHVzbyBkZSBwcnVlYmFzIG5vIHBhcmFtw6l0cmljYXMsIHF1ZSBwZXJtaXRlbiByZWFsaXphciBjb21wYXJhY2lvbmVzIG8gY29udHJhc3RlcyBzaW4gYXN1bWlyIHF1ZSBsb3MgZGF0b3Mgc2lndWVuIHVuYSBkaXN0cmlidWNpw7NuIG5vcm1hbC4gRXN0YXMgcHJ1ZWJhcyBzb24gZXNwZWNpYWxtZW50ZSDDunRpbGVzIGNvbiBtdWVzdHJhcyBwZXF1ZcOxYXMgbyBjdWFuZG8gZXhpc3RlbiB2YWxvcmVzIGF0w61waWNvcy4gUG9yIGVqZW1wbG8sIGxhIHBydWViYSBkZSBNYW5u4oCTV2hpdG5leSBVIHBlcm1pdGUgY29tcGFyYXIgZG9zIGdydXBvcyBpbmRlcGVuZGllbnRlcyBzaW4gbmVjZXNpZGFkIGRlIHN1cG9uZXIgbm9ybWFsaWRhZCBuaSBpZ3VhbGRhZCBkZSB2YXJpYW56YXMsIHNpZW5kbyBhcHJvcGlhZGEgcGFyYSB2YXJpYWJsZXMgY29tbyBsYSBlc3BlcmFuemEgZGUgdmlkYSBzZWfDum4gZWwgbml2ZWwgZGUgZGVzYXJyb2xsby4gTGEgcHJ1ZWJhIGRlIEtvbG1vZ29yb3bigJNTbWlybm92LCBwb3Igc3UgcGFydGUsIHBlcm1pdGUgY29tcGFyYXIgZG9zIGRpc3RyaWJ1Y2lvbmVzIGNvbXBsZXRhcyBvIGV2YWx1YXIgZWwgYWp1c3RlIGEgdW5hIGRpc3RyaWJ1Y2nDs24gdGXDs3JpY2EsIG1pZW50cmFzIHF1ZSBsYSBwcnVlYmEgZGUgRnJpZWRtYW4gc2UgdXRpbGl6YSBlbiBjb250ZXh0b3MgZGUgbWVkaWRhcyByZXBldGlkYXMgbyBjb21wYXJhY2lvbmVzIGVudHJlIG3DoXMgZGUgZG9zIGNvbmRpY2lvbmVzIGRlbnRybyBkZWwgbWlzbW8gZ3J1cG8gW0BzaWVnZWwxOTg4OyBAY29ub3ZlcjE5OTldLg0KDQpPdHJhIGVzdHJhdGVnaWEgZXMgYXBsaWNhciB0cmFuc2Zvcm1hY2lvbmVzIGEgbG9zIGRhdG9zIGNvbiBlbCBmaW4gZGUgcmVkdWNpciBsYSBhc2ltZXRyw61hIHkgbWVqb3JhciBlbCBhanVzdGUgYSBsYSBub3JtYWxpZGFkLiBMYSB0cmFuc2Zvcm1hY2nDs24gbG9nYXLDrXRtaWNhIGVzIGVzcGVjaWFsbWVudGUgw7p0aWwgcGFyYSB2YXJpYWJsZXMgc2VzZ2FkYXMgYSBsYSBkZXJlY2hhLCBjb21vIGluZ3Jlc29zIG8gZ2FzdG8gZW4gc2FsdWQuIExhIHJhw616IGN1YWRyYWRhIHB1ZWRlIHV0aWxpemFyc2UgY29uIGRhdG9zIGRlIGNvbnRlbyBvIHRhc2FzLCBheXVkYW5kbyBhIGVzdGFiaWxpemFyIGxhIHZhcmlhbnphLiBBZGVtw6FzLCBsYSB0cmFuc2Zvcm1hY2nDs24gQm944oCTQ294IHJlcHJlc2VudGEgdW5hIGFsdGVybmF0aXZhIG3DoXMgZmxleGlibGUsIHlhIHF1ZSBlc3RpbWEgYXV0b23DoXRpY2FtZW50ZSBlbCB0aXBvIGRlIHRyYW5zZm9ybWFjacOzbiBtw6FzIGFkZWN1YWRhIHBhcmEgYWNlcmNhciBsYSBkaXN0cmlidWNpw7NuIGEgbGEgbm9ybWFsaWRhZCwgaW5jbHVzbyBjdWFuZG8gbm8gZXMgZXZpZGVudGUgcXXDqSBtw6l0b2RvIGFwbGljYXIgW0Bib3gxOTY0OyBAb3Nib3JuZTIwMTBdLg0KDQpBZGVtw6FzIGRlIGVzdGFzIG9wY2lvbmVzLCBleGlzdGVuIGVuZm9xdWVzIHJvYnVzdG9zIHkgZW1ww61yaWNvcyBxdWUgbm8gZGVwZW5kZW4gZGUgc3VwdWVzdG9zIGZ1ZXJ0ZXMgc29icmUgbGEgZGlzdHJpYnVjacOzbiBkZSBsb3MgZGF0b3MuIFVubyBkZSBsb3MgbcOhcyBkZXN0YWNhZG9zIGVzIGVsIG3DqXRvZG8gYm9vdHN0cmFwLCBxdWUgcGVybWl0ZSBlc3RpbWFyIGludGVydmFsb3MgZGUgY29uZmlhbnphIGdlbmVyYW5kbyBtw7psdGlwbGVzIG11ZXN0cmFzIGNvbiByZWVtcGxhem8gYSBwYXJ0aXIgZGUgbGEgbXVlc3RyYSBvcmlnaW5hbC4gQSBwYXJ0aXIgZGUgZXNhcyByZS1tdWVzdHJhcyBzZSBjYWxjdWxhIGVtcMOtcmljYW1lbnRlIGxhIGRpc3RyaWJ1Y2nDs24gZGVsIGVzdGFkw61zdGljbyBkZSBpbnRlcsOpcyAobWVkaWEsIG1lZGlhbmEsIGV0Yy4pLCBzaW4gcmVxdWVyaXIgbm9ybWFsaWRhZC4gRXN0byBsbyBjb252aWVydGUgZW4gdW5hIGhlcnJhbWllbnRhIHZlcnPDoXRpbCB5IHBvZGVyb3NhLCBlc3BlY2lhbG1lbnRlIGVuIGNvbnRleHRvcyBjb24gYWx0YSB2YXJpYWJpbGlkYWQgbyBlc3RydWN0dXJhIGRlc2Nvbm9jaWRhIFtAZWZyb24xOTkzXS4gRW4gZWwgY2FzbyBkZSBtb2RlbG9zIGRlIHJlZ3Jlc2nDs24sIHRhbWJpw6luIHB1ZWRlbiBlbXBsZWFyc2UgbW9kZWxvcyByb2J1c3RvcywgY29tbyBsYSByZWdyZXNpw7NuIE0gbyBsYSByZWdyZXNpw7NuIGN1YW50w61saWNhLCBsb3MgY3VhbGVzIHRvbGVyYW4gbWVqb3IgbGEgcHJlc2VuY2lhIGRlIHZhbG9yZXMgYXTDrXBpY29zIHkgZXJyb3JlcyBubyBub3JtYWxlcyBxdWUgbGEgcmVncmVzacOzbiBsaW5lYWwgY2zDoXNpY2EgW0BodWJlcjIwMDldLg0KDQojIE1vZGVsbyBkZSByZWdyZXNpw7NuIGxpbmVhbCBtw7psdGlwbGU6IGVmZWN0byBjb25qdW50byBkZSB2YXJpYWJsZXMgc2VsZWNjaW9uYWRhcw0KDQojIyBJZGVudGlmaWNhY2nDs24gZGUgbGEgdmFyaWFibGUgZGVwZW5kaWVudGUgeSBkZSBsYXMgaW5kZXBlbmRpZW50ZXMNCg0KRW4gZWwgcHJlc2VudGUgbW9kZWxvIGRlIHJlZ3Jlc2nDs24gbGluZWFsIG3Dumx0aXBsZSwgc2UgYnVzY2EgZXhwbGljYXIgbGEgZXNwZXJhbnphIGRlIHZpZGEgKExpZmUgZXhwZWN0YW5jeSkgZHVyYW50ZSBlbCAyMDE1LCBhIHBhcnRpciBkZSB1biBjb25qdW50byBkZSBmYWN0b3JlcyBlc3RydWN0dXJhbGVzIHByZXZpYW1lbnRlIHNlbGVjY2lvbmFkb3MgcG9yIHN1IHJlbGV2YW5jaWEgdGXDs3JpY2EgeSBlbXDDrXJpY2EuIFBvciB0YW50bywgbGFzIHZhcmlhYmxlcyBkZWwgbW9kZWxvIHNlIGNsYXNpZmljYW4gZGUgbGEgc2lndWllbnRlIG1hbmVyYToNCg0KVmFyaWFibGUgZGVwZW5kaWVudGUgKHJlc3B1ZXN0YSk6DQoNCi0gKipMaWZlIGV4cGVjdGFuY3k6KiogcmVwcmVzZW50YSBlbCBuw7ptZXJvIHByb21lZGlvIGRlIGHDsW9zIHF1ZSB1bmEgcGVyc29uYSBwdWVkZSBlc3BlcmFyIHZpdmlyIGRlc2RlIHN1IG5hY2ltaWVudG8sIGJham8gY29uZGljaW9uZXMgZGUgbW9ydGFsaWRhZCBhY3R1YWxlcy4gRXMgdW5hIHZhcmlhYmxlIGN1YW50aXRhdGl2YSBjb250aW51YSwgbWVkaWRhIGVuIGHDsW9zLiBTZSBjb25zaWRlcmEgZGVwZW5kaWVudGUgcG9ycXVlIHN1IHZhbG9yIHNlIHZlIGluZmx1aWRvIHBvciBlbCBjb21wb3J0YW1pZW50byBkZSBsYXMgZGVtw6FzIHZhcmlhYmxlcyBkZWwgbW9kZWxvLg0KDQpWYXJpYWJsZXMgaW5kZXBlbmRpZW50ZXMgKHByZWRpY3RvcmFzKToNCg0KLSAqKkhJVi9BSURTOioqIHBvcmNlbnRhamUgZGUgbGEgcG9ibGFjacOzbiBhZHVsdGEgaW5mZWN0YWRhIGNvbiBWSUgsIGNvbmZpZ3VyYW5kb3NlIGNvbW8gdW5hIGRpbWVuc2nDs24gY3LDrXRpY2EgZGUgc2FsdWQgcMO6YmxpY2EuDQoNCi0gKipJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzOioqIMOtbmRpY2UgZW50cmUgMCB5IDEgcXVlIHJlZmxlamEgbGEgZXF1aWRhZCB5IGNvbXBvc2ljacOzbiBkZSBsb3MgaW5ncmVzb3MgZGlzcG9uaWJsZXMuDQoNCi0gKipBZHVsdCBNb3J0YWxpdHk6KiogbsO6bWVybyBkZSBtdWVydGVzIHBvciBjYWRhIG1pbCBoYWJpdGFudGVzIGVudHJlIGxvcyAxNSB5IDYwIGHDsW9zLCByZXByZXNlbnRhbmRvIGVsIHJpZXNnbyBlc3RydWN0dXJhbCBkZSBtdWVydGUgZW4gZWRhZCBhZHVsdGEuDQoNCkVzdGFzIHZhcmlhYmxlcyBzZSBjb25zaWRlcmFuIGluZGVwZW5kaWVudGVzIG8gcHJlZGljdG9yYXMgcG9ycXVlIHN1IGZ1bmNpw7NuIGVuIGVsIG1vZGVsbyBlcyBleHBsaWNhciBvIHByZWRlY2lyIGVsIGNvbXBvcnRhbWllbnRvIGRlIGxhIHZhcmlhYmxlIGRlcGVuZGllbnRlLiBObyBkZXBlbmRlbiBkZWwgdmFsb3IgZGUgbGEgZXNwZXJhbnphIGRlIHZpZGEsIHNpbm8gcXVlIGFjdMO6YW4gY29tbyBpbnN1bW9zIGN1eWEgY29tYmluYWNpw7NuIHBlcm1pdGUgZXN0aW1hciB5IGNvbXByZW5kZXIgbGFzIHZhcmlhY2lvbmVzIGVuIGRpY2hhIHZhcmlhYmxlLiBBZGVtw6FzLCBmdWVyb24gc2VsZWNjaW9uYWRhcyBwb3Igc3UgY2FwYWNpZGFkIHBhcmEgY2FwdHVyYXIgZGltZW5zaW9uZXMgY2xhdmUgZGVsIGRlc2Fycm9sbG8gaHVtYW5vOiBzYWx1ZCwgZXF1aWRhZCBlY29uw7NtaWNhIHkgY29uZGljaW9uZXMgZGUgdmlkYS4NCg0KIyMgQWp1c3RlIGRlbCBtb2RlbG8gZGUgcmVncmVzacOzbiBsaW5lYWwNCg0KVW5hIHZleiBpZGVudGlmaWNhZGFzIGxhcyB2YXJpYWJsZXMgcXVlIGNvbmZvcm1hbiBlbCBtb2RlbG8sIHNlIHByb2NlZGUgYSByZWFsaXphciBlbCBhanVzdGUgbWVkaWFudGUgdW5hIHJlZ3Jlc2nDs24gbGluZWFsIG3Dumx0aXBsZSwgZWwgY3VhbCBlc3RpbWEgbG9zIGNvZWZpY2llbnRlcyBxdWUgY3VhbnRpZmljYW4gZWwgZWZlY3RvIGRlIGNhZGEgdmFyaWFibGUgaW5kZXBlbmRpZW50ZSBzb2JyZSBsYSBlc3BlcmFuemEgZGUgdmlkYSwgbWFudGVuaWVuZG8gY29uc3RhbnRlcyBsYXMgZGVtw6FzLiBBIHBhcnRpciBkZWwgbW9kZWxvIGFqdXN0YWRvIHNlIHBvZHLDoW4gaW50ZXJwcmV0YXIgbGEgbWFnbml0dWQsIGRpcmVjY2nDs24geSBzaWduaWZpY2FuY2lhIGVzdGFkw61zdGljYSBkZSBjYWRhIHJlbGFjacOzbi4gQSBjb250aW51YWNpw7NuLCBzZSBtdWVzdHJhIGVsIGPDs2RpZ28gdXRpbGl6YWRvIHBhcmEgcmVhbGl6YXIgZGljaG8gYWp1c3RlOg0KDQpgYGB7cn0NCiMgTW9kZWxvIGRlIHJlZ3Jlc2nDs24gbGluZWFsIG3Dumx0aXBsZQ0KbW9kZWxvIDwtIGxtKGBMaWZlIGV4cGVjdGFuY3lgIH4gYEhJVi9BSURTYCArIA0KICAgICAgICAgICAgICAgYEluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXNgICsgYEFkdWx0IE1vcnRhbGl0eWAgLCANCiAgICAgICAgICAgICBkYXRhID0gbXVlc3RyYV9maW5hbCkNCg0Kc3VtbWFyeShtb2RlbG8pDQpgYGANCg0KQSBwYXJ0aXIgZGUgbGEgc2FsaWRhIGRlbCBtb2RlbG8gZGUgcmVncmVzacOzbiBsaW5lYWwgYWp1c3RhZG8gZW4gUiwgb2J0ZW5lbW9zIGxhIHNpZ3VpZW50ZSBlY3VhY2nDs24gZGUgbGEgcmVjdGEgYWp1c3RhZGE6DQoNCiQkXHdpZGVoYXR7XHRleHR7TGlmZSBleHBlY3RhbmN5fX0gPSA1MC45NSAtIDEuNTYgXHRpbWVzIFx0ZXh0e0hJVi9BSURTfSArIDM0Ljc4IFx0aW1lcyBcdGV4dHtJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzfSAtIDAuMDE1IFx0aW1lcyBcdGV4dHtBZHVsdCBNb3J0YWxpdHl9JCQNCg0KRW4gZG9uZGU6DQoNCiRcYmV0YV8wJCBJbnRlcmNlcHRvICg1MC45NSk6DQpSZXByZXNlbnRhIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVzdGltYWRhIGN1YW5kbyB0b2RhcyBsYXMgdmFyaWFibGVzIGluZGVwZW5kaWVudGVzIHNvbiBpZ3VhbGVzIGEgY2Vyby4gQXVucXVlIGVzdGUgZXNjZW5hcmlvIGVzIGhpcG90w6l0aWNvIChwb3IgZWplbXBsbywgMCBlbiBwcmV2YWxlbmNpYSBkZSBWSUgsIHNpbiBpbmdyZXNvcyB5IHNpbiBtb3J0YWxpZGFkIGFkdWx0YSksIGVsIGludGVyY2VwdG8gZXMgZXNlbmNpYWwgcGFyYSBhanVzdGFyIGVsIG1vZGVsbyB5IHNpcnZlIGNvbW8gYmFzZSBlbiBsYSBwcmVkaWNjacOzbiBkZSBsYSBlc3BlcmFuemEgZGUgdmlkYS4NCg0KJFxiZXRhXzEkIEhJVi9BSURTICgtMS41Nik6DQpQb3IgY2FkYSBwdW50byBwb3JjZW50dWFsIGFkaWNpb25hbCBlbiBsYSBwcmV2YWxlbmNpYSBkZSBWSUgvU0lEQSBlbiBsYSBwb2JsYWNpw7NuIGFkdWx0YSAoZGUgMTUgYSA0OSBhw7FvcyksIHNlIGVzdGltYSBxdWUgbGEgZXNwZXJhbnphIGRlIHZpZGEgZGlzbWludXllIGVuIHByb21lZGlvIDEuNTYgYcOxb3MsIG1hbnRlbmllbmRvIGNvbnN0YW50ZXMgbGFzIGRlbcOhcyB2YXJpYWJsZXMuIEVzdGUgcmVzdWx0YWRvIHJlZmxlamEgY8OzbW8gbGEgcHJlc2VuY2lhIGRlIGVuZmVybWVkYWRlcyBpbmZlY2Npb3NhcyBpbXBhY3RhIG5lZ2F0aXZhbWVudGUgbGEgbG9uZ2V2aWRhZCBkZSB1bmEgcG9ibGFjacOzbi4NCg0KJFxiZXRhXzIkIEluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXMgKDM0Ljc5KToNClBvciBjYWRhIHVuaWRhZCBhZGljaW9uYWwgZW4gZWwgw61uZGljZSBkZSBjb21wb3NpY2nDs24gZGVsIGluZ3Jlc28gKHF1ZSB2YSBkZSAwIGEgMSksIGxhIGVzcGVyYW56YSBkZSB2aWRhIGF1bWVudGEgZW4gcHJvbWVkaW8gMzQuNzkgYcOxb3MuIEVzdGUgY29lZmljaWVudGUgaW5kaWNhIHF1ZSB1biBtZWpvciBhY2Nlc28gYSByZWN1cnNvcyBlY29uw7NtaWNvcyBlc3TDoSBlc3RyZWNoYW1lbnRlIHJlbGFjaW9uYWRvIGNvbiBtZWpvcmVzIGNvbmRpY2lvbmVzIGRlIHNhbHVkIHksIHBvciB0YW50bywgY29uIHVuYSBtYXlvciBlc3BlcmFuemEgZGUgdmlkYS4NCg0KJFxiZXRhXzMkIEFkdWx0IE1vcnRhbGl0eSAoLTAuMDE1Mik6DQpQb3IgY2FkYSBtdWVydGUgYWRpY2lvbmFsIHBvciBjYWRhIG1pbCBhZHVsdG9zIGVudHJlIDE1IHkgNjAgYcOxb3MsIGxhIGVzcGVyYW56YSBkZSB2aWRhIHNlIHJlZHVjZSBlbiBwcm9tZWRpbyAwLjAxNSBhw7Fvcy4gQXVucXVlIGVsIHZhbG9yIGVzIHBlcXVlw7FvLCBzdSBlZmVjdG8gYWN1bXVsYWRvIHB1ZWRlIHNlciBzaWduaWZpY2F0aXZvIGVuIGNvbnRleHRvcyBkZSBhbHRhIG1vcnRhbGlkYWQgYWR1bHRhLCByZWZsZWphbmRvIGFtYmllbnRlcyBjb24gbWVub3IgYmllbmVzdGFyIHkgbWF5b3IgdnVsbmVyYWJpbGlkYWQgc29jaWFsLg0KDQojIyBDb2VmaWNpZW50ZSBkZSBkZXRlcm1pbmFjacOzbiANCg0KYGBge3J9DQojIEV4dHJhZXIgZWwgUl4yIGFqdXN0YWRvIGRlc2RlIGVsIG1vZGVsbw0KcjJfYWp1c3RhZG8gPC0gc3VtbWFyeShtb2RlbG8pJGFkai5yLnNxdWFyZWQNCg0KY2F0KCJFbCBjb2VmaWNpZW50ZSBkZSBkZXRlcm1pbmFjacOzbiBhanVzdGFkbyAoUsKyIGFqdXN0YWRvKSBkZWwgbW9kZWxvIGVzOiIsIHJvdW5kKHIyX2FqdXN0YWRvLCA0KSkNCmBgYA0KDQpFbCBjb2VmaWNpZW50ZSBkZSBkZXRlcm1pbmFjacOzbiBhanVzdGFkbyAoJFJeMiQgYWp1c3RhZG8pIGRlbCBtb2RlbG8gZXMgMC44ODgxLCBsbyBxdWUgaW5kaWNhIHF1ZSBhcHJveGltYWRhbWVudGUgZWwgODguODElIGRlIGxhIHZhcmlhYmlsaWRhZCBlbiBsYSBlc3BlcmFuemEgZGUgdmlkYSBlbnRyZSBsb3MgcGHDrXNlcyBhbmFsaXphZG9zIHB1ZWRlIGV4cGxpY2Fyc2UgZGUgZm9ybWEgY29uanVudGEgcG9yIGxhcyB2YXJpYWJsZXMgSElWL0FJRFMsIEluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXMgeSBBZHVsdCBNb3J0YWxpdHkuIEVzdGUgdmFsb3IgcmVmbGVqYSB1biBleGNlbGVudGUgbml2ZWwgZGUgYWp1c3RlLCBlc3BlY2lhbG1lbnRlIGNvbnNpZGVyYW5kbyBxdWUgc2UgdHJhYmFqw7MgY29uIGRhdG9zIGNvcnJlc3BvbmRpZW50ZXMgZXhjbHVzaXZhbWVudGUgYWwgYcOxbyAyMDE1LCB5IHF1ZSBlbCBtb2RlbG8gZnVlIGNvbnN0cnVpZG8gYSBwYXJ0aXIgZGUgc29sbyB0cmVzIHZhcmlhYmxlcyBwcmVkaWN0b3JhcyBzZWxlY2Npb25hZGFzIGRlIGZvcm1hIGRlbGliZXJhZGEuIEVsIDExLjE5JSByZXN0YW50ZSBkZSB2YXJpYWJpbGlkYWQgbm8gZXhwbGljYWRhIHB1ZWRlIGRlYmVyc2UgYSBvdHJvcyBmYWN0b3JlcyBubyBpbmNsdWlkb3MgZW4gZWwgbW9kZWxvLCBjb21vIGVsIGFjY2VzbyBlZmVjdGl2byBhIHNlcnZpY2lvcyBkZSBzYWx1ZCwgbGEgaW5mcmFlc3RydWN0dXJhIGhvc3BpdGFsYXJpYSwgbGEgY2FsaWRhZCBhbWJpZW50YWwsIGZhY3RvcmVzIGRlbW9ncsOhZmljb3MsIHBvbMOtdGljYXMgc29jaWFsZXMgbyBkaWZlcmVuY2lhcyBjdWx0dXJhbGVzIGVudHJlIHBhw61zZXMuIEVzdG8gc3VnaWVyZSBxdWUsIHNpIGJpZW4gZWwgbW9kZWxvIHByb3B1ZXN0byBsb2dyYSBjYXB0dXJhciBncmFuIHBhcnRlIGRlbCBjb21wb3J0YW1pZW50byBkZSBsYSBlc3BlcmFuemEgZGUgdmlkYSwgYcO6biBleGlzdGVuIG90cm9zIGRldGVybWluYW50ZXMgcXVlIHBvZHLDrWFuIGluY29ycG9yYXJzZSBlbiBlc3R1ZGlvcyBwb3N0ZXJpb3JlcyBwYXJhIGVucmlxdWVjZXIgbGEgZXhwbGljYWNpw7NuIGRlbCBmZW7Ds21lbm8gZGVzZGUgdW5hIHBlcnNwZWN0aXZhIG3DoXMgYW1wbGlhIHkgbXVsdGljYXVzYWwuDQoNCiMjIENvZWZpY2llbnRlIGRlIGNvcnJlbGFjacOzbiANCg0KYGBge3J9DQojIENhbGN1bGFyIGNvZWZpY2llbnRlcyBkZSBjb3JyZWxhY2nDs24gZGUgUGVhcnNvbiBlbnRyZSBMaWZlIGV4cGVjdGFuY3kgeSBjYWRhIHZhcmlhYmxlIGV4cGxpY2F0aXZhDQpjb3JfcGVhcnNvbl9oaXYgPC0gY29yKG11ZXN0cmFfZmluYWwkYExpZmUgZXhwZWN0YW5jeWAsIG11ZXN0cmFfZmluYWwkYEhJVi9BSURTYCwgbWV0aG9kID0gInBlYXJzb24iKQ0KY29yX3BlYXJzb25faW5jb21lIDwtIGNvcihtdWVzdHJhX2ZpbmFsJGBMaWZlIGV4cGVjdGFuY3lgLCBtdWVzdHJhX2ZpbmFsJGBJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzYCwgbWV0aG9kID0gInBlYXJzb24iKQ0KY29yX3BlYXJzb25fbW9ydGFsaXR5IDwtIGNvcihtdWVzdHJhX2ZpbmFsJGBMaWZlIGV4cGVjdGFuY3lgLCBtdWVzdHJhX2ZpbmFsJGBBZHVsdCBNb3J0YWxpdHlgLCBtZXRob2QgPSAicGVhcnNvbiIpDQoNCmNhdCgiQ29ycmVsYWNpw7NuIExpZmUgZXhwZWN0YW5jeSB+IEhJVi9BSURTOiIsIHJvdW5kKGNvcl9wZWFyc29uX2hpdiwgNCksICJcbiIpDQpjYXQoIkNvcnJlbGFjacOzbiBMaWZlIGV4cGVjdGFuY3kgfiBJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzOiIsIHJvdW5kKGNvcl9wZWFyc29uX2luY29tZSwgNCksICJcbiIpDQpjYXQoIkNvcnJlbGFjacOzbiBMaWZlIGV4cGVjdGFuY3kgfiBBZHVsdCBNb3J0YWxpdHk6Iiwgcm91bmQoY29yX3BlYXJzb25fbW9ydGFsaXR5LCA0KSwgIlxuIikNCmBgYA0KDQpMYSBjb3JyZWxhY2nDs24gZW50cmUgTGlmZSBleHBlY3RhbmN5IHkgSElWL0FJRFMgZXMgZGUgLTAuNjYxMywgbG8gY3VhbCByZXByZXNlbnRhIHVuYSByZWxhY2nDs24gbmVnYXRpdmEgZGUgbWFnbml0dWQgbW9kZXJhZGEgYSBmdWVydGUuIEVzdG8gaW5kaWNhIHF1ZSwgYSBtZWRpZGEgcXVlIGF1bWVudGEgbGEgcHJldmFsZW5jaWEgZGUgVklIL1NJREEgZW4gbGEgcG9ibGFjacOzbiBhZHVsdGEsIGxhIGVzcGVyYW56YSBkZSB2aWRhIHRpZW5kZSBhIGRpc21pbnVpci4gQXVucXVlIG5vIHNlIHRyYXRhIGRlIHVuYSBhc29jaWFjacOzbiBwZXJmZWN0YSwgc8OtIG11ZXN0cmEgdW5hIHRlbmRlbmNpYSBjbGFyYSBxdWUgcmVzcGFsZGEgbGEgaW5jbHVzacOzbiBkZSBlc3RhIHZhcmlhYmxlIGNvbW8gdW4gZmFjdG9yIHJlbGV2YW50ZSBkZW50cm8gZGVsIG1vZGVsbyBleHBsaWNhdGl2by4NCg0KRW4gZWwgY2FzbyBkZSBJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzLCBsYSBjb3JyZWxhY2nDs24gY29uIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVzIGRlIDAuODk3MiwgbG8gcXVlIHJlcHJlc2VudGEgdW5hIGFzb2NpYWNpw7NuIHBvc2l0aXZhIG11eSBmdWVydGUuIEVzdGUgcmVzdWx0YWRvIHN1Z2llcmUgcXVlIGxvcyBwYcOtc2VzIGNvbiBtYXlvciBhY2Nlc28geSBlcXVpZGFkIGVuIGxvcyByZWN1cnNvcyBlY29uw7NtaWNvcyBzdWVsZW4gdGVuZXIgdW5hIG1heW9yIGVzcGVyYW56YSBkZSB2aWRhLiBFc3RvIHJlZnVlcnphIGxhIGlkZWEgZGUgcXVlIGVsIGVudG9ybm8gc29jaW9lY29uw7NtaWNvIGp1ZWdhIHVuIHBhcGVsIGRldGVybWluYW50ZSBlbiBsYXMgY29uZGljaW9uZXMgZGUgc2FsdWQgeSBsb25nZXZpZGFkIGRlIGxhIHBvYmxhY2nDs24uDQoNClBvciBzdSBwYXJ0ZSwgQWR1bHQgTW9ydGFsaXR5IHByZXNlbnRhIHVuYSBjb3JyZWxhY2nDs24gZGUgLTAuNjc5MiBjb24gbGEgZXNwZXJhbnphIGRlIHZpZGEsIGxvIGN1YWwgZXZpZGVuY2lhIHVuYSByZWxhY2nDs24gbmVnYXRpdmEgbW9kZXJhZGFtZW50ZSBmdWVydGUuIEVuIGNvbnRleHRvcyBkb25kZSBsYSBtb3J0YWxpZGFkIGFkdWx0YSBlcyBtw6FzIGVsZXZhZGEsIGxhIGVzcGVyYW56YSBkZSB2aWRhIHRpZW5kZSBhIHJlZHVjaXJzZSBub3RhYmxlbWVudGUsIHlhIHF1ZSBsYXMgbXVlcnRlcyBlbiBlZGFkZXMgcHJvZHVjdGl2YXMgYWZlY3RhbiBkaXJlY3RhbWVudGUgZWwgcHJvbWVkaW8gZGUgYcOxb3MgZGUgdmlkYSBlc3BlcmFkb3MgYWwgbmFjZXIuIEVzdGUgcGF0csOzbiBqdXN0aWZpY2EgbGEgaW5jbHVzacOzbiBkZSBlc3RhIHZhcmlhYmxlIGVuIGVsIGFuw6FsaXNpcyB5IGFwb3J0YSBpbmZvcm1hY2nDs24gaW1wb3J0YW50ZSBzb2JyZSBlbCBjb250ZXh0byBkZSBzYWx1ZCBkZSBsb3MgcGHDrXNlcy4NCg0KDQojIyBBTk9WQSB5IHBydWViYSBnbG9iYWwgZGUgc2lnbmlmaWNhbmNpYQ0KDQpFbCBhbsOhbGlzaXMgZGUgdmFyaWFuemEgKEFOT1ZBKSBhcGxpY2FkbyBhIG1vZGVsb3MgZGUgcmVncmVzacOzbiBwZXJtaXRlIGV2YWx1YXIgc2kgZWwgY29uanVudG8gZGUgdmFyaWFibGVzIGluZGVwZW5kaWVudGVzIHRpZW5lIHVuIGVmZWN0byBzaWduaWZpY2F0aXZvIHNvYnJlIGxhIHZhcmlhYmxlIGRlcGVuZGllbnRlLiBFc3RhIHBydWViYSBkaXZpZGUgbGEgdmFyaWFiaWxpZGFkIHRvdGFsIGRlIGxvcyBkYXRvcyBlbiBkb3MgY29tcG9uZW50ZXM6IGxhIHZhcmlhYmlsaWRhZCAqKmV4cGxpY2FkYSBwb3IgZWwgbW9kZWxvKiogKHJlZ3Jlc2nDs24pIHkgbGEgKipubyBleHBsaWNhZGEqKiAoZXJyb3IgbyByZXNpZHVvcykuIExhIHBydWViYSBGIGNvbXBhcmEgZXN0YXMgZG9zIGZ1ZW50ZXMgZGUgdmFyaWFjacOzbiBtZWRpYW50ZSB1bmEgcmF6w7NuIGRlIG1lZGlhcyBjdWFkcsOhdGljYXMsIHNpIGVsIHJlc3VsdGFkbyBlcyBzaWduaWZpY2F0aXZvLCBzZSBjb25jbHV5ZSBxdWUgZWwgbW9kZWxvIGdlbmVyYWwgdGllbmUgY2FwYWNpZGFkIGV4cGxpY2F0aXZhLiBBIGNvbnRpbnVhY2nDs24sIHNlIHByZXNlbnRhIGVsIGPDs2RpZ28geSBsb3MgcmVzdWx0YWRvcyBkZWwgQU5PVkEgcGFyYSBudWVzdHJvIG1vZGVsbyBkZSByZWdyZXNpw7NuOg0KDQpgYGB7cn0NCmFub3ZhKG1vZGVsbykNCmBgYA0KDQpFbCBhbnRlcmlvciBtb2RlbG8sIHNlIHB1ZWRlIGNvbXBlY3RhciBtZWpvciBkZSBsYSBzaWd1aW50ZSBmb3JtYTogDQoNCmBgYHtyfQ0Kc2N0IDwtIHN1bSgobXVlc3RyYV9maW5hbCRgTGlmZSBleHBlY3RhbmN5YCAtIG1lYW4obXVlc3RyYV9maW5hbCRgTGlmZSBleHBlY3RhbmN5YCkpXjIpDQpzY3IgPC0gc3VtKChmaXR0ZWQobW9kZWxvKSAtIG1lYW4obXVlc3RyYV9maW5hbCRgTGlmZSBleHBlY3RhbmN5YCkpXjIpDQpzY2UgPC0gc2N0IC0gc2NyDQoNCmRmX3JlZyA8LSBsZW5ndGgoY29lZihtb2RlbG8pKSAtIDENCmRmX2Vycm9yIDwtIG5yb3cobXVlc3RyYV9maW5hbCkgLSBkZl9yZWcgLSAxDQpkZl90b3RhbCA8LSBucm93KG11ZXN0cmFfZmluYWwpIC0gMQ0KDQptY3IgPC0gc2NyIC8gZGZfcmVnDQptY2UgPC0gc2NlIC8gZGZfZXJyb3INCg0KZl92YWx1ZSA8LSBtY3IgLyBtY2UNCnBfdmFsdWUgPC0gMSAtIHBmKGZfdmFsdWUsIGRmX3JlZywgZGZfZXJyb3IpDQpwX3ZhbHVlX2Zvcm1hdHRlZCA8LSBmb3JtYXQocF92YWx1ZSwgc2NpZW50aWZpYyA9IFRSVUUsIGRpZ2l0cyA9IDEwKQ0KDQpyZXN1bHRhZG9zX2Fub3ZhIDwtIGRhdGEuZnJhbWUoDQogIEZ1ZW50ZSA9IGMoIlJlZ3Jlc2nDs24gKE1vZGVsbykiLCAiRXJyb3IgKFJlc2lkdW9zKSIsICJUb3RhbCIpLA0KICBTQ1IgPSBjKHNjciwgc2NlLCBzY3QpLA0KICBHTCA9IGMoZGZfcmVnLCBkZl9lcnJvciwgZGZfdG90YWwpLA0KICBNQ1IgPSBjKG1jciwgbWNlLCBOQSksDQogIEZfdmFsdWUgPSBjKGZfdmFsdWUsIE5BLCBOQSksDQogIFBfdmFsb3IgPSBjKHBfdmFsdWVfZm9ybWF0dGVkLCBOQSwgTkEpDQopDQoNCmNvbG5hbWVzKHJlc3VsdGFkb3NfYW5vdmEpIDwtIGMoDQogICJGdWVudGUiLA0KICAiU3VtYSBkZSBDdWFkcmFkb3MiLA0KICAiR3JhZG9zIGRlIExpYmVydGFkIiwNCiAgIk1lZGlhIEN1YWRyw6F0aWNhIiwNCiAgIlZhbG9yIEYiLA0KICAiUC1WYWxvciINCikNCg0KbGlicmFyeShrYWJsZUV4dHJhKQ0KDQpyZXN1bHRhZG9zX2Fub3ZhICU+JQ0KICBrYmwoDQogICAgZm9ybWF0ID0gImh0bWwiLA0KICAgIGNhcHRpb24gPSAiUmVzdWx0YWRvcyBkZWwgQU5PVkEgcGFyYSBlbCBNb2RlbG8gZGUgUmVncmVzacOzbiIsDQogICAgYWxpZ24gPSAiYyIsDQogICAgZGlnaXRzID0gMw0KICApICU+JQ0KICBrYWJsZV9zdHlsaW5nKA0KICAgIGJvb3RzdHJhcF9vcHRpb25zID0gYygic3RyaXBlZCIsICJob3ZlciIsICJyZXNwb25zaXZlIiwgImNvbmRlbnNlZCIpLA0KICAgIGZ1bGxfd2lkdGggPSBGQUxTRSwNCiAgICBwb3NpdGlvbiA9ICJjZW50ZXIiDQogICkgJT4lDQogIGNvbHVtbl9zcGVjKDEsIGJvbGQgPSBUUlVFKSAlPiUNCiAgcm93X3NwZWMoMCwgYm9sZCA9IFRSVUUsIGJhY2tncm91bmQgPSAiI0RCREJEQiIpICU+JQ0KICByb3dfc3BlYygxOjIsIGJhY2tncm91bmQgPSAid2hpdGUiKQ0KDQoNCmBgYA0KDQpDb21vIHNlIG9ic2VydmEsIGxhIHN1bWEgZGUgY3VhZHJhZG9zIGRlIGxhIHJlZ3Jlc2nDs24gKFNDUiA9IDI4MDAuNzQzKSByZXByZXNlbnRhIHVuYSBwb3JjacOzbiBtdXkgc2lnbmlmaWNhdGl2YSBkZSBsYSBzdW1hIHRvdGFsIGRlIGN1YWRyYWRvcyAoU0NUID0gMzEyOS41NTIpLCBsbyBxdWUgaW5kaWNhIHF1ZSBlbCBtb2RlbG8gZXhwbGljYSBsYSBtYXlvciBwYXJ0ZSBkZSBsYSB2YXJpYWJpbGlkYWQgZW4gbGEgdmFyaWFibGUgZGVwZW5kaWVudGUgTGlmZSBleHBlY3RhbmN5LiBFbCB2YWxvciBGIG9idGVuaWRvIGVzIDEzMC42MDcsIGNvbiB1biBwLXZhbG9yIHByw6FjdGljYW1lbnRlIGlndWFsIGEgY2VybyAoMGUrMDApLCBsbyBjdWFsIGluZGljYSBxdWUgZWwgbW9kZWxvIGVuIHN1IGNvbmp1bnRvIGVzIGFsdGFtZW50ZSBzaWduaWZpY2F0aXZvIGRlc2RlIGVsIHB1bnRvIGRlIHZpc3RhIGVzdGFkw61zdGljby4gRW4gb3RyYXMgcGFsYWJyYXMsIGhheSBldmlkZW5jaWEgc3VmaWNpZW50ZSBwYXJhIGFmaXJtYXIgcXVlIGFsIG1lbm9zIHVuYSBkZSBsYXMgdmFyaWFibGVzIGluZGVwZW5kaWVudGVzIChISVYvQUlEUywgSW5jb21lIGNvbXBvc2l0aW9uIG9mIHJlc291cmNlcyBvIEFkdWx0IE1vcnRhbGl0eSkgdGllbmUgdW4gZWZlY3RvIHNpZ25pZmljYXRpdm8gc29icmUgbGEgZXNwZXJhbnphIGRlIHZpZGEuIFBhcmEgc3VzdGVudGFyIGVzdGEgY29uY2x1c2nDs24gc2UgcGxhbnRlYSBsYSBzaWd1aWVudGUgcHJ1ZWJhIGRlIGhpcMOzdGVzaXMgZ2xvYmFsIGJhc2FkYSBlbiBlbCBlc3RhZMOtc3RpY28gRjoNCg0KKioxLiBGb3JtdWxhY2nDs24gZGUgbGEgaGlww7N0ZXNpcyBudWxhIHkgYWx0ZXJuYXRpdmEqKg0KDQotICRIXzAkOiBOaW5ndW5hIGRlIGxhcyB2YXJpYWJsZXMgaW5kZXBlbmRpZW50ZXMgdGllbmUgdW4gZWZlY3RvIHNpZ25pZmljYXRpdm8gc29icmUgbGEgdmFyaWFibGUgZGVwZW5kaWVudGUgKGVzIGRlY2lyLCB0b2RvcyBsb3MgY29lZmljaWVudGVzIGRlIGxhcyB2YXJpYWJsZXMgZXhwbGljYXRpdmFzIHNvbiBpZ3VhbGVzIGEgY2VybykuDQogIA0KICAkSF8wOiBcYmV0YV8xID0gXGJldGFfMiA9IFxiZXRhXzMgPSBcYmV0YV80ID0gMCQNCg0KLSAkSF8xJDogQWwgbWVub3MgdW5vIGRlIGxvcyBjb2VmaWNpZW50ZXMgZGUgbGFzIHZhcmlhYmxlcyBpbmRlcGVuZGllbnRlcyBlcyBkaWZlcmVudGUgZGUgY2Vyby4NCg0KICAkSF8xOiQgQWwgbWVub3MgdW4gJFxiZXRhX2kgXG5lcSAwJA0KDQoqKjIuIE5pdmVsIGRlIHNpZ25pZmljYW5jaWEqKg0KDQpFbCAqKm5pdmVsIGRlIHNpZ25pZmljYW5jaWEqKiAoJFxhbHBoYSQpIGVzIGVsIHVtYnJhbCBxdWUgdXRpbGl6YW1vcyBwYXJhIGRlY2lkaXIgc2kgcG9kZW1vcyByZWNoYXphciBsYSAqKmhpcMOzdGVzaXMgbnVsYSoqLiBFbiBlc3RlIGNhc28sIGhlbW9zIGVzdGFibGVjaWRvIGVsIG5pdmVsIGRlIHNpZ25pZmljYW5jaWEgZW4gJFxhbHBoYSA9IDAuMDUkLCBsbyBxdWUgc2lnbmlmaWNhIHF1ZSBzaSBlbCAqKnAtdmFsb3IqKiBjYWxjdWxhZG8gZXMgbWVub3IgcXVlIDAuMDUsIHJlY2hhemFtb3MgbGEgaGlww7N0ZXNpcyBudWxhIHkgY29uY2x1aW1vcyBxdWUgYWwgbWVub3MgdW5hIGRlIGxhcyB2YXJpYWJsZXMgaW5kZXBlbmRpZW50ZXMgdGllbmUgdW4gZWZlY3RvIHNpZ25pZmljYXRpdm8gc29icmUgbGEgKiplc3BlcmFuemEgZGUgdmlkYSoqLg0KDQoqKjMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmEqKg0KDQpQYXJhIGVzdG8gdGVuZW1vcyBlbiBjdWVudGEgbG8gc2lndWllbnRlOg0KDQpgYGB7cn0NCiMgUmVzdWx0YWRvIEFOT1ZBIGEgcGFydGlyIGRlbCBtb2RlbG8NCmFub3ZhX3Jlc3VsdGFkbyA8LSBhbm92YShtb2RlbG8pDQoNCiMgT2J0ZW5lciBsYXMgc3VtYXMgZGUgY3VhZHJhZG9zDQpzY3IgPC0gc3VtKGFub3ZhX3Jlc3VsdGFkbyRgU3VtIFNxYFsxOjNdKSAgIyBTdW1hIGRlIEN1YWRyYWRvcyBkZSBsYSBSZWdyZXNpw7NuIA0Kc2NlIDwtIGFub3ZhX3Jlc3VsdGFkbyRgU3VtIFNxYFs0XSAgICAgICAgICMgU3VtYSBkZSBDdWFkcmFkb3MgZGVsIEVycm9yDQoNCiMgT2J0ZW5lciBsb3MgZ3JhZG9zIGRlIGxpYmVydGFkDQpkZl9yZWcgPC0gc3VtKGFub3ZhX3Jlc3VsdGFkbyREZlsxOjNdKQ0KZGZfZXJyb3IgPC0gYW5vdmFfcmVzdWx0YWRvJERmWzRdDQoNCiMgQ2FsY3VsYXIgdmFsb3IgRg0KdmFsb3JfRiA8LSAoc2NyIC8gZGZfcmVnKSAvIChzY2UgLyBkZl9lcnJvcikNCmNhdCgiRWwgdmFsb3IgRiBjYWxjdWxhZG8gZXM6Iiwgcm91bmQodmFsb3JfRiwgMiksICJcbiIpDQpgYGANCg0KKio0LiBDcml0ZXJpbyBkZSBkZWNpc2nDs24qKg0KDQpgYGB7cn0NCiMgQ2FsY3VsYXIgZWwgdmFsb3IgcCBhc29jaWFkbyBhbCB2YWxvciBGDQpwX3ZhbHVlIDwtIDEgLSBwZih2YWxvcl9GLCBkZl9yZWcsIGRmX2Vycm9yKQ0KY2F0KCJFbCB2YWxvciBwIGFzb2NpYWRvIGFsIHZhbG9yIEYgY2FsY3VsYWRvIGVzOiIsIGZvcm1hdChwX3ZhbHVlLCBzY2llbnRpZmljID0gVFJVRSksICJcbiIpDQpgYGANCg0KKio1LiBJbnRlcnByZXRhY2nDs24geSBjb25jbHVzacOzbiAqKg0KDQpFbCB2YWxvciAqcCogb2J0ZW5pZG8gYSBwYXJ0aXIgZGVsIGVzdGFkw61zdGljbyAqKkYqKiByZXByZXNlbnRhIGxhIHByb2JhYmlsaWRhZCBkZSBvYnNlcnZhciB1bmEgdmFyaWFiaWxpZGFkIHRhbiBhbHRhIGV4cGxpY2FkYSBwb3IgZWwgbW9kZWxvIHNpIGxhIGhpcMOzdGVzaXMgbnVsYSBmdWVyYSBjaWVydGEsIGVzIGRlY2lyLCBzaSBuaW5ndW5hIGRlIGxhcyB2YXJpYWJsZXMgcHJlZGljdG9yYXMgdHV2aWVyYSB1biBlZmVjdG8gc2lnbmlmaWNhdGl2byBzb2JyZSBsYSB2YXJpYWJsZSBkZXBlbmRpZW50ZS4gRW4gZXN0ZSBjYXNvLCBlbCB2YWxvciAqcCogY2FsY3VsYWRvIGVzICoqMGUrMDAqKiwgbG8gcXVlIGVuIHTDqXJtaW5vcyBwcsOhY3RpY29zIHNpZ25pZmljYSBxdWUgZXMgKipleHRyZW1hZGFtZW50ZSBjZXJjYW5vIGEgY2VybyoqIHkgbXVjaG8gbWVub3IgcXVlIGN1YWxxdWllciBuaXZlbCBkZSBzaWduaWZpY2FuY2lhIHVzdWFsLCBjb21vICRcXGFscGhhID0gMC4wNSQuIEVzdGUgcmVzdWx0YWRvIGluZGljYSBxdWUgbGEgcHJvYmFiaWxpZGFkIGRlIHF1ZSBlbCBhanVzdGUgb2JzZXJ2YWRvIGVuIGVsIG1vZGVsbyBoYXlhIG9jdXJyaWRvIHBvciBhemFyIGVzIHByw6FjdGljYW1lbnRlIG51bGEuIFBvciBsbyB0YW50bywgKipzZSByZWNoYXphIGxhIGhpcMOzdGVzaXMgbnVsYSoqIHkgc2UgY29uY2x1eWUgcXVlICoqYWwgbWVub3MgdW5hIGRlIGxhcyB2YXJpYWJsZXMgZXhwbGljYXRpdmFzKiogKCpISVYvQUlEUyosICpJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzKiBvICpBZHVsdCBNb3J0YWxpdHkqKSB0aWVuZSB1biAqKmVmZWN0byBlc3RhZMOtc3RpY2FtZW50ZSBzaWduaWZpY2F0aXZvKiogc29icmUgbGEgKiplc3BlcmFuemEgZGUgdmlkYSoqLiBFc3RvIHZhbGlkYSBxdWUgZWwgbW9kZWxvIGdlbmVyYWwgcHJvcHVlc3RvIHRpZW5lIHVuYSBjYXBhY2lkYWQgcmVhbCBwYXJhIGV4cGxpY2FyIGVsIGNvbXBvcnRhbWllbnRvIGRlIGxhIHZhcmlhYmxlIGRlcGVuZGllbnRlIHkgcXVlIGxhcyByZWxhY2lvbmVzIG9ic2VydmFkYXMgZW50cmUgbGFzIHZhcmlhYmxlcyBubyBzb24gcHJvZHVjdG8gZGVsIGF6YXIuDQoNCg0KIyMgUHJ1ZWJhcyBkZSBzaWduaWZpY2FuY2lhIGluZGl2aWR1YWxlcyANCg0KQSBkaWZlcmVuY2lhIGRlIGxhIHBydWViYSBnbG9iYWwsIHF1ZSBldmFsw7phIGVsIGltcGFjdG8gY29uanVudG8gZGUgdG9kYXMgbGFzIHZhcmlhYmxlcywgZW4gZXN0YSBzZWNjacOzbiBhbmFsaXphbW9zIGNhZGEgdmFyaWFibGUgaW5kZXBlbmRpZW50ZSBwb3Igc2VwYXJhZG8uIFBhcmEgY2FkYSB1bmEsIGNvbXBhcmFtb3MgZWwgdmFsb3IgcCBjb24gZWwgbml2ZWwgZGUgc2lnbmlmaWNhbmNpYSAo8J2bvD0gMC4wNSBwYXJhIGRldGVybWluYXIgc2kgcmVjaGF6YW1vcyBsYSBoaXDDs3Rlc2lzIG51bGEgeSBjb25jbHVpbW9zIHF1ZSBsYSB2YXJpYWJsZSB0aWVuZSB1biBpbXBhY3RvIHNpZ25pZmljYXRpdm8gc29icmUgbGEgKipleHBlY3RhdGl2YSBkZSB2aWRhKiouDQoNCmBgYHtyfQ0Kc3VtbWFyeV9yZXN1bHRhZG8gPC0gc3VtbWFyeShtb2RlbG8pDQpjb2VmaWNpZW50ZXMgPC0gc3VtbWFyeV9yZXN1bHRhZG8kY29lZmZpY2llbnRzDQphbHBoYSA8LSAwLjA1DQoNCnZhcmlhYmxlcyA8LSBjKCJISVYvQUlEUyIsICJJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzIiwgIkFkdWx0IE1vcnRhbGl0eSIpDQoNCmhpcG90ZXNpc190YWJsZSA8LSBkYXRhLmZyYW1lKA0KICBWYXJpYWJsZSA9IHZhcmlhYmxlcywNCiAgYEhpcMOzdGVzaXMgbnVsYWAgPSBjKCIkSF8wOiBcXGJldGFfMSA9IDAkIiwgIiRIXzA6IFxcYmV0YV8yID0gMCQiLCAiJEhfMDogXFxiZXRhXzMgPSAwJCIpLA0KICBgSGlww7N0ZXNpcyBhbHRlcm5hdGl2YWAgPSBjKCIkSF8xOiBcXGJldGFfMSBcXG5lcSAwJCIsICIkSF8xOiBcXGJldGFfMiBcXG5lcSAwJCIsICIkSF8xOiBcXGJldGFfMyBcXG5lcSAwJCIpLA0KICBgTml2ZWwgZGUgc2lnbmlmaWNhbmNpYWAgPSByZXAoIjAuMDUiLCAzKSwNCiAgYFZhbG9yIHRgID0gcm91bmQoY29lZmljaWVudGVzWzI6NCwgM10sIDMpLA0KICBnbCA9IHJlcChzdW1tYXJ5X3Jlc3VsdGFkbyRkZlsyXSwgMyksDQogIGBWYWxvciBwYCA9IGZvcm1hdChjb2VmaWNpZW50ZXNbMjo0LCA0XSwgc2NpZW50aWZpYyA9IFRSVUUsIGRpZ2l0cyA9IDMpLA0KICBDb21wYXJhY2nDs24gPSBpZmVsc2UoY29lZmljaWVudGVzWzI6NCwgNF0gPCBhbHBoYSwgIlZhbG9yIHAgPCDOsSIsICJWYWxvciBwID4gzrEiKSwNCiAgRGVjaXNpw7NuID0gaWZlbHNlKGNvZWZpY2llbnRlc1syOjQsIDRdIDwgYWxwaGEsICJSZWNoYXphbW9zICRIXzAkIiwgIk5vIHJlY2hhemFtb3MgJEhfMCQiKQ0KKQ0KDQojIENhbWJpYXIgbG9zIG5vbWJyZXMgdmlzaWJsZXMgZGUgbGFzIGNvbHVtbmFzIHBhcmEgbGEgdGFibGENCmNvbG5hbWVzKGhpcG90ZXNpc190YWJsZSkgPC0gYygNCiAgIlZhcmlhYmxlIiwNCiAgIkhpcMOzdGVzaXMgbnVsYSIsDQogICJIaXDDs3Rlc2lzIGFsdGVybmF0aXZhIiwNCiAgIk5pdmVsIGRlIHNpZ25pZmljYW5jaWEiLA0KICAiVmFsb3IgdCIsDQogICJnbCIsDQogICJWYWxvciBwIiwNCiAgIkNvbXBhcmFjacOzbiIsDQogICJEZWNpc2nDs24iDQopDQoNCmhpcG90ZXNpc190YWJsZSAlPiUNCiAga2JsKA0KICAgIGZvcm1hdCA9ICJodG1sIiwNCiAgICBjYXB0aW9uID0gIlBydWViYSBkZSBIaXDDs3Rlc2lzIHBhcmEgbGFzIFZhcmlhYmxlcyBJbmRlcGVuZGllbnRlcyBkZWwgTW9kZWxvIiwNCiAgICBlc2NhcGUgPSBGQUxTRSwNCiAgICBhbGlnbiA9ICJjIiwNCiAgICByb3cubmFtZXMgPSBGQUxTRQ0KICApICU+JQ0KICBrYWJsZV9zdHlsaW5nKA0KICAgIGJvb3RzdHJhcF9vcHRpb25zID0gYygic3RyaXBlZCIsICJob3ZlciIsICJjb25kZW5zZWQiLCAiYm9yZGVyZWQiKSwNCiAgICBmdWxsX3dpZHRoID0gRkFMU0UsDQogICAgcG9zaXRpb24gPSAiY2VudGVyIiwNCiAgICBmb250X3NpemUgPSAxMw0KICApICU+JQ0KICByb3dfc3BlYygwLCBib2xkID0gVFJVRSwgYmFja2dyb3VuZCA9ICIjZTBlMGUwIikNCg0KYGBgDQogICANCkxvcyByZXN1bHRhZG9zIGRlIGxhIHBydWViYSBkZSBoaXDDs3Rlc2lzIGluZGl2aWR1YWwgcGFyYSBjYWRhIGNvZWZpY2llbnRlIGRlIHJlZ3Jlc2nDs24gcGVybWl0ZW4gZXZhbHVhciBzaSBjYWRhIHZhcmlhYmxlIGV4cGxpY2F0aXZhIHRpZW5lIHVuIGVmZWN0byBlc3RhZMOtc3RpY2FtZW50ZSBzaWduaWZpY2F0aXZvIHNvYnJlIGxhIHZhcmlhYmxlIGRlcGVuZGllbnRlIExpZmUgZXhwZWN0YW5jeS4gUGFyYSBjYWRhIHByZWRpY3Rvciwgc2UgcGxhbnRlYSB1bmEgaGlww7N0ZXNpcyBudWxhIHF1ZSBhZmlybWEgcXVlIHN1IGNvZWZpY2llbnRlIGVzIGlndWFsIGEgY2VybyAoJEhfMDogXGJldGFfaSA9IDAkKSwgZnJlbnRlIGEgdW5hIGhpcMOzdGVzaXMgYWx0ZXJuYXRpdmEgcXVlIHNvc3RpZW5lIHF1ZSBlcyBkaWZlcmVudGUgZGUgY2VybyAoJEhfMTogXGJldGFfaSBcbmUgMCQpLiBFbCBjcml0ZXJpbyBkZSBkZWNpc2nDs24gc2UgYmFzYSBlbiBjb21wYXJhciBlbCB2YWxvciBwIGNvbiB1biBuaXZlbCBkZSBzaWduaWZpY2FuY2lhICRcYWxwaGEgPSAwLjA1JC4NCg0KUGFyYSBsYSB2YXJpYWJsZSBISVYvQUlEUywgZWwgdmFsb3IgdCBlcyAtMy45OTYgeSBlbCB2YWxvciBwIGVzIDIuMzFlLTA0LCBjbGFyYW1lbnRlIG1lbm9yIGEgMC4wNS4gRXN0byBpbmRpY2EgcXVlIGVsIGNvZWZpY2llbnRlIGVzIHNpZ25pZmljYXRpdmFtZW50ZSBkaXN0aW50byBkZSBjZXJvLCBwb3IgbG8gdGFudG8sIHNlIHJlY2hhemEgbGEgaGlww7N0ZXNpcyBudWxhLiBTZSBjb25jbHV5ZSBxdWUgSElWL0FJRFMgdGllbmUgdW4gZWZlY3RvIGVzdGFkw61zdGljYW1lbnRlIHNpZ25pZmljYXRpdm8gc29icmUgbGEgZXNwZXJhbnphIGRlIHZpZGEsIHkgbGEgcmVsYWNpw7NuIG5lZ2F0aXZhIGRlbCBjb2VmaWNpZW50ZSBjb25maXJtYSBxdWUgYSBtYXlvciBwcmV2YWxlbmNpYSBkZSBWSUgvU0lEQSwgbWVub3IgZXNwZXJhbnphIGRlIHZpZGEuDQoNCkVuIGVsIGNhc28gZGUgSW5jb21lIGNvbXBvc2l0aW9uIG9mIHJlc291cmNlcywgZWwgdmFsb3IgdCBlcyAxMS42OTQgeSBlbCB2YWxvciBwIGVzIDIuMjNlLTE1LCB1biB2YWxvciBleHRyZW1hZGFtZW50ZSBiYWpvIHF1ZSByZWZ1ZXJ6YSBzdSBzaWduaWZpY2FuY2lhIGVzdGFkw61zdGljYS4gQWwgc2VyIG11Y2hvIG1lbm9yIHF1ZSAwLjA1LCBzZSByZWNoYXphIHRhbWJpw6luIGxhIGhpcMOzdGVzaXMgbnVsYSwgbG8gY3VhbCBjb25maXJtYSBxdWUgZXN0YSB2YXJpYWJsZSB0aWVuZSB1biBlZmVjdG8gbXV5IHNpZ25pZmljYXRpdm8gc29icmUgbGEgZXNwZXJhbnphIGRlIHZpZGEuIEFkZW3DoXMsIGVsIHNpZ25vIHBvc2l0aXZvIGRlbCBjb2VmaWNpZW50ZSByZWZ1ZXJ6YSBzdSBpbnRlcnByZXRhY2nDs24gY29tbyB1biBmYWN0b3IgcXVlIGNvbnRyaWJ1eWUgYWwgYXVtZW50byBkZSBsYSBsb25nZXZpZGFkLg0KDQpQb3Igc3UgcGFydGUsIEFkdWx0IE1vcnRhbGl0eSBwcmVzZW50YSB1biB2YWxvciB0IGRlIC0yLjkyNiB5IHVuIHZhbG9yIHAgZGUgMC4wMDUzMjUsIHRhbWJpw6luIG1lbm9yIGFsIHVtYnJhbCBkZSAwLjA1LiBFc3RvIGxsZXZhIGEgcmVjaGF6YXIgbGEgaGlww7N0ZXNpcyBudWxhIHkgY29uY2x1aXIgcXVlIGxhIG1vcnRhbGlkYWQgYWR1bHRhIHRpZW5lIHVuIGVmZWN0byBzaWduaWZpY2F0aXZvIHNvYnJlIGxhIGVzcGVyYW56YSBkZSB2aWRhLiBTdSBjb2VmaWNpZW50ZSBuZWdhdGl2byBpbmRpY2EgcXVlIHVuIGF1bWVudG8gZW4gbGEgbW9ydGFsaWRhZCBhZHVsdGEgc2UgYXNvY2lhIGNvbiB1bmEgZGlzbWludWNpw7NuIGVuIGxhIGVzcGVyYW56YSBkZSB2aWRhLg0KDQpFbiBjb25qdW50bywgZXN0b3MgcmVzdWx0YWRvcyBpbmRpY2FuIHF1ZSB0b2RhcyBsYXMgdmFyaWFibGVzIHByZWRpY3RvcmFzIGluY2x1aWRhcyBlbiBlbCBtb2RlbG8gc29uIGVzdGFkw61zdGljYW1lbnRlIHNpZ25pZmljYXRpdmFzIGRlIGZvcm1hIGluZGl2aWR1YWwuIEVzdG8gcmVzcGFsZGEgc3UgaW5jbHVzacOzbiBlbiBlbCBhbsOhbGlzaXMgeSByZWZ1ZXJ6YSBsYSB2YWxpZGV6IGRlbCBtb2RlbG8gcHJvcHVlc3RvIGNvbiBkYXRvcyBkZWwgYcOxbyAyMDE1Lg0KDQojIyBTdXB1ZXN0b3MgZGVsIG1vZGVsbyBkZSByZWdyZXNpw7NuIGxpbmVhbCB7LnRhYnNldH0NCg0KIyMjIExpbmVhbGlkYWQgDQoNCkVzdGUgc3VwdWVzdG8gZXN0YWJsZWNlIHF1ZSBsYSByZWxhY2nDs24gZW50cmUgY2FkYSB2YXJpYWJsZSBpbmRlcGVuZGllbnRlIHkgbGEgdmFyaWFibGUgZGVwZW5kaWVudGUgc2VhIGxpbmVhbCwgZXMgZGVjaXIsIHF1ZSBhbnRlIGNhbWJpb3MgZW4gY2FkYSB2YXJpYWJsZSBpbmRlcGVuZGllbnRlLCBsYSB2YXJpYWJsZSBkZXBlbmRpZW50ZSB0YW1iacOpbiBjYW1iaWUuIFBhcmEgbGEgY29tcHJvYmFjacOzbiBkZWwgY3VtcGxpbWllbnRvIGRlIGVzdGUgc3VwdWVzdG8sIHNlIHByb2NlZGVyw6EgYSBlbXBsZWFyIHVuYSBncsOhZmljYSBkZSB2YWxvcmVzIGFqdXN0YWRvcyB2cyByZXNpZHVvcyB5IHBydWViYXMgZGUgaGlww7N0ZXNpcyBkZSBQZWFyc29uIHBhcmEgdmVyaWZpY2FyIGxhIGFzb2NpYWNpw7NuIGxpbmVhbCBlbnRyZSBjYWRhIHZhcmlhYmxlIGluZGVwZW5kaWVudGUgeSBsYSBwZW5kaWVudGUuDQoNCiMjIyMgR3LDoWZpY2EgZGUgdmFsb3JlcyBhanVzdGFkb3MgdnMgcmVzaWR1b3MNCg0KYGBge3J9DQpwbG90KG1vZGVsbyRmaXR0ZWQudmFsdWVzLCBtb2RlbG8kcmVzaWR1YWxzLA0KICAgICBtYWluID0gIlJlc2lkdW9zIHZzIFZhbG9yZXMgQWp1c3RhZG9zIiwNCiAgICAgeGxhYiA9ICJWYWxvcmVzIEFqdXN0YWRvcyIsDQogICAgIHlsYWIgPSAiUmVzaWR1b3MiLA0KICAgICBwY2ggPSAxOSwgY29sID0gInN0ZWVsYmx1ZSIpDQphYmxpbmUoaCA9IDAsIGNvbCA9ICJyZWQiLCBsd2QgPSAyLCBsdHkgPSAyKQ0KYGBgDQoNCkNvbW8gc2Ugb2JzZXJ2YSwgbG9zIHJlc2lkdW9zIHNlIGRpc3RyaWJ1eWVuIGRlIGZvcm1hIHJlbGF0aXZhbWVudGUgYWxlYXRvcmlhIGFscmVkZWRvciBkZSBsYSBsw61uZWEgaG9yaXpvbnRhbCBlbiBjZXJvLCBzaW4gZm9ybWFyIGN1cnZhcyBuaSBlc3RydWN0dXJhcyBkZWZpbmlkYXMsIGxvIHF1ZSBpbmRpY2EgcXVlIGxhIHJlbGFjacOzbiBlbnRyZSBsYXMgdmFyaWFibGVzIGluZGVwZW5kaWVudGVzIHkgbGEgZXNwZXJhbnphIGRlIHZpZGEgZXMgYXByb3hpbWFkYW1lbnRlIGxpbmVhbC4gTm8gc2Ugb2JzZXJ2YSB1biBwYXRyw7NuIGVuIGZvcm1hIGRlIFUgbyBkZSBjYW1wYW5hIHF1ZSBzdWdpZXJhIHVuYSByZWxhY2nDs24gbm8gbGluZWFsLCBsbyBjdWFsIHJlc3BhbGRhIHF1ZSBlbCBtb2RlbG8gZXN0w6kgY29ycmVjdGFtZW50ZSBlc3BlY2lmaWNhZG8gZW4gdMOpcm1pbm9zIGRlIGZvcm1hIGZ1bmNpb25hbC4NCg0KIyMjIyBQcnVlYmEgZGUgaGlww7N0ZXNpcyBkZSBQZWFyc29uDQoNClNlIHByb2NlZGVyw6EgYSBldmFsdWFyIGxhIGV4aXN0ZW5jaWEgZGUgdW5hIHJlbGFjacOzbiBsaW5lYWwgZW50cmUgY2FkYSB2YXJpYWJsZSBpbmRlcGVuZGllbnRlIHkgbGEgZXNwZXJhbnphIGRlIHZpZGEgbWVkaWFudGUgbGEgcHJ1ZWJhIGRlIGNvcnJlbGFjacOzbiBkZSBQZWFyc29uOg0KDQoqKjEuIEZvcm11bGFjacOzbiBkZSBoaXDDs3Rlc2lzKioNCg0KLSAqKigkSF8wJCk6KiogIFwoIFxyaG8gPSAwIFwpICANCiAgTm8gZXhpc3RlIGFzb2NpYWNpw7NuIGxpbmVhbCBlbnRyZSBsYSB2YXJpYWJsZSBpbmRlcGVuZGllbnRlIHkgbGEgdmFyaWFibGUgZGVwZW5kaWVudGUuDQoNCi0gKiooJEhfMSQpOioqIFwoIFxyaG8gXG5lcSAwIFwpICANCiAgRXhpc3RlIGFzb2NpYWNpw7NuIGxpbmVhbCBlbnRyZSBsYSB2YXJpYWJsZSBpbmRlcGVuZGllbnRlIHkgbGEgdmFyaWFibGUgZGVwZW5kaWVudGUuDQoNCg0KKioyLiBOaXZlbCBkZSBzaWduaWZpY2FuY2lhKioNCiANCiBcKCBcYWxwaGEgPSAwLjA1IFwpDQogDQoqKjMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmEgeSB2YWxvcl9wKioNCg0KYGBge3IsIGVjaG89RkFMU0V9DQojIE5pdmVsIGRlIHNpZ25pZmljYW5jaWENCmFscGhhIDwtIDAuMDUNCg0KIyBQcnVlYmFzIGRlIGNvcnJlbGFjacOzbiBkZSBQZWFyc29uIHBhcmEgbGFzIHRyZXMgdmFyaWFibGVzIGRlbCBtb2RlbG8NCmNvcl90ZXN0XzEgPC0gY29yLnRlc3QoZGF0b3MkYEhJVi9BSURTYCwgZGF0b3MkYExpZmUgZXhwZWN0YW5jeWAsIG1ldGhvZCA9ICJwZWFyc29uIikNCmNvcl90ZXN0XzIgPC0gY29yLnRlc3QoZGF0b3MkYEluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXNgLCBkYXRvcyRgTGlmZSBleHBlY3RhbmN5YCwgbWV0aG9kID0gInBlYXJzb24iKQ0KY29yX3Rlc3RfMyA8LSBjb3IudGVzdChkYXRvcyRgQWR1bHQgTW9ydGFsaXR5YCwgZGF0b3MkYExpZmUgZXhwZWN0YW5jeWAsIG1ldGhvZCA9ICJwZWFyc29uIikNCg0KdmFyaWFibGVzIDwtIGMoIkhJVi9BSURTIiwgIkluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXMiLCAiQWR1bHQgTW9ydGFsaXR5IikNCg0KaGlwb3Rlc2lzX3RhYmxlX2NvciA8LSBkYXRhLmZyYW1lKA0KICB2YXJpYWJsZXMsDQogIHJlcCgiJEhfMDogXFxyaG8gPSAwJCIsIDMpLA0KICByZXAoIiRIXzE6IFxccmhvIFxcbmVxIDAkIiwgMyksDQogIHJlcCgiMC4wNSIsIDMpLA0KICByb3VuZChjKGNvcl90ZXN0XzEkc3RhdGlzdGljLCBjb3JfdGVzdF8yJHN0YXRpc3RpYywgY29yX3Rlc3RfMyRzdGF0aXN0aWMpLCAzKSwNCiAgcmVwKGNvcl90ZXN0XzEkcGFyYW1ldGVyLCAzKSwNCiAgZm9ybWF0KGMoY29yX3Rlc3RfMSRwLnZhbHVlLCBjb3JfdGVzdF8yJHAudmFsdWUsIGNvcl90ZXN0XzMkcC52YWx1ZSksIHNjaWVudGlmaWMgPSBUUlVFLCBkaWdpdHMgPSAzKSwNCiAgaWZlbHNlKGMoY29yX3Rlc3RfMSRwLnZhbHVlLCBjb3JfdGVzdF8yJHAudmFsdWUsIGNvcl90ZXN0XzMkcC52YWx1ZSkgPCBhbHBoYSwgIlZhbG9yIHAgPCDOsSIsICJWYWxvciBwID4gzrEiKSwNCiAgaWZlbHNlKGMoY29yX3Rlc3RfMSRwLnZhbHVlLCBjb3JfdGVzdF8yJHAudmFsdWUsIGNvcl90ZXN0XzMkcC52YWx1ZSkgPCBhbHBoYSwgIlJlY2hhemFtb3MgJEhfMCQiLCAiTm8gcmVjaGF6YW1vcyAkSF8wJCIpDQopDQoNCmNvbG5hbWVzKGhpcG90ZXNpc190YWJsZV9jb3IpIDwtIGMoDQogICJWYXJpYWJsZSIsDQogICJIaXDDs3Rlc2lzIG51bGEiLA0KICAiSGlww7N0ZXNpcyBhbHRlcm5hdGl2YSIsDQogICJOaXZlbCBkZSBzaWduaWZpY2FuY2lhIiwNCiAgIlZhbG9yIHQiLA0KICAiZ2wiLA0KICAiVmFsb3IgcCIsDQogICJDb21wYXJhY2nDs24iLA0KICAiRGVjaXNpw7NuIg0KKQ0KDQpoaXBvdGVzaXNfdGFibGVfY29yICU+JQ0KICBrYmwoDQogICAgZm9ybWF0ID0gImh0bWwiLA0KICAgIGNhcHRpb24gPSAiUHJ1ZWJhIGRlIEhpcMOzdGVzaXMgcGFyYSBsYSBDb3JyZWxhY2nDs24gZGUgUGVhcnNvbiBlbnRyZSBjYWRhIFZhcmlhYmxlIEluZGVwZW5kaWVudGUgeSBMaWZlIEV4cGVjdGFuY3kiLA0KICAgIGVzY2FwZSA9IEZBTFNFLA0KICAgIGFsaWduID0gImMiLA0KICAgIHJvdy5uYW1lcyA9IEZBTFNFDQogICkgJT4lDQogIGthYmxlX3N0eWxpbmcoDQogICAgYm9vdHN0cmFwX29wdGlvbnMgPSBjKCJzdHJpcGVkIiwgImhvdmVyIiwgImNvbmRlbnNlZCIsICJib3JkZXJlZCIpLA0KICAgIGZ1bGxfd2lkdGggPSBGQUxTRSwNCiAgICBwb3NpdGlvbiA9ICJjZW50ZXIiLA0KICAgIGZvbnRfc2l6ZSA9IDEzDQogICkgJT4lDQogIHJvd19zcGVjKDAsIGJvbGQgPSBUUlVFLCBiYWNrZ3JvdW5kID0gIiNlMGUwZTAiKQ0KYGBgDQoNCioqNC4gSW50ZXJwcmV0YWNpw7NuIHkgY29uY2x1c2nDs24qKg0KDQpMb3MgcmVzdWx0YWRvcyBkZSBsYSBwcnVlYmEgZGUgY29ycmVsYWNpw7NuIGRlIFBlYXJzb24gbXVlc3RyYW4gcXVlIGV4aXN0ZSAqKnVuYSBhc29jaWFjacOzbiBsaW5lYWwgc2lnbmlmaWNhdGl2YSoqIGVudHJlIGNhZGEgdW5hIGRlIGxhcyB2YXJpYWJsZXMgaW5kZXBlbmRpZW50ZXMgYW5hbGl6YWRhcyAoKkhJVi9BSURTKiwgKkluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXMqIHkgKkFkdWx0IE1vcnRhbGl0eSopIHkgbGEgdmFyaWFibGUgZGVwZW5kaWVudGUgKkxpZmUgZXhwZWN0YW5jeSouIEVuIHRvZG9zIGxvcyBjYXNvcywgbG9zIHZhbG9yZXMgJHAkIHNvbiBleHRyZW1hZGFtZW50ZSBiYWpvcyB5IG1lbm9yZXMgYWwgbml2ZWwgZGUgc2lnbmlmaWNhbmNpYSBlc3RhYmxlY2lkbyBkZSBcKCBcYWxwaGEgPSAwLjA1IFwpIHBvciBsbyBxdWUgc2UgKipyZWNoYXphIGxhIGhpcMOzdGVzaXMgbnVsYSoqIGRlIHF1ZSBubyBleGlzdGUgY29ycmVsYWNpw7NuIGxpbmVhbCBlbnRyZSBsYXMgdmFyaWFibGVzLkVuIGNvbnNlY3VlbmNpYSwgc2UgY29uY2x1eWUgcXVlIHRvZGFzIGxhcyB2YXJpYWJsZXMgcHJlZGljdG9yYXMgZGVsIG1vZGVsbyB0aWVuZW4gdW5hIHJlbGFjacOzbiBsaW5lYWwgZXN0YWTDrXN0aWNhbWVudGUgc2lnbmlmaWNhdGl2YSBjb24gbGEgZXNwZXJhbnphIGRlIHZpZGEsIGxvIHF1ZSBqdXN0aWZpY2Egc3UgaW5jbHVzacOzbiBlbiBlbCBhbsOhbGlzaXMgZGUgcmVncmVzacOzbiByZWFsaXphZG8gcGFyYSBlbCBhw7FvIDIwMTUgeSByZWZ1ZXJ6YSBzdSByZWxldmFuY2lhIGNvbW8gZmFjdG9yZXMgZXhwbGljYXRpdm9zIGRlbCBmZW7Ds21lbm8uDQoNCiMjIyBOb3JtYWxpZGFkIA0KDQpQYXJhIHZhbGlkYXIgZWwgbW9kZWxvIGRlIHJlZ3Jlc2nDs24gbGluZWFsIG3Dumx0aXBsZSwgZXMgbmVjZXNhcmlvIGNvbXByb2JhciBxdWUgbG9zIHJlc2lkdW9zIHNlIGRpc3RyaWJ1eWVuIGRlIGZvcm1hIGFwcm94aW1hZGFtZW50ZSBub3JtYWwuIEVzdGUgc3VwdWVzdG8gZ2FyYW50aXphIGxhIHZhbGlkZXogZGUgbGFzIGluZmVyZW5jaWFzIGVzdGFkw61zdGljYXMsIGNvbW8gbG9zIGludGVydmFsb3MgZGUgY29uZmlhbnphIHkgbGFzIHBydWViYXMgZGUgaGlww7N0ZXNpcyBhcGxpY2FkYXMgYSBsb3MgY29lZmljaWVudGVzLiBQYXJhIGV2YWx1YXIgZXN0YSBjb25kaWNpw7NuLCBzZSBlbXBsZWFyw6FuIGhlcnJhbWllbnRhcyBncsOhZmljYXMgY29tbyBlbCBncsOhZmljbyBRLVEgKHF1YW50aWxlLXF1YW50aWxlIHBsb3QpIHkgdW5hIHBydWViYSBlc3RhZMOtc3RpY2EgZm9ybWFsIGNvbW8gbG8gZXMgU2hhcGlybyBXaWxrLCBkYWRvIHF1ZSBlc3RhbW9zIHRyYWJhamFuZG8gY29uIHVuYSBtdWVzdHJhIGlndWFsIGEgNTAgb2JzZXJ2YWNpb25lcy4NCg0KIyMjIyBHcsOhZmljbyBRLVEgUGxvdA0KDQpgYGB7cn0NCnFxbm9ybShyZXNpZChtb2RlbG8pLCANCiAgICAgICBtYWluID0gIkdyw6FmaWNvIFEtUSBkZSBsb3MgUmVzaWR1b3MiLA0KICAgICAgIGNvbCA9ICJzdGVlbGJsdWUiLCANCiAgICAgICBwY2ggPSAxOSkNCnFxbGluZShyZXNpZChtb2RlbG8pLCANCiAgICAgICBjb2wgPSAicmVkIiwgDQogICAgICAgbHdkID0gMiwgDQogICAgICAgbHR5ID0gMikNCmBgYA0KDQpFbiBlbCBncsOhZmljbyBRLVEsIGxhIG1heW9yw61hIGRlIGxvcyBwdW50b3Mgc2UgYWxpbmVhbiBiYXN0YW50ZSBiaWVuIGNvbiBsYSBsw61uZWEgZGlhZ29uYWwsIGxvIHF1ZSBpbmRpY2EgcXVlIGxvcyByZXNpZHVvcyBkZWwgbW9kZWxvIHNpZ3VlbiB1bmEgZGlzdHJpYnVjacOzbiBhcHJveGltYWRhbWVudGUgbm9ybWFsLCBlc3BlY2lhbG1lbnRlIGVuIGVsIHJhbmdvIGNlbnRyYWwgZGUgbG9zIGRhdG9zLiBFc3RhIGFsaW5lYWNpw7NuIGVzIHVuYSBidWVuYSBzZcOxYWwsIHlhIHF1ZSByZXNwYWxkYSBlbCBjdW1wbGltaWVudG8gZGVsIHN1cHVlc3RvIGRlIG5vcm1hbGlkYWQgZW4gbG9zIGVycm9yZXMuIFNpbiBlbWJhcmdvLCBzZSBhcHJlY2lhbiBhbGd1bmFzIGRlc3ZpYWNpb25lcyBsZXZlcyBlbiBsYXMgY29sYXMsIGRvbmRlIGxvcyByZXNpZHVvcyBtw6FzIGV4dHJlbW9zIHNlIGFsZWphbiBsaWdlcmFtZW50ZSBkZSBsYSBsw61uZWEgdGXDs3JpY2EuIEVzdG8gcG9kcsOtYSBkZWJlcnNlIGEgbGEgcHJlc2VuY2lhIGRlIHZhbG9yZXMgYXTDrXBpY29zIG8gYSBsaWdlcmFzIGRlc3ZpYWNpb25lcyByZXNwZWN0byBhIGxhIG5vcm1hbGlkYWQgZW4gbG9zIGV4dHJlbW9zLiBQYXJhIGNvbXBsZW1lbnRhciBlc3RhIGV2YWx1YWNpw7NuIHZpc3VhbCwgc2UgYXBsaWNhcsOhIGxhIHBydWViYSBkZSBub3JtYWxpZGFkIGRlIFNoYXBpcm8tV2lsayBjb24gZWwgZmluIGRlIHZlcmlmaWNhciBkZSBmb3JtYSBlc3RhZMOtc3RpY2Egc2kgbG9zIHJlc2lkdW9zIHB1ZWRlbiBjb25zaWRlcmFyc2Ugbm9ybWFsbWVudGUgZGlzdHJpYnVpZG9zLg0KDQojIyMjIFNoYXBpcm8gV2lsaw0KDQpQYXJhIHZlcmlmaWNhciBlbCBjdW1wbGltaWVudG8gZGVsIHN1cHVlc3RvIGRlIG5vcm1hbGlkYWQgZGUgbG9zIGVycm9yZXMgZGVsIG1vZGVsbyBkZSByZWdyZXNpw7NuLCBzZSBhcGxpY2Fyw6EgbGEgcHJ1ZWJhIGRlICoqU2hhcGlyby1XaWxrKio6DQoNCioqMS4gRm9ybXVsYWNpw7NuIGRlIGhpcMOzdGVzaXMqKg0KDQotIEhpcMOzdGVzaXMgbnVsYSAoJEhfMCQpOiBMb3MgcmVzaWR1b3MgZGVsIG1vZGVsbyBzaWd1ZW4gdW5hIGRpc3RyaWJ1Y2nDs24gbm9ybWFsLg0KDQotIEhpcMOzdGVzaXMgYWx0ZXJuYXRpdmEgKCRIXzEkKTogTG9zIHJlc2lkdW9zIGRlbCBtb2RlbG8gbm8gc2lndWVuIHVuYSBkaXN0cmlidWNpw7NuIG5vcm1hbC4NCg0KKioyLiBOaXZlbCBkZSBzaWduaWZpY2FuY2lhKioNCiANCiBcKCBcYWxwaGEgPSAwLjA1IFwpDQogDQoqKjMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmEgeSB2YWxvcl9wKioNCg0KYGBge3J9DQpyZXNpZHVvcyA8LSByZXNpZHVhbHMobW9kZWxvKQ0KDQojIEFwbGljYXIgbGEgcHJ1ZWJhIGRlIFNoYXBpcm8tV2lsaw0Kc2hhcGlyby50ZXN0KHJlc2lkdW9zKQ0KYGBgDQoNCioqNC4gQ29tcGFyYWNpw7NuIGUgaW50ZXJwcmV0YWNpw7NuKioNCg0KJCQNCnAgPSAwLjI4ODMgPiBcYWxwaGEgPSAwLjA1DQokJA0KRWwgcmVzdWx0YWRvIGRlIGxhIHBydWViYSBhcnJvamEgdW4gcC12YWxvciBkZSAwLjI4ODMsIGVsIGN1YWwgZXMgbWF5b3IgcXVlIGVsIG5pdmVsIGRlIHNpZ25pZmljYWNpw7NuIGVzdGFibGVjaWRvICjOsSA9IDAuMDUpLiBQb3IgdGFudG8sIG5vIHNlIHJlY2hhemEgbGEgaGlww7N0ZXNpcyBudWxhIChI4oKAKSwgbG8gcXVlIGluZGljYSBxdWUgbm8gaGF5IGV2aWRlbmNpYSBzdWZpY2llbnRlIHBhcmEgYWZpcm1hciBxdWUgbG9zIGRhdG9zIHNlIGRlc3bDrWFuIHNpZ25pZmljYXRpdmFtZW50ZSBkZWwgc3VwdWVzdG8gcGxhbnRlYWRvLg0KDQoqKjUuIENvbmNsdXNpw7NuKioNCg0KU2kgc2UgZXN0YWJsZWNlIHVuICoqbml2ZWwgZGUgc2lnbmlmaWNhbmNpYSBkZSBcKCBcYWxwaGEgPSAwLjA1IFwpKiosIGVsIHJlc3VsdGFkbyBkZSBsYSAqKnBydWViYSBkZSBub3JtYWxpZGFkIGRlIFNoYXBpcm8tV2lsayoqIGFwbGljYWRhIGEgbG9zIHJlc2lkdW9zIGRlbCBtb2RlbG8gYXJyb2phIHVuIGVzdGFkw61zdGljbyBcKCBXID0gMC45NzI0IFwpIHkgdW4gKip2YWxvciBwID0gMC4yODgzKiouIERhZG8gcXVlIGVsIHZhbG9yIHAgZXMgKiptYXlvciBhbCBuaXZlbCBkZSBzaWduaWZpY2FuY2lhKiosICoqbm8gc2UgcmVjaGF6YSBsYSBoaXDDs3Rlc2lzIG51bGEqKiwgbG8gcXVlIGluZGljYSBxdWUgKipubyBoYXkgZXZpZGVuY2lhIGVzdGFkw61zdGljYSBzdWZpY2llbnRlIHBhcmEgYWZpcm1hciBxdWUgbG9zIHJlc2lkdW9zIHNlIGRlc3bDrWFuIGRlIHVuYSBkaXN0cmlidWNpw7NuIG5vcm1hbCoqLiBFc3RlIGhhbGxhemdvIGVzIGNvaGVyZW50ZSBjb24gZWwgZ3LDoWZpY28gUS1RLCBkb25kZSBsb3MgcHVudG9zIHNpZ3VlbiBkZSBmb3JtYSByYXpvbmFibGUgbGEgbMOtbmVhIGRpYWdvbmFsLiBFbiBjb25qdW50bywgZXN0b3MgcmVzdWx0YWRvcyBzdWdpZXJlbiBxdWUgKiplbCBzdXB1ZXN0byBkZSBub3JtYWxpZGFkIGRlIGxvcyBlcnJvcmVzIHNlIGN1bXBsZSoqLCByZXNwYWxkYW5kbyBsYSB2YWxpZGV6IGRlbCBtb2RlbG8gZW4gZXN0ZSBhc3BlY3RvLg0KDQojIyMgTXVsdGljb2xpbmVhbGlkYWQgDQoNCkxhIG11bHRpY29saW5lYWxpZGFkIHNlIHByZXNlbnRhIGN1YW5kbyBhbGd1bmFzIHZhcmlhYmxlcyBpbmRlcGVuZGllbnRlcyBkZWwgbW9kZWxvIGVzdMOhbiBmdWVydGVtZW50ZSByZWxhY2lvbmFkYXMgZW50cmUgc8OtLCBsbyBxdWUgcHVlZGUgYWZlY3RhciBsYSBpbnRlcnByZXRhY2nDs24gZGUgbG9zIGNvZWZpY2llbnRlcyB5IHJlZHVjaXIgbGEgcHJlY2lzacOzbiBkZSBsYXMgZXN0aW1hY2lvbmVzLiBQYXJhIHZlcmlmaWNhciBzaSBleGlzdGUgZXN0ZSBwcm9ibGVtYSwgc2UgYW5hbGl6YXLDoSBsYSBtYXRyaXogZGUgY29ycmVsYWNpw7NuIGVudHJlIGxhcyB2YXJpYWJsZXM6DQoNCmBgYHtyfQ0KdmFyaWFibGVzX2luZGVwIDwtIGRhdG9zWywgYygiSElWL0FJRFMiLCAiSW5jb21lIGNvbXBvc2l0aW9uIG9mIHJlc291cmNlcyIsICJBZHVsdCBNb3J0YWxpdHkiKV0NCg0KY29ycmVsYWNpb25lcyA8LSByb3VuZChjb3IodmFyaWFibGVzX2luZGVwLCB1c2UgPSAiY29tcGxldGUub2JzIiwgbWV0aG9kID0gInBlYXJzb24iKSwgMykNCg0KY29ycmVsYWNpb25lcyAlPiUNCiAga2FibGUoImh0bWwiLCBjYXB0aW9uID0gIk1hdHJpeiBkZSBDb3JyZWxhY2nDs24gZW50cmUgbGFzIFZhcmlhYmxlcyIsIGFsaWduID0gImMiKSAlPiUNCiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9IGMoInN0cmlwZWQiLCAiaG92ZXIiLCAiY29uZGVuc2VkIiksIA0KICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGQUxTRSwgDQogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAiY2VudGVyIikNCmBgYA0KDQoNCkxhIG1hdHJpeiBkZSBjb3JyZWxhY2nDs24gZXZpZGVuY2lhIHF1ZSBubyBleGlzdGUgdW5hIHJlbGFjacOzbiBsaW5lYWwgZnVlcnRlIGVudHJlIGxhcyB2YXJpYWJsZXMgaW5kZXBlbmRpZW50ZXMsIHlhIHF1ZSB0b2RvcyBsb3MgY29lZmljaWVudGVzIHNlIGVuY3VlbnRyYW4gcG9yIGRlYmFqbyBkZWwgdW1icmFsIGRlIMKxMC43LCBsbyBjdWFsIGRlc2NhcnRhIGxhIHByZXNlbmNpYSBkZSBtdWx0aWNvbGluZWFsaWRhZCBzZXZlcmEuIExhIGNvcnJlbGFjacOzbiBlbnRyZSAqSElWL0FJRFMqIGUgKkluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXMqIGVzIGRlIC0wLjI0OSwgaW5kaWNhbmRvIHVuYSBhc29jaWFjacOzbiBkw6liaWwgeSBuZWdhdGl2YS4gRW50cmUgKkhJVi9BSURTKiB5ICpBZHVsdCBNb3J0YWxpdHkqIHNlIG9ic2VydmEgdW5hIHJlbGFjacOzbiBtb2RlcmFkYSB5IHBvc2l0aXZhIGNvbiB1biBjb2VmaWNpZW50ZSBkZSAwLjUyOSwgbWllbnRyYXMgcXVlICpJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzKiB5ICpBZHVsdCBNb3J0YWxpdHkqIHByZXNlbnRhbiB1bmEgcmVsYWNpw7NuIG1vZGVyYWRhIHkgbmVnYXRpdmEgZGUgLTAuNDU4LiBFc3RhcyBhc29jaWFjaW9uZXMsIGF1bnF1ZSBwcmVzZW50ZXMsIG5vIHNvbiBsbyBzdWZpY2llbnRlbWVudGUgYWx0YXMgY29tbyBwYXJhIGNvbXByb21ldGVyIGxhIGluZGVwZW5kZW5jaWEgZW50cmUgbG9zIHByZWRpY3RvcmVzLiBQb3IgdGFudG8sIHB1ZWRlIGFzdW1pcnNlIHF1ZSBjYWRhIHZhcmlhYmxlIGFwb3J0YSB2YWxvciDDum5pY28gYWwgbW9kZWxvIHkgc3VzIGVmZWN0b3MgcHVlZGVuIGludGVycHJldGFyc2UgZGUgbWFuZXJhIGNvbmZpYWJsZS4NCg0KIyMjIEF1dG9jb3JyZWxhY2nDs24gZGUgbG9zIHJlc2lkdW9zIA0KDQpFbiBsb3MgbW9kZWxvcyBkZSByZWdyZXNpw7NuIGxpbmVhbCwgdW5vIGRlIGxvcyBzdXB1ZXN0b3MgZnVuZGFtZW50YWxlcyBlcyBxdWUgbG9zIHJlc2lkdW9zIHNlYW4gaW5kZXBlbmRpZW50ZXMgZW50cmUgc8OtLiBMYSBhdXRvY29ycmVsYWNpw7NuIG9jdXJyZSBjdWFuZG8gbG9zIGVycm9yZXMgZXN0w6FuIGNvcnJlbGFjaW9uYWRvcywgZXMgZGVjaXIsIGN1YW5kbyBlbCB2YWxvciBkZSB1biByZXNpZHVvIGRlcGVuZGUgZGVsIGFudGVyaW9yLiBFc3RlIGZlbsOzbWVubyBwdWVkZSBnZW5lcmFyIGVzdGltYWNpb25lcyBpbmVmaWNpZW50ZXMgeSB2YWxvcmVzIHAgcG9jbyBjb25maWFibGVzLiBQYXJhIGV2YWx1YXIgZXN0ZSBzdXB1ZXN0bywgc2UgdXRpbGl6YSBsYSBwcnVlYmEgZGUgRHVyYmluLVdhdHNvbjoNCg0KKioxLiBGb3JtdWxhY2nDs24gZGUgaGlww7N0ZXNpcyoqDQoNCi0gKipIaXDDs3Rlc2lzIG51bGEgKFwoIEhfMCBcKSkqKjogXCggXHJobyA9IDAgXCkgIA0KICBObyBleGlzdGUgYXV0b2NvcnJlbGFjacOzbiBlbiBsb3MgcmVzaWR1b3MgZGVsIG1vZGVsby4NCg0KLSAqKkhpcMOzdGVzaXMgYWx0ZXJuYXRpdmEgKFwoIEhfMSBcKSkqKjogXCggXHJobyBcbmVxIDAgXCkgIA0KICBFeGlzdGUgYXV0b2NvcnJlbGFjacOzbiBlbiBsb3MgcmVzaWR1b3MgZGVsIG1vZGVsby4NCg0KKioyLiBOaXZlbCBkZSBzaWduaWZpY2FuY2lhKioNCiANCiBcKCBcYWxwaGEgPSAwLjA1IFwpDQogDQoqKjMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmEgeSB2YWxvcl9wKiogIA0KDQpgYGB7cn0NCmxpYnJhcnkobG10ZXN0KQ0KDQojIFBydWViYSBkZSBEdXJiaW4tV2F0c29uIGFsIG1vZGVsbw0KZHd0ZXN0KG1vZGVsbykNCmBgYA0KDQoqKjQuIENvbXBhcmFjacOzbiBlIGludGVycHJldGFjacOzbioqDQoNCiQkDQpwID0gMC44MzYxID4gXGFscGhhID0gMC4wNQ0KJCQNCkVsIHJlc3VsdGFkbyBkZSBsYSBwcnVlYmEgYXJyb2phIHVuIHAtdmFsb3IgZGUgMC44MzYxLCBlbCBjdWFsIGVzIG1heW9yIHF1ZSBlbCBuaXZlbCBkZSBzaWduaWZpY2FjacOzbiBlc3RhYmxlY2lkbyAozrEgPSAwLjA1KS4gUG9yIHRhbnRvLCBubyBzZSByZWNoYXphIGxhIGhpcMOzdGVzaXMgbnVsYSAoSOKCgCksIGxvIHF1ZSBpbmRpY2EgcXVlIG5vIGhheSBldmlkZW5jaWEgc3VmaWNpZW50ZSBwYXJhIGFmaXJtYXIgcXVlIGxvcyBkYXRvcyBzZSBkZXN2w61hbiBzaWduaWZpY2F0aXZhbWVudGUgZGVsIHN1cHVlc3RvIHBsYW50ZWFkby4NCg0KKio1LiBDb25jbHVzacOzbioqDQoNCkVsIGVzdGFkw61zdGljbyAqKkR1cmJpbi1XYXRzb24qKiBmdWUgKioyLjI3MjcqKiBjb24gdW4gKip2YWxvciBwID0gMC44MzYxKiouIENvbW8gZWwgdmFsb3IgcCBlcyBtYXlvciBxdWUgZWwgbml2ZWwgZGUgc2lnbmlmaWNhbmNpYSBcKCBcYWxwaGEgPSAwLjA1IFwpLCAqKm5vIHNlIHJlY2hhemEgbGEgaGlww7N0ZXNpcyBudWxhKiosIGxvIHF1ZSBpbmRpY2EgcXVlICoqbm8gaGF5IGV2aWRlbmNpYSBkZSBhdXRvY29ycmVsYWNpw7NuIHBvc2l0aXZhKiogZW4gbG9zIHJlc2lkdW9zLiBBZGVtw6FzLCBlbCB2YWxvciBkZSBEVyBlc3TDoSBkZW50cm8gZGVsIHJhbmdvIGFjZXB0YWJsZSAoZW50cmUgMS41IHkgMi41KSwgcG9yIGxvIHF1ZSBzZSBjb25zaWRlcmEgcXVlICoqbG9zIGVycm9yZXMgZGVsIG1vZGVsbyBzb24gaW5kZXBlbmRpZW50ZXMqKi4gRXN0byBlcyBhcHJvcGlhZG8gZW4gZXN0ZSBjYXNvLCB5YSBxdWUgbG9zIGRhdG9zIHByb3ZpZW5lbiBkZSBkaXN0aW50b3MgcGHDrXNlcyBlbiB1biBzb2xvIGHDsW8sIHkgbm8gc2UgZXNwZXJhIHVuYSByZWxhY2nDs24gdGVtcG9yYWwgZW50cmUgbGFzIG9ic2VydmFjaW9uZXMuDQoNCg0KIyMjIEhvbW9jZWRhc3RpY2lkYWQgDQoNCkVuIHVuIG1vZGVsbyBkZSByZWdyZXNpw7NuLCBsb3MgZXJyb3JlcyBkZWJlcsOtYW4gbWFudGVuZXJzZSBjb24gdW5hIGRpc3BlcnNpw7NuIHNpbWlsYXIgZW4gdG9kb3MgbG9zIG5pdmVsZXMgZGUgbG9zIHZhbG9yZXMgYWp1c3RhZG9zLiBTaSBlc3RvIG5vIG9jdXJyZSwgc2UgaGFibGEgZGUgaGV0ZXJvY2VkYXN0aWNpZGFkLCBsbyBxdWUgcHVlZGUgYWZlY3RhciBsYSBjb25maWFiaWxpZGFkIGRlbCBtb2RlbG8uIFBvciBlc28gZXMgaW1wb3J0YW50ZSB2ZXJpZmljYXIgZXN0ZSBzdXB1ZXN0byBjb24gZ3LDoWZpY29zIHkgcHJ1ZWJhcyBjb21vIGxhIGRlIEJyZXVzY2gtUGFnYW46DQoNCiMjIyMgR3LDoWZpY2EgZGUgdmFsb3JlcyBhanVzdGFkb3MgdnMgcmVzaWR1b3MqKg0KDQpgYGB7cn0NCnBsb3QobW9kZWxvJGZpdHRlZC52YWx1ZXMsIG1vZGVsbyRyZXNpZHVhbHMsDQogICAgIG1haW4gPSAiUmVzaWR1b3MgdnMgVmFsb3JlcyBBanVzdGFkb3MiLA0KICAgICB4bGFiID0gIlZhbG9yZXMgQWp1c3RhZG9zIiwNCiAgICAgeWxhYiA9ICJSZXNpZHVvcyIsDQogICAgIHBjaCA9IDE5LCBjb2wgPSAic3RlZWxibHVlIikNCmFibGluZShoID0gMCwgY29sID0gInJlZCIsIGx3ZCA9IDIsIGx0eSA9IDIpDQpgYGANCg0KRW4gZWwgZ3LDoWZpY28gbm8gc2Ugb2JzZXJ2YSB1bmEgZm9ybWEgZGVmaW5pZGEgbmkgdW4gcGF0csOzbiBldmlkZW50ZSBlbiBsYSBkaXNwZXJzacOzbiBkZSBsb3MgcmVzaWR1b3MuIExvcyBwdW50b3MgcGFyZWNlbiBkaXN0cmlidWlkb3MgZGUgbWFuZXJhIGlycmVndWxhciBhbHJlZGVkb3IgZGUgbGEgbMOtbmVhIGNlcm8geSBsYSB2YXJpYWNpw7NuIHNlIG1hbnRpZW5lIG3DoXMgbyBtZW5vcyBjb25zdGFudGUgZW4gdG9kbyBlbCByYW5nbyBkZSBsb3MgdmFsb3JlcyBhanVzdGFkb3MsIHBvciBsbyBxdWUgdmlzdWFsbWVudGUgc2UgcG9kcsOtYSBhY2VwdGFyIHF1ZSBlbCBtb2RlbG8gY3VtcGxlIGNvbiBlbCBzdXB1ZXN0byBkZSBob21vY2VkYXN0aWNpZGFkLg0KDQojIyMjIEJyZXVzY2gtUGFnYW4NCg0KKioxLiBGb3JtdWxhY2nDs24gZGUgaGlww7N0ZXNpcyoqDQoNCi0gKipIaXDDs3Rlc2lzIG51bGEgKFwoIEhfMCBcKSkqKjogSGF5IGhvbW9jZWRhc3RpY2lkYWQgIA0KTGEgdmFyaWFuemEgZGUgbG9zIHJlc2lkdW9zIGRlbCBtb2RlbG8gZXMgY29uc3RhbnRlLg0KDQotICoqSGlww7N0ZXNpcyBhbHRlcm5hdGl2YSAoXCggSF8xIFwpKSoqOiBIYXkgaGV0ZXJvY2VkYXN0aWNpZGFkICANCkxhIHZhcmlhbnphIGRlIGxvcyByZXNpZHVvcyBkZWwgbW9kZWxvIG5vIGVzIGNvbnN0YW50ZS4NCg0KKioyLiBOaXZlbCBkZSBzaWduaWZpY2FuY2lhKioNCiANCiBcKCBcYWxwaGEgPSAwLjA1IFwpDQogDQoqKjMuIEVzdGFkw61zdGljbyBkZSBwcnVlYmEgeSB2YWxvcl9wKiogIA0KDQpgYGB7cn0NCmxpYnJhcnkobG10ZXN0KQ0KDQojIFRlc3QgZGUgQnJldXNjaC1QYWdhbg0KYnB0ZXN0KG1vZGVsbykNCmBgYA0KKio0LiBDb21wYXJhY2nDs24gZSBpbnRlcnByZXRhY2nDs24qKg0KDQokJA0KcCA9IDAuODM2MSA+IFxhbHBoYSA9IDAuMDUNCiQkDQoNCkVsIHJlc3VsdGFkbyBkZSBsYSBwcnVlYmEgYXJyb2phIHVuIHAtdmFsb3IgZGUgMC44MzYxLCBlbCBjdWFsIGVzIG1heW9yIHF1ZSBlbCBuaXZlbCBkZSBzaWduaWZpY2FjacOzbiBlc3RhYmxlY2lkbyAozrEgPSAwLjA1KS4gUG9yIHRhbnRvLCBubyBzZSByZWNoYXphIGxhIGhpcMOzdGVzaXMgbnVsYSAoSOKCgCksIGxvIHF1ZSBpbmRpY2EgcXVlIG5vIGhheSBldmlkZW5jaWEgc3VmaWNpZW50ZSBwYXJhIGFmaXJtYXIgcXVlIGxvcyBkYXRvcyBzZSBkZXN2w61hbiBzaWduaWZpY2F0aXZhbWVudGUgZGVsIHN1cHVlc3RvIHBsYW50ZWFkby4NCg0KKio1LiBDb25jbHVzacOzbioqDQoNCkFsIGFwbGljYXIgbGEgcHJ1ZWJhIGRlIEJyZXVzY2gtUGFnYW4gcGFyYSBldmFsdWFyIGxhIGhvbW9jZWRhc3RpY2lkYWQgZGUgbG9zIHJlc2lkdW9zIGRlbCBtb2RlbG8sIHNlIG9idHV2byB1biBlc3RhZMOtc3RpY28gXCggQlAgPSA1LjAwNjYgXCkgY29uIDMgZ3JhZG9zIGRlIGxpYmVydGFkIHkgdW4gdmFsb3IgcCBkZSAwLjE3MTMuQWwgdGVuZXIgdW4gbml2ZWwgZGUgc2lnbmlmaWNhbmNpYSBkZSBcKCBcYWxwaGEgPSAwLjA1IFwpLCBlc3RlIHZhbG9yIHAgZXMgbWF5b3IgYWwgdW1icmFsLCBwb3IgbG8gdGFudG8sIG5vIHNlIHJlY2hhemEgbGEgaGlww7N0ZXNpcyBudWxhIGRlIGhvbW9jZWRhc3RpY2lkYWQuIEVzdG8gaW5kaWNhIHF1ZSBubyBoYXkgZXZpZGVuY2lhIGVzdGFkw61zdGljYSBzdWZpY2llbnRlIHBhcmEgYWZpcm1hciBxdWUgbGEgdmFyaWFuemEgZGUgbG9zIHJlc2lkdW9zIG5vIGVzIGNvbnN0YW50ZSwgbG8gY3VhbCBzdWdpZXJlIHF1ZSBlbCBzdXB1ZXN0byBkZSBob21vY2VkYXN0aWNpZGFkIHNlIGN1bXBsZSBlbiBlbCBtb2RlbG8sIGFwb3J0YW5kbyBtYXlvciBjb25maWFuemEgZW4gbGEgdmFsaWRleiBkZSBsYXMgaW5mZXJlbmNpYXMgcmVhbGl6YWRhcy4NCg0KDQojIEJpYmxpb2dyYWbDrWENCg==</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("about.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Determinantes de la esperanza de vida: análisis descriptivo</title>
+
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"> 🌍📈 Esperanza de Vida y Factores Clave</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Contexto y estadística descriptiva
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-gear"></span>
+     
+    Estadística inferencial
+  </a>
+</li>
+<li>
+  <a href="conclusiones.html">
+    <span class="fa fa-check"></span>
+     
+    Conclusiones
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Determinantes de la esperanza de vida:
+análisis descriptivo</h1>
+
+</div>
+
+
+<div id="enfoque-investigativo-y-pregunta-a-resolver"
+class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Enfoque investigativo y
+pregunta a resolver</h1>
+<p>La esperanza de vida al nacer es uno de los indicadores más
+reveladores del bienestar general de una sociedad, ya que refleja el
+número promedio de años que una persona podría vivir desde su nacimiento
+si las condiciones actuales de mortalidad se mantuvieran estables, este
+dato resume la influencia de factores sanitarios, económicos,
+ambientales y sociales sobre la salud poblacional, por lo que se ha
+convertido en una referencia clave para evaluar el desarrollo humano y
+las brechas entre países <span class="citation">(Banco Mundial
+2022)</span>. Durante las últimas seis décadas, el mundo ha registrado
+un avance significativo en este aspecto: en 1960 la esperanza de vida
+global era de 52,6 años, mientras que en 2022 alcanzó los 72,9 años
+gracias al acceso creciente a servicios médicos, mejoras en nutrición,
+mayor cobertura educativa y una reducción progresiva de enfermedades
+transmisibles <span class="citation">(Banco Mundial 2024)</span>. Sin
+embargo, estos promedios globales esconden marcadas desigualdades, pues
+mientras en 2023 Japón reportó una esperanza de vida de 84,04 años,
+países como Lesoto y la República Centroafricana apenas alcanzaron los
+57 años <span class="citation">(Datosmacro 2023a, 2023b; Data Commons
+2023)</span>.</p>
+<p>Estas diferencias reflejan que la longevidad no está determinada solo
+por avances médicos, sino por múltiples condiciones estructurales que
+afectan de forma desigual a las poblaciones. La Organización Mundial de
+la Salud advierte que la pobreza puede reducir la esperanza de vida en
+más de 30 años, lo cual demuestra cómo los factores socioeconómicos se
+convierten en barreras reales para acceder a una vida larga y saludable
+<span class="citation">(EFE 2025)</span>. En ese contexto, variables
+como la prevalencia del VIH/SIDA, la income composition of resources,
+los años promedio de estudio y la mortalidad adulta podrían estar
+relacionadas con la esperanza de vida, pues reflejan distintas
+dimensiones del desarrollo humano y las condiciones sociales de los
+países. Comprender cómo interactúan entre sí y cuál es su posible efecto
+combinado resulta clave para explorar las diferencias en longevidad a
+nivel global. Por tanto, surge la siguiente pregunta de
+investigación:</p>
+<p style="text-align: center;">
+<strong>¿Cuál es el efecto conjunto de la prevalencia de VIH/SIDA, la
+composición del ingreso y la mortalidad adulta sobre la esperanza de
+vida en los países, tomando como referencia el año 2015 y desde un
+enfoque de análisis multivariado?</strong>
+</p>
+</div>
+<div id="relevancia-tématica-y-objetivos-de-investigación"
+class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Relevancia tématica y
+objetivos de investigación</h1>
+<p>Hablar de esperanza de vida es hablar de las condiciones que hacen
+posible vivir más y mejor. Aunque los promedios globales han mejorado en
+las últimas décadas, la realidad es que no todos los países avanzan al
+mismo ritmo, y las desigualdades siguen marcando profundas diferencias
+en cuánto tiempo vive una persona según dónde nace y en qué condiciones
+vive. Uno de los factores que más ha impactado la longevidad en ciertas
+regiones ha sido el VIH/SIDA. En países como Eswatini, la epidemia
+provocó una caída brutal en la esperanza de vida, pasando de 61 a 32
+años en apenas una década <span class="citation">(UNAIDS 2022)</span>.
+Aunque los avances médicos han reducido las muertes por SIDA en más de
+un 69% desde 2004 y hoy muchas personas tienen acceso a tratamiento
+antirretroviral, el virus sigue cobrando una vida cada minuto en el
+mundo <span
+class="citation">(<strong>unaids2023global?</strong>)</span>.</p>
+<p>Pero no se trata solo de salud, la desigualdad económica también
+influye de forma directa en cuántos años puede vivir alguien. Según la
+OMS, la diferencia de esperanza de vida entre los países más ricos y más
+pobres supera los 30 años <span class="citation">(Organization
+2023)</span>. Incluso dentro de una misma ciudad, como Santiago de Chile
+o Ciudad de México, se han encontrado diferencias de hasta 18 años entre
+barrios ricos y pobres <span class="citation">(Bilal et al.
+2020)</span>. Esta realidad se repite en todo el mundo: en Estados
+Unidos, el 1% más rico puede vivir hasta 15 años más que el 1% más pobre
+<span class="citation">(Chetty et al. 2016)</span>. Y si hay un
+indicador que refleja de forma cruda la fragilidad estructural de una
+población es la mortalidad adulta, es decir, las muertes entre los 15 y
+60 años. En países como Japón, la probabilidad de morir en esa etapa de
+la vida es menor al 3%, mientras que en países como Lesoto o Sierra
+Leona puede superar el 47% <span class="citation">(Organization
+2019)</span>. Estas diferencias evidencian que millones de jóvenes y
+adultos en el mundo aún enfrentan condiciones de vida que limitan
+seriamente sus posibilidades de alcanzar la vejez, ya sea por
+enfermedades transmisibles, mortalidad prematura, violencia o falta de
+acceso a servicios básicos de salud y protección social <span
+class="citation">(Organization 2019)</span>.</p>
+<p>En conjunto, la esperanza de vida se configura como una expresión
+compleja de las condiciones sociales, económicas y sanitarias que
+atraviesan las poblaciones. Más allá del acceso a servicios médicos, su
+evolución refleja cómo una sociedad gestiona la distribución del
+ingreso, la cobertura en salud y la equidad en las oportunidades de
+vida. Estos factores no operan de manera aislada, sino que se articulan
+estructuralmente, condicionando el bienestar y la longevidad de millones
+de personas. Por ello, comprender sus interacciones resulta fundamental
+no solo para explicar las disparidades actuales, sino para orientar
+políticas públicas más integrales y efectivas. En este estudio, se ha
+decidido tomar como referencia el año <strong>2015</strong>, ya que
+corresponde al último periodo con información completa y homogénea en la
+base de datos empleada, antes de que los registros comenzaran a mostrar
+ausencias significativas o interrupciones. Además, 2015 marca un hito
+relevante en términos de política global, al coincidir con el cierre de
+los Objetivos de Desarrollo del Milenio (ODM) y el inicio formal de la
+agenda de los Objetivos de Desarrollo Sostenible (ODS), lo que permite
+contextualizar los hallazgos dentro de un momento clave de transición
+internacional en salud y desarrollo <span class="citation">(BBVA
+2025)</span>. Partiendo de esta base, el presente estudio se enfocará en
+analizar el efecto conjunto de tres determinantes críticos —la
+prevalencia de VIH/SIDA, la composición del ingreso y la mortalidad
+adulta— sobre la esperanza de vida, a través de un enfoque de análisis
+multivariado. Los objetivos que guiarán este estudio son los
+siguientes:</p>
+<p><strong>Objetivo general</strong></p>
+<ul>
+<li>Analizar la esperanza de vida global en el año 2015, a partir de una
+muestra representativa de países, aplicando técnicas de estadística
+descriptiva, inferencial y regresión lineal para identificar patrones,
+estimar parámetros poblacionales y evaluar el efecto de variables
+socioeconómicas y sanitarias sobre la longevidad.</li>
+</ul>
+<p><strong>Objetivos específicos</strong></p>
+<ul>
+<li><p>Imputar los valores faltantes de la base de datos original y
+seleccionar una muestra aleatoria de 50 países para el año 2015, con el
+fin de trabajar con un conjunto de datos limpio y
+representativo.</p></li>
+<li><p>Describir estadísticamente la variable respuesta (esperanza de
+vida) y las variables predictoras seleccionadas, aplicando medidas
+descriptivas e inferenciales, incluyendo el cálculo de intervalos de
+confianza y comparaciones entre países desarrollados y en
+desarrollo.</p></li>
+<li><p>Ajustar e interpretar un modelo de regresión lineal múltiple,
+para analizar el efecto conjunto de factores socioeconómicos y
+sanitarios sobre la esperanza de vida.</p></li>
+</ul>
+</div>
+<div id="principales-variables-que-delimitan-el-análisis"
+class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Principales variables
+que delimitan el análisis</h1>
+<table class="table table-striped table-bordered table-condensed table-responsive" style="font-size: 13px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Clasificación de las variables seleccionadas
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Variable
+</th>
+<th style="text-align:center;">
+Tipo
+</th>
+<th style="text-align:center;">
+Escala
+</th>
+<th style="text-align:center;">
+Escala de medición
+</th>
+<th style="text-align:center;">
+Descripción
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Life expectancy
+</td>
+<td style="text-align:center;">
+Cuantitativa continua
+</td>
+<td style="text-align:center;">
+Años
+</td>
+<td style="text-align:center;">
+Razón
+</td>
+<td style="text-align:center;">
+Número promedio de años que se espera que viva una persona al nacer.
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+HIV/AIDS
+</td>
+<td style="text-align:center;">
+Cuantitativa continua
+</td>
+<td style="text-align:center;">
+Porcentaje (%)
+</td>
+<td style="text-align:center;">
+Razón
+</td>
+<td style="text-align:center;">
+Porcentaje de personas (15–49 años) infectadas por VIH/SIDA.
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Income composition of resources
+</td>
+<td style="text-align:center;">
+Cuantitativa continua
+</td>
+<td style="text-align:center;">
+Índice entre 0 y 1
+</td>
+<td style="text-align:center;">
+Razón
+</td>
+<td style="text-align:center;">
+Índice que refleja el acceso a recursos económicos, entre 0 (bajo) y 1
+(alto).
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Adult Mortality
+</td>
+<td style="text-align:center;">
+Cuantitativa discreta
+</td>
+<td style="text-align:center;">
+Muertes por 1000 habitantes
+</td>
+<td style="text-align:center;">
+Razón
+</td>
+<td style="text-align:center;">
+Número de muertes entre adultos (15–60 años) por cada 1000 habitantes.
+</td>
+</tr>
+</tbody>
+</table>
+<p>Las variables seleccionadas en este estudio fueron elegidas por su
+capacidad explicativa frente al comportamiento de la esperanza de vida
+en distintos países, abarcando tanto dimensiones sanitarias como
+socioeconómicas. En este análisis, la variable dependiente es Life
+expectancy, mientras que las variables explicativas son HIV/AIDS, Income
+composition of resources y Adult Mortality, cada una de ellas aporta
+elementos fundamentales para entender los niveles de longevidad, ya sea
+por el impacto de enfermedades infecciosas, las condiciones económicas o
+los riesgos de mortalidad en edades productivas.</p>
+<p>Desde el punto de vista estadístico, todas estas variables son
+cuantitativas, ya que expresan valores numéricos que pueden ser medidos
+y comparados, lo cual permite aplicar herramientas estadísticas como la
+regresión lineal múltiple, el análisis de correlación y el cálculo de
+medidas de dispersión o tendencia central, aprovechando su naturaleza
+numérica para obtener una medición objetiva, precisa y adecuada que
+facilite el análisis riguroso de las relaciones entre las variables del
+estudio.</p>
+<p>Las variables Life expectancy, HIV/AIDS e Income composition of
+resources son cuantitativas continuas, ya que pueden adoptar valores
+dentro de un rango amplio con decimales, por ejemplo una esperanza de
+vida de 72.6 años o una prevalencia de VIH de 3.4%.En cambio, Adult
+Mortality se considera una variable cuantitativa discreta, ya que
+representa el número de muertes por cada mil habitantes y proviene de un
+conteo de eventos, lo que implica que solo puede tomar valores enteros.
+Aunque se expresa como una tasa estandarizada, su naturaleza original se
+basa en recuentos individuales, por lo que estadísticamente conserva su
+clasificación discreta.</p>
+<p>En cuanto a la escala de medición, todas operan bajo una escala de
+razón, lo que significa que poseen un cero absoluto y permiten
+establecer comparaciones proporcionales. Esto habilita afirmaciones como
+que un país con 60 años de esperanza de vida vive el doble que uno con
+30, o que una prevalencia de VIH del 4% duplica la de un país con
+2%.</p>
+<p>Adicionalmente, se emplearán otras variables para análisis
+categóricos que permitan estudiar diferencias por continente y estatus
+de desarrollo, ambas clasificadas como variables cualitativas nominales,
+ya que agrupan a los países en categorías sin un orden inherente. Si
+bien estas variables no forman parte del modelo de regresión que se
+busca plantear, se utilizarán como enfoques comparativos para analizar
+cómo varían las variables predictivas seleccionadas en función del
+contexto geográfico y del nivel de desarrollo de los países. Su uso
+estará centrado en el análisis estadístico descriptivo y en el
+planteamiento de intervalos de confianza por grupo, lo que permitirá
+complementar la interpretación general con comparaciones entre
+categorías relevantes del conjunto de datos.</p>
+<p>Esta clasificación de las variables es un paso esencial para asegurar
+la validez del análisis, ya que permite elegir las herramientas
+estadísticas adecuadas y garantizar que las conclusiones extraídas se
+basen en datos correctamente tratados. Además, el enfoque integral que
+resulta de combinar variables sanitarias y socioeconómicas permite
+comprender la esperanza de vida no como un fenómeno aislado, sino como
+el reflejo de múltiples condiciones estructurales que afectan a las
+poblaciones de manera simultánea y diferenciada según el contexto de
+cada país.</p>
+</div>
+<div id="población-y-muestra-del-estudio" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Población y muestra del
+estudio</h1>
+<p>La población objetivo de este estudio corresponde a los 193 países
+incluidos en la base de datos del Observatorio Mundial de la Salud (GHO)
+de la Organización Mundial de la Salud (OMS). Este conjunto recopila
+información de diversos indicadores sociales, económicos y sanitarios
+relacionados con la esperanza de vida, con registros disponibles entre
+los años 2000 y 2015. La base original contiene 2938 observaciones y 22
+variables, aunque la cantidad de datos por país y por año varía según la
+disponibilidad de información, puesto que se identificaron valores
+faltantes en varias variables numéricas, ya que algunos países no
+contaban con registros completos. Por ello, se decidió reemplazar los
+valores ausentes usando el método de imputación de datos a partir de la
+mediana, con el fin de conservar la mayor cantidad posible de registros
+y evitar sesgos que podrían surgir al eliminar filas incompletas. Esta
+técnica es adecuada porque la mediana no se ve afectada por valores
+extremos y ayuda a mantener la estructura general del conjunto de datos.
+A continuación se muestra un resumen de caracteristicas relevantes de la
+población:</p>
+<pre><code>## Rows: 2,938
+## Columns: 22
+## $ Country                           [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanis…
+## $ Year                              [3m[38;5;246m&lt;dbl&gt;[39m[23m 2015, 2014, 2013, 2012, 2011, 2010, 200…
+## $ Status                            [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Developing&quot;, &quot;Developing&quot;, &quot;Developing…
+## $ `Life expectancy`                 [3m[38;5;246m&lt;dbl&gt;[39m[23m 65.0, 59.9, 59.9, 59.5, 59.2, 58.8, 58.…
+## $ `Adult Mortality`                 [3m[38;5;246m&lt;dbl&gt;[39m[23m 263, 271, 268, 272, 275, 279, 281, 287,…
+## $ `infant deaths`                   [3m[38;5;246m&lt;dbl&gt;[39m[23m 62, 64, 66, 69, 71, 74, 77, 80, 82, 84,…
+## $ Alcohol                           [3m[38;5;246m&lt;dbl&gt;[39m[23m 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.0…
+## $ `percentage expenditure`          [3m[38;5;246m&lt;dbl&gt;[39m[23m 7127962362, 7352358168, 7321924272, 781…
+## $ `Hepatitis B`                     [3m[38;5;246m&lt;dbl&gt;[39m[23m 65, 62, 64, 67, 68, 66, 63, 64, 63, 64,…
+## $ Measles                           [3m[38;5;246m&lt;dbl&gt;[39m[23m 1154, 492, 430, 2787, 3013, 1989, 2861,…
+## $ BMI                               [3m[38;5;246m&lt;dbl&gt;[39m[23m 19.1, 18.6, 18.1, 17.6, 17.2, 16.7, 16.…
+## $ `under-five deaths`               [3m[38;5;246m&lt;dbl&gt;[39m[23m 83, 86, 89, 93, 97, 102, 106, 110, 113,…
+## $ Polio                             [3m[38;5;246m&lt;dbl&gt;[39m[23m 6, 58, 62, 67, 68, 66, 63, 64, 63, 58, …
+## $ `Total expenditure`               [3m[38;5;246m&lt;dbl&gt;[39m[23m 8.16, 8.18, 8.13, 8.52, 7.87, 9.20, 9.4…
+## $ Diphtheria                        [3m[38;5;246m&lt;dbl&gt;[39m[23m 65, 62, 64, 67, 68, 66, 63, 64, 63, 58,…
+## $ `HIV/AIDS`                        [3m[38;5;246m&lt;dbl&gt;[39m[23m 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1,…
+## $ GDP                               [3m[38;5;246m&lt;dbl&gt;[39m[23m 5.842592e+07, 6.126965e+08, 6.317450e+0…
+## $ Population                        [3m[38;5;246m&lt;dbl&gt;[39m[23m 33736494, 327582, 31731688, 3696958, 29…
+## $ `thinness  1-19 years`            [3m[38;5;246m&lt;dbl&gt;[39m[23m 17.2, 17.5, 17.7, 17.9, 18.2, 18.4, 18.…
+## $ `thinness 5-9 years`              [3m[38;5;246m&lt;dbl&gt;[39m[23m 17.3, 17.5, 17.7, 18.0, 18.2, 18.4, 18.…
+## $ `Income composition of resources` [3m[38;5;246m&lt;dbl&gt;[39m[23m 0.479, 0.476, 0.470, 0.463, 0.454, 0.44…
+## $ Schooling                         [3m[38;5;246m&lt;dbl&gt;[39m[23m 10.1, 10.0, 9.9, 9.8, 9.5, 9.2, 8.9, 8.…</code></pre>
+<pre><code>## Número total de observaciones: 2938</code></pre>
+<pre><code>## Número total de variables: 22</code></pre>
+<pre><code>## Variables cuantitativas: 20</code></pre>
+<pre><code>## Variables cualitativas: 2</code></pre>
+<p>Para el desarrollo del análisis estadístico, se utilizó información
+correspondiente al año 2015 y se seleccionó una muestra de 50 países a
+partir de la base de datos previamente depurada, aplicando un muestreo
+aleatorio simple sin reemplazo, lo que significa que cada país tuvo la
+misma probabilidad de ser seleccionado y no podía aparecer más de una
+vez en la muestra. Este procedimiento se empleó con el objetivo de
+asegurar una selección imparcial, evitar sesgos sistemáticos y facilitar
+un análisis representativo que permita explorar de manera confiable el
+comportamiento de la esperanza de vida en relación con las variables
+explicativas incluidas en el modelo durante el año de interés.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># 1. Definir semilla para reproducibilidad</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># 2. Filtrar solo datos del año 2015</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>datos_2015 <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2015</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co"># 3. Crear ID único por fila</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>datos_2015<span class="sc">$</span>ID_Original <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(datos_2015)</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># 4. Tomar muestra aleatoria de 50 países sin reemplazo</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>paises_muestra <span class="ot">&lt;-</span> <span class="fu">sample</span>(datos_2015<span class="sc">$</span>Country, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># 5. Filtrar registros de esos países</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>muestra_final <span class="ot">&lt;-</span> datos_2015 <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> paises_muestra)</span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(</span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>  muestra_final[, <span class="fu">c</span>(<span class="st">&quot;ID_Original&quot;</span>, <span class="fu">names</span>(muestra_final)[<span class="fu">names</span>(muestra_final) <span class="sc">!=</span> <span class="st">&quot;ID_Original&quot;</span>])],</span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>    <span class="at">pageLength =</span> <span class="dv">10</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>    <span class="at">autoWidth =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>    <span class="at">searching =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>    <span class="at">scrollX =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>    <span class="at">lengthMenu =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="fu">c</span>(<span class="st">&quot;10&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;50&quot;</span>, <span class="st">&quot;Todos&quot;</span>))</span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a>  ),</span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Muestra Aleatoria de 50 Países para el Año 2015&quot;</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>  <span class="at">rownames =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-7ecbd3ad10bd2d35a2e7" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7ecbd3ad10bd2d35a2e7">{"x":{"filter":"none","vertical":false,"caption":"<caption>Muestra Aleatoria de 50 Países para el Año 2015<\/caption>","data":[[7,14,16,21,23,26,32,34,38,41,43,50,53,60,63,69,72,74,76,78,81,90,91,92,97,99,103,109,117,118,135,137,141,143,150,153,158,159,164,165,167,169,170,171,172,173,177,178,179,181],["Armenia","Barbados","Belgium","Bosnia and Herzegovina","Brazil","Burkina Faso","Canada","Chad","Comoros","Croatia","Cyprus","Ecuador","Equatorial Guinea","Gabon","Germany","Guinea-Bissau","Honduras","Iceland","Indonesia","Iraq","Italy","Lao People's Democratic Republic","Latvia","Lebanon","Luxembourg","Malawi","Malta","Montenegro","Nicaragua","Niger","Rwanda","Saint Vincent and the Grenadines","Senegal","Seychelles","South Africa","Sri Lanka","Switzerland","Syrian Arab Republic","Togo","Tonga","Tunisia","Turkmenistan","Uganda","Ukraine","United Arab Emirates","United Kingdom of Great Britain and Northern Ireland","Uzbekistan","Vanuatu","Venezuela (Bolivarian Republic of)","Yemen"],[2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015,2015],["Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developed","Developing","Developing","Developing","Developed","Developing","Developing","Developed","Developing","Developing","Developed","Developing","Developed","Developing","Developed","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developing","Developed","Developing","Developing","Developing","Developing"],[74.8,75.5,81.09999999999999,77.40000000000001,75,59.9,82.2,53.1,63.5,78,85,76.2,58.2,66,81,58.9,74.59999999999999,82.7,69.09999999999999,68.90000000000001,82.7,65.7,74.59999999999999,74.90000000000001,82,58.3,81.7,76.09999999999999,74.8,61.8,66.09999999999999,73.2,66.7,73.2,62.9,74.90000000000001,83.40000000000001,64.5,59.9,73.5,75.3,66.3,62.3,71.3,77.09999999999999,81.2,69.40000000000001,72,74.09999999999999,65.7],[118,98,74,88,142,26,64,356,227,95,52,118,32,229,68,275,147,49,176,182,56,194,153,98,63,365,54,16,145,22,227,156,188,168,328,138,49,293,287,133,1,215,291,195,75,69,184,13,157,224],[1,0,0,0,42,38,2,46,1,0,0,6,3,2,2,4,3,0,114,32,1,8,0,1,0,26,0,0,2,49,11,0,19,0,42,3,0,6,13,0,3,6,66,4,1,3,15,0,9,37],[3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,3.755,10.66,3.755,3.755,3.755,3.755],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[94,97,98,82,96,91,55,46,91,94,97,78,16,8,88,87,97,92,78,56,93,89,94,81,94,88,95,82,98,65,98,98,89,98,75,99,92,41,88,78,98,99,78,22,99,92,99,64,87,69],[33,0,47,1677,214,99,195,418,0,206,0,0,1250,27,2464,153,0,0,15099,1433,159,56,0,39,0,0,2,0,0,7693,1,0,58,0,17,1568,35,45,20,0,16,0,478,105,347,91,22,39,0,468],[54.9,54.5,63.7,55.8,56.1,19.4,67,19.1,24.2,63.7,6.3,54.2,24.5,36.3,62.3,26.3,51,61,27.4,59.1,63.6,21.7,61.2,66.09999999999999,61.3,19.6,69.59999999999999,61.8,54,19.3,21.4,54.1,24.3,37.4,51.1,23.4,57.4,57.1,24.3,75.2,61.2,48.6,18.5,61.3,64.2,66.59999999999999,44.7,53.3,62.1,41.3],[1,0,1,0,47,61,2,77,2,0,0,7,4,3,3,6,4,0,136,38,2,11,0,1,0,38,0,0,2,87,15,0,26,0,52,3,0,8,20,0,3,7,93,5,1,4,17,0,10,47],[96,97,99,74,98,91,91,52,92,94,97,84,17,79,94,87,97,92,8,63,93,89,95,75,99,88,97,89,99,65,99,97,85,97,75,99,97,5,88,8,98,99,82,51,99,96,99,65,87,63],[5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755,5.755],[94,97,99,82,96,91,91,46,91,94,97,78,16,8,95,87,97,92,78,58,93,89,95,81,99,88,97,89,98,65,98,98,89,97,75,99,97,41,88,78,98,99,78,23,99,96,99,64,87,69],[0.1,0.1,0.1,0.1,0.1,0.6,0.1,2.8,0.8,0.1,0.1,0.1,4.2,2.7,0.1,3.2,0.3,0.1,0.3,0.1,0.1,0.2,0.1,0.1,0.1,4.8,0.1,0.1,0.1,0.4,0.4,0.1,0.3,0.1,3.6,0.1,0.1,0.1,1,0.1,0.1,0.1,3.1,0.2,0.1,0.1,0.1,0.1,0.1,0.1],[369654776,155578381,4356875,45749787,87572622,615592225,43315744,777248751,7276463868,115796674,23751127,62562224,134731257,7388984144,4117688158,5968717189,232615856,57344436,333616686,49742693,34914755,470752651.5,1366658336,846632851,11998223,3626575444,238194636,6461192554,295966488,35899731,71348397,470752651.5,987256145,1539464,576977258,384489123,89898424,470752651.5,551138346,493775387,382891589,6432668768,6938963829,2124662666,391174689,470752651.5,2137576852,28583414,470752651.5,470752651.5],[291695,1386542,11274196,3535961,2596218,1811624,3584861,149413,777424,42364,116985,16144368,1175389,193175,81686611,177526,896829,33815,258162113,36115649,673582,1386542,1977527,5851479,56964,1757367,431874,622159,68235,19896965,11629553,1386542,14976994,93419,5511976.68,2966,8282396,18734987,741682,16364,11273661,5565284,414487,4515429,1386542,1386542,312989,26463,1386542,1386542],[2.1,3.8,1,2.3,2.7,8,0.6,8.5,6.7,1.5,1,1.2,8.4,6.1,1.1,7.1,2.1,1,1.4,5.3,0.6,8.800000000000001,2.2,4.9,1,6.4,0.8,1.8,1.8,9.6,5.7,3.5,9.5,5.7,4.4,15.1,0.4,6.3,6.5,0.1,6.5,3.3,5.6,2.3,5.3,0.8,3,1.5,1.6,13.6],[2.2,3.7,1,2.3,2.6,7.5,0.5,8.4,6.5,1.4,1,1.1,8.300000000000001,5.9,1.1,7,2.1,0.9,1.2,5.1,0.6,8.9,2.1,4.9,0.9,6.2,0.8,1.8,1.7,9.4,5.7,3.4,9.300000000000001,6,5.3,15,0.3,6.1,6.2,0.1,6.4,3.3,5.6,2.4,5.1,0.6,3.1,1.4,1.5,13.4],[0.741,0.794,0.895,0.747,0.754,0.399,0.919,0.394,0.498,0.823,0.854,0.739,0.582,0.694,0.924,0.421,0.623,0.919,0.6860000000000001,0.649,0.881,0.582,0.828,0.763,0.896,0.473,0.853,0.804,0.642,0.351,0.493,0.72,0.491,0.781,0.665,0.764,0.9379999999999999,0.553,0.484,0.718,0.723,0.6879999999999999,0.488,0.748,0.836,0.677,0.697,0.598,0.769,0.499],[12.7,15.3,16.6,14.2,15.2,7.7,16.3,7.3,11.1,15.3,14.3,14,9.199999999999999,12.6,17.1,9.199999999999999,11.2,19,12.9,10.1,16.3,10.8,16,13.3,13.9,10.8,14.6,15.1,11.7,5.4,10.8,13.3,9.5,14.1,13,14,16,9,12,14.3,14.6,10.8,10,15.3,13.3,12.3,12.1,10.8,14.3,9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>ID_Original<\/th>\n      <th>Country<\/th>\n      <th>Year<\/th>\n      <th>Status<\/th>\n      <th>Life expectancy<\/th>\n      <th>Adult Mortality<\/th>\n      <th>infant deaths<\/th>\n      <th>Alcohol<\/th>\n      <th>percentage expenditure<\/th>\n      <th>Hepatitis B<\/th>\n      <th>Measles<\/th>\n      <th>BMI<\/th>\n      <th>under-five deaths<\/th>\n      <th>Polio<\/th>\n      <th>Total expenditure<\/th>\n      <th>Diphtheria<\/th>\n      <th>HIV/AIDS<\/th>\n      <th>GDP<\/th>\n      <th>Population<\/th>\n      <th>thinness  1-19 years<\/th>\n      <th>thinness 5-9 years<\/th>\n      <th>Income composition of resources<\/th>\n      <th>Schooling<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"autoWidth":true,"searching":true,"scrollX":true,"lengthMenu":[[10,20,50,-1],["10","20","50","Todos"]],"columnDefs":[{"className":"dt-right","targets":[0,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]},{"name":"ID_Original","targets":0},{"name":"Country","targets":1},{"name":"Year","targets":2},{"name":"Status","targets":3},{"name":"Life expectancy","targets":4},{"name":"Adult Mortality","targets":5},{"name":"infant deaths","targets":6},{"name":"Alcohol","targets":7},{"name":"percentage expenditure","targets":8},{"name":"Hepatitis B","targets":9},{"name":"Measles","targets":10},{"name":"BMI","targets":11},{"name":"under-five deaths","targets":12},{"name":"Polio","targets":13},{"name":"Total expenditure","targets":14},{"name":"Diphtheria","targets":15},{"name":"HIV/AIDS","targets":16},{"name":"GDP","targets":17},{"name":"Population","targets":18},{"name":"thinness  1-19 years","targets":19},{"name":"thinness 5-9 years","targets":20},{"name":"Income composition of resources","targets":21},{"name":"Schooling","targets":22}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Como se muestra en la tabla posterior, la muestra está conformada por
+50 países distribuidos en distintos continentes, con una clara
+predominancia de países clasificados como “en desarrollo”. Las regiones
+de Asia, América y África concentran la mayor parte de estos países, lo
+que refleja una composición que abarca principalmente contextos con
+desafíos estructurales en salud, ingreso y educación. Por otro lado, la
+presencia de países desarrollados es limitada dentro de la muestra, lo
+cual resulta coherente considerando la distribución global actual, donde
+la mayoría de los países del mundo son considerados en desarrollo. Esta
+diversidad geográfica y de nivel de desarrollo permite que el análisis
+posterior tenga un enfoque comparativo amplio y representativo de
+distintas realidades socioeconómicas.</p>
+<table class="table table-striped table-hover table-condensed table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Distribución de la muestra por continente y nivel de desarrollo
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Continente
+</th>
+<th style="text-align:center;">
+Nivel de desarrollo
+</th>
+<th style="text-align:center;">
+Número de países
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Africa
+</td>
+<td style="text-align:center;">
+Developing
+</td>
+<td style="text-align:center;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Americas
+</td>
+<td style="text-align:center;">
+Developing
+</td>
+<td style="text-align:center;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Developed
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Asia
+</td>
+<td style="text-align:center;">
+Developing
+</td>
+<td style="text-align:center;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Developed
+</td>
+<td style="text-align:center;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Europe
+</td>
+<td style="text-align:center;">
+Developing
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Oceania
+</td>
+<td style="text-align:center;">
+Developing
+</td>
+<td style="text-align:center;">
+2
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estadadística-descriptiva" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Estadadística
+descriptiva</h1>
+<div id="medidas-de-tendencia-central-localización-y-dispersión"
+class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Medidas de tendencia
+central, localización y dispersión</h2>
+<div id="teniendo-en-cuenta-todos-los-paises-de-la-muestra"
+class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Teniendo en cuenta
+todos los paises de la muestra</h3>
+<table class="table table-striped table-hover table-condensed table-bordered" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Medidas de tendencia central, localización y dispersión de las variables
+seleccionadas
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Variable
+</th>
+<th style="text-align:center;">
+Media
+</th>
+<th style="text-align:center;">
+Mediana
+</th>
+<th style="text-align:center;">
+Moda
+</th>
+<th style="text-align:center;">
+Min
+</th>
+<th style="text-align:center;">
+Q1
+</th>
+<th style="text-align:center;">
+Q3
+</th>
+<th style="text-align:center;">
+Max
+</th>
+<th style="text-align:center;">
+Rango
+</th>
+<th style="text-align:center;">
+RIQ
+</th>
+<th style="text-align:center;">
+SD
+</th>
+<th style="text-align:center;">
+Varianza
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Life expectancy
+</td>
+<td style="text-align:center;">
+71.73
+</td>
+<td style="text-align:center;">
+73.80
+</td>
+<td style="text-align:center;">
+59.90
+</td>
+<td style="text-align:center;">
+53.10
+</td>
+<td style="text-align:center;">
+65.78
+</td>
+<td style="text-align:center;">
+76.88
+</td>
+<td style="text-align:center;">
+85.00
+</td>
+<td style="text-align:center;">
+31.90
+</td>
+<td style="text-align:center;">
+11.10
+</td>
+<td style="text-align:center;">
+7.99
+</td>
+<td style="text-align:center;">
+63.87
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+HIV/AIDS
+</td>
+<td style="text-align:center;">
+0.64
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.10
+</td>
+<td style="text-align:center;">
+0.30
+</td>
+<td style="text-align:center;">
+4.80
+</td>
+<td style="text-align:center;">
+4.70
+</td>
+<td style="text-align:center;">
+0.20
+</td>
+<td style="text-align:center;">
+1.20
+</td>
+<td style="text-align:center;">
+1.45
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Income composition of resources
+</td>
+<td style="text-align:center;">
+0.69
+</td>
+<td style="text-align:center;">
+0.72
+</td>
+<td style="text-align:center;">
+0.58
+</td>
+<td style="text-align:center;">
+0.35
+</td>
+<td style="text-align:center;">
+0.58
+</td>
+<td style="text-align:center;">
+0.80
+</td>
+<td style="text-align:center;">
+0.94
+</td>
+<td style="text-align:center;">
+0.59
+</td>
+<td style="text-align:center;">
+0.22
+</td>
+<td style="text-align:center;">
+0.16
+</td>
+<td style="text-align:center;">
+0.02
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Adult Mortality
+</td>
+<td style="text-align:center;">
+143.46
+</td>
+<td style="text-align:center;">
+140.00
+</td>
+<td style="text-align:center;">
+49.00
+</td>
+<td style="text-align:center;">
+1.00
+</td>
+<td style="text-align:center;">
+65.00
+</td>
+<td style="text-align:center;">
+194.75
+</td>
+<td style="text-align:center;">
+365.00
+</td>
+<td style="text-align:center;">
+364.00
+</td>
+<td style="text-align:center;">
+129.75
+</td>
+<td style="text-align:center;">
+94.39
+</td>
+<td style="text-align:center;">
+8909.89
+</td>
+</tr>
+</tbody>
+</table>
+<p>La variable Life expectancy refleja diferencias significativas en
+salud y bienestar entre los países analizados. La media fue de 71.73
+años y la mediana de 73.80, lo que indica que la mayoría de los países
+alcanzaban una esperanza de vida en torno a los 73 años. No obstante, el
+mínimo registrado fue de 53.10 años, mientras que el máximo llegó a
+85.00, generando un rango total de 31.90 años entre los países con menor
+y mayor longevidad. Esta diferencia es considerable y pone en evidencia
+contrastes importantes en factores como el acceso a servicios médicos,
+calidad del sistema de salud, alimentación y condiciones sociales. La
+desviación estándar de 7.99 y la varianza de 63.87 respaldan esta
+variabilidad, mostrando que los datos están bastante dispersos en
+relación con la media. Por su parte, el rango intercuartílico (RIQ) de
+7.99 señala que incluso entre los países ubicados en el 50% central, hay
+una heterogeneidad importante, lo que hace pensar en diferencias
+estructurales relevantes en políticas de salud y calidad de vida.</p>
+<p>En cuanto a la variable HIV/AIDS, la media de prevalencia en la
+muestra fue de 0.64, pero la mediana y la moda coinciden en un valor
+mucho menor: 0.10. Esto evidencia que la mayoría de los países
+presentaban niveles bajos de infección por VIH, aunque algunos países
+puntuales alcanzaban valores más altos que elevaban el promedio general.
+El máximo reportado fue de 4.80, lo que representa una situación crítica
+en al menos un país. La desviación estándar de 1.20 indica una
+dispersión considerable respecto a la media, mientras que el rango
+(diferencia entre 4.80 y 0.10) de 4.70 unidades refuerza la idea de
+disparidad en la magnitud del problema. Este comportamiento permite
+identificar que, en 2015, el VIH/SIDA seguía siendo un problema de salud
+pública muy marcado en ciertos contextos nacionales, aunque en la
+mayoría de los casos su impacto estaba más controlado.</p>
+<p>La variable Income composition of resources, que sintetiza el acceso
+a recursos clave para el desarrollo (como ingreso, educación y servicios
+básicos), presenta una media de 0.69 y una mediana de 0.72, lo cual
+sugiere que la mayoría de los países de la muestra contaban con un nivel
+medio o medio-alto en esta dimensión. El valor mínimo registrado fue de
+0.35 y el máximo de 0.94, lo que da un rango de 0.59. Esta diferencia
+muestra que, aunque hay países con condiciones bastante más limitadas,
+la mayoría parecen tener cierto nivel de desarrollo en términos de
+recursos. La desviación estándar de 0.16 y la varianza de 0.02 revelan
+que, en comparación con otras variables, hay menor dispersión entre
+países, lo que indica una relativa estabilidad en esta dimensión dentro
+de la muestra analizada. Este indicador podría considerarse una base
+relevante para evaluar capacidades estructurales y potencial de
+desarrollo humano.</p>
+<p>Finalmente, Adult Mortality se destaca por la enorme diferencia entre
+países en términos de muertes en la edad adulta. La media fue de 143.46
+muertes por cada 1000 adultos, con una mediana muy similar de 140.00.
+Sin embargo, el valor mínimo fue de apenas 1.00 y el máximo alcanzó
+365.00, arrojando un rango muy amplio de 364.00 unidades. Este dato,
+junto con una desviación estándar de 94.39 y una varianza altísima de
+8909.89, confirma que las diferencias entre países son drásticas en
+cuanto al riesgo de muerte en edades adultas. Incluso el rango
+intercuartílico (RIQ) de 94.39 revela grandes contrastes entre los
+países ubicados en el centro de la muestra. Esta variabilidad tan
+pronunciada puede estar asociada a múltiples factores como desigualdad
+social, acceso limitado a servicios de salud, violencia, enfermedades
+crónicas, conflictos armados o deficiencias en políticas públicas de
+protección a la salud.</p>
+</div>
+<div id="teniendo-en-cuenta-el-continente" class="section level3"
+number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Teniendo en cuenta
+el continente</h3>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-6df25d4e1770d66a86dc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6df25d4e1770d66a86dc">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.1\" data-max=\"201.4667\" data-scale=\"4\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.1\" data-max=\"227\" data-scale=\"4\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.1\" data-max=\"73.2\" data-scale=\"3\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.1\" data-max=\"365\" data-scale=\"3\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"364\" data-scale=\"3\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"126.1065\" data-scale=\"4\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"15902.8381\" data-scale=\"4\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0\" data-max=\"189\" data-scale=\"4\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","caption":"<caption style=\"caption-side: top; text-align: center; &#10;             color: #0056b3; font-size: 18px; font-weight: bold;\">Medidas Descriptivas por Continente y Variable (2015)<\/caption>","data":[["Africa","Africa","Africa","Africa","Americas","Americas","Americas","Americas","Asia","Asia","Asia","Asia","Europe","Europe","Europe","Europe","Oceania","Oceania","Oceania","Oceania"],["Adult Mortality","HIV/AIDS","Income composition of resources","Life expectancy","Adult Mortality","HIV/AIDS","Income composition of resources","Life expectancy","Adult Mortality","HIV/AIDS","Income composition of resources","Life expectancy","Adult Mortality","HIV/AIDS","Income composition of resources","Life expectancy","Adult Mortality","HIV/AIDS","Income composition of resources","Life expectancy"],[201.4667,1.8733,0.5291,63.0733,128.375,0.125,0.745,75.7,162.4167,0.125,0.6927,71.3583,79.1538,0.1077,0.841,79.4769,73,0.1,0.658,72.75],[227,1,0.491,62.3,143.5,0.1,0.7465000000000001,74.90000000000001,179,0.1,0.6925,69.25,68,0.1,0.853,81.09999999999999,73,0.1,0.658,72.75],[1,0.1,0.351,53.1,64,0.1,0.623,73.2,52,0.1,0.499,64.5,16,0.1,0.677,71.3,13,0.1,0.598,72],[365,4.8,0.781,75.3,157,0.3,0.919,82.2,293,0.3,0.854,85,195,0.2,0.9379999999999999,83.40000000000001,133,0.1,0.718,73.5],[364,4.7,0.43,22.2,93,0.2,0.296,9,241,0.2,0.355,20.5,179,0.1,0.261,12.1,120,0,0.12,1.5],[126.1065,1.6564,0.1306,5.7874,32.8761,0.0707,0.0922,2.7739,68.8826,0.0622,0.1088,6.0875,47.1643,0.0277,0.07969999999999999,3.6962,84.8528,0,0.0849,1.0607],[15902.8381,2.7435,0.017,33.4935,1080.8393,0.005,0.008500000000000001,7.6943,4744.8106,0.0039,0.0118,37.0572,2224.4744,0.0008,0.0064,13.6619,7200,0,0.0072,1.125],[189,2.75,0.1765,6.65,36.25,0,0.0747,1.2,86.25,0,0.131,8.75,34,0,0.092,4.6,60,0,0.06,0.75]],"container":"<table class=\"stripe hover cell-border compact\">\n  <thead>\n    <tr>\n      <th>Region<\/th>\n      <th>Variable<\/th>\n      <th>Media<\/th>\n      <th>Mediana<\/th>\n      <th>Mínimo<\/th>\n      <th>Máximo<\/th>\n      <th>Rango<\/th>\n      <th>Desviación estándar<\/th>\n      <th>Varianza<\/th>\n      <th>RIQ<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"scrollX":true,"autoWidth":true,"columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"Region","targets":0},{"name":"Variable","targets":1},{"name":"Media","targets":2},{"name":"Mediana","targets":3},{"name":"Mínimo","targets":4},{"name":"Máximo","targets":5},{"name":"Rango","targets":6},{"name":"Desviación estándar","targets":7},{"name":"Varianza","targets":8},{"name":"RIQ","targets":9}],"order":[],"orderClasses":false,"orderCellsTop":true,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<p>En el continente africano, los indicadores reflejan un panorama
+crítico en términos de salud y condiciones estructurales. La esperanza
+de vida promedio es de 63.07 años, la más baja entre todas las regiones
+analizadas. Esta situación se ve acompañada por la mortalidad adulta más
+alta, con un promedio de 201.47 muertes por cada 1000 adultos, y una
+prevalencia de VIH/SIDA que alcanza en promedio 1.87, marcando también
+el valor más alto entre los continentes. La composición del ingreso
+(0.5291) es también la más baja, lo cual evidencia las limitaciones en
+el acceso a recursos básicos como salud, educación y oportunidades
+económicas. Estos patrones sugieren que las brechas en desarrollo
+humano, tanto sanitarias como sociales, explican gran parte de las
+desventajas en términos de longevidad en esta región. Además, la alta
+dispersión en los indicadores, por ejemplo, una desviación estándar de
+126.11 en mortalidad adulta, pone en evidencia fuertes desigualdades
+internas entre los países africanos.</p>
+<p>En contraste, Europa se posiciona como la región con los mejores
+indicadores en todos los aspectos clave del análisis. La esperanza de
+vida promedio es de 79.48 años, la más alta del conjunto, mientras que
+la mortalidad adulta se mantiene en un nivel bajo, con un promedio de
+79.15. La prevalencia de VIH es prácticamente nula (0.1077), y el índice
+de composición del ingreso es el más alto (0.841), reflejando un entorno
+estructuralmente favorable, caracterizado por equidad, servicios
+públicos sólidos y sistemas de salud robustos. La baja dispersión de los
+valores (por ejemplo, desviación estándar de solo 3.69 en esperanza de
+vida) indica una gran estabilidad entre los países europeos, lo que
+refuerza la hipótesis de que el acceso equitativo a recursos es un
+determinante clave de la longevidad.</p>
+<p>Asia presenta una situación intermedia, pero con particularidades
+interesantes. Su esperanza de vida es de 71.36 años, y aunque la
+prevalencia de VIH es baja (0.125), la mortalidad adulta es elevada
+(162.42). Esto sugiere que, si bien los países asiáticos han logrado
+controlar enfermedades infecciosas como el VIH, aún enfrentan desafíos
+importantes en materia de salud pública, probablemente relacionados con
+enfermedades no transmisibles, estilos de vida o acceso desigual a la
+atención médica. El promedio en la composición del ingreso es aceptable
+(0.6927), pero la varianza y el rango indican una región muy
+heterogénea. La amplia dispersión en variables como mortalidad
+(desviación estándar de 68.88) refuerza esta idea, evidenciando la
+coexistencia de países con altos niveles de desarrollo junto a otros con
+rezagos marcados.</p>
+<p>Las Américas también muestran condiciones favorables en general. La
+esperanza de vida es alta (75.70 años) y la prevalencia de VIH es baja
+(0.125), similar a la de Asia y Europa. Sin embargo, la mortalidad
+adulta promedio es de 128.37, más alta que en Europa, lo que podría
+explicarse por la presencia de enfermedades crónicas, desigualdad en el
+acceso a servicios de salud o factores como violencia y hábitos de vida
+poco saludables en ciertos países. La composición del ingreso es de
+0.745, situándose como la segunda más alta, lo que refleja un entorno
+estructural relativamente positivo. A pesar de ello, existe una
+dispersión considerable, por ejemplo en mortalidad (desviación estándar
+de 32.87), que indica que, aunque en promedio las condiciones son
+buenas, persisten desigualdades entre países del continente.</p>
+<p>Finalmente, Oceanía presenta un perfil particular. La esperanza de
+vida es de 72.75 años, y aunque no alcanza los niveles europeos,
+presenta la desviación estándar más baja (1.06) en esta variable, lo que
+indica gran homogeneidad entre sus países. La prevalencia de VIH es
+mínima (0.1) y constante entre todas las observaciones, lo que sugiere
+un control absoluto de esta enfermedad en la región. La mortalidad
+adulta, sin embargo, se sitúa en 73, un valor bajo pero con una
+desviación estándar alta (84.85), lo que evidencia la existencia de
+países con realidades contrastantes, como es el caso entre países
+isleños menos desarrollados y naciones como Australia o Nueva Zelanda.
+En cuanto a la composición del ingreso (0.658), se encuentra por debajo
+del promedio global, pero con baja variabilidad, lo que muestra una
+estructura socioeconómica estable.</p>
+<p>En conclusión, los datos respaldan la idea de que una menor
+mortalidad adulta, mayor acceso a recursos y baja prevalencia de
+enfermedades como el VIH están asociados con una mayor esperanza de
+vida. Europa se erige como el modelo más equilibrado, mientras que
+África enfrenta desafíos estructurales significativos. Asia y América se
+sitúan en un punto medio, y Oceanía, aunque estable, refleja contrastes
+internos importantes. Este análisis refuerza la utilidad de las
+variables seleccionadas como predictores válidos para explicar la
+longevidad desde una perspectiva multivariada. ¿Deseas que te lo
+formatee en R Markdown directamente?</p>
+</div>
+</div>
+<div id="exploración-gráfica-de-las-variables-cuantitativas"
+class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Exploración gráfica
+de las variables cuantitativas</h2>
+<div id="histograma-de-expectativa-de-vida" class="section level3"
+number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Histograma de
+expectativa de vida</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>La distribución de la esperanza de vida para el año 2015 evidencia
+diferencias marcadas entre los países analizados. Tal como lo refleja el
+histograma, la mayor concentración de países se encuentra en el rango de
+los 70 a 80 años, lo que concuerda con los valores estadísticos
+obtenidos previamente, donde la media fue de 71.73 años y la mediana de
+73.80. Esta acumulación sugiere que una proporción considerable de
+países alcanzaba estándares relativamente altos de salud y bienestar.
+Sin embargo, también se observan barras a la izquierda del gráfico que
+representan países con esperanzas de vida por debajo de los 70 años, e
+incluso algunos casos por debajo de los 60 años, lo que pone en
+evidencia serias desigualdades estructurales entre las naciones.</p>
+<p>Estos valores bajos, aunque menos frecuentes, son significativos y
+reflejan posibles contextos de alta vulnerabilidad: acceso limitado a
+servicios de salud, sistemas médicos debilitados, malnutrición,
+conflictos armados o presencia de enfermedades infecciosas como el
+VIH/SIDA. Esto se alinea con lo observado en variables como Adult
+Mortality o HIV/AIDS, que mostraron una alta dispersión en sus valores,
+lo cual confirma la coexistencia de entornos con realidades sanitarias
+muy distintas.</p>
+<p>La curva de densidad que acompaña al histograma muestra una
+distribución que no es perfectamente simétrica. Se identifica una cola
+alargada hacia la izquierda, lo cual indica una asimetría negativa, lo
+cual implica que, aunque la mayoría de los países presentan una
+esperanza de vida cercana a los 73 años, existe un grupo más reducido
+con niveles mucho más bajos que influyen en la forma general de la
+distribución. Además, la dispersión cuantificada por la desviación
+estándar (7.99) y el rango (de 53.10 a 85.00 años) refuerzan la idea de
+que, si bien globalmente se avanzó en longevidad para 2015, persistían
+importantes brechas.</p>
+<p>En resumen, la gráfica sugiere que el nivel promedio de vida era
+relativamente alto para la mayoría de países en 2015, pero existía una
+fracción significativa que enfrentaba serios desafíos estructurales.
+Este contraste no solo destaca la heterogeneidad del desarrollo humano a
+nivel mundial, sino que también señala la necesidad urgente de
+fortalecer las políticas públicas orientadas a la equidad en salud y
+condiciones de vida.</p>
+</div>
+<div id="histograma-de-mortalidad-en-adultos" class="section level3"
+number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Histograma de
+mortalidad en adultos</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>A primera vista, se puede observar que la mayoría de los países se
+concentran en los tramos de mortalidad más bajos, específicamente entre
+los 50 y 100 fallecimientos por cada 1000 habitantes adultos. Este rango
+representa el pico más alto tanto en el histograma como en la curva de
+densidad, lo cual indica que este nivel de mortalidad es el más común
+entre las naciones. Esto puede interpretarse como una señal positiva, ya
+que sugiere que un número significativo de países contaba con
+condiciones sanitarias, sociales y económicas que permitían una mayor
+supervivencia en la edad adulta.</p>
+<p>Sin embargo, a medida que avanzamos hacia la derecha del gráfico, la
+densidad comienza a disminuir de manera notable, lo que indica que hay
+menos países con niveles de mortalidad más elevados. La presencia de una
+cola larga hacia la derecha revela una distribución asimétrica positiva
+(sesgo a la derecha). Este patrón es característico de situaciones donde
+la mayoría de las observaciones tienen valores bajos o moderados, pero
+existen algunos casos extremos con valores mucho más altos. En este
+contexto, estos “extremos” representan países que, en 2015, enfrentaban
+niveles críticos de mortalidad adulta, probablemente debido a conflictos
+armados, pandemias, pobreza extrema, o sistemas sanitarios
+deficientes.</p>
+<p>La curva suavizada azul superpuesta al histograma refuerza esta
+interpretación, mostrando cómo la probabilidad de encontrar países con
+mortalidades superiores a 200 o 300 por cada 1000 adultos disminuye
+progresivamente, aunque no desaparece del todo. Este fenómeno sugiere la
+existencia de desigualdades marcadas entre regiones del mundo en
+términos de salud pública, desarrollo y acceso a recursos médicos.
+Además, la forma de la curva podría invitar a reflexionar sobre los
+factores estructurales que perpetúan esas disparidades.</p>
+<p>En conjunto, el gráfico no solo comunica una distribución
+estadística, sino que también invita a una reflexión más profunda sobre
+las realidades sociales y económicas de distintas partes del mundo.
+Mientras que algunos países han logrado reducir significativamente la
+mortalidad adulta gracias a políticas efectivas de salud pública, otros
+continúan enfrentando retos enormes. La comparación entre ambos extremos
+de la distribución puede servir como base para priorizar intervenciones
+globales y esfuerzos de cooperación internacional.</p>
+</div>
+<div id="diagrama-de-caja-de-esperanza-de-vida-por-continente"
+class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Diagrama de caja de
+esperanza de vida por continente</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Como se observa, Europa destaca con la mediana más alta del conjunto,
+situada alrededor de los 82 años. Su rango intercuartílico (la altura de
+la caja) es más amplio que el de otros continentes, indicando cierta
+variabilidad entre los países europeos, aunque siempre en un nivel
+elevado de longevidad. Además, la ausencia de valores atípicos sugiere
+que todos los países europeos se agrupan en torno a valores similares,
+confirmando una distribución consistente dentro del continente.</p>
+<p>Oceanía presenta también una mediana alta, ligeramente por debajo de
+Europa pero aún por encima de los 75 años. La caja es estrecha y muestra
+poca dispersión, lo que indica una alta homogeneidad entre los países
+representados. No se observan valores extremos, lo cual refuerza esta
+impresión de uniformidad en la región.</p>
+<p>América tiene una mediana similar a la de Oceanía, alrededor de los
+75 años, aunque ligeramente inferior. La caja es muy estrecha, lo que
+revela una sorprendente consistencia en los valores de esperanza de vida
+entre los países del continente. Sin embargo, se detecta un valor
+atípico por encima de los 80 años, lo que indica que al menos un país
+supera claramente al resto en este indicador. Aun así, en conjunto,
+América muestra una distribución bastante compacta.</p>
+<p>Asia, en cambio, presenta una mayor dispersión. Su mediana está más
+cerca de los 70 años, y la caja abarca un rango amplio, lo cual refleja
+una alta variabilidad interna. Esto sugiere que mientras algunos países
+asiáticos han alcanzado niveles elevados de esperanza de vida, otros
+todavía enfrentan desafíos importantes en términos de salud pública. No
+hay valores atípicos visibles, pero la altura de la caja revela
+desigualdades marcadas dentro del continente.</p>
+<p>África es el continente con la mediana más baja, situada en torno a
+los 62-63 años. Su caja está claramente desplazada hacia los valores
+inferiores del gráfico, lo que confirma su posición más desfavorable en
+términos de longevidad. La dispersión también es considerable, y se
+observan valores mínimos cercanos a los 50 años. Esta distribución
+refleja grandes desafíos estructurales relacionados con el acceso a
+servicios sanitarios, nutrición, y control de enfermedades, que afectan
+a una gran parte de los países africanos.</p>
+<p>La gráfica de boxplot evidencia de forma contundente las
+desigualdades globales en la esperanza de vida según el continente.
+Europa lidera con los niveles más altos y una distribución estable,
+reflejo de sistemas de salud sólidos y condiciones de vida avanzadas.
+Oceanía y América mantienen también niveles elevados y homogéneos,
+aunque con ligeras diferencias internas. En contraste, Asia muestra una
+mayor disparidad, lo que refleja el peso de las desigualdades entre
+países con diferentes niveles de desarrollo. África, por último, destaca
+por su posición más baja en la distribución, con una mediana
+sensiblemente inferior y una dispersión significativa hacia los valores
+mínimos.</p>
+</div>
+<div id="diagrama-de-caja-de-mortalidad-adulta-por-continente"
+class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Diagrama de caja de
+mortalidad adulta por continente</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>La gráfica de caja muestra de manera clara las diferencias regionales
+en los niveles de mortalidad adulta, medida como el número de muertes
+por cada 1000 adultos. El continente africano presenta la situación más
+crítica. Su mediana se sitúa por encima de las 200 muertes por cada 1000
+adultos, lo que lo convierte en la región con la tasa de mortalidad
+adulta más elevada. Además, el rango intercuartílico es muy amplio y se
+extiende hasta valores cercanos a 350, lo que refleja una gran
+disparidad entre países del mismo continente. Esta amplitud sugiere una
+fuerte desigualdad interna, con algunos países enfrentando tasas
+extremadamente altas, probablemente relacionadas con problemas
+persistentes como el acceso limitado a servicios de salud, enfermedades
+transmisibles, pobreza y conflictos.</p>
+<p>En contraste, América presenta una mediana considerablemente más
+baja, alrededor de los 140 fallecimientos por cada 1000 adultos. Su caja
+es estrecha, lo que indica que los países del continente comparten
+niveles relativamente similares de mortalidad adulta. Esta homogeneidad
+podría reflejar cierta cohesión en el acceso a servicios básicos de
+salud y una situación sanitaria más estable en términos generales. La
+ausencia de valores atípicos también refuerza la idea de una
+distribución compacta y sin grandes excepciones.</p>
+<p>Asia ocupa una posición intermedia, con una mediana cercana a los 180
+fallecimientos. A diferencia de América, su caja es mucho más alta, lo
+que revela una mayor heterogeneidad entre países asiáticos. Algunos
+presentan tasas de mortalidad relativamente bajas, comparables a las de
+Europa, mientras que otros se acercan a niveles observados en África.
+Esta variabilidad interna podría explicarse por el contraste entre
+economías desarrolladas y otras que todavía enfrentan importantes retos
+sanitarios y sociales.</p>
+<p>Europa, por su parte, se destaca como una de las regiones con menor
+mortalidad adulta. La mediana ronda los 70-80 fallecimientos por cada
+1000 adultos, y su caja es estrecha, reflejando un nivel bajo de
+dispersión entre países. No obstante, se observan algunos valores
+atípicos hacia arriba, lo que indica que ciertos países europeos
+presentaron tasas superiores a la media del continente, aunque siguen
+siendo excepciones puntuales.</p>
+<p>Oceanía presenta una mediana baja, cercana a los 100 fallecimientos
+por cada 1000 adultos, en línea con Europa, pero con una mayor
+dispersión. Aunque su rango intercuartílico es más amplio, no se
+identifican valores atípicos, lo que sugiere que todos los países del
+continente se mantienen dentro de un margen razonable, aunque con
+diferencias apreciables entre ellos.</p>
+<p>En resumen, esta gráfica pone de manifiesto que la mortalidad adulta
+en 2015 estaba fuertemente condicionada por el contexto geográfico y
+socioeconómico. Europa y Oceanía presentan los valores más bajos y
+estables, seguidos por América con un perfil similar pero algo más
+elevado. Asia muestra una mayor disparidad, mientras que África se
+encuentra en una situación significativamente peor, tanto por la altura
+de la mediana como por la amplitud de su distribución.</p>
+</div>
+<div id="diagrama-de-caja-de-prevalencia-de-vihsida-por-continente"
+class="section level3" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Diagrama de caja de
+prevalencia de VIH/SIDA por continente</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Este gráfico de caja representa la prevalencia de VIH/SIDA en cada
+continente, expresada como porcentaje de la población afectada en 2015.
+Lo primero que destaca visualmente es la gran diferencia entre África y
+el resto de los continentes. África presenta, con diferencia, la
+prevalencia más elevada y con mayor dispersión. Su mediana se sitúa en
+torno al 1 %, pero el rango intercuartílico abarca desde valores muy
+bajos (cercanos al 0,3 %) hasta más del 3 %, y el bigote superior se
+extiende incluso hasta un poco menos del 5 %. Esta amplia variabilidad
+refleja una realidad alarmante y desigual dentro del continente
+africano, donde algunos países experimentan epidemias de gran escala,
+mientras otros muestran cifras moderadamente más contenidas.</p>
+<p>En cambio, América, Asia, Europa y Oceanía muestran valores
+sorprendentemente bajos en comparación con África. En estos continentes,
+la mediana de la prevalencia de VIH/SIDA es prácticamente cero, con
+cajas que se reducen a una línea horizontal en el 0 %. Esto indica que
+la mayoría de los países en estas regiones presentan niveles muy bajos o
+casi nulos de prevalencia. Sin embargo, se observan valores atípicos
+(outliers) en todos estos continentes,sugiriendo que, aunque la
+prevalencia es baja en general, existen algunos países con tasas
+ligeramente más elevadas dentro de cada continente, lo cual indica
+cierta desigualdad interna.</p>
+<p>Lo más destacable es el contraste abrumador entre África y el resto
+del mundo. Mientras en África el VIH/SIDA es un problema estructural de
+gran impacto sanitario y social, en los demás continentes aparece como
+un fenómeno controlado o con incidencia muy reducida. Esta diferencia
+puede explicarse por múltiples factores: acceso desigual a tratamientos
+antirretrovirales, menor cobertura sanitaria, desigualdad educativa,
+estigmatización, y falta de recursos para la prevención y el diagnóstico
+temprano en varias regiones de África.</p>
+</div>
+<div id="diagrama-de-caja-del-índice-de-ingreso-idh-por-continente"
+class="section level3" number="5.2.6">
+<h3><span class="header-section-number">5.2.6</span> Diagrama de caja
+del índice de ingreso (IDH) por continente</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Como se puede evidenciar, Europa es el continente con los niveles más
+altos en este indicador. La mediana está claramente por encima de 0,85,
+y el rango intercuartílico se concentra en valores elevados, lo que
+indica que la mayoría de los países europeos presentan altos niveles de
+ingreso per cápita ajustado. Además, su caja es compacta y no se
+observan valores atípicos, lo cual sugiere una homogeneidad notable en
+términos económicos dentro del continente. Europa combina ingresos altos
+con una distribución bastante equilibrada entre países.</p>
+<p>Asia ocupa una posición intermedia, pero con particularidades
+importantes. Su mediana está alrededor de 0,7, ligeramente por debajo de
+América, pero la caja es más alta. Esto refleja mayor dispersión entre
+los países asiáticos en cuanto a niveles de ingreso. El bigote inferior
+se extiende hasta valores por debajo de 0,6, y el superior supera los
+0,8. Esta amplitud indica que en Asia conviven economías muy avanzadas
+con otras en vías de desarrollo, lo que genera una heterogeneidad
+económica considerable dentro del continente.</p>
+<p>América presenta una mediana apenas superior a la de Asia, también
+cerca de 0,75, y una distribución relativamente compacta. No obstante,
+se observa un valor atípico por encima del resto, lo cual revela la
+presencia de un país con un índice de ingreso notablemente más alto que
+sus vecinos. Esto sugiere desigualdades internas, aunque la mayoría de
+los países americanos comparten un nivel de ingresos medio-alto.</p>
+<p>Oceanía, aunque tiene pocos países representados, muestra una mediana
+algo por encima de 0,6, con una caja muy estrecha y sin valores
+extremos. Esto indica que los países oceánicos presentan niveles de
+ingreso similares entre sí, aunque no tan altos como los de Europa. La
+ausencia de dispersión extrema refuerza la idea de una región
+económicamente más uniforme.</p>
+<p>África se sitúa claramente como el continente con el índice de
+ingreso más bajo. Su mediana apenas supera los 0,5, y la caja es amplia,
+con el bigote inferior descendiendo hasta valores cercanos a 0,35. Esta
+amplia dispersión indica una fuerte desigualdad interna, con algunos
+países en situaciones muy críticas de ingreso y otros con un desarrollo
+algo mayor. El índice de ingreso en África es no solo el más bajo en
+términos absolutos, sino también el más variable, lo que sugiere una
+mayor fragmentación económica.</p>
+<p>El gráfico revela con claridad las diferencias estructurales en los
+niveles de ingreso per cápita ajustado por país. Europa se posiciona
+como el continente con los ingresos más altos y homogéneos, seguido de
+América y Asia, ambos con niveles medios-altos pero con más desigualdad
+interna. Oceanía se mantiene en una posición moderada, sin grandes
+extremos. África, en cambio, refleja tanto los ingresos más bajos como
+la mayor variabilidad interna, lo cual pone de manifiesto los retos
+económicos que enfrenta una parte significativa del continente.</p>
+</div>
+</div>
+</div>
+<div id="bibliografía" class="section level1 unnumbered">
+<h1 class="unnumbered">Bibliografía</h1>
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
+<div id="ref-bm2022esperanza" class="csl-entry">
+Banco Mundial. 2022. <span>“¿Qué Significa En Realidad <span>‘Esperanza
+de Vida Al Nacer’</span>?”</span> 2022. <a
+href="https://blogs.worldbank.org/es/opendata/qu-significa-en-realidad-esperanza-de-vida-al-nacer">https://blogs.worldbank.org/es/opendata/qu-significa-en-realidad-esperanza-de-vida-al-nacer</a>.
+</div>
+<div id="ref-bm2024datos" class="csl-entry">
+———. 2024. <span>“Esperanza de Vida Al Nacer, Total (Años).”</span>
+2024. <a
+href="https://datos.bancomundial.org/indicador/SP.DYN.LE00.IN">https://datos.bancomundial.org/indicador/SP.DYN.LE00.IN</a>.
+</div>
+<div id="ref-bbvaODS" class="csl-entry">
+BBVA. 2025. <span>“¿Qué Son Los Objetivos de Desarrollo Sostenible
+(ODS)?”</span> 2025. <a
+href="https://www.bbva.com/es/sostenibilidad/que-sabes-de-los-objetivos-de-desarrollo-sostenible-ods/">https://www.bbva.com/es/sostenibilidad/que-sabes-de-los-objetivos-de-desarrollo-sostenible-ods/</a>.
+</div>
+<div id="ref-bilal2020lifespans" class="csl-entry">
+Bilal, Usama, Ana V. Diez-Roux, Teresa Alfaro, Carlos Chaccour, Nelson
+Gouveia, J. Jaime Miranda, Martha M. Tellez-Rojo, et al. 2020.
+<span>“Life Expectancy and Mortality in 363 Cities of Latin
+America.”</span> <em>Nature Medicine</em> 26: 965–72. <a
+href="https://doi.org/10.1038/s41591-020-01214-4">https://doi.org/10.1038/s41591-020-01214-4</a>.
+</div>
+<div id="ref-chetty2016income" class="csl-entry">
+Chetty, Raj, Michael Stepner, Sarah Abraham, Shelby Lin, Benjamin
+Scuderi, Nicholas Turner, Augustin Bergeron, and David Cutler. 2016.
+<span>“The Association Between Income and Life Expectancy in the United
+States, 2001-2014.”</span> <em>JAMA</em> 315 (16): 1750–66. <a
+href="https://doi.org/10.1001/jama.2016.4226">https://doi.org/10.1001/jama.2016.4226</a>.
+</div>
+<div id="ref-datacommons2023caf" class="csl-entry">
+Data Commons. 2023. <span>“República Centroafricana – Esperanza de
+Vida.”</span> 2023. <a
+href="https://datacommons.org/place/country/CAF?hl=es">https://datacommons.org/place/country/CAF?hl=es</a>.
+</div>
+<div id="ref-datosmacro2023japon" class="csl-entry">
+Datosmacro. 2023a. <span>“Japón – Esperanza de Vida Al Nacer.”</span>
+2023. <a
+href="https://datosmacro.expansion.com/demografia/esperanza-vida/japon">https://datosmacro.expansion.com/demografia/esperanza-vida/japon</a>.
+</div>
+<div id="ref-datosmacro2023lesoto" class="csl-entry">
+———. 2023b. <span>“Lesoto – Estructura Demográfica y Esperanza de
+Vida.”</span> 2023. <a
+href="https://datosmacro.expansion.com/demografia/estructura-poblacion/lesoto">https://datosmacro.expansion.com/demografia/estructura-poblacion/lesoto</a>.
+</div>
+<div id="ref-efe2025oms" class="csl-entry">
+EFE. 2025. <span>“La OMS Alerta de Que La Pobreza Puede Acortar La Vida
+Más de 30 Años.”</span> May 6, 2025. <a
+href="https://elpais.com/sociedad/2025-05-06/la-oms-alerta-de-que-la-pobreza-puede-acortar-la-vida-mas-de-30-anos.html">https://elpais.com/sociedad/2025-05-06/la-oms-alerta-de-que-la-pobreza-puede-acortar-la-vida-mas-de-30-anos.html</a>.
+</div>
+<div id="ref-who2019adultmortality" class="csl-entry">
+Organization, World Health. 2019. <span>“Adult Mortality - Data by
+Country.”</span> <a
+href="https://apps.who.int/gho/data/view.main.1360">https://apps.who.int/gho/data/view.main.1360</a>.
+</div>
+<div id="ref-who2023statistics" class="csl-entry">
+———. 2023. <span>“World Health Statistics Overview 2023.”</span> <a
+href="https://www.who.int/publications/i/item/9789240074888">https://www.who.int/publications/i/item/9789240074888</a>.
+</div>
+<div id="ref-unaids2022eswatini" class="csl-entry">
+UNAIDS. 2022. <span>“Country Factsheets: Eswatini.”</span> <a
+href="https://www.unaids.org/en/regionscountries/countries/swaziland">https://www.unaids.org/en/regionscountries/countries/swaziland</a>.
+</div>
+</div>
+</div>
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRldGVybWluYW50ZXMgZGUgbGEgZXNwZXJhbnphIGRlIHZpZGE6IGFuw6FsaXNpcyBkZXNjcmlwdGl2byINCm91dHB1dDoNCiAgaHRtbF9kb2N1bWVudDoNCiAgICB0b2M6IHRydWUNCiAgICB0b2NfZmxvYXQ6DQogICAgICBjb2xsYXBzZWQ6IHRydWUNCiAgICAgIHNtb290aF9zY3JvbGw6IHRydWUNCiAgICBjb2RlX2Rvd25sb2FkOiB0cnVlDQogICAgdGhlbWU6IGx1bWVuDQogICAgbnVtYmVyX3NlY3Rpb25zOiB0cnVlDQogICAgY3NzOiBzdHlsZXMuY3NzDQpiaWJsaW9ncmFwaHk6ICJiaWJsaW8uYmliIg0KIyBjc2w6IGFwYS5jc2wudHh0ICAgDQotLS0NCg0KYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9DQojI1Byb3llY3RvIGRlIGVzdGFkw61zdGljYSAxDQoNCmxpYnJhcnkoZ2dwbG90MikNCmxpYnJhcnkoc2YpDQpsaWJyYXJ5KHJlYWR4bCkNCmxpYnJhcnkoZmR0aCkNCmxpYnJhcnkocGxvdGx5KQ0KbGlicmFyeShxY2MpDQpsaWJyYXJ5KHJlYWRyKQ0KbGlicmFyeShsZWFmbGV0KQ0KbGlicmFyeShodG1sdG9vbHMpDQpsaWJyYXJ5KERUKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkodGlkeXIpDQpsaWJyYXJ5KGtuaXRyKQ0KbGlicmFyeShrYWJsZUV4dHJhKQ0KbGlicmFyeShtb2RlZXN0KQ0KDQojIDEuIENhcmdhciBsYSBiYXNlIGRlIGRhdG9zDQpkYXRvcyA8LSByZWFkX2V4Y2VsKCJDOi9Vc2Vycy9Vc2VyL0Rvd25sb2Fkcy9MaWZlRXhwZWN0YW5jeS54bHN4IikNCg0KIyAyLiBJbXB1dGFyIGxvcyB2YWxvcmVzIGZhbHRhbnRlcyBlbiBjb2x1bW5hcyBudW3DqXJpY2FzIGNvbiBsYSBtZWRpYW5hDQpkYXRvc19saW1waW9zIDwtIGRhdG9zICU+JQ0KICBtdXRhdGUoYWNyb3NzKHdoZXJlKGlzLm51bWVyaWMpLCB+IGlmZWxzZShpcy5uYSguKSwgbWVkaWFuKC4sIG5hLnJtID0gVFJVRSksIC4pKSkNCg0KI2NvbFN1bXMoaXMubmEoZGF0b3NfbGltcGlvcykpIyAzLiBWZXJpZmljYSBxdWUgeWEgbm8gcXVlZGVuIE5BDQojbnJvdyhkYXRvcykNCmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkgIA0KYGBgDQoNCiMgRW5mb3F1ZSBpbnZlc3RpZ2F0aXZvIHkgcHJlZ3VudGEgYSByZXNvbHZlciANCg0KTGEgZXNwZXJhbnphIGRlIHZpZGEgYWwgbmFjZXIgZXMgdW5vIGRlIGxvcyBpbmRpY2Fkb3JlcyBtw6FzIHJldmVsYWRvcmVzIGRlbCBiaWVuZXN0YXIgZ2VuZXJhbCBkZSB1bmEgc29jaWVkYWQsIHlhIHF1ZSByZWZsZWphIGVsIG7Dum1lcm8gcHJvbWVkaW8gZGUgYcOxb3MgcXVlIHVuYSBwZXJzb25hIHBvZHLDrWEgdml2aXIgZGVzZGUgc3UgbmFjaW1pZW50byBzaSBsYXMgY29uZGljaW9uZXMgYWN0dWFsZXMgZGUgbW9ydGFsaWRhZCBzZSBtYW50dXZpZXJhbiBlc3RhYmxlcywgZXN0ZSBkYXRvIHJlc3VtZSBsYSBpbmZsdWVuY2lhIGRlIGZhY3RvcmVzIHNhbml0YXJpb3MsIGVjb27Ds21pY29zLCBhbWJpZW50YWxlcyB5IHNvY2lhbGVzIHNvYnJlIGxhIHNhbHVkIHBvYmxhY2lvbmFsLCBwb3IgbG8gcXVlIHNlIGhhIGNvbnZlcnRpZG8gZW4gdW5hIHJlZmVyZW5jaWEgY2xhdmUgcGFyYSBldmFsdWFyIGVsIGRlc2Fycm9sbG8gaHVtYW5vIHkgbGFzIGJyZWNoYXMgZW50cmUgcGHDrXNlcyBbQGJtMjAyMmVzcGVyYW56YV0uIER1cmFudGUgbGFzIMO6bHRpbWFzIHNlaXMgZMOpY2FkYXMsIGVsIG11bmRvIGhhIHJlZ2lzdHJhZG8gdW4gYXZhbmNlIHNpZ25pZmljYXRpdm8gZW4gZXN0ZSBhc3BlY3RvOiBlbiAxOTYwIGxhIGVzcGVyYW56YSBkZSB2aWRhIGdsb2JhbCBlcmEgZGUgNTIsNiBhw7FvcywgbWllbnRyYXMgcXVlIGVuIDIwMjIgYWxjYW56w7MgbG9zIDcyLDkgYcOxb3MgZ3JhY2lhcyBhbCBhY2Nlc28gY3JlY2llbnRlIGEgc2VydmljaW9zIG3DqWRpY29zLCBtZWpvcmFzIGVuIG51dHJpY2nDs24sIG1heW9yIGNvYmVydHVyYSBlZHVjYXRpdmEgeSB1bmEgcmVkdWNjacOzbiBwcm9ncmVzaXZhIGRlIGVuZmVybWVkYWRlcyB0cmFuc21pc2libGVzIFtAYm0yMDI0ZGF0b3NdLiBTaW4gZW1iYXJnbywgZXN0b3MgcHJvbWVkaW9zIGdsb2JhbGVzIGVzY29uZGVuIG1hcmNhZGFzIGRlc2lndWFsZGFkZXMsIHB1ZXMgbWllbnRyYXMgZW4gMjAyMyBKYXDDs24gcmVwb3J0w7MgdW5hIGVzcGVyYW56YSBkZSB2aWRhIGRlIDg0LDA0IGHDsW9zLCBwYcOtc2VzIGNvbW8gTGVzb3RvIHkgbGEgUmVww7pibGljYSBDZW50cm9hZnJpY2FuYSBhcGVuYXMgYWxjYW56YXJvbiBsb3MgNTcgYcOxb3MgW0BkYXRvc21hY3JvMjAyM2phcG9uOyBAZGF0b3NtYWNybzIwMjNsZXNvdG87IEBkYXRhY29tbW9uczIwMjNjYWZdLg0KDQpFc3RhcyBkaWZlcmVuY2lhcyByZWZsZWphbiBxdWUgbGEgbG9uZ2V2aWRhZCBubyBlc3TDoSBkZXRlcm1pbmFkYSBzb2xvIHBvciBhdmFuY2VzIG3DqWRpY29zLCBzaW5vIHBvciBtw7psdGlwbGVzIGNvbmRpY2lvbmVzIGVzdHJ1Y3R1cmFsZXMgcXVlIGFmZWN0YW4gZGUgZm9ybWEgZGVzaWd1YWwgYSBsYXMgcG9ibGFjaW9uZXMuIExhIE9yZ2FuaXphY2nDs24gTXVuZGlhbCBkZSBsYSBTYWx1ZCBhZHZpZXJ0ZSBxdWUgbGEgcG9icmV6YSBwdWVkZSByZWR1Y2lyIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVuIG3DoXMgZGUgMzAgYcOxb3MsIGxvIGN1YWwgZGVtdWVzdHJhIGPDs21vIGxvcyBmYWN0b3JlcyBzb2Npb2Vjb27Ds21pY29zIHNlIGNvbnZpZXJ0ZW4gZW4gYmFycmVyYXMgcmVhbGVzIHBhcmEgYWNjZWRlciBhIHVuYSB2aWRhIGxhcmdhIHkgc2FsdWRhYmxlIFtAZWZlMjAyNW9tc10uIEVuIGVzZSBjb250ZXh0bywgdmFyaWFibGVzIGNvbW8gbGEgcHJldmFsZW5jaWEgZGVsIFZJSC9TSURBLCBsYSBpbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzLCBsb3MgYcOxb3MgcHJvbWVkaW8gZGUgZXN0dWRpbyB5IGxhIG1vcnRhbGlkYWQgYWR1bHRhIHBvZHLDrWFuIGVzdGFyIHJlbGFjaW9uYWRhcyBjb24gbGEgZXNwZXJhbnphIGRlIHZpZGEsIHB1ZXMgcmVmbGVqYW4gZGlzdGludGFzIGRpbWVuc2lvbmVzIGRlbCBkZXNhcnJvbGxvIGh1bWFubyB5IGxhcyBjb25kaWNpb25lcyBzb2NpYWxlcyBkZSBsb3MgcGHDrXNlcy4gQ29tcHJlbmRlciBjw7NtbyBpbnRlcmFjdMO6YW4gZW50cmUgc8OtIHkgY3XDoWwgZXMgc3UgcG9zaWJsZSBlZmVjdG8gY29tYmluYWRvIHJlc3VsdGEgY2xhdmUgcGFyYSBleHBsb3JhciBsYXMgZGlmZXJlbmNpYXMgZW4gbG9uZ2V2aWRhZCBhIG5pdmVsIGdsb2JhbC4gUG9yIHRhbnRvLCBzdXJnZSBsYSBzaWd1aWVudGUgcHJlZ3VudGEgZGUgaW52ZXN0aWdhY2nDs246IA0KDQo8cCBzdHlsZT0idGV4dC1hbGlnbjogY2VudGVyOyI+PHN0cm9uZz7Cv0N1w6FsIGVzIGVsIGVmZWN0byBjb25qdW50byBkZSBsYSBwcmV2YWxlbmNpYSBkZSBWSUgvU0lEQSwgbGEgY29tcG9zaWNpw7NuIGRlbCBpbmdyZXNvIHkgbGEgbW9ydGFsaWRhZCBhZHVsdGEgc29icmUgbGEgZXNwZXJhbnphIGRlIHZpZGEgZW4gbG9zIHBhw61zZXMsIHRvbWFuZG8gY29tbyByZWZlcmVuY2lhIGVsIGHDsW8gMjAxNSB5IGRlc2RlIHVuIGVuZm9xdWUgZGUgYW7DoWxpc2lzIG11bHRpdmFyaWFkbz88L3N0cm9uZz48L3A+DQoNCiMgUmVsZXZhbmNpYSB0w6ltYXRpY2EgeSBvYmpldGl2b3MgZGUgaW52ZXN0aWdhY2nDs24gDQoNCkhhYmxhciBkZSBlc3BlcmFuemEgZGUgdmlkYSBlcyBoYWJsYXIgZGUgbGFzIGNvbmRpY2lvbmVzIHF1ZSBoYWNlbiBwb3NpYmxlIHZpdmlyIG3DoXMgeSBtZWpvci4gQXVucXVlIGxvcyBwcm9tZWRpb3MgZ2xvYmFsZXMgaGFuIG1lam9yYWRvIGVuIGxhcyDDumx0aW1hcyBkw6ljYWRhcywgbGEgcmVhbGlkYWQgZXMgcXVlIG5vIHRvZG9zIGxvcyBwYcOtc2VzIGF2YW56YW4gYWwgbWlzbW8gcml0bW8sIHkgbGFzIGRlc2lndWFsZGFkZXMgc2lndWVuIG1hcmNhbmRvIHByb2Z1bmRhcyBkaWZlcmVuY2lhcyBlbiBjdcOhbnRvIHRpZW1wbyB2aXZlIHVuYSBwZXJzb25hIHNlZ8O6biBkw7NuZGUgbmFjZSB5IGVuIHF1w6kgY29uZGljaW9uZXMgdml2ZS4gVW5vIGRlIGxvcyBmYWN0b3JlcyBxdWUgbcOhcyBoYSBpbXBhY3RhZG8gbGEgbG9uZ2V2aWRhZCBlbiBjaWVydGFzIHJlZ2lvbmVzIGhhIHNpZG8gZWwgVklIL1NJREEuIEVuIHBhw61zZXMgY29tbyBFc3dhdGluaSwgbGEgZXBpZGVtaWEgcHJvdm9jw7MgdW5hIGNhw61kYSBicnV0YWwgZW4gbGEgZXNwZXJhbnphIGRlIHZpZGEsIHBhc2FuZG8gZGUgNjEgYSAzMiBhw7FvcyBlbiBhcGVuYXMgdW5hIGTDqWNhZGEgW0B1bmFpZHMyMDIyZXN3YXRpbmldLiBBdW5xdWUgbG9zIGF2YW5jZXMgbcOpZGljb3MgaGFuIHJlZHVjaWRvIGxhcyBtdWVydGVzIHBvciBTSURBIGVuIG3DoXMgZGUgdW4gNjklIGRlc2RlIDIwMDQgeSBob3kgbXVjaGFzIHBlcnNvbmFzIHRpZW5lbiBhY2Nlc28gYSB0cmF0YW1pZW50byBhbnRpcnJldHJvdmlyYWwsIGVsIHZpcnVzIHNpZ3VlIGNvYnJhbmRvIHVuYSB2aWRhIGNhZGEgbWludXRvIGVuIGVsIG11bmRvIFtAdW5haWRzMjAyM2dsb2JhbF0uDQoNClBlcm8gbm8gc2UgdHJhdGEgc29sbyBkZSBzYWx1ZCwgbGEgZGVzaWd1YWxkYWQgZWNvbsOzbWljYSB0YW1iacOpbiBpbmZsdXllIGRlIGZvcm1hIGRpcmVjdGEgZW4gY3XDoW50b3MgYcOxb3MgcHVlZGUgdml2aXIgYWxndWllbi4gU2Vnw7puIGxhIE9NUywgbGEgZGlmZXJlbmNpYSBkZSBlc3BlcmFuemEgZGUgdmlkYSBlbnRyZSBsb3MgcGHDrXNlcyBtw6FzIHJpY29zIHkgbcOhcyBwb2JyZXMgc3VwZXJhIGxvcyAzMCBhw7FvcyBbQHdobzIwMjNzdGF0aXN0aWNzXS4gSW5jbHVzbyBkZW50cm8gZGUgdW5hIG1pc21hIGNpdWRhZCwgY29tbyBTYW50aWFnbyBkZSBDaGlsZSBvIENpdWRhZCBkZSBNw6l4aWNvLCBzZSBoYW4gZW5jb250cmFkbyBkaWZlcmVuY2lhcyBkZSBoYXN0YSAxOCBhw7FvcyBlbnRyZSBiYXJyaW9zIHJpY29zIHkgcG9icmVzIFtAYmlsYWwyMDIwbGlmZXNwYW5zXS4gRXN0YSByZWFsaWRhZCBzZSByZXBpdGUgZW4gdG9kbyBlbCBtdW5kbzogZW4gRXN0YWRvcyBVbmlkb3MsIGVsIDElIG3DoXMgcmljbyBwdWVkZSB2aXZpciBoYXN0YSAxNSBhw7FvcyBtw6FzIHF1ZSBlbCAxJSBtw6FzIHBvYnJlIFtAY2hldHR5MjAxNmluY29tZV0uIFkgc2kgaGF5IHVuIGluZGljYWRvciBxdWUgcmVmbGVqYSBkZSBmb3JtYSBjcnVkYSBsYSBmcmFnaWxpZGFkIGVzdHJ1Y3R1cmFsIGRlIHVuYSBwb2JsYWNpw7NuIGVzIGxhIG1vcnRhbGlkYWQgYWR1bHRhLCBlcyBkZWNpciwgbGFzIG11ZXJ0ZXMgZW50cmUgbG9zIDE1IHkgNjAgYcOxb3MuIEVuIHBhw61zZXMgY29tbyBKYXDDs24sIGxhIHByb2JhYmlsaWRhZCBkZSBtb3JpciBlbiBlc2EgZXRhcGEgZGUgbGEgdmlkYSBlcyBtZW5vciBhbCAzJSwgbWllbnRyYXMgcXVlIGVuIHBhw61zZXMgY29tbyBMZXNvdG8gbyBTaWVycmEgTGVvbmEgcHVlZGUgc3VwZXJhciBlbCA0NyUgW0B3aG8yMDE5YWR1bHRtb3J0YWxpdHldLiBFc3RhcyBkaWZlcmVuY2lhcyBldmlkZW5jaWFuIHF1ZSBtaWxsb25lcyBkZSBqw7N2ZW5lcyB5IGFkdWx0b3MgZW4gZWwgbXVuZG8gYcO6biBlbmZyZW50YW4gY29uZGljaW9uZXMgZGUgdmlkYSBxdWUgbGltaXRhbiBzZXJpYW1lbnRlIHN1cyBwb3NpYmlsaWRhZGVzIGRlIGFsY2FuemFyIGxhIHZlamV6LCB5YSBzZWEgcG9yIGVuZmVybWVkYWRlcyB0cmFuc21pc2libGVzLCBtb3J0YWxpZGFkIHByZW1hdHVyYSwgdmlvbGVuY2lhIG8gZmFsdGEgZGUgYWNjZXNvIGEgc2VydmljaW9zIGLDoXNpY29zIGRlIHNhbHVkIHkgcHJvdGVjY2nDs24gc29jaWFsIFtAd2hvMjAxOWFkdWx0bW9ydGFsaXR5XS4NCg0KRW4gY29uanVudG8sIGxhIGVzcGVyYW56YSBkZSB2aWRhIHNlIGNvbmZpZ3VyYSBjb21vIHVuYSBleHByZXNpw7NuIGNvbXBsZWphIGRlIGxhcyBjb25kaWNpb25lcyBzb2NpYWxlcywgZWNvbsOzbWljYXMgeSBzYW5pdGFyaWFzIHF1ZSBhdHJhdmllc2FuIGxhcyBwb2JsYWNpb25lcy4gTcOhcyBhbGzDoSBkZWwgYWNjZXNvIGEgc2VydmljaW9zIG3DqWRpY29zLCBzdSBldm9sdWNpw7NuIHJlZmxlamEgY8OzbW8gdW5hIHNvY2llZGFkIGdlc3Rpb25hIGxhIGRpc3RyaWJ1Y2nDs24gZGVsIGluZ3Jlc28sIGxhIGNvYmVydHVyYSBlbiBzYWx1ZCB5IGxhIGVxdWlkYWQgZW4gbGFzIG9wb3J0dW5pZGFkZXMgZGUgdmlkYS4gRXN0b3MgZmFjdG9yZXMgbm8gb3BlcmFuIGRlIG1hbmVyYSBhaXNsYWRhLCBzaW5vIHF1ZSBzZSBhcnRpY3VsYW4gZXN0cnVjdHVyYWxtZW50ZSwgY29uZGljaW9uYW5kbyBlbCBiaWVuZXN0YXIgeSBsYSBsb25nZXZpZGFkIGRlIG1pbGxvbmVzIGRlIHBlcnNvbmFzLiBQb3IgZWxsbywgY29tcHJlbmRlciBzdXMgaW50ZXJhY2Npb25lcyByZXN1bHRhIGZ1bmRhbWVudGFsIG5vIHNvbG8gcGFyYSBleHBsaWNhciBsYXMgZGlzcGFyaWRhZGVzIGFjdHVhbGVzLCBzaW5vIHBhcmEgb3JpZW50YXIgcG9sw610aWNhcyBww7pibGljYXMgbcOhcyBpbnRlZ3JhbGVzIHkgZWZlY3RpdmFzLiBFbiBlc3RlIGVzdHVkaW8sIHNlIGhhIGRlY2lkaWRvIHRvbWFyIGNvbW8gcmVmZXJlbmNpYSBlbCBhw7FvICoqMjAxNSoqLCB5YSBxdWUgY29ycmVzcG9uZGUgYWwgw7psdGltbyBwZXJpb2RvIGNvbiBpbmZvcm1hY2nDs24gY29tcGxldGEgeSBob21vZ8OpbmVhIGVuIGxhIGJhc2UgZGUgZGF0b3MgZW1wbGVhZGEsIGFudGVzIGRlIHF1ZSBsb3MgcmVnaXN0cm9zIGNvbWVuemFyYW4gYSBtb3N0cmFyIGF1c2VuY2lhcyBzaWduaWZpY2F0aXZhcyBvIGludGVycnVwY2lvbmVzLiBBZGVtw6FzLCAyMDE1IG1hcmNhIHVuIGhpdG8gcmVsZXZhbnRlIGVuIHTDqXJtaW5vcyBkZSBwb2zDrXRpY2EgZ2xvYmFsLCBhbCBjb2luY2lkaXIgY29uIGVsIGNpZXJyZSBkZSBsb3MgT2JqZXRpdm9zIGRlIERlc2Fycm9sbG8gZGVsIE1pbGVuaW8gKE9ETSkgeSBlbCBpbmljaW8gZm9ybWFsIGRlIGxhIGFnZW5kYSBkZSBsb3MgT2JqZXRpdm9zIGRlIERlc2Fycm9sbG8gU29zdGVuaWJsZSAoT0RTKSwgbG8gcXVlIHBlcm1pdGUgY29udGV4dHVhbGl6YXIgbG9zIGhhbGxhemdvcyBkZW50cm8gZGUgdW4gbW9tZW50byBjbGF2ZSBkZSB0cmFuc2ljacOzbiBpbnRlcm5hY2lvbmFsIGVuIHNhbHVkIHkgZGVzYXJyb2xsbyBbQGJidmFPRFNdLiBQYXJ0aWVuZG8gZGUgZXN0YSBiYXNlLCBlbCBwcmVzZW50ZSBlc3R1ZGlvIHNlIGVuZm9jYXLDoSBlbiBhbmFsaXphciBlbCBlZmVjdG8gY29uanVudG8gZGUgdHJlcyBkZXRlcm1pbmFudGVzIGNyw610aWNvcyDigJRsYSBwcmV2YWxlbmNpYSBkZSBWSUgvU0lEQSwgbGEgY29tcG9zaWNpw7NuIGRlbCBpbmdyZXNvIHkgbGEgbW9ydGFsaWRhZCBhZHVsdGHigJQgc29icmUgbGEgZXNwZXJhbnphIGRlIHZpZGEsIGEgdHJhdsOpcyBkZSB1biBlbmZvcXVlIGRlIGFuw6FsaXNpcyBtdWx0aXZhcmlhZG8uIExvcyBvYmpldGl2b3MgcXVlIGd1aWFyw6FuIGVzdGUgZXN0dWRpbyBzb24gbG9zIHNpZ3VpZW50ZXM6DQoNCioqT2JqZXRpdm8gZ2VuZXJhbCoqDQoNCi0gQW5hbGl6YXIgbGEgZXNwZXJhbnphIGRlIHZpZGEgZ2xvYmFsIGVuIGVsIGHDsW8gMjAxNSwgYSBwYXJ0aXIgZGUgdW5hIG11ZXN0cmEgcmVwcmVzZW50YXRpdmEgZGUgcGHDrXNlcywgYXBsaWNhbmRvIHTDqWNuaWNhcyBkZSBlc3RhZMOtc3RpY2EgZGVzY3JpcHRpdmEsIGluZmVyZW5jaWFsIHkgcmVncmVzacOzbiBsaW5lYWwgcGFyYSBpZGVudGlmaWNhciBwYXRyb25lcywgZXN0aW1hciBwYXLDoW1ldHJvcyBwb2JsYWNpb25hbGVzIHkgZXZhbHVhciBlbCBlZmVjdG8gZGUgdmFyaWFibGVzIHNvY2lvZWNvbsOzbWljYXMgeSBzYW5pdGFyaWFzIHNvYnJlIGxhIGxvbmdldmlkYWQuDQoNCioqT2JqZXRpdm9zIGVzcGVjw61maWNvcyoqDQoNCi0gSW1wdXRhciBsb3MgdmFsb3JlcyBmYWx0YW50ZXMgZGUgbGEgYmFzZSBkZSBkYXRvcyBvcmlnaW5hbCB5IHNlbGVjY2lvbmFyIHVuYSBtdWVzdHJhIGFsZWF0b3JpYSBkZSA1MCBwYcOtc2VzIHBhcmEgZWwgYcOxbyAyMDE1LCBjb24gZWwgZmluIGRlIHRyYWJhamFyIGNvbiB1biBjb25qdW50byBkZSBkYXRvcyBsaW1waW8geSByZXByZXNlbnRhdGl2by4NCg0KLSBEZXNjcmliaXIgZXN0YWTDrXN0aWNhbWVudGUgbGEgdmFyaWFibGUgcmVzcHVlc3RhIChlc3BlcmFuemEgZGUgdmlkYSkgeSBsYXMgdmFyaWFibGVzIHByZWRpY3RvcmFzIHNlbGVjY2lvbmFkYXMsIGFwbGljYW5kbyBtZWRpZGFzIGRlc2NyaXB0aXZhcyBlIGluZmVyZW5jaWFsZXMsIGluY2x1eWVuZG8gZWwgY8OhbGN1bG8gZGUgaW50ZXJ2YWxvcyBkZSBjb25maWFuemEgeSBjb21wYXJhY2lvbmVzIGVudHJlIHBhw61zZXMgZGVzYXJyb2xsYWRvcyB5IGVuIGRlc2Fycm9sbG8uDQoNCi0gQWp1c3RhciBlIGludGVycHJldGFyIHVuIG1vZGVsbyBkZSByZWdyZXNpw7NuIGxpbmVhbCBtw7psdGlwbGUsIHBhcmEgYW5hbGl6YXIgZWwgZWZlY3RvIGNvbmp1bnRvIGRlIGZhY3RvcmVzIHNvY2lvZWNvbsOzbWljb3MgeSBzYW5pdGFyaW9zIHNvYnJlIGxhIGVzcGVyYW56YSBkZSB2aWRhLg0KDQojIFByaW5jaXBhbGVzIHZhcmlhYmxlcyBxdWUgZGVsaW1pdGFuIGVsIGFuw6FsaXNpcyANCg0KYGBge3IsIGVjaG89RkFMU0V9DQpsaWJyYXJ5KGtuaXRyKQ0KbGlicmFyeShrYWJsZUV4dHJhKQ0KDQp0YWJsYV92YXJpYWJsZXMgPC0gZGF0YS5mcmFtZSgNCiAgVmFyaWFibGUgPSBjKCJMaWZlIGV4cGVjdGFuY3kiLCAiSElWL0FJRFMiLCANCiAgICAgICAgICAgICAgICJJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzIiwgIkFkdWx0IE1vcnRhbGl0eSIpLA0KICANCiAgVGlwbyA9IGMoIkN1YW50aXRhdGl2YSBjb250aW51YSIsICJDdWFudGl0YXRpdmEgY29udGludWEiLCANCiAgICAgICAgICAgIkN1YW50aXRhdGl2YSBjb250aW51YSIsIA0KICAgICAgICAgICAiQ3VhbnRpdGF0aXZhIGRpc2NyZXRhIiksDQogIA0KICBFc2NhbGEgPSBjKCJBw7FvcyIsICJQb3JjZW50YWplICglKSIsIA0KICAgICAgICAgICAgICLDjW5kaWNlIGVudHJlIDAgeSAxIiwgDQogICAgICAgICAgICAgIk11ZXJ0ZXMgcG9yIDEwMDAgaGFiaXRhbnRlcyIpLA0KICANCiAgYEVzY2FsYSBkZSBtZWRpY2nDs25gID0gYygiUmF6w7NuIiwgIlJhesOzbiIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIlJhesOzbiIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIlJhesOzbiIpLA0KICANCiAgRGVzY3JpcGNpw7NuID0gYygNCiAgICAiTsO6bWVybyBwcm9tZWRpbyBkZSBhw7FvcyBxdWUgc2UgZXNwZXJhIHF1ZSB2aXZhIHVuYSBwZXJzb25hIGFsIG5hY2VyLiIsDQogICAgIlBvcmNlbnRhamUgZGUgcGVyc29uYXMgKDE14oCTNDkgYcOxb3MpIGluZmVjdGFkYXMgcG9yIFZJSC9TSURBLiIsDQogICAgIsONbmRpY2UgcXVlIHJlZmxlamEgZWwgYWNjZXNvIGEgcmVjdXJzb3MgZWNvbsOzbWljb3MsIGVudHJlIDAgKGJham8pIHkgMSAoYWx0bykuIiwNCiAgICAiTsO6bWVybyBkZSBtdWVydGVzIGVudHJlIGFkdWx0b3MgKDE14oCTNjAgYcOxb3MpIHBvciBjYWRhIDEwMDAgaGFiaXRhbnRlcy4iKQ0KKQ0KDQp0YWJsYV92YXJpYWJsZXMgJT4lDQogIGtibChjb2wubmFtZXMgPSBjKCJWYXJpYWJsZSIsICJUaXBvIiwgIkVzY2FsYSIsICJFc2NhbGEgZGUgbWVkaWNpw7NuIiwgIkRlc2NyaXBjacOzbiIpLCANCiAgICAgIGNhcHRpb24gPSAiQ2xhc2lmaWNhY2nDs24gZGUgbGFzIHZhcmlhYmxlcyBzZWxlY2Npb25hZGFzIiwNCiAgICAgIGFsaWduID0gImMiLA0KICAgICAgYm9va3RhYnMgPSBGQUxTRSwNCiAgICAgIGVzY2FwZSA9IEZBTFNFLA0KICAgICAgZm9ybWF0ID0gImh0bWwiKSAlPiUNCiAga2FibGVfc3R5bGluZyhmdWxsX3dpZHRoID0gRkFMU0UsDQogICAgICAgICAgICAgICAgYm9vdHN0cmFwX29wdGlvbnMgPSBjKCJzdHJpcGVkIiwgImJvcmRlcmVkIiwgImNvbmRlbnNlZCIsICJyZXNwb25zaXZlIiksDQogICAgICAgICAgICAgICAgZm9udF9zaXplID0gMTMsDQogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAiY2VudGVyIikNCg0KYGBgDQoNCkxhcyB2YXJpYWJsZXMgc2VsZWNjaW9uYWRhcyBlbiBlc3RlIGVzdHVkaW8gZnVlcm9uIGVsZWdpZGFzIHBvciBzdSBjYXBhY2lkYWQgZXhwbGljYXRpdmEgZnJlbnRlIGFsIGNvbXBvcnRhbWllbnRvIGRlIGxhIGVzcGVyYW56YSBkZSB2aWRhIGVuIGRpc3RpbnRvcyBwYcOtc2VzLCBhYmFyY2FuZG8gdGFudG8gZGltZW5zaW9uZXMgc2FuaXRhcmlhcyBjb21vIHNvY2lvZWNvbsOzbWljYXMuIEVuIGVzdGUgYW7DoWxpc2lzLCBsYSB2YXJpYWJsZSBkZXBlbmRpZW50ZSBlcyBMaWZlIGV4cGVjdGFuY3ksIG1pZW50cmFzIHF1ZSBsYXMgdmFyaWFibGVzIGV4cGxpY2F0aXZhcyBzb24gSElWL0FJRFMsIEluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXMgeSBBZHVsdCBNb3J0YWxpdHksIGNhZGEgdW5hIGRlIGVsbGFzIGFwb3J0YSBlbGVtZW50b3MgZnVuZGFtZW50YWxlcyBwYXJhIGVudGVuZGVyIGxvcyBuaXZlbGVzIGRlIGxvbmdldmlkYWQsIHlhIHNlYSBwb3IgZWwgaW1wYWN0byBkZSBlbmZlcm1lZGFkZXMgaW5mZWNjaW9zYXMsIGxhcyBjb25kaWNpb25lcyBlY29uw7NtaWNhcyBvIGxvcyByaWVzZ29zIGRlIG1vcnRhbGlkYWQgZW4gZWRhZGVzIHByb2R1Y3RpdmFzLg0KDQpEZXNkZSBlbCBwdW50byBkZSB2aXN0YSBlc3RhZMOtc3RpY28sIHRvZGFzIGVzdGFzIHZhcmlhYmxlcyBzb24gY3VhbnRpdGF0aXZhcywgeWEgcXVlIGV4cHJlc2FuIHZhbG9yZXMgbnVtw6lyaWNvcyBxdWUgcHVlZGVuIHNlciBtZWRpZG9zIHkgY29tcGFyYWRvcywgbG8gY3VhbCBwZXJtaXRlIGFwbGljYXIgaGVycmFtaWVudGFzIGVzdGFkw61zdGljYXMgY29tbyBsYSByZWdyZXNpw7NuIGxpbmVhbCBtw7psdGlwbGUsIGVsIGFuw6FsaXNpcyBkZSBjb3JyZWxhY2nDs24geSBlbCBjw6FsY3VsbyBkZSBtZWRpZGFzIGRlIGRpc3BlcnNpw7NuIG8gdGVuZGVuY2lhIGNlbnRyYWwsIGFwcm92ZWNoYW5kbyBzdSBuYXR1cmFsZXphIG51bcOpcmljYSBwYXJhIG9idGVuZXIgdW5hIG1lZGljacOzbiBvYmpldGl2YSwgcHJlY2lzYSB5IGFkZWN1YWRhIHF1ZSBmYWNpbGl0ZSBlbCBhbsOhbGlzaXMgcmlndXJvc28gZGUgbGFzIHJlbGFjaW9uZXMgZW50cmUgbGFzIHZhcmlhYmxlcyBkZWwgZXN0dWRpby4NCg0KTGFzIHZhcmlhYmxlcyBMaWZlIGV4cGVjdGFuY3ksIEhJVi9BSURTIGUgSW5jb21lIGNvbXBvc2l0aW9uIG9mIHJlc291cmNlcyBzb24gY3VhbnRpdGF0aXZhcyBjb250aW51YXMsIHlhIHF1ZSBwdWVkZW4gYWRvcHRhciB2YWxvcmVzIGRlbnRybyBkZSB1biByYW5nbyBhbXBsaW8gY29uIGRlY2ltYWxlcywgcG9yIGVqZW1wbG8gdW5hIGVzcGVyYW56YSBkZSB2aWRhIGRlIDcyLjYgYcOxb3MgbyB1bmEgcHJldmFsZW5jaWEgZGUgVklIIGRlIDMuNCUuRW4gY2FtYmlvLCBBZHVsdCBNb3J0YWxpdHkgc2UgY29uc2lkZXJhIHVuYSB2YXJpYWJsZSBjdWFudGl0YXRpdmEgZGlzY3JldGEsIHlhIHF1ZSByZXByZXNlbnRhIGVsIG7Dum1lcm8gZGUgbXVlcnRlcyBwb3IgY2FkYSBtaWwgaGFiaXRhbnRlcyB5IHByb3ZpZW5lIGRlIHVuIGNvbnRlbyBkZSBldmVudG9zLCBsbyBxdWUgaW1wbGljYSBxdWUgc29sbyBwdWVkZSB0b21hciB2YWxvcmVzIGVudGVyb3MuIEF1bnF1ZSBzZSBleHByZXNhIGNvbW8gdW5hIHRhc2EgZXN0YW5kYXJpemFkYSwgc3UgbmF0dXJhbGV6YSBvcmlnaW5hbCBzZSBiYXNhIGVuIHJlY3VlbnRvcyBpbmRpdmlkdWFsZXMsIHBvciBsbyBxdWUgZXN0YWTDrXN0aWNhbWVudGUgY29uc2VydmEgc3UgY2xhc2lmaWNhY2nDs24gZGlzY3JldGEuDQoNCkVuIGN1YW50byBhIGxhIGVzY2FsYSBkZSBtZWRpY2nDs24sIHRvZGFzIG9wZXJhbiBiYWpvIHVuYSBlc2NhbGEgZGUgcmF6w7NuLCBsbyBxdWUgc2lnbmlmaWNhIHF1ZSBwb3NlZW4gdW4gY2VybyBhYnNvbHV0byB5IHBlcm1pdGVuIGVzdGFibGVjZXIgY29tcGFyYWNpb25lcyBwcm9wb3JjaW9uYWxlcy4gRXN0byBoYWJpbGl0YSBhZmlybWFjaW9uZXMgY29tbyBxdWUgdW4gcGHDrXMgY29uIDYwIGHDsW9zIGRlIGVzcGVyYW56YSBkZSB2aWRhIHZpdmUgZWwgZG9ibGUgcXVlIHVubyBjb24gMzAsIG8gcXVlIHVuYSBwcmV2YWxlbmNpYSBkZSBWSUggZGVsIDQlIGR1cGxpY2EgbGEgZGUgdW4gcGHDrXMgY29uIDIlLg0KDQpBZGljaW9uYWxtZW50ZSwgc2UgZW1wbGVhcsOhbiBvdHJhcyB2YXJpYWJsZXMgcGFyYSBhbsOhbGlzaXMgY2F0ZWfDs3JpY29zIHF1ZSBwZXJtaXRhbiBlc3R1ZGlhciBkaWZlcmVuY2lhcyBwb3IgY29udGluZW50ZSB5IGVzdGF0dXMgZGUgZGVzYXJyb2xsbywgYW1iYXMgY2xhc2lmaWNhZGFzIGNvbW8gdmFyaWFibGVzIGN1YWxpdGF0aXZhcyBub21pbmFsZXMsIHlhIHF1ZSBhZ3J1cGFuIGEgbG9zIHBhw61zZXMgZW4gY2F0ZWdvcsOtYXMgc2luIHVuIG9yZGVuIGluaGVyZW50ZS4gU2kgYmllbiBlc3RhcyB2YXJpYWJsZXMgbm8gZm9ybWFuIHBhcnRlIGRlbCBtb2RlbG8gZGUgcmVncmVzacOzbiBxdWUgc2UgYnVzY2EgcGxhbnRlYXIsIHNlIHV0aWxpemFyw6FuIGNvbW8gZW5mb3F1ZXMgY29tcGFyYXRpdm9zIHBhcmEgYW5hbGl6YXIgY8OzbW8gdmFyw61hbiBsYXMgdmFyaWFibGVzIHByZWRpY3RpdmFzIHNlbGVjY2lvbmFkYXMgZW4gZnVuY2nDs24gZGVsIGNvbnRleHRvIGdlb2dyw6FmaWNvIHkgZGVsIG5pdmVsIGRlIGRlc2Fycm9sbG8gZGUgbG9zIHBhw61zZXMuIFN1IHVzbyBlc3RhcsOhIGNlbnRyYWRvIGVuIGVsIGFuw6FsaXNpcyBlc3RhZMOtc3RpY28gZGVzY3JpcHRpdm8geSBlbiBlbCBwbGFudGVhbWllbnRvIGRlIGludGVydmFsb3MgZGUgY29uZmlhbnphIHBvciBncnVwbywgbG8gcXVlIHBlcm1pdGlyw6EgY29tcGxlbWVudGFyIGxhIGludGVycHJldGFjacOzbiBnZW5lcmFsIGNvbiBjb21wYXJhY2lvbmVzIGVudHJlIGNhdGVnb3LDrWFzIHJlbGV2YW50ZXMgZGVsIGNvbmp1bnRvIGRlIGRhdG9zLg0KDQpFc3RhIGNsYXNpZmljYWNpw7NuIGRlIGxhcyB2YXJpYWJsZXMgZXMgdW4gcGFzbyBlc2VuY2lhbCBwYXJhIGFzZWd1cmFyIGxhIHZhbGlkZXogZGVsIGFuw6FsaXNpcywgeWEgcXVlIHBlcm1pdGUgZWxlZ2lyIGxhcyBoZXJyYW1pZW50YXMgZXN0YWTDrXN0aWNhcyBhZGVjdWFkYXMgeSBnYXJhbnRpemFyIHF1ZSBsYXMgY29uY2x1c2lvbmVzIGV4dHJhw61kYXMgc2UgYmFzZW4gZW4gZGF0b3MgY29ycmVjdGFtZW50ZSB0cmF0YWRvcy4gQWRlbcOhcywgZWwgZW5mb3F1ZSBpbnRlZ3JhbCBxdWUgcmVzdWx0YSBkZSBjb21iaW5hciB2YXJpYWJsZXMgc2FuaXRhcmlhcyB5IHNvY2lvZWNvbsOzbWljYXMgcGVybWl0ZSBjb21wcmVuZGVyIGxhIGVzcGVyYW56YSBkZSB2aWRhIG5vIGNvbW8gdW4gZmVuw7NtZW5vIGFpc2xhZG8sIHNpbm8gY29tbyBlbCByZWZsZWpvIGRlIG3Dumx0aXBsZXMgY29uZGljaW9uZXMgZXN0cnVjdHVyYWxlcyBxdWUgYWZlY3RhbiBhIGxhcyBwb2JsYWNpb25lcyBkZSBtYW5lcmEgc2ltdWx0w6FuZWEgeSBkaWZlcmVuY2lhZGEgc2Vnw7puIGVsIGNvbnRleHRvIGRlIGNhZGEgcGHDrXMuDQoNCg0KIyBQb2JsYWNpw7NuIHkgbXVlc3RyYSBkZWwgZXN0dWRpbyANCg0KTGEgcG9ibGFjacOzbiBvYmpldGl2byBkZSBlc3RlIGVzdHVkaW8gY29ycmVzcG9uZGUgYSBsb3MgMTkzIHBhw61zZXMgaW5jbHVpZG9zIGVuIGxhIGJhc2UgZGUgZGF0b3MgZGVsIE9ic2VydmF0b3JpbyBNdW5kaWFsIGRlIGxhIFNhbHVkIChHSE8pIGRlIGxhIE9yZ2FuaXphY2nDs24gTXVuZGlhbCBkZSBsYSBTYWx1ZCAoT01TKS4gRXN0ZSBjb25qdW50byByZWNvcGlsYSBpbmZvcm1hY2nDs24gZGUgZGl2ZXJzb3MgaW5kaWNhZG9yZXMgc29jaWFsZXMsIGVjb27Ds21pY29zIHkgc2FuaXRhcmlvcyByZWxhY2lvbmFkb3MgY29uIGxhIGVzcGVyYW56YSBkZSB2aWRhLCBjb24gcmVnaXN0cm9zIGRpc3BvbmlibGVzIGVudHJlIGxvcyBhw7FvcyAyMDAwIHkgMjAxNS4gTGEgYmFzZSBvcmlnaW5hbCBjb250aWVuZSAyOTM4IG9ic2VydmFjaW9uZXMgeSAyMiB2YXJpYWJsZXMsIGF1bnF1ZSBsYSBjYW50aWRhZCBkZSBkYXRvcyBwb3IgcGHDrXMgeSBwb3IgYcOxbyB2YXLDrWEgc2Vnw7puIGxhIGRpc3BvbmliaWxpZGFkIGRlIGluZm9ybWFjacOzbiwgcHVlc3RvIHF1ZSBzZSBpZGVudGlmaWNhcm9uIHZhbG9yZXMgZmFsdGFudGVzIGVuIHZhcmlhcyB2YXJpYWJsZXMgbnVtw6lyaWNhcywgeWEgcXVlIGFsZ3Vub3MgcGHDrXNlcyBubyBjb250YWJhbiBjb24gcmVnaXN0cm9zIGNvbXBsZXRvcy4gUG9yIGVsbG8sIHNlIGRlY2lkacOzIHJlZW1wbGF6YXIgbG9zIHZhbG9yZXMgYXVzZW50ZXMgdXNhbmRvIGVsIG3DqXRvZG8gZGUgaW1wdXRhY2nDs24gZGUgZGF0b3MgYSBwYXJ0aXIgZGUgbGEgbWVkaWFuYSwgY29uIGVsIGZpbiBkZSBjb25zZXJ2YXIgbGEgbWF5b3IgY2FudGlkYWQgcG9zaWJsZSBkZSByZWdpc3Ryb3MgeSBldml0YXIgc2VzZ29zIHF1ZSBwb2Ryw61hbiBzdXJnaXIgYWwgZWxpbWluYXIgZmlsYXMgaW5jb21wbGV0YXMuIEVzdGEgdMOpY25pY2EgZXMgYWRlY3VhZGEgcG9ycXVlIGxhIG1lZGlhbmEgbm8gc2UgdmUgYWZlY3RhZGEgcG9yIHZhbG9yZXMgZXh0cmVtb3MgeSBheXVkYSBhIG1hbnRlbmVyIGxhIGVzdHJ1Y3R1cmEgZ2VuZXJhbCBkZWwgY29uanVudG8gZGUgZGF0b3MuIEEgY29udGludWFjacOzbiBzZSBtdWVzdHJhIHVuIHJlc3VtZW4gZGUgY2FyYWN0ZXJpc3RpY2FzIHJlbGV2YW50ZXMgZGUgbGEgcG9ibGFjacOzbjogDQoNCmBgYHtyLGVjaG89RkFMU0UsbWVzc2FnZT1GQUxTRSx3YXJuaW5nPUZBTFNFfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCmdsaW1wc2UoZGF0b3MpDQoNCmNhdCgiTsO6bWVybyB0b3RhbCBkZSBvYnNlcnZhY2lvbmVzOiIsIG5yb3coZGF0b3MpLCAiXG4iKQ0KY2F0KCJOw7ptZXJvIHRvdGFsIGRlIHZhcmlhYmxlczoiLCBuY29sKGRhdG9zKSwgIlxuIikNCg0KY3VhbnRpdGF0aXZhcyA8LSBzZWxlY3RfaWYoZGF0b3MsIGlzLm51bWVyaWMpDQpjdWFsaXRhdGl2YXMgPC0gc2VsZWN0X2lmKGRhdG9zLCB+IWlzLm51bWVyaWMoLikpDQoNCmNhdCgiVmFyaWFibGVzIGN1YW50aXRhdGl2YXM6IiwgbmNvbChjdWFudGl0YXRpdmFzKSwgIlxuIikNCmNhdCgiVmFyaWFibGVzIGN1YWxpdGF0aXZhczoiLCBuY29sKGN1YWxpdGF0aXZhcyksICJcbiIpDQpgYGANCg0KUGFyYSBlbCBkZXNhcnJvbGxvIGRlbCBhbsOhbGlzaXMgZXN0YWTDrXN0aWNvLCBzZSB1dGlsaXrDsyBpbmZvcm1hY2nDs24gY29ycmVzcG9uZGllbnRlIGFsIGHDsW8gMjAxNSB5IHNlIHNlbGVjY2lvbsOzIHVuYSBtdWVzdHJhIGRlIDUwIHBhw61zZXMgYSBwYXJ0aXIgZGUgbGEgYmFzZSBkZSBkYXRvcyBwcmV2aWFtZW50ZSBkZXB1cmFkYSwgYXBsaWNhbmRvIHVuIG11ZXN0cmVvIGFsZWF0b3JpbyBzaW1wbGUgc2luIHJlZW1wbGF6bywgbG8gcXVlIHNpZ25pZmljYSBxdWUgY2FkYSBwYcOtcyB0dXZvIGxhIG1pc21hIHByb2JhYmlsaWRhZCBkZSBzZXIgc2VsZWNjaW9uYWRvIHkgbm8gcG9kw61hIGFwYXJlY2VyIG3DoXMgZGUgdW5hIHZleiBlbiBsYSBtdWVzdHJhLiBFc3RlIHByb2NlZGltaWVudG8gc2UgZW1wbGXDsyBjb24gZWwgb2JqZXRpdm8gZGUgYXNlZ3VyYXIgdW5hIHNlbGVjY2nDs24gaW1wYXJjaWFsLCBldml0YXIgc2VzZ29zIHNpc3RlbcOhdGljb3MgeSBmYWNpbGl0YXIgdW4gYW7DoWxpc2lzIHJlcHJlc2VudGF0aXZvIHF1ZSBwZXJtaXRhIGV4cGxvcmFyIGRlIG1hbmVyYSBjb25maWFibGUgZWwgY29tcG9ydGFtaWVudG8gZGUgbGEgZXNwZXJhbnphIGRlIHZpZGEgZW4gcmVsYWNpw7NuIGNvbiBsYXMgdmFyaWFibGVzIGV4cGxpY2F0aXZhcyBpbmNsdWlkYXMgZW4gZWwgbW9kZWxvIGR1cmFudGUgZWwgYcOxbyBkZSBpbnRlcsOpcy4NCg0KYGBge3J9DQojIDEuIERlZmluaXIgc2VtaWxsYSBwYXJhIHJlcHJvZHVjaWJpbGlkYWQNCnNldC5zZWVkKDEyMykNCg0KIyAyLiBGaWx0cmFyIHNvbG8gZGF0b3MgZGVsIGHDsW8gMjAxNQ0KZGF0b3NfMjAxNSA8LSBkYXRvc19saW1waW9zICU+JSBmaWx0ZXIoWWVhciA9PSAyMDE1KQ0KDQojIDMuIENyZWFyIElEIMO6bmljbyBwb3IgZmlsYQ0KZGF0b3NfMjAxNSRJRF9PcmlnaW5hbCA8LSAxOm5yb3coZGF0b3NfMjAxNSkNCg0KIyA0LiBUb21hciBtdWVzdHJhIGFsZWF0b3JpYSBkZSA1MCBwYcOtc2VzIHNpbiByZWVtcGxhem8NCnBhaXNlc19tdWVzdHJhIDwtIHNhbXBsZShkYXRvc18yMDE1JENvdW50cnksIHNpemUgPSA1MCwgcmVwbGFjZSA9IEZBTFNFKQ0KDQojIDUuIEZpbHRyYXIgcmVnaXN0cm9zIGRlIGVzb3MgcGHDrXNlcw0KbXVlc3RyYV9maW5hbCA8LSBkYXRvc18yMDE1ICU+JQ0KICBmaWx0ZXIoQ291bnRyeSAlaW4lIHBhaXNlc19tdWVzdHJhKQ0KDQpEVDo6ZGF0YXRhYmxlKA0KICBtdWVzdHJhX2ZpbmFsWywgYygiSURfT3JpZ2luYWwiLCBuYW1lcyhtdWVzdHJhX2ZpbmFsKVtuYW1lcyhtdWVzdHJhX2ZpbmFsKSAhPSAiSURfT3JpZ2luYWwiXSldLA0KICBvcHRpb25zID0gbGlzdCgNCiAgICBwYWdlTGVuZ3RoID0gMTAsDQogICAgYXV0b1dpZHRoID0gVFJVRSwNCiAgICBzZWFyY2hpbmcgPSBUUlVFLA0KICAgIHNjcm9sbFggPSBUUlVFLA0KICAgIGxlbmd0aE1lbnUgPSBsaXN0KGMoMTAsIDIwLCA1MCwgLTEpLCBjKCIxMCIsICIyMCIsICI1MCIsICJUb2RvcyIpKQ0KICApLA0KICBjYXB0aW9uID0gIk11ZXN0cmEgQWxlYXRvcmlhIGRlIDUwIFBhw61zZXMgcGFyYSBlbCBBw7FvIDIwMTUiLA0KICByb3duYW1lcyA9IEZBTFNFDQopDQoNCmBgYA0KDQpDb21vIHNlIG11ZXN0cmEgZW4gbGEgdGFibGEgcG9zdGVyaW9yLCBsYSBtdWVzdHJhIGVzdMOhIGNvbmZvcm1hZGEgcG9yIDUwIHBhw61zZXMgZGlzdHJpYnVpZG9zIGVuIGRpc3RpbnRvcyBjb250aW5lbnRlcywgY29uIHVuYSBjbGFyYSBwcmVkb21pbmFuY2lhIGRlIHBhw61zZXMgY2xhc2lmaWNhZG9zIGNvbW8gImVuIGRlc2Fycm9sbG8iLiBMYXMgcmVnaW9uZXMgZGUgQXNpYSwgQW3DqXJpY2EgeSDDgWZyaWNhIGNvbmNlbnRyYW4gbGEgbWF5b3IgcGFydGUgZGUgZXN0b3MgcGHDrXNlcywgbG8gcXVlIHJlZmxlamEgdW5hIGNvbXBvc2ljacOzbiBxdWUgYWJhcmNhIHByaW5jaXBhbG1lbnRlIGNvbnRleHRvcyBjb24gZGVzYWbDrW9zIGVzdHJ1Y3R1cmFsZXMgZW4gc2FsdWQsIGluZ3Jlc28geSBlZHVjYWNpw7NuLiBQb3Igb3RybyBsYWRvLCBsYSBwcmVzZW5jaWEgZGUgcGHDrXNlcyBkZXNhcnJvbGxhZG9zIGVzIGxpbWl0YWRhIGRlbnRybyBkZSBsYSBtdWVzdHJhLCBsbyBjdWFsIHJlc3VsdGEgY29oZXJlbnRlIGNvbnNpZGVyYW5kbyBsYSBkaXN0cmlidWNpw7NuIGdsb2JhbCBhY3R1YWwsIGRvbmRlIGxhIG1heW9yw61hIGRlIGxvcyBwYcOtc2VzIGRlbCBtdW5kbyBzb24gY29uc2lkZXJhZG9zIGVuIGRlc2Fycm9sbG8uIEVzdGEgZGl2ZXJzaWRhZCBnZW9ncsOhZmljYSB5IGRlIG5pdmVsIGRlIGRlc2Fycm9sbG8gcGVybWl0ZSBxdWUgZWwgYW7DoWxpc2lzIHBvc3RlcmlvciB0ZW5nYSB1biBlbmZvcXVlIGNvbXBhcmF0aXZvIGFtcGxpbyB5IHJlcHJlc2VudGF0aXZvIGRlIGRpc3RpbnRhcyByZWFsaWRhZGVzIHNvY2lvZWNvbsOzbWljYXMuDQoNCmBgYHtyLGVjaG89RkFMU0Usd2FybmluZz1GQUxTRSxtZXNzYWdlPUZBTFNFfQ0KaWYgKCFyZXF1aXJlKGthYmxlRXh0cmEpKSBpbnN0YWxsLnBhY2thZ2VzKCJrYWJsZUV4dHJhIikNCmlmICghcmVxdWlyZShjb3VudHJ5Y29kZSkpIGluc3RhbGwucGFja2FnZXMoImNvdW50cnljb2RlIikNCg0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkoa2FibGVFeHRyYSkNCmxpYnJhcnkoY291bnRyeWNvZGUpDQoNCm11ZXN0cmFfZmluYWwkQ29udGluZW50IDwtIGNvdW50cnljb2RlKG11ZXN0cmFfZmluYWwkQ291bnRyeSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvcmlnaW4gPSAiY291bnRyeS5uYW1lIiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXN0aW5hdGlvbiA9ICJjb250aW5lbnQiKQ0KDQp0YWJsYV9jcnV6YWRhIDwtIG11ZXN0cmFfZmluYWwgJT4lDQogIGRpc3RpbmN0KENvdW50cnksIENvbnRpbmVudCwgU3RhdHVzKSAlPiUNCiAgY291bnQoQ29udGluZW50LCBTdGF0dXMsIG5hbWUgPSAiTsO6bWVybyBkZSBwYcOtc2VzIikgJT4lDQogIGFycmFuZ2UoQ29udGluZW50LCBTdGF0dXMpDQoNCmthYmxlKHRhYmxhX2NydXphZGEsDQogICAgICBjYXB0aW9uID0gIkRpc3RyaWJ1Y2nDs24gZGUgbGEgbXVlc3RyYSBwb3IgY29udGluZW50ZSB5IG5pdmVsIGRlIGRlc2Fycm9sbG8iLA0KICAgICAgY29sLm5hbWVzID0gYygiQ29udGluZW50ZSIsICJOaXZlbCBkZSBkZXNhcnJvbGxvIiwgIk7Dum1lcm8gZGUgcGHDrXNlcyIpLA0KICAgICAgYWxpZ24gPSAiYyIpICU+JQ0KICBrYWJsZV9zdHlsaW5nKGZ1bGxfd2lkdGggPSBGQUxTRSwNCiAgICAgICAgICAgICAgICBib290c3RyYXBfb3B0aW9ucyA9IGMoInN0cmlwZWQiLCAiaG92ZXIiLCAiY29uZGVuc2VkIiwgImJvcmRlcmVkIiksDQogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAiY2VudGVyIikNCg0KYGBgDQoNCiMgRXN0YWRhZMOtc3RpY2EgZGVzY3JpcHRpdmEgDQoNCiMjIE1lZGlkYXMgZGUgdGVuZGVuY2lhIGNlbnRyYWwsIGxvY2FsaXphY2nDs24geSBkaXNwZXJzacOzbg0KDQojIyMgVGVuaWVuZG8gZW4gY3VlbnRhIHRvZG9zIGxvcyBwYWlzZXMgZGUgbGEgbXVlc3RyYQ0KDQpgYGB7ciwgZWNobz1GQUxTRSwgd2FybmluZz1GQUxTRSxtZXNzYWdlPUZBTFNFfQ0KDQpkYXRvc192YXJzIDwtIG11ZXN0cmFfZmluYWwgJT4lDQogIHNlbGVjdChgTGlmZSBleHBlY3RhbmN5YCwgYEhJVi9BSURTYCwgYEluY29tZSBjb21wb3NpdGlvbiBvZiByZXNvdXJjZXNgLCBgQWR1bHQgTW9ydGFsaXR5YCkNCg0KIyBNZWRpZGFzIGRlIHRlbmRlbmNpYSBjZW50cmFsLCBsb2NhbGl6YWNpw7NuIHkgZGlzcGVyc2nDs24NCnRhYmxhX21lZGlkYXMgPC0gZGF0b3NfdmFycyAlPiUNCiAgc3VtbWFyaXNlKGFjcm9zcyhldmVyeXRoaW5nKCksIGxpc3QoDQogICAgTWVkaWEgPSB+cm91bmQobWVhbiguLCBuYS5ybSA9IFRSVUUpLCAyKSwNCiAgICBNZWRpYW5hID0gfnJvdW5kKG1lZGlhbiguLCBuYS5ybSA9IFRSVUUpLCAyKSwNCiAgICBNb2RhID0gfnJvdW5kKG1mdiguLCBuYV9ybSA9IFRSVUUpWzFdLCAyKSwNCiAgICBNaW4gPSB+cm91bmQobWluKC4sIG5hLnJtID0gVFJVRSksIDIpLA0KICAgIFExID0gfnJvdW5kKHF1YW50aWxlKC4sIDAuMjUsIG5hLnJtID0gVFJVRSksIDIpLA0KICAgIFEzID0gfnJvdW5kKHF1YW50aWxlKC4sIDAuNzUsIG5hLnJtID0gVFJVRSksIDIpLA0KICAgIE1heCA9IH5yb3VuZChtYXgoLiwgbmEucm0gPSBUUlVFKSwgMiksDQogICAgUmFuZ28gPSB+cm91bmQoZGlmZihyYW5nZSguLCBuYS5ybSA9IFRSVUUpKSwgMiksDQogICAgUklRID0gfnJvdW5kKElRUiguLCBuYS5ybSA9IFRSVUUpLCAyKSwNCiAgICBTRCA9IH5yb3VuZChzZCguLCBuYS5ybSA9IFRSVUUpLCAyKSwNCiAgICBWYXJpYW56YSA9IH5yb3VuZCh2YXIoLiwgbmEucm0gPSBUUlVFKSwgMikNCiAgKSwgLm5hbWVzID0gInsuY29sfV97LmZufSIpKSAlPiUNCiAgcGl2b3RfbG9uZ2VyKGV2ZXJ5dGhpbmcoKSwNCiAgICAgICAgICAgICAgIG5hbWVzX3RvID0gYygiVmFyaWFibGUiLCAiTWVkaWRhIiksDQogICAgICAgICAgICAgICBuYW1lc19zZXAgPSAiXyIpICU+JQ0KICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gTWVkaWRhLCB2YWx1ZXNfZnJvbSA9IHZhbHVlKQ0KDQprYWJsZSh0YWJsYV9tZWRpZGFzLA0KICAgICAgY2FwdGlvbiA9ICJNZWRpZGFzIGRlIHRlbmRlbmNpYSBjZW50cmFsLCBsb2NhbGl6YWNpw7NuIHkgZGlzcGVyc2nDs24gZGUgbGFzIHZhcmlhYmxlcyBzZWxlY2Npb25hZGFzIiwNCiAgICAgIGFsaWduID0gImMiKSAlPiUNCiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9IGMoInN0cmlwZWQiLCAiaG92ZXIiLCAiY29uZGVuc2VkIiwgImJvcmRlcmVkIiksDQogICAgICAgICAgICAgICAgZnVsbF93aWR0aCA9IEZBTFNFLA0KICAgICAgICAgICAgICAgIHBvc2l0aW9uID0gImNlbnRlciIpDQpgYGANCg0KTGEgdmFyaWFibGUgTGlmZSBleHBlY3RhbmN5IHJlZmxlamEgZGlmZXJlbmNpYXMgc2lnbmlmaWNhdGl2YXMgZW4gc2FsdWQgeSBiaWVuZXN0YXIgZW50cmUgbG9zIHBhw61zZXMgYW5hbGl6YWRvcy4gTGEgbWVkaWEgZnVlIGRlIDcxLjczIGHDsW9zIHkgbGEgbWVkaWFuYSBkZSA3My44MCwgbG8gcXVlIGluZGljYSBxdWUgbGEgbWF5b3LDrWEgZGUgbG9zIHBhw61zZXMgYWxjYW56YWJhbiB1bmEgZXNwZXJhbnphIGRlIHZpZGEgZW4gdG9ybm8gYSBsb3MgNzMgYcOxb3MuIE5vIG9ic3RhbnRlLCBlbCBtw61uaW1vIHJlZ2lzdHJhZG8gZnVlIGRlIDUzLjEwIGHDsW9zLCBtaWVudHJhcyBxdWUgZWwgbcOheGltbyBsbGVnw7MgYSA4NS4wMCwgZ2VuZXJhbmRvIHVuIHJhbmdvIHRvdGFsIGRlIDMxLjkwIGHDsW9zIGVudHJlIGxvcyBwYcOtc2VzIGNvbiBtZW5vciB5IG1heW9yIGxvbmdldmlkYWQuIEVzdGEgZGlmZXJlbmNpYSBlcyBjb25zaWRlcmFibGUgeSBwb25lIGVuIGV2aWRlbmNpYSBjb250cmFzdGVzIGltcG9ydGFudGVzIGVuIGZhY3RvcmVzIGNvbW8gZWwgYWNjZXNvIGEgc2VydmljaW9zIG3DqWRpY29zLCBjYWxpZGFkIGRlbCBzaXN0ZW1hIGRlIHNhbHVkLCBhbGltZW50YWNpw7NuIHkgY29uZGljaW9uZXMgc29jaWFsZXMuIExhIGRlc3ZpYWNpw7NuIGVzdMOhbmRhciBkZSA3Ljk5IHkgbGEgdmFyaWFuemEgZGUgNjMuODcgcmVzcGFsZGFuIGVzdGEgdmFyaWFiaWxpZGFkLCBtb3N0cmFuZG8gcXVlIGxvcyBkYXRvcyBlc3TDoW4gYmFzdGFudGUgZGlzcGVyc29zIGVuIHJlbGFjacOzbiBjb24gbGEgbWVkaWEuIFBvciBzdSBwYXJ0ZSwgZWwgcmFuZ28gaW50ZXJjdWFydMOtbGljbyAoUklRKSBkZSA3Ljk5IHNlw7FhbGEgcXVlIGluY2x1c28gZW50cmUgbG9zIHBhw61zZXMgdWJpY2Fkb3MgZW4gZWwgNTAlIGNlbnRyYWwsIGhheSB1bmEgaGV0ZXJvZ2VuZWlkYWQgaW1wb3J0YW50ZSwgbG8gcXVlIGhhY2UgcGVuc2FyIGVuIGRpZmVyZW5jaWFzIGVzdHJ1Y3R1cmFsZXMgcmVsZXZhbnRlcyBlbiBwb2zDrXRpY2FzIGRlIHNhbHVkIHkgY2FsaWRhZCBkZSB2aWRhLg0KDQpFbiBjdWFudG8gYSBsYSB2YXJpYWJsZSBISVYvQUlEUywgbGEgbWVkaWEgZGUgcHJldmFsZW5jaWEgZW4gbGEgbXVlc3RyYSBmdWUgZGUgMC42NCwgcGVybyBsYSBtZWRpYW5hIHkgbGEgbW9kYSBjb2luY2lkZW4gZW4gdW4gdmFsb3IgbXVjaG8gbWVub3I6IDAuMTAuIEVzdG8gZXZpZGVuY2lhIHF1ZSBsYSBtYXlvcsOtYSBkZSBsb3MgcGHDrXNlcyBwcmVzZW50YWJhbiBuaXZlbGVzIGJham9zIGRlIGluZmVjY2nDs24gcG9yIFZJSCwgYXVucXVlIGFsZ3Vub3MgcGHDrXNlcyBwdW50dWFsZXMgYWxjYW56YWJhbiB2YWxvcmVzIG3DoXMgYWx0b3MgcXVlIGVsZXZhYmFuIGVsIHByb21lZGlvIGdlbmVyYWwuIEVsIG3DoXhpbW8gcmVwb3J0YWRvIGZ1ZSBkZSA0LjgwLCBsbyBxdWUgcmVwcmVzZW50YSB1bmEgc2l0dWFjacOzbiBjcsOtdGljYSBlbiBhbCBtZW5vcyB1biBwYcOtcy4gTGEgZGVzdmlhY2nDs24gZXN0w6FuZGFyIGRlIDEuMjAgaW5kaWNhIHVuYSBkaXNwZXJzacOzbiBjb25zaWRlcmFibGUgcmVzcGVjdG8gYSBsYSBtZWRpYSwgbWllbnRyYXMgcXVlIGVsIHJhbmdvIChkaWZlcmVuY2lhIGVudHJlIDQuODAgeSAwLjEwKSBkZSA0LjcwIHVuaWRhZGVzIHJlZnVlcnphIGxhIGlkZWEgZGUgZGlzcGFyaWRhZCBlbiBsYSBtYWduaXR1ZCBkZWwgcHJvYmxlbWEuIEVzdGUgY29tcG9ydGFtaWVudG8gcGVybWl0ZSBpZGVudGlmaWNhciBxdWUsIGVuIDIwMTUsIGVsIFZJSC9TSURBIHNlZ3XDrWEgc2llbmRvIHVuIHByb2JsZW1hIGRlIHNhbHVkIHDDumJsaWNhIG11eSBtYXJjYWRvIGVuIGNpZXJ0b3MgY29udGV4dG9zIG5hY2lvbmFsZXMsIGF1bnF1ZSBlbiBsYSBtYXlvcsOtYSBkZSBsb3MgY2Fzb3Mgc3UgaW1wYWN0byBlc3RhYmEgbcOhcyBjb250cm9sYWRvLg0KDQpMYSB2YXJpYWJsZSBJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzLCBxdWUgc2ludGV0aXphIGVsIGFjY2VzbyBhIHJlY3Vyc29zIGNsYXZlIHBhcmEgZWwgZGVzYXJyb2xsbyAoY29tbyBpbmdyZXNvLCBlZHVjYWNpw7NuIHkgc2VydmljaW9zIGLDoXNpY29zKSwgcHJlc2VudGEgdW5hIG1lZGlhIGRlIDAuNjkgeSB1bmEgbWVkaWFuYSBkZSAwLjcyLCBsbyBjdWFsIHN1Z2llcmUgcXVlIGxhIG1heW9yw61hIGRlIGxvcyBwYcOtc2VzIGRlIGxhIG11ZXN0cmEgY29udGFiYW4gY29uIHVuIG5pdmVsIG1lZGlvIG8gbWVkaW8tYWx0byBlbiBlc3RhIGRpbWVuc2nDs24uIEVsIHZhbG9yIG3DrW5pbW8gcmVnaXN0cmFkbyBmdWUgZGUgMC4zNSB5IGVsIG3DoXhpbW8gZGUgMC45NCwgbG8gcXVlIGRhIHVuIHJhbmdvIGRlIDAuNTkuIEVzdGEgZGlmZXJlbmNpYSBtdWVzdHJhIHF1ZSwgYXVucXVlIGhheSBwYcOtc2VzIGNvbiBjb25kaWNpb25lcyBiYXN0YW50ZSBtw6FzIGxpbWl0YWRhcywgbGEgbWF5b3LDrWEgcGFyZWNlbiB0ZW5lciBjaWVydG8gbml2ZWwgZGUgZGVzYXJyb2xsbyBlbiB0w6lybWlub3MgZGUgcmVjdXJzb3MuIExhIGRlc3ZpYWNpw7NuIGVzdMOhbmRhciBkZSAwLjE2IHkgbGEgdmFyaWFuemEgZGUgMC4wMiByZXZlbGFuIHF1ZSwgZW4gY29tcGFyYWNpw7NuIGNvbiBvdHJhcyB2YXJpYWJsZXMsIGhheSBtZW5vciBkaXNwZXJzacOzbiBlbnRyZSBwYcOtc2VzLCBsbyBxdWUgaW5kaWNhIHVuYSByZWxhdGl2YSBlc3RhYmlsaWRhZCBlbiBlc3RhIGRpbWVuc2nDs24gZGVudHJvIGRlIGxhIG11ZXN0cmEgYW5hbGl6YWRhLiBFc3RlIGluZGljYWRvciBwb2Ryw61hIGNvbnNpZGVyYXJzZSB1bmEgYmFzZSByZWxldmFudGUgcGFyYSBldmFsdWFyIGNhcGFjaWRhZGVzIGVzdHJ1Y3R1cmFsZXMgeSBwb3RlbmNpYWwgZGUgZGVzYXJyb2xsbyBodW1hbm8uDQoNCkZpbmFsbWVudGUsIEFkdWx0IE1vcnRhbGl0eSBzZSBkZXN0YWNhIHBvciBsYSBlbm9ybWUgZGlmZXJlbmNpYSBlbnRyZSBwYcOtc2VzIGVuIHTDqXJtaW5vcyBkZSBtdWVydGVzIGVuIGxhIGVkYWQgYWR1bHRhLiBMYSBtZWRpYSBmdWUgZGUgMTQzLjQ2IG11ZXJ0ZXMgcG9yIGNhZGEgMTAwMCBhZHVsdG9zLCBjb24gdW5hIG1lZGlhbmEgbXV5IHNpbWlsYXIgZGUgMTQwLjAwLiBTaW4gZW1iYXJnbywgZWwgdmFsb3IgbcOtbmltbyBmdWUgZGUgYXBlbmFzIDEuMDAgeSBlbCBtw6F4aW1vIGFsY2FuesOzIDM2NS4wMCwgYXJyb2phbmRvIHVuIHJhbmdvIG11eSBhbXBsaW8gZGUgMzY0LjAwIHVuaWRhZGVzLiBFc3RlIGRhdG8sIGp1bnRvIGNvbiB1bmEgZGVzdmlhY2nDs24gZXN0w6FuZGFyIGRlIDk0LjM5IHkgdW5hIHZhcmlhbnphIGFsdMOtc2ltYSBkZSA4OTA5Ljg5LCBjb25maXJtYSBxdWUgbGFzIGRpZmVyZW5jaWFzIGVudHJlIHBhw61zZXMgc29uIGRyw6FzdGljYXMgZW4gY3VhbnRvIGFsIHJpZXNnbyBkZSBtdWVydGUgZW4gZWRhZGVzIGFkdWx0YXMuIEluY2x1c28gZWwgcmFuZ28gaW50ZXJjdWFydMOtbGljbyAoUklRKSBkZSA5NC4zOSByZXZlbGEgZ3JhbmRlcyBjb250cmFzdGVzIGVudHJlIGxvcyBwYcOtc2VzIHViaWNhZG9zIGVuIGVsIGNlbnRybyBkZSBsYSBtdWVzdHJhLiBFc3RhIHZhcmlhYmlsaWRhZCB0YW4gcHJvbnVuY2lhZGEgcHVlZGUgZXN0YXIgYXNvY2lhZGEgYSBtw7psdGlwbGVzIGZhY3RvcmVzIGNvbW8gZGVzaWd1YWxkYWQgc29jaWFsLCBhY2Nlc28gbGltaXRhZG8gYSBzZXJ2aWNpb3MgZGUgc2FsdWQsIHZpb2xlbmNpYSwgZW5mZXJtZWRhZGVzIGNyw7NuaWNhcywgY29uZmxpY3RvcyBhcm1hZG9zIG8gZGVmaWNpZW5jaWFzIGVuIHBvbMOtdGljYXMgcMO6YmxpY2FzIGRlIHByb3RlY2Npw7NuIGEgbGEgc2FsdWQuDQoNCiMjIyBUZW5pZW5kbyBlbiBjdWVudGEgZWwgY29udGluZW50ZQ0KDQpgYGB7cixlY2hvPUZBTFNFLHdhcm5pbmc9RkFMU0UsbWVzc2FnZT1GQUxTRX0NCmxpYnJhcnkoRFQpDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShjb3VudHJ5Y29kZSkNCg0KbXVlc3RyYV9maW5hbCA8LSBtdWVzdHJhX2ZpbmFsICU+JQ0KICBtdXRhdGUoUmVnaW9uID0gY291bnRyeWNvZGUoc291cmNldmFyID0gQ291bnRyeSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9yaWdpbiA9ICJjb3VudHJ5Lm5hbWUiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVzdGluYXRpb24gPSAiY29udGluZW50IikpDQoNCnZhcmlhYmxlcyA8LSBjKCJMaWZlIGV4cGVjdGFuY3kiLCAiSElWL0FJRFMiLCANCiAgICAgICAgICAgICAgICJJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzIiwgIkFkdWx0IE1vcnRhbGl0eSIpDQp0YWJsYV9waXZvdCA8LSBiaW5kX3Jvd3MobGFwcGx5KHZhcmlhYmxlcywgZnVuY3Rpb24odmFyKSB7DQogIG11ZXN0cmFfZmluYWwgJT4lDQogICAgZ3JvdXBfYnkoUmVnaW9uKSAlPiUNCiAgICBzdW1tYXJpc2UoDQogICAgICBWYXJpYWJsZSA9IHZhciwNCiAgICAgIE1lZGlhID0gcm91bmQobWVhbiguZGF0YVtbdmFyXV0sIG5hLnJtID0gVFJVRSksIDQpLA0KICAgICAgTWVkaWFuYSA9IHJvdW5kKG1lZGlhbiguZGF0YVtbdmFyXV0sIG5hLnJtID0gVFJVRSksIDQpLA0KICAgICAgTcOtbmltbyA9IHJvdW5kKG1pbiguZGF0YVtbdmFyXV0sIG5hLnJtID0gVFJVRSksIDQpLA0KICAgICAgTcOheGltbyA9IHJvdW5kKG1heCguZGF0YVtbdmFyXV0sIG5hLnJtID0gVFJVRSksIDQpLA0KICAgICAgUmFuZ28gPSByb3VuZChNw6F4aW1vIC0gTcOtbmltbywgNCksDQogICAgICBgRGVzdmlhY2nDs24gZXN0w6FuZGFyYCA9IHJvdW5kKHNkKC5kYXRhW1t2YXJdXSwgbmEucm0gPSBUUlVFKSwgNCksDQogICAgICBWYXJpYW56YSA9IHJvdW5kKHZhciguZGF0YVtbdmFyXV0sIG5hLnJtID0gVFJVRSksIDQpLA0KICAgICAgUklRID0gcm91bmQoSVFSKC5kYXRhW1t2YXJdXSwgbmEucm0gPSBUUlVFKSwgNCksDQogICAgICAuZ3JvdXBzID0gImRyb3AiDQogICAgKQ0KfSksIC5pZCA9IE5VTEwpDQoNCnRhYmxhX3Bpdm90IDwtIHRhYmxhX3Bpdm90ICU+JSBhcnJhbmdlKFJlZ2lvbiwgVmFyaWFibGUpDQoNCmRhdGF0YWJsZSgNCiAgdGFibGFfcGl2b3QsDQogIGZpbHRlciA9ICJ0b3AiLA0KICBvcHRpb25zID0gbGlzdCgNCiAgICBwYWdlTGVuZ3RoID0gNCwNCiAgICBzY3JvbGxYID0gVFJVRSwNCiAgICBhdXRvV2lkdGggPSBUUlVFLA0KICAgIGNvbHVtbkRlZnMgPSBsaXN0KGxpc3QoY2xhc3NOYW1lID0gJ2R0LWNlbnRlcicsIHRhcmdldHMgPSAiX2FsbCIpKQ0KICApLA0KICBjbGFzcyA9ICJzdHJpcGUgaG92ZXIgY2VsbC1ib3JkZXIgY29tcGFjdCIsDQogIGNhcHRpb24gPSBodG1sdG9vbHM6OnRhZ3MkY2FwdGlvbigNCiAgICBzdHlsZSA9ICdjYXB0aW9uLXNpZGU6IHRvcDsgdGV4dC1hbGlnbjogY2VudGVyOyANCiAgICAgICAgICAgICBjb2xvcjogIzAwNTZiMzsgZm9udC1zaXplOiAxOHB4OyBmb250LXdlaWdodDogYm9sZDsnLA0KICAgICJNZWRpZGFzIERlc2NyaXB0aXZhcyBwb3IgQ29udGluZW50ZSB5IFZhcmlhYmxlICgyMDE1KSINCiAgKSwNCiAgcm93bmFtZXMgPSBGQUxTRQ0KKQ0KYGBgDQoNCkVuIGVsIGNvbnRpbmVudGUgYWZyaWNhbm8sIGxvcyBpbmRpY2Fkb3JlcyByZWZsZWphbiB1biBwYW5vcmFtYSBjcsOtdGljbyBlbiB0w6lybWlub3MgZGUgc2FsdWQgeSBjb25kaWNpb25lcyBlc3RydWN0dXJhbGVzLiBMYSBlc3BlcmFuemEgZGUgdmlkYSBwcm9tZWRpbyBlcyBkZSA2My4wNyBhw7FvcywgbGEgbcOhcyBiYWphIGVudHJlIHRvZGFzIGxhcyByZWdpb25lcyBhbmFsaXphZGFzLiBFc3RhIHNpdHVhY2nDs24gc2UgdmUgYWNvbXBhw7FhZGEgcG9yIGxhIG1vcnRhbGlkYWQgYWR1bHRhIG3DoXMgYWx0YSwgY29uIHVuIHByb21lZGlvIGRlIDIwMS40NyBtdWVydGVzIHBvciBjYWRhIDEwMDAgYWR1bHRvcywgeSB1bmEgcHJldmFsZW5jaWEgZGUgVklIL1NJREEgcXVlIGFsY2FuemEgZW4gcHJvbWVkaW8gMS44NywgbWFyY2FuZG8gdGFtYmnDqW4gZWwgdmFsb3IgbcOhcyBhbHRvIGVudHJlIGxvcyBjb250aW5lbnRlcy4gTGEgY29tcG9zaWNpw7NuIGRlbCBpbmdyZXNvICgwLjUyOTEpIGVzIHRhbWJpw6luIGxhIG3DoXMgYmFqYSwgbG8gY3VhbCBldmlkZW5jaWEgbGFzIGxpbWl0YWNpb25lcyBlbiBlbCBhY2Nlc28gYSByZWN1cnNvcyBiw6FzaWNvcyBjb21vIHNhbHVkLCBlZHVjYWNpw7NuIHkgb3BvcnR1bmlkYWRlcyBlY29uw7NtaWNhcy4gRXN0b3MgcGF0cm9uZXMgc3VnaWVyZW4gcXVlIGxhcyBicmVjaGFzIGVuIGRlc2Fycm9sbG8gaHVtYW5vLCB0YW50byBzYW5pdGFyaWFzIGNvbW8gc29jaWFsZXMsIGV4cGxpY2FuIGdyYW4gcGFydGUgZGUgbGFzIGRlc3ZlbnRhamFzIGVuIHTDqXJtaW5vcyBkZSBsb25nZXZpZGFkIGVuIGVzdGEgcmVnacOzbi4gQWRlbcOhcywgbGEgYWx0YSBkaXNwZXJzacOzbiBlbiBsb3MgaW5kaWNhZG9yZXMsIHBvciBlamVtcGxvLCB1bmEgZGVzdmlhY2nDs24gZXN0w6FuZGFyIGRlIDEyNi4xMSBlbiBtb3J0YWxpZGFkIGFkdWx0YSwgcG9uZSBlbiBldmlkZW5jaWEgZnVlcnRlcyBkZXNpZ3VhbGRhZGVzIGludGVybmFzIGVudHJlIGxvcyBwYcOtc2VzIGFmcmljYW5vcy4NCg0KRW4gY29udHJhc3RlLCBFdXJvcGEgc2UgcG9zaWNpb25hIGNvbW8gbGEgcmVnacOzbiBjb24gbG9zIG1lam9yZXMgaW5kaWNhZG9yZXMgZW4gdG9kb3MgbG9zIGFzcGVjdG9zIGNsYXZlIGRlbCBhbsOhbGlzaXMuIExhIGVzcGVyYW56YSBkZSB2aWRhIHByb21lZGlvIGVzIGRlIDc5LjQ4IGHDsW9zLCBsYSBtw6FzIGFsdGEgZGVsIGNvbmp1bnRvLCBtaWVudHJhcyBxdWUgbGEgbW9ydGFsaWRhZCBhZHVsdGEgc2UgbWFudGllbmUgZW4gdW4gbml2ZWwgYmFqbywgY29uIHVuIHByb21lZGlvIGRlIDc5LjE1LiBMYSBwcmV2YWxlbmNpYSBkZSBWSUggZXMgcHLDoWN0aWNhbWVudGUgbnVsYSAoMC4xMDc3KSwgeSBlbCDDrW5kaWNlIGRlIGNvbXBvc2ljacOzbiBkZWwgaW5ncmVzbyBlcyBlbCBtw6FzIGFsdG8gKDAuODQxKSwgcmVmbGVqYW5kbyB1biBlbnRvcm5vIGVzdHJ1Y3R1cmFsbWVudGUgZmF2b3JhYmxlLCBjYXJhY3Rlcml6YWRvIHBvciBlcXVpZGFkLCBzZXJ2aWNpb3MgcMO6YmxpY29zIHPDs2xpZG9zIHkgc2lzdGVtYXMgZGUgc2FsdWQgcm9idXN0b3MuIExhIGJhamEgZGlzcGVyc2nDs24gZGUgbG9zIHZhbG9yZXMgKHBvciBlamVtcGxvLCBkZXN2aWFjacOzbiBlc3TDoW5kYXIgZGUgc29sbyAzLjY5IGVuIGVzcGVyYW56YSBkZSB2aWRhKSBpbmRpY2EgdW5hIGdyYW4gZXN0YWJpbGlkYWQgZW50cmUgbG9zIHBhw61zZXMgZXVyb3Blb3MsIGxvIHF1ZSByZWZ1ZXJ6YSBsYSBoaXDDs3Rlc2lzIGRlIHF1ZSBlbCBhY2Nlc28gZXF1aXRhdGl2byBhIHJlY3Vyc29zIGVzIHVuIGRldGVybWluYW50ZSBjbGF2ZSBkZSBsYSBsb25nZXZpZGFkLg0KDQpBc2lhIHByZXNlbnRhIHVuYSBzaXR1YWNpw7NuIGludGVybWVkaWEsIHBlcm8gY29uIHBhcnRpY3VsYXJpZGFkZXMgaW50ZXJlc2FudGVzLiBTdSBlc3BlcmFuemEgZGUgdmlkYSBlcyBkZSA3MS4zNiBhw7FvcywgeSBhdW5xdWUgbGEgcHJldmFsZW5jaWEgZGUgVklIIGVzIGJhamEgKDAuMTI1KSwgbGEgbW9ydGFsaWRhZCBhZHVsdGEgZXMgZWxldmFkYSAoMTYyLjQyKS4gRXN0byBzdWdpZXJlIHF1ZSwgc2kgYmllbiBsb3MgcGHDrXNlcyBhc2nDoXRpY29zIGhhbiBsb2dyYWRvIGNvbnRyb2xhciBlbmZlcm1lZGFkZXMgaW5mZWNjaW9zYXMgY29tbyBlbCBWSUgsIGHDum4gZW5mcmVudGFuIGRlc2Fmw61vcyBpbXBvcnRhbnRlcyBlbiBtYXRlcmlhIGRlIHNhbHVkIHDDumJsaWNhLCBwcm9iYWJsZW1lbnRlIHJlbGFjaW9uYWRvcyBjb24gZW5mZXJtZWRhZGVzIG5vIHRyYW5zbWlzaWJsZXMsIGVzdGlsb3MgZGUgdmlkYSBvIGFjY2VzbyBkZXNpZ3VhbCBhIGxhIGF0ZW5jacOzbiBtw6lkaWNhLiBFbCBwcm9tZWRpbyBlbiBsYSBjb21wb3NpY2nDs24gZGVsIGluZ3Jlc28gZXMgYWNlcHRhYmxlICgwLjY5MjcpLCBwZXJvIGxhIHZhcmlhbnphIHkgZWwgcmFuZ28gaW5kaWNhbiB1bmEgcmVnacOzbiBtdXkgaGV0ZXJvZ8OpbmVhLiBMYSBhbXBsaWEgZGlzcGVyc2nDs24gZW4gdmFyaWFibGVzIGNvbW8gbW9ydGFsaWRhZCAoZGVzdmlhY2nDs24gZXN0w6FuZGFyIGRlIDY4Ljg4KSByZWZ1ZXJ6YSBlc3RhIGlkZWEsIGV2aWRlbmNpYW5kbyBsYSBjb2V4aXN0ZW5jaWEgZGUgcGHDrXNlcyBjb24gYWx0b3Mgbml2ZWxlcyBkZSBkZXNhcnJvbGxvIGp1bnRvIGEgb3Ryb3MgY29uIHJlemFnb3MgbWFyY2Fkb3MuDQoNCkxhcyBBbcOpcmljYXMgdGFtYmnDqW4gbXVlc3RyYW4gY29uZGljaW9uZXMgZmF2b3JhYmxlcyBlbiBnZW5lcmFsLiBMYSBlc3BlcmFuemEgZGUgdmlkYSBlcyBhbHRhICg3NS43MCBhw7FvcykgeSBsYSBwcmV2YWxlbmNpYSBkZSBWSUggZXMgYmFqYSAoMC4xMjUpLCBzaW1pbGFyIGEgbGEgZGUgQXNpYSB5IEV1cm9wYS4gU2luIGVtYmFyZ28sIGxhIG1vcnRhbGlkYWQgYWR1bHRhIHByb21lZGlvIGVzIGRlIDEyOC4zNywgbcOhcyBhbHRhIHF1ZSBlbiBFdXJvcGEsIGxvIHF1ZSBwb2Ryw61hIGV4cGxpY2Fyc2UgcG9yIGxhIHByZXNlbmNpYSBkZSBlbmZlcm1lZGFkZXMgY3LDs25pY2FzLCBkZXNpZ3VhbGRhZCBlbiBlbCBhY2Nlc28gYSBzZXJ2aWNpb3MgZGUgc2FsdWQgbyBmYWN0b3JlcyBjb21vIHZpb2xlbmNpYSB5IGjDoWJpdG9zIGRlIHZpZGEgcG9jbyBzYWx1ZGFibGVzIGVuIGNpZXJ0b3MgcGHDrXNlcy4gTGEgY29tcG9zaWNpw7NuIGRlbCBpbmdyZXNvIGVzIGRlIDAuNzQ1LCBzaXR1w6FuZG9zZSBjb21vIGxhIHNlZ3VuZGEgbcOhcyBhbHRhLCBsbyBxdWUgcmVmbGVqYSB1biBlbnRvcm5vIGVzdHJ1Y3R1cmFsIHJlbGF0aXZhbWVudGUgcG9zaXRpdm8uIEEgcGVzYXIgZGUgZWxsbywgZXhpc3RlIHVuYSBkaXNwZXJzacOzbiBjb25zaWRlcmFibGUsIHBvciBlamVtcGxvIGVuIG1vcnRhbGlkYWQgKGRlc3ZpYWNpw7NuIGVzdMOhbmRhciBkZSAzMi44NyksIHF1ZSBpbmRpY2EgcXVlLCBhdW5xdWUgZW4gcHJvbWVkaW8gbGFzIGNvbmRpY2lvbmVzIHNvbiBidWVuYXMsIHBlcnNpc3RlbiBkZXNpZ3VhbGRhZGVzIGVudHJlIHBhw61zZXMgZGVsIGNvbnRpbmVudGUuDQoNCkZpbmFsbWVudGUsIE9jZWFuw61hIHByZXNlbnRhIHVuIHBlcmZpbCBwYXJ0aWN1bGFyLiBMYSBlc3BlcmFuemEgZGUgdmlkYSBlcyBkZSA3Mi43NSBhw7FvcywgeSBhdW5xdWUgbm8gYWxjYW56YSBsb3Mgbml2ZWxlcyBldXJvcGVvcywgcHJlc2VudGEgbGEgZGVzdmlhY2nDs24gZXN0w6FuZGFyIG3DoXMgYmFqYSAoMS4wNikgZW4gZXN0YSB2YXJpYWJsZSwgbG8gcXVlIGluZGljYSBncmFuIGhvbW9nZW5laWRhZCBlbnRyZSBzdXMgcGHDrXNlcy4gTGEgcHJldmFsZW5jaWEgZGUgVklIIGVzIG3DrW5pbWEgKDAuMSkgeSBjb25zdGFudGUgZW50cmUgdG9kYXMgbGFzIG9ic2VydmFjaW9uZXMsIGxvIHF1ZSBzdWdpZXJlIHVuIGNvbnRyb2wgYWJzb2x1dG8gZGUgZXN0YSBlbmZlcm1lZGFkIGVuIGxhIHJlZ2nDs24uIExhIG1vcnRhbGlkYWQgYWR1bHRhLCBzaW4gZW1iYXJnbywgc2Ugc2l0w7phIGVuIDczLCB1biB2YWxvciBiYWpvIHBlcm8gY29uIHVuYSBkZXN2aWFjacOzbiBlc3TDoW5kYXIgYWx0YSAoODQuODUpLCBsbyBxdWUgZXZpZGVuY2lhIGxhIGV4aXN0ZW5jaWEgZGUgcGHDrXNlcyBjb24gcmVhbGlkYWRlcyBjb250cmFzdGFudGVzLCBjb21vIGVzIGVsIGNhc28gZW50cmUgcGHDrXNlcyBpc2xlw7FvcyBtZW5vcyBkZXNhcnJvbGxhZG9zIHkgbmFjaW9uZXMgY29tbyBBdXN0cmFsaWEgbyBOdWV2YSBaZWxhbmRhLiBFbiBjdWFudG8gYSBsYSBjb21wb3NpY2nDs24gZGVsIGluZ3Jlc28gKDAuNjU4KSwgc2UgZW5jdWVudHJhIHBvciBkZWJham8gZGVsIHByb21lZGlvIGdsb2JhbCwgcGVybyBjb24gYmFqYSB2YXJpYWJpbGlkYWQsIGxvIHF1ZSBtdWVzdHJhIHVuYSBlc3RydWN0dXJhIHNvY2lvZWNvbsOzbWljYSBlc3RhYmxlLg0KDQpFbiBjb25jbHVzacOzbiwgbG9zIGRhdG9zIHJlc3BhbGRhbiBsYSBpZGVhIGRlIHF1ZSB1bmEgbWVub3IgbW9ydGFsaWRhZCBhZHVsdGEsIG1heW9yIGFjY2VzbyBhIHJlY3Vyc29zIHkgYmFqYSBwcmV2YWxlbmNpYSBkZSBlbmZlcm1lZGFkZXMgY29tbyBlbCBWSUggZXN0w6FuIGFzb2NpYWRvcyBjb24gdW5hIG1heW9yIGVzcGVyYW56YSBkZSB2aWRhLiBFdXJvcGEgc2UgZXJpZ2UgY29tbyBlbCBtb2RlbG8gbcOhcyBlcXVpbGlicmFkbywgbWllbnRyYXMgcXVlIMOBZnJpY2EgZW5mcmVudGEgZGVzYWbDrW9zIGVzdHJ1Y3R1cmFsZXMgc2lnbmlmaWNhdGl2b3MuIEFzaWEgeSBBbcOpcmljYSBzZSBzaXTDumFuIGVuIHVuIHB1bnRvIG1lZGlvLCB5IE9jZWFuw61hLCBhdW5xdWUgZXN0YWJsZSwgcmVmbGVqYSBjb250cmFzdGVzIGludGVybm9zIGltcG9ydGFudGVzLiBFc3RlIGFuw6FsaXNpcyByZWZ1ZXJ6YSBsYSB1dGlsaWRhZCBkZSBsYXMgdmFyaWFibGVzIHNlbGVjY2lvbmFkYXMgY29tbyBwcmVkaWN0b3JlcyB2w6FsaWRvcyBwYXJhIGV4cGxpY2FyIGxhIGxvbmdldmlkYWQgZGVzZGUgdW5hIHBlcnNwZWN0aXZhIG11bHRpdmFyaWFkYS4gwr9EZXNlYXMgcXVlIHRlIGxvIGZvcm1hdGVlIGVuIFIgTWFya2Rvd24gZGlyZWN0YW1lbnRlPw0KDQojIyBFeHBsb3JhY2nDs24gZ3LDoWZpY2EgZGUgbGFzIHZhcmlhYmxlcyBjdWFudGl0YXRpdmFzDQoNCiMjIyBIaXN0b2dyYW1hIGRlIGV4cGVjdGF0aXZhIGRlIHZpZGENCg0KYGBge3IsIHdhcm5pbmc9RkFMU0UsbWVzc2FnZT1GQUxTRSxlY2hvPUZBTFNFfQ0KZGZfdmlkYSA8LSBkYXRhLmZyYW1lKHZpZGEgPSBtdWVzdHJhX2ZpbmFsJGBMaWZlIGV4cGVjdGFuY3lgKQ0KZ2dwbG90KGRmX3ZpZGEsIGFlcyh4ID0gdmlkYSkpICsNCiAgZ2VvbV9oaXN0b2dyYW0oYWVzKHkgPSAuLmRlbnNpdHkuLiksIA0KICAgICAgICAgICAgICAgICBicmVha3MgPSBzZXEoNDAsIDkwLCBieSA9IDEwKSwgDQogICAgICAgICAgICAgICAgIGZpbGwgPSAibGlnaHRibHVlIiwgDQogICAgICAgICAgICAgICAgIGNvbG9yID0gImJsYWNrIiwgDQogICAgICAgICAgICAgICAgIGFscGhhID0gMC41KSArDQogIGdlb21fZGVuc2l0eShjb2xvciA9ICJkYXJrYmx1ZSIsIHNpemUgPSAxKSArDQogIGxhYnModGl0bGUgPSAiRGlzdHJpYnVjacOzbiBkZSBsYSBlc3BlcmFuemEgZGUgdmlkYSAtIDIwMTUiLCANCiAgICAgICB4ID0gIkVzcGVyYW56YSBkZSB2aWRhIChhw7FvcykiLCANCiAgICAgICB5ID0gIkRlbnNpZGFkIikgKw0KICB0aGVtZV9taW5pbWFsKCkgKw0KICB0aGVtZSgNCiAgICBheGlzLmxpbmUgPSBlbGVtZW50X2xpbmUoY29sb3IgPSAiYmxhY2siKSwNCiAgICBheGlzLnRpY2tzID0gZWxlbWVudF9saW5lKGNvbG9yID0gImJsYWNrIiksDQogICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChzaXplID0gMTIsIGZhY2UgPSAiYm9sZCIpLA0KICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChzaXplID0gMTApLA0KICAgIHBsb3QubWFyZ2luID0gbWFyZ2luKDEwLCAxMCwgMTAsIDEwKSwNCiAgICBwbG90LnRpdGxlID0gZWxlbWVudF90ZXh0KGhqdXN0ID0gMC41LCBmYWNlID0gImJvbGQiKQ0KICApICsNCiAgc2NhbGVfeF9jb250aW51b3VzKGJyZWFrcyA9IHNlcSg0MCwgOTAsIGJ5ID0gMTApLCANCiAgICAgICAgICAgICAgICAgICAgIGxpbWl0cyA9IGMoNDAsIDkwKSwgDQogICAgICAgICAgICAgICAgICAgICBleHBhbmQgPSBjKDAsIDApKSArDQogIHNjYWxlX3lfY29udGludW91cyhleHBhbmQgPSBjKDAsIDApKQ0KYGBgDQoNCkxhIGRpc3RyaWJ1Y2nDs24gZGUgbGEgZXNwZXJhbnphIGRlIHZpZGEgcGFyYSBlbCBhw7FvIDIwMTUgZXZpZGVuY2lhIGRpZmVyZW5jaWFzIG1hcmNhZGFzIGVudHJlIGxvcyBwYcOtc2VzIGFuYWxpemFkb3MuIFRhbCBjb21vIGxvIHJlZmxlamEgZWwgaGlzdG9ncmFtYSwgbGEgbWF5b3IgY29uY2VudHJhY2nDs24gZGUgcGHDrXNlcyBzZSBlbmN1ZW50cmEgZW4gZWwgcmFuZ28gZGUgbG9zIDcwIGEgODAgYcOxb3MsIGxvIHF1ZSBjb25jdWVyZGEgY29uIGxvcyB2YWxvcmVzIGVzdGFkw61zdGljb3Mgb2J0ZW5pZG9zIHByZXZpYW1lbnRlLCBkb25kZSBsYSBtZWRpYSBmdWUgZGUgNzEuNzMgYcOxb3MgeSBsYSBtZWRpYW5hIGRlIDczLjgwLiBFc3RhIGFjdW11bGFjacOzbiBzdWdpZXJlIHF1ZSB1bmEgcHJvcG9yY2nDs24gY29uc2lkZXJhYmxlIGRlIHBhw61zZXMgYWxjYW56YWJhIGVzdMOhbmRhcmVzIHJlbGF0aXZhbWVudGUgYWx0b3MgZGUgc2FsdWQgeSBiaWVuZXN0YXIuIFNpbiBlbWJhcmdvLCB0YW1iacOpbiBzZSBvYnNlcnZhbiBiYXJyYXMgYSBsYSBpenF1aWVyZGEgZGVsIGdyw6FmaWNvIHF1ZSByZXByZXNlbnRhbiBwYcOtc2VzIGNvbiBlc3BlcmFuemFzIGRlIHZpZGEgcG9yIGRlYmFqbyBkZSBsb3MgNzAgYcOxb3MsIGUgaW5jbHVzbyBhbGd1bm9zIGNhc29zIHBvciBkZWJham8gZGUgbG9zIDYwIGHDsW9zLCBsbyBxdWUgcG9uZSBlbiBldmlkZW5jaWEgc2VyaWFzIGRlc2lndWFsZGFkZXMgZXN0cnVjdHVyYWxlcyBlbnRyZSBsYXMgbmFjaW9uZXMuDQoNCkVzdG9zIHZhbG9yZXMgYmFqb3MsIGF1bnF1ZSBtZW5vcyBmcmVjdWVudGVzLCBzb24gc2lnbmlmaWNhdGl2b3MgeSByZWZsZWphbiBwb3NpYmxlcyBjb250ZXh0b3MgZGUgYWx0YSB2dWxuZXJhYmlsaWRhZDogYWNjZXNvIGxpbWl0YWRvIGEgc2VydmljaW9zIGRlIHNhbHVkLCBzaXN0ZW1hcyBtw6lkaWNvcyBkZWJpbGl0YWRvcywgbWFsbnV0cmljacOzbiwgY29uZmxpY3RvcyBhcm1hZG9zIG8gcHJlc2VuY2lhIGRlIGVuZmVybWVkYWRlcyBpbmZlY2Npb3NhcyBjb21vIGVsIFZJSC9TSURBLiBFc3RvIHNlIGFsaW5lYSBjb24gbG8gb2JzZXJ2YWRvIGVuIHZhcmlhYmxlcyBjb21vIEFkdWx0IE1vcnRhbGl0eSBvIEhJVi9BSURTLCBxdWUgbW9zdHJhcm9uIHVuYSBhbHRhIGRpc3BlcnNpw7NuIGVuIHN1cyB2YWxvcmVzLCBsbyBjdWFsIGNvbmZpcm1hIGxhIGNvZXhpc3RlbmNpYSBkZSBlbnRvcm5vcyBjb24gcmVhbGlkYWRlcyBzYW5pdGFyaWFzIG11eSBkaXN0aW50YXMuDQoNCkxhIGN1cnZhIGRlIGRlbnNpZGFkIHF1ZSBhY29tcGHDsWEgYWwgaGlzdG9ncmFtYSBtdWVzdHJhIHVuYSBkaXN0cmlidWNpw7NuIHF1ZSBubyBlcyBwZXJmZWN0YW1lbnRlIHNpbcOpdHJpY2EuIFNlIGlkZW50aWZpY2EgdW5hIGNvbGEgYWxhcmdhZGEgaGFjaWEgbGEgaXpxdWllcmRhLCBsbyBjdWFsIGluZGljYSB1bmEgYXNpbWV0csOtYSBuZWdhdGl2YSwgbG8gY3VhbCBpbXBsaWNhIHF1ZSwgYXVucXVlIGxhIG1heW9yw61hIGRlIGxvcyBwYcOtc2VzIHByZXNlbnRhbiB1bmEgZXNwZXJhbnphIGRlIHZpZGEgY2VyY2FuYSBhIGxvcyA3MyBhw7FvcywgZXhpc3RlIHVuIGdydXBvIG3DoXMgcmVkdWNpZG8gY29uIG5pdmVsZXMgbXVjaG8gbcOhcyBiYWpvcyBxdWUgaW5mbHV5ZW4gZW4gbGEgZm9ybWEgZ2VuZXJhbCBkZSBsYSBkaXN0cmlidWNpw7NuLiBBZGVtw6FzLCBsYSBkaXNwZXJzacOzbiBjdWFudGlmaWNhZGEgcG9yIGxhIGRlc3ZpYWNpw7NuIGVzdMOhbmRhciAoNy45OSkgeSBlbCByYW5nbyAoZGUgNTMuMTAgYSA4NS4wMCBhw7FvcykgcmVmdWVyemFuIGxhIGlkZWEgZGUgcXVlLCBzaSBiaWVuIGdsb2JhbG1lbnRlIHNlIGF2YW56w7MgZW4gbG9uZ2V2aWRhZCBwYXJhIDIwMTUsIHBlcnNpc3TDrWFuIGltcG9ydGFudGVzIGJyZWNoYXMuDQoNCkVuIHJlc3VtZW4sIGxhIGdyw6FmaWNhIHN1Z2llcmUgcXVlIGVsIG5pdmVsIHByb21lZGlvIGRlIHZpZGEgZXJhIHJlbGF0aXZhbWVudGUgYWx0byBwYXJhIGxhIG1heW9yw61hIGRlIHBhw61zZXMgZW4gMjAxNSwgcGVybyBleGlzdMOtYSB1bmEgZnJhY2Npw7NuIHNpZ25pZmljYXRpdmEgcXVlIGVuZnJlbnRhYmEgc2VyaW9zIGRlc2Fmw61vcyBlc3RydWN0dXJhbGVzLiBFc3RlIGNvbnRyYXN0ZSBubyBzb2xvIGRlc3RhY2EgbGEgaGV0ZXJvZ2VuZWlkYWQgZGVsIGRlc2Fycm9sbG8gaHVtYW5vIGEgbml2ZWwgbXVuZGlhbCwgc2lubyBxdWUgdGFtYmnDqW4gc2XDsWFsYSBsYSBuZWNlc2lkYWQgdXJnZW50ZSBkZSBmb3J0YWxlY2VyIGxhcyBwb2zDrXRpY2FzIHDDumJsaWNhcyBvcmllbnRhZGFzIGEgbGEgZXF1aWRhZCBlbiBzYWx1ZCB5IGNvbmRpY2lvbmVzIGRlIHZpZGEuIA0KDQojIyMgSGlzdG9ncmFtYSBkZSBtb3J0YWxpZGFkIGVuIGFkdWx0b3MgDQoNCmBgYHtyLHdhcm5pbmc9RkFMU0UsbWVzc2FnZT1GQUxTRSxlY2hvPUZBTFNFfQ0KbGlicmFyeShnZ3Bsb3QyKQ0KDQpkZl9tb3J0YWxpZGFkIDwtIGRhdGEuZnJhbWUobW9ydGFsaWRhZCA9IG11ZXN0cmFfZmluYWwkYEFkdWx0IE1vcnRhbGl0eWApDQoNCmdncGxvdChkZl9tb3J0YWxpZGFkLCBhZXMoeCA9IG1vcnRhbGlkYWQpKSArDQogIGdlb21faGlzdG9ncmFtKGFlcyh5ID0gLi5kZW5zaXR5Li4pLCANCiAgICAgICAgICAgICAgICAgYnJlYWtzID0gc2VxKDAsIDUwMCwgYnkgPSA1MCksIA0KICAgICAgICAgICAgICAgICBmaWxsID0gImxpZ2h0Ymx1ZSIsIA0KICAgICAgICAgICAgICAgICBjb2xvciA9ICJibGFjayIsIA0KICAgICAgICAgICAgICAgICBhbHBoYSA9IDAuNSkgKw0KICBnZW9tX2RlbnNpdHkoY29sb3IgPSAiZGFya2JsdWUiLCBzaXplID0gMSkgKw0KICBsYWJzKA0KICAgIHRpdGxlID0gIkRpc3RyaWJ1Y2nDs24gZGUgbGEgbW9ydGFsaWRhZCBhZHVsdGEgLSAyMDE1IiwgDQogICAgeCA9ICJNb3J0YWxpZGFkIGVuIGFkdWx0b3MgKHBvciBjYWRhIDEwMDAgaGFiaXRhbnRlcykiLCANCiAgICB5ID0gIkRlbnNpZGFkIg0KICApICsNCiAgdGhlbWVfbWluaW1hbCgpICsNCiAgdGhlbWUoDQogICAgYXhpcy5saW5lID0gZWxlbWVudF9saW5lKGNvbG9yID0gImJsYWNrIiksDQogICAgYXhpcy50aWNrcyA9IGVsZW1lbnRfbGluZShjb2xvciA9ICJibGFjayIpLA0KICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoc2l6ZSA9IDEyLCBmYWNlID0gImJvbGQiKSwNCiAgICBheGlzLnRleHQgPSBlbGVtZW50X3RleHQoc2l6ZSA9IDEwKSwNCiAgICBwbG90Lm1hcmdpbiA9IG1hcmdpbigxMCwgMTAsIDEwLCAxMCksDQogICAgcGxvdC50aXRsZSA9IGVsZW1lbnRfdGV4dChoanVzdCA9IDAuNSwgZmFjZSA9ICJib2xkIikNCiAgKSArDQogIHNjYWxlX3hfY29udGludW91cyhicmVha3MgPSBzZXEoMCwgNTAwLCBieSA9IDUwKSwgDQogICAgICAgICAgICAgICAgICAgICBsaW1pdHMgPSBjKDAsIDUwMCksIA0KICAgICAgICAgICAgICAgICAgICAgZXhwYW5kID0gYygwLCAwKSkgKw0KICBzY2FsZV95X2NvbnRpbnVvdXMoZXhwYW5kID0gYygwLCAwKSkNCg0KYGBgDQoNCkEgcHJpbWVyYSB2aXN0YSwgc2UgcHVlZGUgb2JzZXJ2YXIgcXVlIGxhIG1heW9yw61hIGRlIGxvcyBwYcOtc2VzIHNlIGNvbmNlbnRyYW4gZW4gbG9zIHRyYW1vcyBkZSBtb3J0YWxpZGFkIG3DoXMgYmFqb3MsIGVzcGVjw61maWNhbWVudGUgZW50cmUgbG9zIDUwIHkgMTAwIGZhbGxlY2ltaWVudG9zIHBvciBjYWRhIDEwMDAgaGFiaXRhbnRlcyBhZHVsdG9zLiBFc3RlIHJhbmdvIHJlcHJlc2VudGEgZWwgcGljbyBtw6FzIGFsdG8gdGFudG8gZW4gZWwgaGlzdG9ncmFtYSBjb21vIGVuIGxhIGN1cnZhIGRlIGRlbnNpZGFkLCBsbyBjdWFsIGluZGljYSBxdWUgZXN0ZSBuaXZlbCBkZSBtb3J0YWxpZGFkIGVzIGVsIG3DoXMgY29tw7puIGVudHJlIGxhcyBuYWNpb25lcy4gRXN0byBwdWVkZSBpbnRlcnByZXRhcnNlIGNvbW8gdW5hIHNlw7FhbCBwb3NpdGl2YSwgeWEgcXVlIHN1Z2llcmUgcXVlIHVuIG7Dum1lcm8gc2lnbmlmaWNhdGl2byBkZSBwYcOtc2VzIGNvbnRhYmEgY29uIGNvbmRpY2lvbmVzIHNhbml0YXJpYXMsIHNvY2lhbGVzIHkgZWNvbsOzbWljYXMgcXVlIHBlcm1pdMOtYW4gdW5hIG1heW9yIHN1cGVydml2ZW5jaWEgZW4gbGEgZWRhZCBhZHVsdGEuDQoNClNpbiBlbWJhcmdvLCBhIG1lZGlkYSBxdWUgYXZhbnphbW9zIGhhY2lhIGxhIGRlcmVjaGEgZGVsIGdyw6FmaWNvLCBsYSBkZW5zaWRhZCBjb21pZW56YSBhIGRpc21pbnVpciBkZSBtYW5lcmEgbm90YWJsZSwgbG8gcXVlIGluZGljYSBxdWUgaGF5IG1lbm9zIHBhw61zZXMgY29uIG5pdmVsZXMgZGUgbW9ydGFsaWRhZCBtw6FzIGVsZXZhZG9zLiBMYSBwcmVzZW5jaWEgZGUgdW5hIGNvbGEgbGFyZ2EgaGFjaWEgbGEgZGVyZWNoYSByZXZlbGEgdW5hIGRpc3RyaWJ1Y2nDs24gYXNpbcOpdHJpY2EgcG9zaXRpdmEgKHNlc2dvIGEgbGEgZGVyZWNoYSkuIEVzdGUgcGF0csOzbiBlcyBjYXJhY3RlcsOtc3RpY28gZGUgc2l0dWFjaW9uZXMgZG9uZGUgbGEgbWF5b3LDrWEgZGUgbGFzIG9ic2VydmFjaW9uZXMgdGllbmVuIHZhbG9yZXMgYmFqb3MgbyBtb2RlcmFkb3MsIHBlcm8gZXhpc3RlbiBhbGd1bm9zIGNhc29zIGV4dHJlbW9zIGNvbiB2YWxvcmVzIG11Y2hvIG3DoXMgYWx0b3MuIEVuIGVzdGUgY29udGV4dG8sIGVzdG9zICJleHRyZW1vcyIgcmVwcmVzZW50YW4gcGHDrXNlcyBxdWUsIGVuIDIwMTUsIGVuZnJlbnRhYmFuIG5pdmVsZXMgY3LDrXRpY29zIGRlIG1vcnRhbGlkYWQgYWR1bHRhLCBwcm9iYWJsZW1lbnRlIGRlYmlkbyBhIGNvbmZsaWN0b3MgYXJtYWRvcywgcGFuZGVtaWFzLCBwb2JyZXphIGV4dHJlbWEsIG8gc2lzdGVtYXMgc2FuaXRhcmlvcyBkZWZpY2llbnRlcy4NCg0KTGEgY3VydmEgc3Vhdml6YWRhIGF6dWwgc3VwZXJwdWVzdGEgYWwgaGlzdG9ncmFtYSByZWZ1ZXJ6YSBlc3RhIGludGVycHJldGFjacOzbiwgbW9zdHJhbmRvIGPDs21vIGxhIHByb2JhYmlsaWRhZCBkZSBlbmNvbnRyYXIgcGHDrXNlcyBjb24gbW9ydGFsaWRhZGVzIHN1cGVyaW9yZXMgYSAyMDAgbyAzMDAgcG9yIGNhZGEgMTAwMCBhZHVsdG9zIGRpc21pbnV5ZSBwcm9ncmVzaXZhbWVudGUsIGF1bnF1ZSBubyBkZXNhcGFyZWNlIGRlbCB0b2RvLiBFc3RlIGZlbsOzbWVubyBzdWdpZXJlIGxhIGV4aXN0ZW5jaWEgZGUgZGVzaWd1YWxkYWRlcyBtYXJjYWRhcyBlbnRyZSByZWdpb25lcyBkZWwgbXVuZG8gZW4gdMOpcm1pbm9zIGRlIHNhbHVkIHDDumJsaWNhLCBkZXNhcnJvbGxvIHkgYWNjZXNvIGEgcmVjdXJzb3MgbcOpZGljb3MuIEFkZW3DoXMsIGxhIGZvcm1hIGRlIGxhIGN1cnZhIHBvZHLDrWEgaW52aXRhciBhIHJlZmxleGlvbmFyIHNvYnJlIGxvcyBmYWN0b3JlcyBlc3RydWN0dXJhbGVzIHF1ZSBwZXJwZXTDumFuIGVzYXMgZGlzcGFyaWRhZGVzLg0KDQpFbiBjb25qdW50bywgZWwgZ3LDoWZpY28gbm8gc29sbyBjb211bmljYSB1bmEgZGlzdHJpYnVjacOzbiBlc3RhZMOtc3RpY2EsIHNpbm8gcXVlIHRhbWJpw6luIGludml0YSBhIHVuYSByZWZsZXhpw7NuIG3DoXMgcHJvZnVuZGEgc29icmUgbGFzIHJlYWxpZGFkZXMgc29jaWFsZXMgeSBlY29uw7NtaWNhcyBkZSBkaXN0aW50YXMgcGFydGVzIGRlbCBtdW5kby4gTWllbnRyYXMgcXVlIGFsZ3Vub3MgcGHDrXNlcyBoYW4gbG9ncmFkbyByZWR1Y2lyIHNpZ25pZmljYXRpdmFtZW50ZSBsYSBtb3J0YWxpZGFkIGFkdWx0YSBncmFjaWFzIGEgcG9sw610aWNhcyBlZmVjdGl2YXMgZGUgc2FsdWQgcMO6YmxpY2EsIG90cm9zIGNvbnRpbsO6YW4gZW5mcmVudGFuZG8gcmV0b3MgZW5vcm1lcy4gTGEgY29tcGFyYWNpw7NuIGVudHJlIGFtYm9zIGV4dHJlbW9zIGRlIGxhIGRpc3RyaWJ1Y2nDs24gcHVlZGUgc2VydmlyIGNvbW8gYmFzZSBwYXJhIHByaW9yaXphciBpbnRlcnZlbmNpb25lcyBnbG9iYWxlcyB5IGVzZnVlcnpvcyBkZSBjb29wZXJhY2nDs24gaW50ZXJuYWNpb25hbC4NCg0KIyMjIERpYWdyYW1hIGRlIGNhamEgZGUgZXNwZXJhbnphIGRlIHZpZGEgcG9yIGNvbnRpbmVudGUgDQoNCmBgYHtyLGVjaG89RkFMU0Usd2FybmluZz1GQUxTRSxtZXNzYWdlPUZBTFNFfQ0KbGlicmFyeShnZ3Bsb3QyKQ0KZ2dwbG90KG11ZXN0cmFfZmluYWwsIGFlcyh4ID0gUmVnaW9uLCB5ID0gYExpZmUgZXhwZWN0YW5jeWApKSArDQogIGdlb21fYm94cGxvdChmaWxsID0gInNreWJsdWUiLCBjb2xvciA9ICJibGFjayIsIG91dGxpZXIuY29sb3IgPSAiYmx1ZSIpICsNCiAgbGFicygNCiAgICB0aXRsZSA9ICJEaXN0cmlidWNpw7NuIGRlIGxhIGVzcGVyYW56YSBkZSB2aWRhIHBvciBjb250aW5lbnRlIC0gMjAxNSIsDQogICAgeCA9ICJDb250aW5lbnRlIiwNCiAgICB5ID0gIkVzcGVyYW56YSBkZSB2aWRhIChhw7FvcykiDQogICkgKw0KICB0aGVtZV9taW5pbWFsKCkgKw0KICB0aGVtZSgNCiAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KHNpemUgPSAxMiwgZmFjZSA9ICJib2xkIiksDQogICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAxMCksDQogICAgcGxvdC50aXRsZSA9IGVsZW1lbnRfdGV4dChoanVzdCA9IDAuNSwgZmFjZSA9ICJib2xkIiksDQogICAgcGFuZWwuYm9yZGVyID0gZWxlbWVudF9yZWN0KGNvbG9yID0gImJsYWNrIiwgZmlsbCA9IE5BLCBsaW5ld2lkdGggPSAwLjgpLCAgDQogICAgcGFuZWwuZ3JpZCA9IGVsZW1lbnRfbGluZShjb2xvciA9ICJncmF5ODUiKQ0KICApDQoNCmBgYA0KDQpDb21vIHNlIG9ic2VydmEsIEV1cm9wYSBkZXN0YWNhIGNvbiBsYSBtZWRpYW5hIG3DoXMgYWx0YSBkZWwgY29uanVudG8sIHNpdHVhZGEgYWxyZWRlZG9yIGRlIGxvcyA4MiBhw7Fvcy4gU3UgcmFuZ28gaW50ZXJjdWFydMOtbGljbyAobGEgYWx0dXJhIGRlIGxhIGNhamEpIGVzIG3DoXMgYW1wbGlvIHF1ZSBlbCBkZSBvdHJvcyBjb250aW5lbnRlcywgaW5kaWNhbmRvIGNpZXJ0YSB2YXJpYWJpbGlkYWQgZW50cmUgbG9zIHBhw61zZXMgZXVyb3Blb3MsIGF1bnF1ZSBzaWVtcHJlIGVuIHVuIG5pdmVsIGVsZXZhZG8gZGUgbG9uZ2V2aWRhZC4gQWRlbcOhcywgbGEgYXVzZW5jaWEgZGUgdmFsb3JlcyBhdMOtcGljb3Mgc3VnaWVyZSBxdWUgdG9kb3MgbG9zIHBhw61zZXMgZXVyb3Blb3Mgc2UgYWdydXBhbiBlbiB0b3JubyBhIHZhbG9yZXMgc2ltaWxhcmVzLCBjb25maXJtYW5kbyB1bmEgZGlzdHJpYnVjacOzbiBjb25zaXN0ZW50ZSBkZW50cm8gZGVsIGNvbnRpbmVudGUuDQoNCk9jZWFuw61hIHByZXNlbnRhIHRhbWJpw6luIHVuYSBtZWRpYW5hIGFsdGEsIGxpZ2VyYW1lbnRlIHBvciBkZWJham8gZGUgRXVyb3BhIHBlcm8gYcO6biBwb3IgZW5jaW1hIGRlIGxvcyA3NSBhw7Fvcy4gTGEgY2FqYSBlcyBlc3RyZWNoYSB5IG11ZXN0cmEgcG9jYSBkaXNwZXJzacOzbiwgbG8gcXVlIGluZGljYSB1bmEgYWx0YSBob21vZ2VuZWlkYWQgZW50cmUgbG9zIHBhw61zZXMgcmVwcmVzZW50YWRvcy4gTm8gc2Ugb2JzZXJ2YW4gdmFsb3JlcyBleHRyZW1vcywgbG8gY3VhbCByZWZ1ZXJ6YSBlc3RhIGltcHJlc2nDs24gZGUgdW5pZm9ybWlkYWQgZW4gbGEgcmVnacOzbi4NCg0KQW3DqXJpY2EgdGllbmUgdW5hIG1lZGlhbmEgc2ltaWxhciBhIGxhIGRlIE9jZWFuw61hLCBhbHJlZGVkb3IgZGUgbG9zIDc1IGHDsW9zLCBhdW5xdWUgbGlnZXJhbWVudGUgaW5mZXJpb3IuIExhIGNhamEgZXMgbXV5IGVzdHJlY2hhLCBsbyBxdWUgcmV2ZWxhIHVuYSBzb3JwcmVuZGVudGUgY29uc2lzdGVuY2lhIGVuIGxvcyB2YWxvcmVzIGRlIGVzcGVyYW56YSBkZSB2aWRhIGVudHJlIGxvcyBwYcOtc2VzIGRlbCBjb250aW5lbnRlLiBTaW4gZW1iYXJnbywgc2UgZGV0ZWN0YSB1biB2YWxvciBhdMOtcGljbyBwb3IgZW5jaW1hIGRlIGxvcyA4MCBhw7FvcywgbG8gcXVlIGluZGljYSBxdWUgYWwgbWVub3MgdW4gcGHDrXMgc3VwZXJhIGNsYXJhbWVudGUgYWwgcmVzdG8gZW4gZXN0ZSBpbmRpY2Fkb3IuIEF1biBhc8OtLCBlbiBjb25qdW50bywgQW3DqXJpY2EgbXVlc3RyYSB1bmEgZGlzdHJpYnVjacOzbiBiYXN0YW50ZSBjb21wYWN0YS4NCg0KQXNpYSwgZW4gY2FtYmlvLCBwcmVzZW50YSB1bmEgbWF5b3IgZGlzcGVyc2nDs24uIFN1IG1lZGlhbmEgZXN0w6EgbcOhcyBjZXJjYSBkZSBsb3MgNzAgYcOxb3MsIHkgbGEgY2FqYSBhYmFyY2EgdW4gcmFuZ28gYW1wbGlvLCBsbyBjdWFsIHJlZmxlamEgdW5hIGFsdGEgdmFyaWFiaWxpZGFkIGludGVybmEuIEVzdG8gc3VnaWVyZSBxdWUgbWllbnRyYXMgYWxndW5vcyBwYcOtc2VzIGFzacOhdGljb3MgaGFuIGFsY2FuemFkbyBuaXZlbGVzIGVsZXZhZG9zIGRlIGVzcGVyYW56YSBkZSB2aWRhLCBvdHJvcyB0b2RhdsOtYSBlbmZyZW50YW4gZGVzYWbDrW9zIGltcG9ydGFudGVzIGVuIHTDqXJtaW5vcyBkZSBzYWx1ZCBww7pibGljYS4gTm8gaGF5IHZhbG9yZXMgYXTDrXBpY29zIHZpc2libGVzLCBwZXJvIGxhIGFsdHVyYSBkZSBsYSBjYWphIHJldmVsYSBkZXNpZ3VhbGRhZGVzIG1hcmNhZGFzIGRlbnRybyBkZWwgY29udGluZW50ZS4NCg0Kw4FmcmljYSBlcyBlbCBjb250aW5lbnRlIGNvbiBsYSBtZWRpYW5hIG3DoXMgYmFqYSwgc2l0dWFkYSBlbiB0b3JubyBhIGxvcyA2Mi02MyBhw7Fvcy4gU3UgY2FqYSBlc3TDoSBjbGFyYW1lbnRlIGRlc3BsYXphZGEgaGFjaWEgbG9zIHZhbG9yZXMgaW5mZXJpb3JlcyBkZWwgZ3LDoWZpY28sIGxvIHF1ZSBjb25maXJtYSBzdSBwb3NpY2nDs24gbcOhcyBkZXNmYXZvcmFibGUgZW4gdMOpcm1pbm9zIGRlIGxvbmdldmlkYWQuIExhIGRpc3BlcnNpw7NuIHRhbWJpw6luIGVzIGNvbnNpZGVyYWJsZSwgeSBzZSBvYnNlcnZhbiB2YWxvcmVzIG3DrW5pbW9zIGNlcmNhbm9zIGEgbG9zIDUwIGHDsW9zLiBFc3RhIGRpc3RyaWJ1Y2nDs24gcmVmbGVqYSBncmFuZGVzIGRlc2Fmw61vcyBlc3RydWN0dXJhbGVzIHJlbGFjaW9uYWRvcyBjb24gZWwgYWNjZXNvIGEgc2VydmljaW9zIHNhbml0YXJpb3MsIG51dHJpY2nDs24sIHkgY29udHJvbCBkZSBlbmZlcm1lZGFkZXMsIHF1ZSBhZmVjdGFuIGEgdW5hIGdyYW4gcGFydGUgZGUgbG9zIHBhw61zZXMgYWZyaWNhbm9zLg0KDQpMYSBncsOhZmljYSBkZSBib3hwbG90IGV2aWRlbmNpYSBkZSBmb3JtYSBjb250dW5kZW50ZSBsYXMgZGVzaWd1YWxkYWRlcyBnbG9iYWxlcyBlbiBsYSBlc3BlcmFuemEgZGUgdmlkYSBzZWfDum4gZWwgY29udGluZW50ZS4gRXVyb3BhIGxpZGVyYSBjb24gbG9zIG5pdmVsZXMgbcOhcyBhbHRvcyB5IHVuYSBkaXN0cmlidWNpw7NuIGVzdGFibGUsIHJlZmxlam8gZGUgc2lzdGVtYXMgZGUgc2FsdWQgc8OzbGlkb3MgeSBjb25kaWNpb25lcyBkZSB2aWRhIGF2YW56YWRhcy4gT2NlYW7DrWEgeSBBbcOpcmljYSBtYW50aWVuZW4gdGFtYmnDqW4gbml2ZWxlcyBlbGV2YWRvcyB5IGhvbW9nw6luZW9zLCBhdW5xdWUgY29uIGxpZ2VyYXMgZGlmZXJlbmNpYXMgaW50ZXJuYXMuIEVuIGNvbnRyYXN0ZSwgQXNpYSBtdWVzdHJhIHVuYSBtYXlvciBkaXNwYXJpZGFkLCBsbyBxdWUgcmVmbGVqYSBlbCBwZXNvIGRlIGxhcyBkZXNpZ3VhbGRhZGVzIGVudHJlIHBhw61zZXMgY29uIGRpZmVyZW50ZXMgbml2ZWxlcyBkZSBkZXNhcnJvbGxvLiDDgWZyaWNhLCBwb3Igw7psdGltbywgZGVzdGFjYSBwb3Igc3UgcG9zaWNpw7NuIG3DoXMgYmFqYSBlbiBsYSBkaXN0cmlidWNpw7NuLCBjb24gdW5hIG1lZGlhbmEgc2Vuc2libGVtZW50ZSBpbmZlcmlvciB5IHVuYSBkaXNwZXJzacOzbiBzaWduaWZpY2F0aXZhIGhhY2lhIGxvcyB2YWxvcmVzIG3DrW5pbW9zLg0KDQojIyMgRGlhZ3JhbWEgZGUgY2FqYSBkZSBtb3J0YWxpZGFkIGFkdWx0YSBwb3IgY29udGluZW50ZQ0KDQpgYGB7cixlY2hvPUZBTFNFLHdhcm5pbmc9RkFMU0UsbWVzc2FnZT1GQUxTRX0NCmxpYnJhcnkoZ2dwbG90MikNCmdncGxvdChtdWVzdHJhX2ZpbmFsLCBhZXMoeCA9IFJlZ2lvbiwgeSA9IGBBZHVsdCBNb3J0YWxpdHlgKSkgKw0KICBnZW9tX2JveHBsb3QoZmlsbCA9ICJsaWdodGJsdWUiLCBjb2xvciA9ICJibGFjayIsIG91dGxpZXIuY29sb3IgPSAiYmx1ZSIpICsNCiAgbGFicygNCiAgICB0aXRsZSA9ICJEaXN0cmlidWNpw7NuIGRlIGxhIG1vcnRhbGlkYWQgYWR1bHRhIHBvciBjb250aW5lbnRlIC0gMjAxNSIsDQogICAgeCA9ICJDb250aW5lbnRlIiwNCiAgICB5ID0gIk1vcnRhbGlkYWQgYWR1bHRhIChwb3IgY2FkYSAxMDAwIGhhYml0YW50ZXMpIg0KICApICsNCiAgdGhlbWVfbWluaW1hbCgpICsNCiAgdGhlbWUoDQogICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChzaXplID0gMTIsIGZhY2UgPSAiYm9sZCIpLA0KICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChzaXplID0gMTApLA0KICAgIHBsb3QudGl0bGUgPSBlbGVtZW50X3RleHQoaGp1c3QgPSAwLjUsIGZhY2UgPSAiYm9sZCIpLA0KICAgIHBhbmVsLmdyaWQgPSAgZWxlbWVudF9saW5lKGNvbG9yID0gImdyYXk4NSIpLA0KICAgIHBhbmVsLmJvcmRlciA9IGVsZW1lbnRfcmVjdChjb2xvdXIgPSAiYmxhY2siLCBmaWxsID0gTkEsIHNpemUgPSAwLjgpDQogICANCiAgKQ0KYGBgDQoNCkxhIGdyw6FmaWNhIGRlIGNhamEgbXVlc3RyYSBkZSBtYW5lcmEgY2xhcmEgbGFzIGRpZmVyZW5jaWFzIHJlZ2lvbmFsZXMgZW4gbG9zIG5pdmVsZXMgZGUgbW9ydGFsaWRhZCBhZHVsdGEsIG1lZGlkYSBjb21vIGVsIG7Dum1lcm8gZGUgbXVlcnRlcyBwb3IgY2FkYSAxMDAwIGFkdWx0b3MuIEVsIGNvbnRpbmVudGUgYWZyaWNhbm8gcHJlc2VudGEgbGEgc2l0dWFjacOzbiBtw6FzIGNyw610aWNhLiBTdSBtZWRpYW5hIHNlIHNpdMO6YSBwb3IgZW5jaW1hIGRlIGxhcyAyMDAgbXVlcnRlcyBwb3IgY2FkYSAxMDAwIGFkdWx0b3MsIGxvIHF1ZSBsbyBjb252aWVydGUgZW4gbGEgcmVnacOzbiBjb24gbGEgdGFzYSBkZSBtb3J0YWxpZGFkIGFkdWx0YSBtw6FzIGVsZXZhZGEuIEFkZW3DoXMsIGVsIHJhbmdvIGludGVyY3VhcnTDrWxpY28gZXMgbXV5IGFtcGxpbyB5IHNlIGV4dGllbmRlIGhhc3RhIHZhbG9yZXMgY2VyY2Fub3MgYSAzNTAsIGxvIHF1ZSByZWZsZWphIHVuYSBncmFuIGRpc3BhcmlkYWQgZW50cmUgcGHDrXNlcyBkZWwgbWlzbW8gY29udGluZW50ZS4gRXN0YSBhbXBsaXR1ZCBzdWdpZXJlIHVuYSBmdWVydGUgZGVzaWd1YWxkYWQgaW50ZXJuYSwgY29uIGFsZ3Vub3MgcGHDrXNlcyBlbmZyZW50YW5kbyB0YXNhcyBleHRyZW1hZGFtZW50ZSBhbHRhcywgcHJvYmFibGVtZW50ZSByZWxhY2lvbmFkYXMgY29uIHByb2JsZW1hcyBwZXJzaXN0ZW50ZXMgY29tbyBlbCBhY2Nlc28gbGltaXRhZG8gYSBzZXJ2aWNpb3MgZGUgc2FsdWQsIGVuZmVybWVkYWRlcyB0cmFuc21pc2libGVzLCBwb2JyZXphIHkgY29uZmxpY3Rvcy4NCg0KRW4gY29udHJhc3RlLCBBbcOpcmljYSBwcmVzZW50YSB1bmEgbWVkaWFuYSBjb25zaWRlcmFibGVtZW50ZSBtw6FzIGJhamEsIGFscmVkZWRvciBkZSBsb3MgMTQwIGZhbGxlY2ltaWVudG9zIHBvciBjYWRhIDEwMDAgYWR1bHRvcy4gU3UgY2FqYSBlcyBlc3RyZWNoYSwgbG8gcXVlIGluZGljYSBxdWUgbG9zIHBhw61zZXMgZGVsIGNvbnRpbmVudGUgY29tcGFydGVuIG5pdmVsZXMgcmVsYXRpdmFtZW50ZSBzaW1pbGFyZXMgZGUgbW9ydGFsaWRhZCBhZHVsdGEuIEVzdGEgaG9tb2dlbmVpZGFkIHBvZHLDrWEgcmVmbGVqYXIgY2llcnRhIGNvaGVzacOzbiBlbiBlbCBhY2Nlc28gYSBzZXJ2aWNpb3MgYsOhc2ljb3MgZGUgc2FsdWQgeSB1bmEgc2l0dWFjacOzbiBzYW5pdGFyaWEgbcOhcyBlc3RhYmxlIGVuIHTDqXJtaW5vcyBnZW5lcmFsZXMuIExhIGF1c2VuY2lhIGRlIHZhbG9yZXMgYXTDrXBpY29zIHRhbWJpw6luIHJlZnVlcnphIGxhIGlkZWEgZGUgdW5hIGRpc3RyaWJ1Y2nDs24gY29tcGFjdGEgeSBzaW4gZ3JhbmRlcyBleGNlcGNpb25lcy4NCg0KQXNpYSBvY3VwYSB1bmEgcG9zaWNpw7NuIGludGVybWVkaWEsIGNvbiB1bmEgbWVkaWFuYSBjZXJjYW5hIGEgbG9zIDE4MCBmYWxsZWNpbWllbnRvcy4gQSBkaWZlcmVuY2lhIGRlIEFtw6lyaWNhLCBzdSBjYWphIGVzIG11Y2hvIG3DoXMgYWx0YSwgbG8gcXVlIHJldmVsYSB1bmEgbWF5b3IgaGV0ZXJvZ2VuZWlkYWQgZW50cmUgcGHDrXNlcyBhc2nDoXRpY29zLiBBbGd1bm9zIHByZXNlbnRhbiB0YXNhcyBkZSBtb3J0YWxpZGFkIHJlbGF0aXZhbWVudGUgYmFqYXMsIGNvbXBhcmFibGVzIGEgbGFzIGRlIEV1cm9wYSwgbWllbnRyYXMgcXVlIG90cm9zIHNlIGFjZXJjYW4gYSBuaXZlbGVzIG9ic2VydmFkb3MgZW4gw4FmcmljYS4gRXN0YSB2YXJpYWJpbGlkYWQgaW50ZXJuYSBwb2Ryw61hIGV4cGxpY2Fyc2UgcG9yIGVsIGNvbnRyYXN0ZSBlbnRyZSBlY29ub23DrWFzIGRlc2Fycm9sbGFkYXMgeSBvdHJhcyBxdWUgdG9kYXbDrWEgZW5mcmVudGFuIGltcG9ydGFudGVzIHJldG9zIHNhbml0YXJpb3MgeSBzb2NpYWxlcy4NCg0KRXVyb3BhLCBwb3Igc3UgcGFydGUsIHNlIGRlc3RhY2EgY29tbyB1bmEgZGUgbGFzIHJlZ2lvbmVzIGNvbiBtZW5vciBtb3J0YWxpZGFkIGFkdWx0YS4gTGEgbWVkaWFuYSByb25kYSBsb3MgNzAtODAgZmFsbGVjaW1pZW50b3MgcG9yIGNhZGEgMTAwMCBhZHVsdG9zLCB5IHN1IGNhamEgZXMgZXN0cmVjaGEsIHJlZmxlamFuZG8gdW4gbml2ZWwgYmFqbyBkZSBkaXNwZXJzacOzbiBlbnRyZSBwYcOtc2VzLiBObyBvYnN0YW50ZSwgc2Ugb2JzZXJ2YW4gYWxndW5vcyB2YWxvcmVzIGF0w61waWNvcyBoYWNpYSBhcnJpYmEsIGxvIHF1ZSBpbmRpY2EgcXVlIGNpZXJ0b3MgcGHDrXNlcyBldXJvcGVvcyBwcmVzZW50YXJvbiB0YXNhcyBzdXBlcmlvcmVzIGEgbGEgbWVkaWEgZGVsIGNvbnRpbmVudGUsIGF1bnF1ZSBzaWd1ZW4gc2llbmRvIGV4Y2VwY2lvbmVzIHB1bnR1YWxlcy4NCg0KT2NlYW7DrWEgcHJlc2VudGEgdW5hIG1lZGlhbmEgYmFqYSwgY2VyY2FuYSBhIGxvcyAxMDAgZmFsbGVjaW1pZW50b3MgcG9yIGNhZGEgMTAwMCBhZHVsdG9zLCBlbiBsw61uZWEgY29uIEV1cm9wYSwgcGVybyBjb24gdW5hIG1heW9yIGRpc3BlcnNpw7NuLiBBdW5xdWUgc3UgcmFuZ28gaW50ZXJjdWFydMOtbGljbyBlcyBtw6FzIGFtcGxpbywgbm8gc2UgaWRlbnRpZmljYW4gdmFsb3JlcyBhdMOtcGljb3MsIGxvIHF1ZSBzdWdpZXJlIHF1ZSB0b2RvcyBsb3MgcGHDrXNlcyBkZWwgY29udGluZW50ZSBzZSBtYW50aWVuZW4gZGVudHJvIGRlIHVuIG1hcmdlbiByYXpvbmFibGUsIGF1bnF1ZSBjb24gZGlmZXJlbmNpYXMgYXByZWNpYWJsZXMgZW50cmUgZWxsb3MuDQoNCkVuIHJlc3VtZW4sIGVzdGEgZ3LDoWZpY2EgcG9uZSBkZSBtYW5pZmllc3RvIHF1ZSBsYSBtb3J0YWxpZGFkIGFkdWx0YSBlbiAyMDE1IGVzdGFiYSBmdWVydGVtZW50ZSBjb25kaWNpb25hZGEgcG9yIGVsIGNvbnRleHRvIGdlb2dyw6FmaWNvIHkgc29jaW9lY29uw7NtaWNvLiBFdXJvcGEgeSBPY2VhbsOtYSBwcmVzZW50YW4gbG9zIHZhbG9yZXMgbcOhcyBiYWpvcyB5IGVzdGFibGVzLCBzZWd1aWRvcyBwb3IgQW3DqXJpY2EgY29uIHVuIHBlcmZpbCBzaW1pbGFyIHBlcm8gYWxnbyBtw6FzIGVsZXZhZG8uIEFzaWEgbXVlc3RyYSB1bmEgbWF5b3IgZGlzcGFyaWRhZCwgbWllbnRyYXMgcXVlIMOBZnJpY2Egc2UgZW5jdWVudHJhIGVuIHVuYSBzaXR1YWNpw7NuIHNpZ25pZmljYXRpdmFtZW50ZSBwZW9yLCB0YW50byBwb3IgbGEgYWx0dXJhIGRlIGxhIG1lZGlhbmEgY29tbyBwb3IgbGEgYW1wbGl0dWQgZGUgc3UgZGlzdHJpYnVjacOzbi4NCg0KIyMjIERpYWdyYW1hIGRlIGNhamEgZGUgcHJldmFsZW5jaWEgZGUgVklIL1NJREEgcG9yIGNvbnRpbmVudGUNCg0KYGBge3IsIGVjaG89RkFMU0UsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9DQpnZ3Bsb3QobXVlc3RyYV9maW5hbCwgYWVzKHggPSBSZWdpb24sIHkgPSBgSElWL0FJRFNgKSkgKw0KICBnZW9tX2JveHBsb3QoZmlsbCA9ICJsaWdodGJsdWUiLCBjb2xvciA9ICJibGFjayIsIG91dGxpZXIuY29sb3IgPSAiYmx1ZSIpICsNCiAgbGFicygNCiAgICB0aXRsZSA9ICJEaXN0cmlidWNpw7NuIGRlIGxhIHByZXZhbGVuY2lhIGRlIFZJSC9TSURBIHBvciBjb250aW5lbnRlIC0gMjAxNSIsDQogICAgeCA9ICJDb250aW5lbnRlIiwNCiAgICB5ID0gIlByZXZhbGVuY2lhIGRlIFZJSC9TSURBICglKSINCiAgKSArDQogIHRoZW1lX21pbmltYWwoKSArDQogIHRoZW1lKA0KICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoc2l6ZSA9IDEyLCBmYWNlID0gImJvbGQiKSwNCiAgICBheGlzLnRleHQgPSBlbGVtZW50X3RleHQoc2l6ZSA9IDEwKSwNCiAgICBwbG90LnRpdGxlID0gZWxlbWVudF90ZXh0KGhqdXN0ID0gMC41LCBmYWNlID0gImJvbGQiKSwNCiAgICBwYW5lbC5ib3JkZXIgPSBlbGVtZW50X3JlY3QoY29sb3VyID0gImJsYWNrIiwgZmlsbCA9IE5BLCBzaXplID0gMC44KSwNCiAgICBwYW5lbC5ncmlkID0gIGVsZW1lbnRfbGluZShjb2xvciA9ICJncmF5ODUiKQ0KICAgIA0KICApDQpgYGANCg0KRXN0ZSBncsOhZmljbyBkZSBjYWphIHJlcHJlc2VudGEgbGEgcHJldmFsZW5jaWEgZGUgVklIL1NJREEgZW4gY2FkYSBjb250aW5lbnRlLCBleHByZXNhZGEgY29tbyBwb3JjZW50YWplIGRlIGxhIHBvYmxhY2nDs24gYWZlY3RhZGEgZW4gMjAxNS4gTG8gcHJpbWVybyBxdWUgZGVzdGFjYSB2aXN1YWxtZW50ZSBlcyBsYSBncmFuIGRpZmVyZW5jaWEgZW50cmUgw4FmcmljYSB5IGVsIHJlc3RvIGRlIGxvcyBjb250aW5lbnRlcy4gw4FmcmljYSBwcmVzZW50YSwgY29uIGRpZmVyZW5jaWEsIGxhIHByZXZhbGVuY2lhIG3DoXMgZWxldmFkYSB5IGNvbiBtYXlvciBkaXNwZXJzacOzbi4gU3UgbWVkaWFuYSBzZSBzaXTDumEgZW4gdG9ybm8gYWwgMSAlLCBwZXJvIGVsIHJhbmdvIGludGVyY3VhcnTDrWxpY28gYWJhcmNhIGRlc2RlIHZhbG9yZXMgbXV5IGJham9zIChjZXJjYW5vcyBhbCAwLDMgJSkgaGFzdGEgbcOhcyBkZWwgMyAlLCB5IGVsIGJpZ290ZSBzdXBlcmlvciBzZSBleHRpZW5kZSBpbmNsdXNvIGhhc3RhIHVuIHBvY28gbWVub3MgZGVsIDUgJS4gRXN0YSBhbXBsaWEgdmFyaWFiaWxpZGFkIHJlZmxlamEgdW5hIHJlYWxpZGFkIGFsYXJtYW50ZSB5IGRlc2lndWFsIGRlbnRybyBkZWwgY29udGluZW50ZSBhZnJpY2FubywgZG9uZGUgYWxndW5vcyBwYcOtc2VzIGV4cGVyaW1lbnRhbiBlcGlkZW1pYXMgZGUgZ3JhbiBlc2NhbGEsIG1pZW50cmFzIG90cm9zIG11ZXN0cmFuIGNpZnJhcyBtb2RlcmFkYW1lbnRlIG3DoXMgY29udGVuaWRhcy4NCg0KRW4gY2FtYmlvLCBBbcOpcmljYSwgQXNpYSwgRXVyb3BhIHkgT2NlYW7DrWEgbXVlc3RyYW4gdmFsb3JlcyBzb3JwcmVuZGVudGVtZW50ZSBiYWpvcyBlbiBjb21wYXJhY2nDs24gY29uIMOBZnJpY2EuIEVuIGVzdG9zIGNvbnRpbmVudGVzLCBsYSBtZWRpYW5hIGRlIGxhIHByZXZhbGVuY2lhIGRlIFZJSC9TSURBIGVzIHByw6FjdGljYW1lbnRlIGNlcm8sIGNvbiBjYWphcyBxdWUgc2UgcmVkdWNlbiBhIHVuYSBsw61uZWEgaG9yaXpvbnRhbCBlbiBlbCAwICUuIEVzdG8gaW5kaWNhIHF1ZSBsYSBtYXlvcsOtYSBkZSBsb3MgcGHDrXNlcyBlbiBlc3RhcyByZWdpb25lcyBwcmVzZW50YW4gbml2ZWxlcyBtdXkgYmFqb3MgbyBjYXNpIG51bG9zIGRlIHByZXZhbGVuY2lhLiBTaW4gZW1iYXJnbywgc2Ugb2JzZXJ2YW4gdmFsb3JlcyBhdMOtcGljb3MgKG91dGxpZXJzKSBlbiB0b2RvcyBlc3RvcyBjb250aW5lbnRlcyxzdWdpcmllbmRvIHF1ZSwgYXVucXVlIGxhIHByZXZhbGVuY2lhIGVzIGJhamEgZW4gZ2VuZXJhbCwgZXhpc3RlbiBhbGd1bm9zIHBhw61zZXMgY29uIHRhc2FzIGxpZ2VyYW1lbnRlIG3DoXMgZWxldmFkYXMgZGVudHJvIGRlIGNhZGEgY29udGluZW50ZSwgbG8gY3VhbCBpbmRpY2EgY2llcnRhIGRlc2lndWFsZGFkIGludGVybmEuDQoNCkxvIG3DoXMgZGVzdGFjYWJsZSBlcyBlbCBjb250cmFzdGUgYWJydW1hZG9yIGVudHJlIMOBZnJpY2EgeSBlbCByZXN0byBkZWwgbXVuZG8uIE1pZW50cmFzIGVuIMOBZnJpY2EgZWwgVklIL1NJREEgZXMgdW4gcHJvYmxlbWEgZXN0cnVjdHVyYWwgZGUgZ3JhbiBpbXBhY3RvIHNhbml0YXJpbyB5IHNvY2lhbCwgZW4gbG9zIGRlbcOhcyBjb250aW5lbnRlcyBhcGFyZWNlIGNvbW8gdW4gZmVuw7NtZW5vIGNvbnRyb2xhZG8gbyBjb24gaW5jaWRlbmNpYSBtdXkgcmVkdWNpZGEuIEVzdGEgZGlmZXJlbmNpYSBwdWVkZSBleHBsaWNhcnNlIHBvciBtw7psdGlwbGVzIGZhY3RvcmVzOiBhY2Nlc28gZGVzaWd1YWwgYSB0cmF0YW1pZW50b3MgYW50aXJyZXRyb3ZpcmFsZXMsIG1lbm9yIGNvYmVydHVyYSBzYW5pdGFyaWEsIGRlc2lndWFsZGFkIGVkdWNhdGl2YSwgZXN0aWdtYXRpemFjacOzbiwgeSBmYWx0YSBkZSByZWN1cnNvcyBwYXJhIGxhIHByZXZlbmNpw7NuIHkgZWwgZGlhZ27Ds3N0aWNvIHRlbXByYW5vIGVuIHZhcmlhcyByZWdpb25lcyBkZSDDgWZyaWNhLg0KDQojIyMgRGlhZ3JhbWEgZGUgY2FqYSBkZWwgw61uZGljZSBkZSBpbmdyZXNvIChJREgpIHBvciBjb250aW5lbnRlDQoNCmBgYHtyLGVjaG89RkFMU0UsIHdhcm5pbmc9RkFMU0UsbWVzc2FnZT1GQUxTRX0NCmdncGxvdChtdWVzdHJhX2ZpbmFsLCBhZXMoeCA9IFJlZ2lvbiwgeSA9IGBJbmNvbWUgY29tcG9zaXRpb24gb2YgcmVzb3VyY2VzYCkpICsNCiAgZ2VvbV9ib3hwbG90KGZpbGwgPSAibGlnaHRibHVlIiwgY29sb3IgPSAiYmxhY2siLCBvdXRsaWVyLmNvbG9yID0gImJsdWUiKSArDQogIGxhYnMoDQogICAgdGl0bGUgPSAiRGlzdHJpYnVjacOzbiBkZWwgw61uZGljZSBkZSBpbmdyZXNvIChJREgpIHBvciBjb250aW5lbnRlIC0gMjAxNSIsDQogICAgeCA9ICJDb250aW5lbnRlIiwNCiAgICB5ID0gIkNvbXBvc2ljacOzbiBkZWwgaW5ncmVzbyAoMCBhIDEpIg0KICApICsNCiAgdGhlbWVfbWluaW1hbCgpICsNCiAgdGhlbWUoDQogICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChzaXplID0gMTIsIGZhY2UgPSAiYm9sZCIpLA0KICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChzaXplID0gMTApLA0KICAgIHBsb3QudGl0bGUgPSBlbGVtZW50X3RleHQoaGp1c3QgPSAwLjUsIGZhY2UgPSAiYm9sZCIpLA0KICAgIGF4aXMubGluZSA9IGVsZW1lbnRfbGluZShjb2xvciA9ICJibGFjayIpLA0KICAgIGF4aXMudGlja3MgPSBlbGVtZW50X2xpbmUoY29sb3IgPSAiYmxhY2siKQ0KICApDQpgYGANCg0KQ29tbyBzZSBwdWVkZSBldmlkZW5jaWFyLCBFdXJvcGEgZXMgZWwgY29udGluZW50ZSBjb24gbG9zIG5pdmVsZXMgbcOhcyBhbHRvcyBlbiBlc3RlIGluZGljYWRvci4gTGEgbWVkaWFuYSBlc3TDoSBjbGFyYW1lbnRlIHBvciBlbmNpbWEgZGUgMCw4NSwgeSBlbCByYW5nbyBpbnRlcmN1YXJ0w61saWNvIHNlIGNvbmNlbnRyYSBlbiB2YWxvcmVzIGVsZXZhZG9zLCBsbyBxdWUgaW5kaWNhIHF1ZSBsYSBtYXlvcsOtYSBkZSBsb3MgcGHDrXNlcyBldXJvcGVvcyBwcmVzZW50YW4gYWx0b3Mgbml2ZWxlcyBkZSBpbmdyZXNvIHBlciBjw6FwaXRhIGFqdXN0YWRvLiBBZGVtw6FzLCBzdSBjYWphIGVzIGNvbXBhY3RhIHkgbm8gc2Ugb2JzZXJ2YW4gdmFsb3JlcyBhdMOtcGljb3MsIGxvIGN1YWwgc3VnaWVyZSB1bmEgaG9tb2dlbmVpZGFkIG5vdGFibGUgZW4gdMOpcm1pbm9zIGVjb27Ds21pY29zIGRlbnRybyBkZWwgY29udGluZW50ZS4gRXVyb3BhIGNvbWJpbmEgaW5ncmVzb3MgYWx0b3MgY29uIHVuYSBkaXN0cmlidWNpw7NuIGJhc3RhbnRlIGVxdWlsaWJyYWRhIGVudHJlIHBhw61zZXMuDQoNCkFzaWEgb2N1cGEgdW5hIHBvc2ljacOzbiBpbnRlcm1lZGlhLCBwZXJvIGNvbiBwYXJ0aWN1bGFyaWRhZGVzIGltcG9ydGFudGVzLiBTdSBtZWRpYW5hIGVzdMOhIGFscmVkZWRvciBkZSAwLDcsIGxpZ2VyYW1lbnRlIHBvciBkZWJham8gZGUgQW3DqXJpY2EsIHBlcm8gbGEgY2FqYSBlcyBtw6FzIGFsdGEuIEVzdG8gcmVmbGVqYSBtYXlvciBkaXNwZXJzacOzbiBlbnRyZSBsb3MgcGHDrXNlcyBhc2nDoXRpY29zIGVuIGN1YW50byBhIG5pdmVsZXMgZGUgaW5ncmVzby4gRWwgYmlnb3RlIGluZmVyaW9yIHNlIGV4dGllbmRlIGhhc3RhIHZhbG9yZXMgcG9yIGRlYmFqbyBkZSAwLDYsIHkgZWwgc3VwZXJpb3Igc3VwZXJhIGxvcyAwLDguIEVzdGEgYW1wbGl0dWQgaW5kaWNhIHF1ZSBlbiBBc2lhIGNvbnZpdmVuIGVjb25vbcOtYXMgbXV5IGF2YW56YWRhcyBjb24gb3RyYXMgZW4gdsOtYXMgZGUgZGVzYXJyb2xsbywgbG8gcXVlIGdlbmVyYSB1bmEgaGV0ZXJvZ2VuZWlkYWQgZWNvbsOzbWljYSBjb25zaWRlcmFibGUgZGVudHJvIGRlbCBjb250aW5lbnRlLg0KDQpBbcOpcmljYSBwcmVzZW50YSB1bmEgbWVkaWFuYSBhcGVuYXMgc3VwZXJpb3IgYSBsYSBkZSBBc2lhLCB0YW1iacOpbiBjZXJjYSBkZSAwLDc1LCB5IHVuYSBkaXN0cmlidWNpw7NuIHJlbGF0aXZhbWVudGUgY29tcGFjdGEuIE5vIG9ic3RhbnRlLCBzZSBvYnNlcnZhIHVuIHZhbG9yIGF0w61waWNvIHBvciBlbmNpbWEgZGVsIHJlc3RvLCBsbyBjdWFsIHJldmVsYSBsYSBwcmVzZW5jaWEgZGUgdW4gcGHDrXMgY29uIHVuIMOtbmRpY2UgZGUgaW5ncmVzbyBub3RhYmxlbWVudGUgbcOhcyBhbHRvIHF1ZSBzdXMgdmVjaW5vcy4gRXN0byBzdWdpZXJlIGRlc2lndWFsZGFkZXMgaW50ZXJuYXMsIGF1bnF1ZSBsYSBtYXlvcsOtYSBkZSBsb3MgcGHDrXNlcyBhbWVyaWNhbm9zIGNvbXBhcnRlbiB1biBuaXZlbCBkZSBpbmdyZXNvcyBtZWRpby1hbHRvLg0KDQpPY2VhbsOtYSwgYXVucXVlIHRpZW5lIHBvY29zIHBhw61zZXMgcmVwcmVzZW50YWRvcywgbXVlc3RyYSB1bmEgbWVkaWFuYSBhbGdvIHBvciBlbmNpbWEgZGUgMCw2LCBjb24gdW5hIGNhamEgbXV5IGVzdHJlY2hhIHkgc2luIHZhbG9yZXMgZXh0cmVtb3MuIEVzdG8gaW5kaWNhIHF1ZSBsb3MgcGHDrXNlcyBvY2XDoW5pY29zIHByZXNlbnRhbiBuaXZlbGVzIGRlIGluZ3Jlc28gc2ltaWxhcmVzIGVudHJlIHPDrSwgYXVucXVlIG5vIHRhbiBhbHRvcyBjb21vIGxvcyBkZSBFdXJvcGEuIExhIGF1c2VuY2lhIGRlIGRpc3BlcnNpw7NuIGV4dHJlbWEgcmVmdWVyemEgbGEgaWRlYSBkZSB1bmEgcmVnacOzbiBlY29uw7NtaWNhbWVudGUgbcOhcyB1bmlmb3JtZS4NCg0Kw4FmcmljYSBzZSBzaXTDumEgY2xhcmFtZW50ZSBjb21vIGVsIGNvbnRpbmVudGUgY29uIGVsIMOtbmRpY2UgZGUgaW5ncmVzbyBtw6FzIGJham8uIFN1IG1lZGlhbmEgYXBlbmFzIHN1cGVyYSBsb3MgMCw1LCB5IGxhIGNhamEgZXMgYW1wbGlhLCBjb24gZWwgYmlnb3RlIGluZmVyaW9yIGRlc2NlbmRpZW5kbyBoYXN0YSB2YWxvcmVzIGNlcmNhbm9zIGEgMCwzNS4gRXN0YSBhbXBsaWEgZGlzcGVyc2nDs24gaW5kaWNhIHVuYSBmdWVydGUgZGVzaWd1YWxkYWQgaW50ZXJuYSwgY29uIGFsZ3Vub3MgcGHDrXNlcyBlbiBzaXR1YWNpb25lcyBtdXkgY3LDrXRpY2FzIGRlIGluZ3Jlc28geSBvdHJvcyBjb24gdW4gZGVzYXJyb2xsbyBhbGdvIG1heW9yLiBFbCDDrW5kaWNlIGRlIGluZ3Jlc28gZW4gw4FmcmljYSBlcyBubyBzb2xvIGVsIG3DoXMgYmFqbyBlbiB0w6lybWlub3MgYWJzb2x1dG9zLCBzaW5vIHRhbWJpw6luIGVsIG3DoXMgdmFyaWFibGUsIGxvIHF1ZSBzdWdpZXJlIHVuYSBtYXlvciBmcmFnbWVudGFjacOzbiBlY29uw7NtaWNhLg0KDQpFbCBncsOhZmljbyByZXZlbGEgY29uIGNsYXJpZGFkIGxhcyBkaWZlcmVuY2lhcyBlc3RydWN0dXJhbGVzIGVuIGxvcyBuaXZlbGVzIGRlIGluZ3Jlc28gcGVyIGPDoXBpdGEgYWp1c3RhZG8gcG9yIHBhw61zLiBFdXJvcGEgc2UgcG9zaWNpb25hIGNvbW8gZWwgY29udGluZW50ZSBjb24gbG9zIGluZ3Jlc29zIG3DoXMgYWx0b3MgeSBob21vZ8OpbmVvcywgc2VndWlkbyBkZSBBbcOpcmljYSB5IEFzaWEsIGFtYm9zIGNvbiBuaXZlbGVzIG1lZGlvcy1hbHRvcyBwZXJvIGNvbiBtw6FzIGRlc2lndWFsZGFkIGludGVybmEuIE9jZWFuw61hIHNlIG1hbnRpZW5lIGVuIHVuYSBwb3NpY2nDs24gbW9kZXJhZGEsIHNpbiBncmFuZGVzIGV4dHJlbW9zLiDDgWZyaWNhLCBlbiBjYW1iaW8sIHJlZmxlamEgdGFudG8gbG9zIGluZ3Jlc29zIG3DoXMgYmFqb3MgY29tbyBsYSBtYXlvciB2YXJpYWJpbGlkYWQgaW50ZXJuYSwgbG8gY3VhbCBwb25lIGRlIG1hbmlmaWVzdG8gbG9zIHJldG9zIGVjb27Ds21pY29zIHF1ZSBlbmZyZW50YSB1bmEgcGFydGUgc2lnbmlmaWNhdGl2YSBkZWwgY29udGluZW50ZS4NCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCiMgQmlibGlvZ3JhZsOtYQ0KDQo=</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("index.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
