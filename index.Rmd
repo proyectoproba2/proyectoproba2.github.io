@@ -1,5 +1,7 @@
 ---
 title: "Determinantes de la esperanza de vida: análisis descriptivo"
+author: "Nicole García Bernal y Astrid Carolina Gonzalez Becerra"
+date: "`r Sys.Date()`"
 output:
   html_document:
     toc: true
@@ -15,7 +17,7 @@ bibliography: "biblio.bib"
 ---
 
 ```{r setup, include=FALSE}
-##Proyecto de estadística 1
+##Proyecto de estadística 2
 
 library(ggplot2)
 library(sf)
@@ -148,6 +150,13 @@ cat("Variables cuantitativas:", ncol(cuantitativas), "\n")
 cat("Variables cualitativas:", ncol(cualitativas), "\n")
 ```
 
+Sin embargo, teniendo en cuenta que nuestro objetivo de investigación se centra en analizar la expectativa de vida exclusivamente en el años 2015, la población real de estudío se configura como los paises que cuentan con registro en el periodo de interes. Por consiguiente, la población de nuestro estudio se compone de 183 observaciones correspondientes al año 2015, como se muestra en el chunk inferior. Esta cantidad representa todos los países disponibles con información registrada para ese año, por lo que constituye la base poblacional sobre la cual se centra nuestro análisis.
+
+```{r}
+datos_2015 <- datos %>% filter(Year == 2015)
+nrow(datos_2015)
+```
+
 Para el desarrollo del análisis estadístico, se utilizó información correspondiente al año 2015 y se seleccionó una muestra de 50 países a partir de la base de datos previamente depurada, aplicando un muestreo aleatorio simple sin reemplazo, lo que significa que cada país tuvo la misma probabilidad de ser seleccionado y no podía aparecer más de una vez en la muestra. Este procedimiento se empleó con el objetivo de asegurar una selección imparcial, evitar sesgos sistemáticos y facilitar un análisis representativo que permita explorar de manera confiable el comportamiento de la esperanza de vida en relación con las variables explicativas incluidas en el modelo durante el año de interés.
 
 ```{r}
@@ -250,13 +259,13 @@ kable(tabla_medidas,
                 position = "center")
 ```
 
-La variable Life expectancy refleja diferencias significativas en salud y bienestar entre los países analizados. La media fue de 71.73 años y la mediana de 73.80, lo que indica que la mayoría de los países alcanzaban una esperanza de vida en torno a los 73 años. No obstante, el mínimo registrado fue de 53.10 años, mientras que el máximo llegó a 85.00, generando un rango total de 31.90 años entre los países con menor y mayor longevidad. Esta diferencia es considerable y pone en evidencia contrastes importantes en factores como el acceso a servicios médicos, calidad del sistema de salud, alimentación y condiciones sociales. La desviación estándar de 7.99 y la varianza de 63.87 respaldan esta variabilidad, mostrando que los datos están bastante dispersos en relación con la media. Por su parte, el rango intercuartílico (RIQ) de 7.99 señala que incluso entre los países ubicados en el 50% central, hay una heterogeneidad importante, lo que hace pensar en diferencias estructurales relevantes en políticas de salud y calidad de vida.
+La variable Life expectancy (esperanza de vida) evidencia una media de 71.73 años y una mediana de 73.80, lo que indica una distribución ligeramente sesgada a la izquierda, ya que la media es inferior a la mediana. Este sesgo se ve reforzado por el hecho de que la moda es significativamente menor (59.90), lo cual sugiere que un número considerable de países presenta valores bajos de esperanza de vida. La dispersión también es relevante: el rango es de 31.90 años, y la desviación estándar es de 7.99, indicando una variabilidad moderada-alta entre países. El rango intercuartílico (RIQ) de 11.10 refuerza la presencia de diferencias notables incluso entre los países que se ubican dentro del 50% central de la distribución. En conjunto, estos valores reflejan desigualdades estructurales en longevidad, probablemente asociadas a factores socioeconómicos y de salud pública.
 
-En cuanto a la variable HIV/AIDS, la media de prevalencia en la muestra fue de 0.64, pero la mediana y la moda coinciden en un valor mucho menor: 0.10. Esto evidencia que la mayoría de los países presentaban niveles bajos de infección por VIH, aunque algunos países puntuales alcanzaban valores más altos que elevaban el promedio general. El máximo reportado fue de 4.80, lo que representa una situación crítica en al menos un país. La desviación estándar de 1.20 indica una dispersión considerable respecto a la media, mientras que el rango (diferencia entre 4.80 y 0.10) de 4.70 unidades refuerza la idea de disparidad en la magnitud del problema. Este comportamiento permite identificar que, en 2015, el VIH/SIDA seguía siendo un problema de salud pública muy marcado en ciertos contextos nacionales, aunque en la mayoría de los casos su impacto estaba más controlado.
+Para la variable HIV/AIDS, la media de prevalencia es 0.64, mientras que tanto la mediana como la moda son de 0.10. Esta diferencia tan marcada indica una fuerte asimetría positiva, lo que sugiere que la mayoría de los países presenta valores bajos, pero existen algunos con niveles extremadamente altos que elevan la media. El rango de 4.70 y la desviación estándar de 1.20 refuerzan esta interpretación, mostrando una alta dispersión relativa respecto al valor central. El RIQ de 0.20, sin embargo, indica que en la mitad central de los datos la variabilidad es baja. Estos resultados reflejan un fenómeno común en variables epidemiológicas: en la mayoría de países el VIH está controlado, pero en otros sigue representando una crisis sanitaria significativa.
 
-La variable Income composition of resources, que sintetiza el acceso a recursos clave para el desarrollo (como ingreso, educación y servicios básicos), presenta una media de 0.69 y una mediana de 0.72, lo cual sugiere que la mayoría de los países de la muestra contaban con un nivel medio o medio-alto en esta dimensión. El valor mínimo registrado fue de 0.35 y el máximo de 0.94, lo que da un rango de 0.59. Esta diferencia muestra que, aunque hay países con condiciones bastante más limitadas, la mayoría parecen tener cierto nivel de desarrollo en términos de recursos. La desviación estándar de 0.16 y la varianza de 0.02 revelan que, en comparación con otras variables, hay menor dispersión entre países, lo que indica una relativa estabilidad en esta dimensión dentro de la muestra analizada. Este indicador podría considerarse una base relevante para evaluar capacidades estructurales y potencial de desarrollo humano.
+En cuanto a Income composition of resources, esta variable muestra una media de 0.69 y una mediana de 0.72, lo que indica un sesgo leve hacia la izquierda. La moda es menor (0.58), lo que sugiere que hay un grupo relevante de países con menor acceso a recursos clave como ingresos, educación y servicios. El rango de 0.59 y la desviación estándar de solo 0.16 revelan una dispersión bastante controlada, especialmente si se compara con las demás variables. El RIQ de 0.22 también es bajo. Esto puede deberse a que, aunque existen diferencias en la composición de recursos entre países, no son tan extremas como en otras dimensiones analizadas, lo cual aporta cierta homogeneidad a esta dimensión del desarrollo humano.
 
-Finalmente, Adult Mortality se destaca por la enorme diferencia entre países en términos de muertes en la edad adulta. La media fue de 143.46 muertes por cada 1000 adultos, con una mediana muy similar de 140.00. Sin embargo, el valor mínimo fue de apenas 1.00 y el máximo alcanzó 365.00, arrojando un rango muy amplio de 364.00 unidades. Este dato, junto con una desviación estándar de 94.39 y una varianza altísima de 8909.89, confirma que las diferencias entre países son drásticas en cuanto al riesgo de muerte en edades adultas. Incluso el rango intercuartílico (RIQ) de 94.39 revela grandes contrastes entre los países ubicados en el centro de la muestra. Esta variabilidad tan pronunciada puede estar asociada a múltiples factores como desigualdad social, acceso limitado a servicios de salud, violencia, enfermedades crónicas, conflictos armados o deficiencias en políticas públicas de protección a la salud.
+Finalmente, Adult Mortality es la variable con mayor variabilidad. Su media es de 143.46 muertes por cada 1000 adultos, con una mediana cercana (140), lo que sugiere una distribución relativamente simétrica. Sin embargo, la moda (49.00) es considerablemente menor, indicando que en algunos países la mortalidad adulta es baja, pero existen muchos otros con cifras significativamente más altas. La desviación estándar de 94.39 y la varianza de 8909.89 reflejan una variabilidad extremadamente alta, mientras que el rango de 364 y el RIQ de 129.75 refuerzan esta conclusión. Estos resultados revelan que, en términos de mortalidad adulta, la desigualdad entre países es drástica, probablemente influenciada por contextos de violencia, sistemas de salud deficientes, enfermedades crónicas o conflictos prolongados.
 
 ### Teniendo en cuenta el continente
 

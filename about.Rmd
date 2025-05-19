@@ -16,9 +16,9 @@ bibliography: "biblio.bib"
 
 # Intervalo de confianza para una sola muestra para la expectativa de vida en 2015
 
-En estudios de salud pública, calcular el promedio muestral de la esperanza de vida resulta útil, pero no suficiente para hacer inferencias sólidas. Estimar un intervalo de confianza del 95% para la media de la esperanza de vida en 2015 permite no solo conocer ese valor central, sino también establecer un rango de valores plausibles en el que probablemente se encuentra la media poblacional real. Con la muestra seleccionada de 50 países, este enfoque resulta especialmente relevante, ya que incorpora la incertidumbre muestral y refuerza la validez y generalización de los resultados.
+Estimar un intervalo de confianza del 95% para la media de la esperanza de vida en el año 2015 permite complementar la estimación puntual con un rango de valores dentro del cual es razonable suponer que se encuentra la verdadera media poblacional, con un determinado nivel de confianza. Este enfoque es especialmente útil al trabajar con muestras, ya que incorpora la incertidumbre asociada al proceso de selección aleatoria y fortalece la validez de los resultados inferidos.
 
-Sin embargo, antes de aplicar el método clásico para calcular un intervalo de confianza para la media, es importante comprobar si la población de la que procede la muestra se distribuye de forma aproximadamente normal, pues este supuesto garantiza que el intervalo será estadísticamente válido, especialmente en muestras pequeñas. En este caso, al contar con una muestra de tamaño 50, se considera suficientemente grande para que, según el Teorema Central del Límite, la distribución muestral de la media tienda a ser normal, incluso si los datos originales no lo son perfectamente. Aun así, realizar una prueba de normalidad sobre los datos es una práctica recomendable para confirmar que no existen desviaciones graves que invaliden el modelo.
+Sin embargo, antes de aplicar este procedimiento, es necesario verificar que la variable de interés se distribuya de forma aproximadamente normal en la población, ya que este es uno de los supuestos fundamentales para aplicar técnicas inferenciales clásicas como la construcción de intervalos de confianza. En caso de no cumplirse dicho supuesto, se puede recurrir al respaldo teórico que ofrece el Teorema Central del Límite, el cual garantiza que, bajo ciertas condiciones, la distribución de las medias muestrales se aproxima a una normal, incluso si los datos originales no lo son. Esta propiedad permite justificar el uso de métodos basados en la t de Student, asegurando la validez estadística del intervalo calculado.
 
 ## Prueba de normalidad de Shapiro-Wilk
 
@@ -26,7 +26,7 @@ Sin embargo, antes de aplicar el método clásico para calcular un intervalo de 
 
 Hipótesis nula (𝐻₀):La población sigue una distribución normal.
 
-Hipótesis alternativa (𝐻₁) :La población no sigue una distribución normal.
+Hipótesis alternativa (𝐻₁):La población no sigue una distribución normal.
 
 ### 2. Formulación de hipótesis
 
@@ -54,12 +54,13 @@ Dado que el p-valor es menor que el nivel de significación (α = 0.05), se rech
 
 ### 5. Conclusión 
 
-Existe evidencia estadísticamente significativa para afirmar que los datos de esperanza de vida en 2015 no siguen una distribución normal, ya que el p-valor obtenido (0.0001332) es menor que el nivel de significación (α = 0.05). Sin embargo, dado que el tamaño de la muestra es n = 50 ≥ 30, se puede invocar el Teorema Central del Límite, el cual establece que, para muestras lo suficientemente grandes, la distribución muestral de la media tiende a la normalidad, independientemente de la forma de la población original.
+Como el valor p obtenido en la prueba de normalidad fue de 0.0001332, y este es menor que el nivel de significancia establecido (\( \alpha = 0.05 \)), se rechaza la hipótesis nula. Esto indica que la variable esperanza de vida en 2015 no se distribuye normalmente en la población. Sin embargo, dado que la muestra utilizada es suficientemente grande (\( n = 50 \)), se puede aplicar el Teorema Central del Límite, el cual garantiza que la distribución de la media muestral tiende a ser normal bajo ciertas condiciones. Por ello, se justifica el uso de un intervalo de confianza para la media utilizando la t de Student.
+
 
 
 ## Intervalo de confianza del 95% de una muestra 
 
-En este análisis se ha seleccionado la variable cuantitativa Life expectancy (esperanza de vida) correspondiente al año 2015, tomando una muestra de 50 países del total disponible en la base de datos. El objetivo es estimar, con un nivel de confianza del 95%, el valor medio poblacional de la esperanza de vida en ese año. Cabe mencionar, que al tratarse de una muestra y no conocerse la desviación estándar poblacional, se empleará la desviación típica muestral como estimador, por lo que se recurrirá al uso de la distribución t de Student.
+En este análisis se trabajará con la variable cuantitativa Life expectancy correspondiente al año 2015. A partir de la población total de países registrados para ese año, se extrajo una muestra aleatoria de 50 países con el objetivo de estimar, con un nivel de confianza del 95%, el valor medio poblacional de la esperanza de vida. Aunque sería posible calcular la desviación estándar de la población completa, se opta por mantener un enfoque estrictamente inferencial, tratando los datos como una muestra. Por esta razón, se utiliza la desviación estándar muestral como estimador y se recurre a la distribución t de Student para construir el intervalo de confianza.
 
 ```{r}
 # Extraer la variable de interés desde la muestra
@@ -81,7 +82,7 @@ ls <- media + t * error
 # Mostrar resultados de forma sencilla
 cat("Intervalo de confianza del 95% para la media:\n")
 cat(sprintf("[%.2f, %.2f]\n", li, ls))
-cat(sprintf("Media: %.2f | Error estándar: %.2f | t crítico: %.3f\n", media, error, t))
+cat(sprintf("Media: %.2f | Muestra: %.2f | Error estándar: %.2f | t crítico: %.3f\n", media, n, error, t))
 ```
 
 Con base en los resultados obtenidos, se ha estimado un intervalo de confianza del 95% para la media poblacional de la esperanza de vida en el año 2015, que se encuentra entre 69,46 y 74,01 años. Es decir: 69,46 < μ < 74,01 Esto indica que, con un 95% de confianza, se puede afirmar que la esperanza de vida media global en 2015 se sitúa dentro de ese rango. La estimación refleja una medida central de longevidad para ese año y ofrece un valor de referencia útil para interpretar la situación general de salud a nivel mundial en ese periodo.
@@ -132,7 +133,7 @@ p = 0.0001726 < α = 0.05 → Se rechaza H₀: no se puede asumir normalidad.
 Tras aplicar la prueba de normalidad de Shapiro-Wilk a los dos grupos definidos por el estatus de desarrollo, se obtuvieron resultados diferenciados.
 En el grupo de países desarrollados (Developed), el valor p fue de 0.05648, superior al nivel de significación α = 0.05, por lo que no se rechaza la hipótesis nula de normalidad, lo cual indica que los datos de esperanza de vida en este grupo pueden considerarse normalmente distribuidos.
 
-En cambio, para el grupo de países en desarrollo (Developing), el valor p fue de 0.0001726, inferior a α = 0.05, lo que lleva a rechazar la hipótesis nula. Por tanto, se concluye que los datos de esperanza de vida en este grupo no se distribuyen normalmente.Sin embargo, conforme al resultado del chunck posterior, aunque la prueba de Shapiro-Wilk indicó que la variable 'Life expectancy' en el grupo de países en desarrollo (Developing) no sigue una distribución normal (p = 0.0001726 < 0.05),el tamaño muestral de este grupo es de 39 observaciones, por lo que con base al Teorema Central del Límite, se considera razonable asumir que la distribución de la media muestral se aproxima a una normal.  
+En cambio, para el grupo de países en desarrollo (Developing), el valor p fue de 0.0001726, inferior a α = 0.05, lo que lleva a rechazar la hipótesis nula. Por tanto, se concluye que los datos de esperanza de vida en este grupo no se distribuyen normalmente. Sin embargo, conforme al resultado del chunck posterior, aunque la prueba de Shapiro-Wilk indicó que la variable 'Life expectancy' en el grupo de países en desarrollo (Developing) no sigue una distribución normal (p = 0.0001726 < 0.05),el tamaño muestral de este grupo es de 39 observaciones, por lo que con base al Teorema Central del Límite, se considera razonable asumir que la distribución de la media muestral se aproxima a una normal.  
 
 ```{r}
 n_developing_muestra <- muestra_final %>%
@@ -186,7 +187,7 @@ cat(sprintf("Diferencia media estimada: %.2f años\n", diferencia_media))
 
 El análisis del intervalo de confianza del 95% para la diferencia de medias entre los países desarrollados y en desarrollo muestra una diferencia significativa en la esperanza de vida. El intervalo calculado entre 9,31 y 12,73 años indica que, con un alto nivel de certeza, los países desarrollados presentan una esperanza de vida considerablemente superior respecto a los países en desarrollo.
 
-En concreto, la diferencia media estimada es de 11,02 años, lo que significa que, en promedio, las personas que viven en países desarrollados pueden esperar vivir más de una década más que quienes residen en países en desarrollo. Este dato no solo es estadísticamente significativo, sino que también tiene una gran relevancia práctica y social, ya que refleja profundas diferencias estructurales en términos de calidad de vida, acceso a recursos sanitarios, condiciones ambientales, educación y estabilidad económica.
+En concreto, la diferencia media estimada es de 11,02 años, lo que significa que, en promedio, las personas que viven en países desarrollados pueden esperar vivir más de una década más que quienes residen en países en desarrollo. Este dato no solo es estadísticamente significativo, sino que también tiene una gran relevancia práctica y social, ya que refleja profundas diferencias estructurales en términos de calidad de vida, acceso a recursos sanitarios, condiciones ambientales y estabilidad económica.
 
 El hecho de que el intervalo no contenga el valor cero confirma que la diferencia no es producto del azar. Por tanto, podemos afirmar con evidencia estadística que el estatus de desarrollo está claramente asociado a una mayor longevidad. En los países desarrollados, la esperanza de vida tiende a ser más alta gracias a sistemas de salud más robustos, mejores condiciones de vida y mayor prevención de enfermedades, entre otros factores. Por el contrario, en muchos países en desarrollo persisten desafíos estructurales que limitan el acceso a servicios esenciales, lo que se traduce en una menor esperanza de vida.
 
@@ -237,16 +238,16 @@ $$\widehat{\text{Life expectancy}} = 50.95 - 1.56 \times \text{HIV/AIDS} + 34.78
 
 En donde:
 
-$\beta_0$ Intercepto (50.95):
+- $\beta_0$ Intercepto (50.95):
 Representa la esperanza de vida estimada cuando todas las variables independientes son iguales a cero. Aunque este escenario es hipotético (por ejemplo, 0 en prevalencia de VIH, sin ingresos y sin mortalidad adulta), el intercepto es esencial para ajustar el modelo y sirve como base en la predicción de la esperanza de vida.
 
-$\beta_1$ HIV/AIDS (-1.56):
+- $\beta_1$ HIV/AIDS (-1.56):
 Por cada punto porcentual adicional en la prevalencia de VIH/SIDA en la población adulta (de 15 a 49 años), se estima que la esperanza de vida disminuye en promedio 1.56 años, manteniendo constantes las demás variables. Este resultado refleja cómo la presencia de enfermedades infecciosas impacta negativamente la longevidad de una población.
 
-$\beta_2$ Income composition of resources (34.79):
+- $\beta_2$ Income composition of resources (34.79):
 Por cada unidad adicional en el índice de composición del ingreso (que va de 0 a 1), la esperanza de vida aumenta en promedio 34.79 años. Este coeficiente indica que un mejor acceso a recursos económicos está estrechamente relacionado con mejores condiciones de salud y, por tanto, con una mayor esperanza de vida.
 
-$\beta_3$ Adult Mortality (-0.0152):
+- $\beta_3$ Adult Mortality (-0.0152):
 Por cada muerte adicional por cada mil adultos entre 15 y 60 años, la esperanza de vida se reduce en promedio 0.015 años. Aunque el valor es pequeño, su efecto acumulado puede ser significativo en contextos de alta mortalidad adulta, reflejando ambientes con menor bienestar y mayor vulnerabilidad social.
 
 ## Coeficiente de determinación 
@@ -392,7 +393,7 @@ cat("El valor p asociado al valor F calculado es:", format(p_value, scientific =
 
 **5. Interpretación y conclusión **
 
-El valor *p* obtenido a partir del estadístico **F** representa la probabilidad de observar una variabilidad tan alta explicada por el modelo si la hipótesis nula fuera cierta, es decir, si ninguna de las variables predictoras tuviera un efecto significativo sobre la variable dependiente. En este caso, el valor *p* calculado es **0e+00**, lo que en términos prácticos significa que es **extremadamente cercano a cero** y mucho menor que cualquier nivel de significancia usual, como $\\alpha = 0.05$. Este resultado indica que la probabilidad de que el ajuste observado en el modelo haya ocurrido por azar es prácticamente nula. Por lo tanto, **se rechaza la hipótesis nula** y se concluye que **al menos una de las variables explicativas** (*HIV/AIDS*, *Income composition of resources* o *Adult Mortality*) tiene un **efecto estadísticamente significativo** sobre la **esperanza de vida**. Esto valida que el modelo general propuesto tiene una capacidad real para explicar el comportamiento de la variable dependiente y que las relaciones observadas entre las variables no son producto del azar.
+El valor *p* obtenido a partir del estadístico **F** representa la probabilidad de observar una variabilidad tan alta explicada por el modelo si la hipótesis nula fuera cierta, es decir, si ninguna de las variables predictoras tuviera un efecto significativo sobre la variable dependiente. En este caso, el valor *p* calculado es **0e+00**, lo que en términos prácticos significa que es **extremadamente cercano a cero** y mucho menor que cualquier nivel de significancia usual, como $\alpha = 0.05$. Este resultado indica que la probabilidad de que el ajuste observado en el modelo haya ocurrido por azar es prácticamente nula. Por lo tanto, **se rechaza la hipótesis nula** y se concluye que **al menos una de las variables explicativas** (*HIV/AIDS*, *Income composition of resources* o *Adult Mortality*) tiene un **efecto estadísticamente significativo** sobre la **esperanza de vida**. Esto valida que el modelo general propuesto tiene una capacidad real para explicar el comportamiento de la variable dependiente y que las relaciones observadas entre las variables no son producto del azar.
 
 
 ## Pruebas de significancia individuales 
@@ -449,15 +450,10 @@ hipotesis_table %>%
 
 ```
    
-Los resultados de la prueba de hipótesis individual para cada coeficiente de regresión permiten evaluar si cada variable explicativa tiene un efecto estadísticamente significativo sobre la variable dependiente Life expectancy. Para cada predictor, se plantea una hipótesis nula que afirma que su coeficiente es igual a cero ($H_0: \beta_i = 0$), frente a una hipótesis alternativa que sostiene que es diferente de cero ($H_1: \beta_i \ne 0$). El criterio de decisión se basa en comparar el valor p con un nivel de significancia $\alpha = 0.05$.
+Los resultados de la prueba de hipótesis para los coeficientes del modelo muestran que todas las variables independientes incluidas en la regresión —HIV/AIDS, Income composition of resources y Adult Mortality— tienen un efecto estadísticamente significativo sobre la esperanza de vida, al nivel de significancia del 5%. En los tres casos, los valores p resultan considerablemente menores a 0.05, lo que permite rechazar la hipótesis nula \( H_0: \beta_i = 0 \), confirmando que sus coeficientes son diferentes de cero y, por tanto, influyen en la variable dependiente. Estos hallazgos evidencian que el modelo no solo es estadísticamente válido, sino que está conformado por variables que capturan dimensiones estructurales relevantes sobre la expectativa de vida en 2015.
 
-Para la variable HIV/AIDS, el valor t es -3.996 y el valor p es 2.31e-04, claramente menor a 0.05. Esto indica que el coeficiente es significativamente distinto de cero, por lo tanto, se rechaza la hipótesis nula. Se concluye que HIV/AIDS tiene un efecto estadísticamente significativo sobre la esperanza de vida, y la relación negativa del coeficiente confirma que a mayor prevalencia de VIH/SIDA, menor esperanza de vida.
+En particular, la variable HIV/AIDS presenta un valor t de -3.996 y un valor p de 0.000231, lo cual indica un efecto negativo significativo sobre la esperanza de vida. Este resultado sugiere que, a mayor prevalencia de VIH/SIDA en la población, menor es la esperanza de vida en los países analizados, reflejando el impacto de enfermedades infecciosas sobre los indicadores de salud pública. Por otro lado, la Income composition of resources muestra un valor t de 11.694 y un valor p prácticamente nulo (2.23e-15), siendo la variable más influyente del modelo. Su relación positiva indica que un mayor acceso a recursos económicos y sociales se asocia directamente con mayores niveles de longevidad. Finalmente, la variable Adult Mortality presenta un valor t de -2.926 y un valor p de 0.00533, también significativo. Esto confirma que un aumento en las tasas de mortalidad adulta contribuye a una disminución de la esperanza de vida, reforzando la idea de que la supervivencia en edades productivas es clave para el desarrollo humano.
 
-En el caso de Income composition of resources, el valor t es 11.694 y el valor p es 2.23e-15, un valor extremadamente bajo que refuerza su significancia estadística. Al ser mucho menor que 0.05, se rechaza también la hipótesis nula, lo cual confirma que esta variable tiene un efecto muy significativo sobre la esperanza de vida. Además, el signo positivo del coeficiente refuerza su interpretación como un factor que contribuye al aumento de la longevidad.
-
-Por su parte, Adult Mortality presenta un valor t de -2.926 y un valor p de 0.005325, también menor al umbral de 0.05. Esto lleva a rechazar la hipótesis nula y concluir que la mortalidad adulta tiene un efecto significativo sobre la esperanza de vida. Su coeficiente negativo indica que un aumento en la mortalidad adulta se asocia con una disminución en la esperanza de vida.
-
-En conjunto, estos resultados indican que todas las variables predictoras incluidas en el modelo son estadísticamente significativas de forma individual. Esto respalda su inclusión en el análisis y refuerza la validez del modelo propuesto con datos del año 2015.
 
 ## Supuestos del modelo de regresión lineal {.tabset}
 
