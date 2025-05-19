@@ -1880,17 +1880,10 @@ Existe autocorrelación en los residuos del modelo.</p></li>
 <p><strong>2. Nivel de significancia</strong></p>
 <p><span class="math inline">\(\alpha = 0.05\)</span></p>
 <p><strong>3. Estadístico de prueba y valor_p</strong></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code></pre></div>
-<pre><code>## Warning: package &#39;lmtest&#39; was built under R version 4.4.3</code></pre>
-<pre><code>## Cargando paquete requerido: zoo</code></pre>
-<pre><code>## Warning: package &#39;zoo&#39; was built under R version 4.4.3</code></pre>
-<pre><code>## 
-## Adjuntando el paquete: &#39;zoo&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     as.Date, as.Date.numeric</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="co"># Prueba de Durbin-Watson al modelo</span></span>
-<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a><span class="co"># Prueba de Durbin-Watson al modelo</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a><span class="fu">dwtest</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ##  Durbin-Watson test
 ## 
@@ -1930,12 +1923,12 @@ con gráficos y pruebas como la de Breusch-Pagan:</p>
 class="section level4" number="4.7.5.1">
 <h4><span class="header-section-number">4.7.5.1</span> Gráfica de
 valores ajustados vs residuos**</h4>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>fitted.values, modelo<span class="sc">$</span>residuals,</span>
-<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Residuos vs Valores Ajustados&quot;</span>,</span>
-<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valores Ajustados&quot;</span>,</span>
-<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Residuos&quot;</span>,</span>
-<span id="cb55-5"><a href="#cb55-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>)</span>
-<span id="cb55-6"><a href="#cb55-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>fitted.values, modelo<span class="sc">$</span>residuals,</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Residuos vs Valores Ajustados&quot;</span>,</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Valores Ajustados&quot;</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Residuos&quot;</span>,</span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;steelblue&quot;</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="about_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>En el gráfico no se observa una forma definida ni un patrón evidente
 en la dispersión de los residuos. Los puntos parecen distribuidos de
@@ -1960,10 +1953,10 @@ La varianza de los residuos del modelo no es constante.</p></li>
 <p><strong>2. Nivel de significancia</strong></p>
 <p><span class="math inline">\(\alpha = 0.05\)</span></p>
 <p><strong>3. Estadístico de prueba y valor_p</strong></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
-<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a></span>
-<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a><span class="co"># Test de Breusch-Pagan</span></span>
-<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a><span class="fu">bptest</span>(modelo)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="co"># Test de Breusch-Pagan</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="fu">bptest</span>(modelo)</span></code></pre></div>
 <pre><code>## 
 ##  studentized Breusch-Pagan test
 ## 

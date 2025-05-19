@@ -1,7 +1,6 @@
 ---
 title: "Determinantes de la esperanza de vida: análisis descriptivo"
-author: "Nicole García Bernal y Astrid Carolina Gonzalez Becerra"
-date: "`r Sys.Date()`"
+author: "<span class='autor-rmd'>Nicole García Bernay y Astrid Carolina Gonzalez Becerra</span>"
 output:
   html_document:
     toc: true
@@ -418,7 +417,7 @@ En conjunto, el gráfico no solo comunica una distribución estadística, sino q
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 library(ggplot2)
 ggplot(muestra_final, aes(x = Region, y = `Life expectancy`)) +
-  geom_boxplot(fill = "skyblue", color = "black", outlier.color = "blue") +
+  geom_boxplot(fill = "lightblue", color = "black", outlier.color = "blue") +
   labs(
     title = "Distribución de la esperanza de vida por continente - 2015",
     x = "Continente",
