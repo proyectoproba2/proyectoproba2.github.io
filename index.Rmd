@@ -1,6 +1,6 @@
 ---
 title: "Determinantes de la esperanza de vida: análisis descriptivo"
-author: "<span class='autor-rmd'>Nicole García Bernay y Astrid Carolina Gonzalez Becerra</span>"
+author: "<span class='autor-rmd'>Nicole García Bernal y Astrid Carolina Gonzalez Becerra</span>"
 output:
   html_document:
     toc: true
